@@ -39,11 +39,8 @@ public class frameHome extends javax.swing.JFrame {
         itemIniVentas = new javax.swing.JMenuItem();
         itemGesVentas = new javax.swing.JMenuItem();
         itemClientes = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        menuUsuarios = new javax.swing.JMenu();
-        itemNewUser = new javax.swing.JMenuItem();
-        itemEditUser = new javax.swing.JMenuItem();
-        itemDelUser = new javax.swing.JMenuItem();
+        itemProductos = new javax.swing.JMenuItem();
+        itemUsuarios = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,23 +80,18 @@ public class frameHome extends javax.swing.JFrame {
         });
         menu.add(itemClientes);
 
-        jMenuItem1.setText("Productos");
-        menu.add(jMenuItem1);
+        itemProductos.setText("Productos");
+        menu.add(itemProductos);
+
+        itemUsuarios.setText("Usuários");
+        itemUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemUsuariosActionPerformed(evt);
+            }
+        });
+        menu.add(itemUsuarios);
 
         barraMenu.add(menu);
-
-        menuUsuarios.setText("Usuários");
-
-        itemNewUser.setText("Nuevo usuário");
-        menuUsuarios.add(itemNewUser);
-
-        itemEditUser.setText("Modificar");
-        menuUsuarios.add(itemEditUser);
-
-        itemDelUser.setText("Eliminar");
-        menuUsuarios.add(itemDelUser);
-
-        barraMenu.add(menuUsuarios);
 
         setJMenuBar(barraMenu);
 
@@ -116,6 +108,10 @@ public class frameHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         cargaPanel (new PanelClientes(this));
     }//GEN-LAST:event_itemClientesActionPerformed
+
+    private void itemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,15 +151,12 @@ public class frameHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraMenu;
     private javax.swing.JMenuItem itemClientes;
-    private javax.swing.JMenuItem itemDelUser;
-    private javax.swing.JMenuItem itemEditUser;
     private javax.swing.JMenuItem itemGesVentas;
     private javax.swing.JMenuItem itemIniVentas;
-    private javax.swing.JMenuItem itemNewUser;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem itemProductos;
+    private javax.swing.JMenuItem itemUsuarios;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JMenu menu;
-    private javax.swing.JMenu menuUsuarios;
     private javax.swing.JPanel panelContenedor;
     // End of variables declaration//GEN-END:variables
 
