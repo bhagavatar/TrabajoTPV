@@ -5,7 +5,7 @@
  */
 package es.hauptman.principal;
 
-import es.hauptman.vista.Ventas;
+import es.hauptman.vista.PanelVentas;
 import es.hauptman.vista.PanelClientes;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -101,7 +101,7 @@ public class frameHome extends javax.swing.JFrame {
 
     private void itemIniVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemIniVentasActionPerformed
         // TODO add your handling code here:
-        cargaPanel(new Ventas(this));
+        cargaPanel(new PanelVentas(this));
     }//GEN-LAST:event_itemIniVentasActionPerformed
 
     private void itemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemClientesActionPerformed

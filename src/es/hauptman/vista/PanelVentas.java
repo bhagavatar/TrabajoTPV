@@ -12,13 +12,13 @@ import java.awt.CardLayout;
  *
  * @author Diego
  */
-public class Ventas extends javax.swing.JPanel {
+public class PanelVentas extends javax.swing.JPanel {
     private frameHome frame;
 
     /**
      * Creates new form Ventas
      */
-    public Ventas(frameHome frame) {
+    public PanelVentas(frameHome frame) {
         this.frame = frame;
         initComponents();
     }
