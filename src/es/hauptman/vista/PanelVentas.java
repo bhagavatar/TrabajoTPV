@@ -7,6 +7,8 @@ package es.hauptman.vista;
 
 import es.hauptman.principal.frameHome;
 import java.awt.CardLayout;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -14,6 +16,8 @@ import java.awt.CardLayout;
  */
 public class PanelVentas extends javax.swing.JPanel {
     private frameHome frame;
+    public static final String COMANDO_NUMERO= "NUMERO";
+    
 
     /**
      * Creates new form Ventas
@@ -30,7 +34,6 @@ public class PanelVentas extends javax.swing.JPanel {
     public void setFrame(frameHome frame) {
         this.frame = frame;
     }
-    
     
 
     /**
@@ -74,7 +77,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnAcceptar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         campoTotal = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
+        panelDisplay = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -239,6 +242,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.setLayout(new java.awt.GridLayout(4, 4));
 
         btn1.setText("1");
+        btn1.setName("1"); // NOI18N
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
@@ -247,9 +251,16 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn1);
 
         btn2.setText("2");
+        btn2.setName("2"); // NOI18N
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btn2);
 
         btn3.setText("3");
+        btn3.setName("3"); // NOI18N
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
@@ -267,6 +278,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btnTogglePrecio);
 
         btn4.setText("4");
+        btn4.setName("4"); // NOI18N
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn4ActionPerformed(evt);
@@ -275,6 +287,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn4);
 
         btn5.setText("5");
+        btn5.setName("5"); // NOI18N
         btn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn5ActionPerformed(evt);
@@ -283,6 +296,12 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn5);
 
         btn6.setText("6");
+        btn6.setName("6"); // NOI18N
+        btn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn6ActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btn6);
 
         buttonGroup1.add(btnToggleCantidad);
@@ -290,12 +309,30 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btnToggleCantidad);
 
         btn7.setText("7");
+        btn7.setName("7"); // NOI18N
+        btn7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn7ActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btn7);
 
         btn8.setText("8");
+        btn8.setName("8"); // NOI18N
+        btn8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn8ActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btn8);
 
         btn9.setText("9");
+        btn9.setName("9"); // NOI18N
+        btn9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn9ActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btn9);
 
         btnDescuento.setBackground(new java.awt.Color(204, 204, 0));
@@ -303,12 +340,29 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btnDescuento);
 
         btn0.setText("0");
+        btn0.setName("0"); // NOI18N
+        btn0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn0ActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btn0);
 
         btnPunto.setText(".");
+        btnPunto.setName("."); // NOI18N
+        btnPunto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPuntoActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btnPunto);
 
         btnClear.setText("C");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btnClear);
 
         btnAcceptar.setBackground(new java.awt.Color(0, 204, 51));
@@ -346,65 +400,66 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelDisplayLayout = new javax.swing.GroupLayout(panelDisplay);
+        panelDisplay.setLayout(panelDisplayLayout);
+        panelDisplayLayout.setHorizontalGroup(
+            panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDisplayLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDisplayLayout.createSequentialGroup()
+                        .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField6))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDisplayLayout.createSequentialGroup()
+                                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDisplayLayout.createSequentialGroup()
                                         .addGap(30, 30, 30)
                                         .addComponent(jLabel8)
                                         .addGap(63, 63, 63)
                                         .addComponent(jLabel2))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(panelDisplayLayout.createSequentialGroup()
                                         .addGap(24, 24, 24)
                                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(129, 129, 129))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(panelDisplayLayout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jTextField4))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelDisplayLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelDisplayLayout.setVerticalGroup(
+            panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDisplayLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        campoDisplay.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
         campoDisplay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoDisplayActionPerformed(evt);
@@ -667,7 +722,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoDisplay)
                     .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -681,7 +736,7 @@ public class PanelVentas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -702,7 +757,8 @@ public class PanelVentas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-        // TODO add your handling code here:
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
@@ -719,14 +775,18 @@ public class PanelVentas extends javax.swing.JPanel {
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-        // TODO add your handling code here:
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        // TODO add your handling code here:
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btnTogglePrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTogglePrecioActionPerformed
@@ -763,6 +823,91 @@ public class PanelVentas extends javax.swing.JPanel {
         CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
         cl.show(panelCardTipo, "zumos");
     }//GEN-LAST:event_btnZumoActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+       getCampoDisplay().setText("");
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
+    }//GEN-LAST:event_btn2ActionPerformed
+
+    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
+    }//GEN-LAST:event_btn6ActionPerformed
+
+    private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
+    }//GEN-LAST:event_btn7ActionPerformed
+
+    private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
+    }//GEN-LAST:event_btn8ActionPerformed
+
+    private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
+    }//GEN-LAST:event_btn9ActionPerformed
+
+    private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
+    }//GEN-LAST:event_btn0ActionPerformed
+
+    private void btnPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuntoActionPerformed
+        getCampoDisplay().setText(getCampoDisplay().getText() + 
+                ((JButton)evt.getSource()).getName());
+    }//GEN-LAST:event_btnPuntoActionPerformed
+
+    public JButton getBtn1() {
+        return btn1;
+    }
+
+    public JButton getBtn2() {
+        return btn2;
+    }
+
+    public JButton getBtn3() {
+        return btn3;
+    }
+
+    public JButton getBtn4() {
+        return btn4;
+    }
+
+    public JButton getBtn5() {
+        return btn5;
+    }
+
+    public JButton getBtn6() {
+        return btn6;
+    }
+
+    public JButton getBtn7() {
+        return btn7;
+    }
+
+    public JButton getBtn8() {
+        return btn8;
+    }
+
+    public JButton getBtn9() {
+        return btn9;
+    }
+
+    public JTextField getCampoDisplay() {
+        return campoDisplay;
+    }
+
+    public void setCampoDisplay(JTextField campoDisplay) {
+        this.campoDisplay = campoDisplay;
+    }
+    
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -845,7 +990,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -855,6 +999,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JPanel panelCardTipo;
     private javax.swing.JPanel panelCategoria;
     private javax.swing.JPanel panelChocolate;
+    private javax.swing.JPanel panelDisplay;
     private javax.swing.JPanel panelInfusiones;
     private javax.swing.JPanel panelNumerico;
     private javax.swing.JScrollPane panelTablaVentas;

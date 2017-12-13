@@ -36,7 +36,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton1" pref="117" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="panelDisplay" alignment="0" max="32767" attributes="0"/>
                   <Component id="campoDisplay" alignment="0" max="32767" attributes="0"/>
                   <Component id="panelTablaVentas" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -54,7 +54,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="panelDisplay" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="panelTablaVentas" min="-2" pref="187" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -273,6 +273,7 @@
         <Component class="javax.swing.JButton" name="btn1">
           <Properties>
             <Property name="text" type="java.lang.String" value="1"/>
+            <Property name="name" type="java.lang.String" value="1" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn1ActionPerformed"/>
@@ -281,11 +282,16 @@
         <Component class="javax.swing.JButton" name="btn2">
           <Properties>
             <Property name="text" type="java.lang.String" value="2"/>
+            <Property name="name" type="java.lang.String" value="2" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn3">
           <Properties>
             <Property name="text" type="java.lang.String" value="3"/>
+            <Property name="name" type="java.lang.String" value="3" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn3ActionPerformed"/>
@@ -305,6 +311,7 @@
         <Component class="javax.swing.JButton" name="btn4">
           <Properties>
             <Property name="text" type="java.lang.String" value="4"/>
+            <Property name="name" type="java.lang.String" value="4" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn4ActionPerformed"/>
@@ -313,6 +320,7 @@
         <Component class="javax.swing.JButton" name="btn5">
           <Properties>
             <Property name="text" type="java.lang.String" value="5"/>
+            <Property name="name" type="java.lang.String" value="5" noResource="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn5ActionPerformed"/>
@@ -321,7 +329,11 @@
         <Component class="javax.swing.JButton" name="btn6">
           <Properties>
             <Property name="text" type="java.lang.String" value="6"/>
+            <Property name="name" type="java.lang.String" value="6" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToggleButton" name="btnToggleCantidad">
           <Properties>
@@ -338,17 +350,29 @@
         <Component class="javax.swing.JButton" name="btn7">
           <Properties>
             <Property name="text" type="java.lang.String" value="7"/>
+            <Property name="name" type="java.lang.String" value="7" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn7ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn8">
           <Properties>
             <Property name="text" type="java.lang.String" value="8"/>
+            <Property name="name" type="java.lang.String" value="8" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn8ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn9">
           <Properties>
             <Property name="text" type="java.lang.String" value="9"/>
+            <Property name="name" type="java.lang.String" value="9" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn9ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDescuento">
           <Properties>
@@ -361,17 +385,28 @@
         <Component class="javax.swing.JButton" name="btn0">
           <Properties>
             <Property name="text" type="java.lang.String" value="0"/>
+            <Property name="name" type="java.lang.String" value="0" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn0ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnPunto">
           <Properties>
             <Property name="text" type="java.lang.String" value="."/>
+            <Property name="name" type="java.lang.String" value="." noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPuntoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnClear">
           <Properties>
             <Property name="text" type="java.lang.String" value="C"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnAcceptar">
           <Properties>
@@ -393,7 +428,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="campoTotal">
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="panelDisplay">
 
       <Layout>
         <DimensionLayout dim="0">
@@ -519,6 +554,11 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="campoDisplay">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="20" style="0"/>
+        </Property>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoDisplayActionPerformed"/>
       </Events>
