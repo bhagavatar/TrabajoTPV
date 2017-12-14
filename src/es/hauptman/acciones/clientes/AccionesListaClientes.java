@@ -1,5 +1,5 @@
 
-package es.hauptman.clientes.acciones;
+package es.hauptman.acciones.clientes;
 
 
 import es.hauptman.gestionbd.GestionSQL;

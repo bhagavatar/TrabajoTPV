@@ -5,10 +5,10 @@
  */
 package es.hauptman.vista;
 
-import es.hauptman.clientes.acciones.AccionesAltaClientes;
-import es.hauptman.clientes.acciones.AccionesBajaClientes;
-import es.hauptman.clientes.acciones.AccionesEditaClientes;
-import es.hauptman.clientes.acciones.AccionesListaClientes;
+import es.hauptman.acciones.clientes.AccionesAltaClientes;
+import es.hauptman.acciones.clientes.AccionesBajaClientes;
+import es.hauptman.acciones.clientes.AccionesEditaClientes;
+import es.hauptman.acciones.clientes.AccionesListaClientes;
 import es.hauptman.principal.frameHome;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
