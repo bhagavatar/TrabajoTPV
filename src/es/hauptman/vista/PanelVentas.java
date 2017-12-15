@@ -5,10 +5,15 @@
  */
 package es.hauptman.vista;
 
+import es.hauptman.acciones.ventas.AccionesProductos;
 import es.hauptman.principal.frameHome;
 import java.awt.CardLayout;
+import java.util.HashMap;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,15 +21,16 @@ import javax.swing.JTextField;
  */
 public class PanelVentas extends javax.swing.JPanel {
     private frameHome frame;
-    public static final String COMANDO_NUMERO= "NUMERO";
+    private AccionesProductos accionesProductos;
     
-
     /**
      * Creates new form Ventas
      */
     public PanelVentas(frameHome frame) {
         this.frame = frame;
         initComponents();
+        accionesProductos = new AccionesProductos();
+             
     }
 
     public frameHome getFrame() {
@@ -91,7 +97,7 @@ public class PanelVentas extends javax.swing.JPanel {
         campoDisplay = new javax.swing.JTextField();
         panelCardTipo = new javax.swing.JPanel();
         pnlCafe = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
+        lblCafeLargo = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -224,7 +230,6 @@ public class PanelVentas extends javax.swing.JPanel {
 
         btnHotDog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/hauptman/imagenes/icons8-hot-dog-40.png"))); // NOI18N
         btnHotDog.setText("Bocadillos");
-        btnHotDog.setToolTipText("");
         btnHotDog.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHotDog.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         panelCategoria.add(btnHotDog);
@@ -245,7 +250,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn1.setName("1"); // NOI18N
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn1);
@@ -254,7 +259,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn2.setName("2"); // NOI18N
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn2ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn2);
@@ -263,7 +268,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn3.setName("3"); // NOI18N
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn3ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn3);
@@ -281,7 +286,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn4.setName("4"); // NOI18N
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn4ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn4);
@@ -290,7 +295,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn5.setName("5"); // NOI18N
         btn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn5ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn5);
@@ -299,7 +304,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn6.setName("6"); // NOI18N
         btn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn6ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn6);
@@ -312,7 +317,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn7.setName("7"); // NOI18N
         btn7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn7ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn7);
@@ -321,7 +326,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn8.setName("8"); // NOI18N
         btn8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn8ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn8);
@@ -330,7 +335,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn9.setName("9"); // NOI18N
         btn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn9ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn9);
@@ -343,7 +348,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn0.setName("0"); // NOI18N
         btn0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn0ActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btn0);
@@ -352,7 +357,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnPunto.setName("."); // NOI18N
         btnPunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPuntoActionPerformed(evt);
+                btnCalcActionPerformed(evt);
             }
         });
         panelNumerico.add(btnPunto);
@@ -471,38 +476,71 @@ public class PanelVentas extends javax.swing.JPanel {
 
         pnlCafe.setLayout(new java.awt.GridLayout(3, 3));
 
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("Café Largo");
-        jLabel25.setToolTipText("");
-        jLabel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel25.setInheritsPopupMenu(false);
-        pnlCafe.add(jLabel25);
+        lblCafeLargo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCafeLargo.setText("Café Largo");
+        lblCafeLargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        lblCafeLargo.setInheritsPopupMenu(false);
+        lblCafeLargo.setName("Café Largo"); // NOI18N
+        lblCafeLargo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
+        pnlCafe.add(lblCafeLargo);
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Café Corto");
         jLabel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel26.setName("Café Corto"); // NOI18N
+        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         pnlCafe.add(jLabel26);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Cortado");
-        jLabel5.setToolTipText("");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel5.setName("Cortado"); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         pnlCafe.add(jLabel5);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Café con Leche");
-        jLabel6.setToolTipText("");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel6.setName("Café con Leche"); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         pnlCafe.add(jLabel6);
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Capuccino");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel9.setName("Capuccino"); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         pnlCafe.add(jLabel9);
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Carajillo");
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel10.setName("Carajillo"); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         pnlCafe.add(jLabel10);
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -756,11 +794,6 @@ public class PanelVentas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn5ActionPerformed
-
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
@@ -773,21 +806,10 @@ public class PanelVentas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        // TODO add your handling code here:
+    private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         getCampoDisplay().setText(getCampoDisplay().getText() + 
                 ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn1ActionPerformed
-
-    private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn4ActionPerformed
-
-    private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn3ActionPerformed
+    }//GEN-LAST:event_btnCalcActionPerformed
 
     private void btnTogglePrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTogglePrecioActionPerformed
         // TODO add your handling code here:
@@ -799,9 +821,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
     private void btnCafeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCafeActionPerformed
         CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
-        cl.show(panelCardTipo, "cafe");
-        
-        
+        cl.show(panelCardTipo, "cafe");    
     }//GEN-LAST:event_btnCafeActionPerformed
 
     private void btnChocolateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChocolateActionPerformed
@@ -828,40 +848,14 @@ public class PanelVentas extends javax.swing.JPanel {
        getCampoDisplay().setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn2ActionPerformed
+    private void lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMouseClicked
+        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        model.addRow(accionesProductos.getValoresProd().
+                get(evt.getComponent().getName()));
+    }//GEN-LAST:event_lblMouseClicked
 
-    private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn6ActionPerformed
-
-    private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn7ActionPerformed
-
-    private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn8ActionPerformed
-
-    private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn9ActionPerformed
-
-    private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btn0ActionPerformed
-
-    private void btnPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuntoActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
-                ((JButton)evt.getSource()).getName());
-    }//GEN-LAST:event_btnPuntoActionPerformed
+    
+// <editor-fold defaultstate="collapsed" desc="Getters and Setters">
 
     public JButton getBtn1() {
         return btn1;
@@ -906,7 +900,15 @@ public class PanelVentas extends javax.swing.JPanel {
     public void setCampoDisplay(JTextField campoDisplay) {
         this.campoDisplay = campoDisplay;
     }
-    
+
+    public JScrollPane getPanelTablaVentas() {
+        return panelTablaVentas;
+    }
+
+    public JTable getTablaVentas() {
+        return tablaVentas;
+    }
+  //</editor-fold>  
     
 
 
@@ -956,7 +958,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -995,6 +996,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lblCafeLargo;
     private javax.swing.JPanel panelBolleria;
     private javax.swing.JPanel panelCardTipo;
     private javax.swing.JPanel panelCategoria;

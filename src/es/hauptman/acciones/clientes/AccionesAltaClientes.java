@@ -36,7 +36,6 @@ public class AccionesAltaClientes {
      * base de datos.
      */
     public void guardarCliente() {
-        //ClientesDAO dao = dao.insert(cliente)
         Clientes cliente = new Clientes();
         cliente.setNombre(panel.getTxtNombreAlta().getText());
         cliente.setApellido(panel.getTxtApellidoAlta().getText());
