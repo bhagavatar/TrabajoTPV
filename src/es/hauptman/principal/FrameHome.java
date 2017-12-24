@@ -16,12 +16,11 @@ import javax.swing.JPanel;
  *
  * @author Diego
  */
-public class frameHome extends javax.swing.JFrame {
-
+public class FrameHome extends javax.swing.JFrame {
     /**
      * Creates new form frameHome
      */
-    public frameHome() {
+    public FrameHome() {
         initComponents();
     }
 
@@ -236,7 +235,10 @@ public class frameHome extends javax.swing.JFrame {
     }//GEN-LAST:event_itemGesVentasActionPerformed
 
     private void itemInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInicioActionPerformed
-        new frameHome().setVisible(true);
+        panelContenedor.removeAll();
+        panelContenedor.add(panelHome, BorderLayout.CENTER);
+        panelContenedor.repaint();
+        pack();
     }//GEN-LAST:event_itemInicioActionPerformed
 
     private void btnIniVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniVentaActionPerformed
@@ -276,20 +278,21 @@ public class frameHome extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frameHome().setVisible(true);
+                new FrameHome().setVisible(true);
             }
         });
     }

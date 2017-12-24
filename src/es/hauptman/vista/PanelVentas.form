@@ -598,6 +598,7 @@
                 </Property>
                 <Property name="inheritsPopupMenu" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="Caf&#xe9; Largo" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
@@ -615,6 +616,7 @@
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Caf&#xe9; Corto" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
@@ -632,6 +634,7 @@
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Cortado" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
@@ -649,6 +652,7 @@
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Caf&#xe9; con Leche" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
@@ -666,6 +670,7 @@
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Capuccino" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
@@ -683,6 +688,7 @@
                   </Border>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Carajillo" noResource="true"/>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
@@ -698,6 +704,7 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
@@ -710,6 +717,7 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel13">
@@ -722,6 +730,7 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="opaque" type="boolean" value="true"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -750,7 +759,11 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="name" type="java.lang.String" value="Chocolate Suizo" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel27">
               <Properties>
@@ -764,7 +777,11 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="name" type="java.lang.String" value="Taza Grande" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
               <Properties>
@@ -778,7 +795,11 @@
                     </LineBorder>
                   </Border>
                 </Property>
+                <Property name="name" type="java.lang.String" value="Taza Peque&#xf1;a" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>

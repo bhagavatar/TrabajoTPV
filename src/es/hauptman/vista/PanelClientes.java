@@ -9,7 +9,7 @@ import es.hauptman.acciones.clientes.AccionesAltaClientes;
 import es.hauptman.acciones.clientes.AccionesBajaClientes;
 import es.hauptman.acciones.clientes.AccionesEditaClientes;
 import es.hauptman.acciones.clientes.AccionesListaClientes;
-import es.hauptman.principal.frameHome;
+import es.hauptman.principal.FrameHome;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  * @author Diego
  */
 public class PanelClientes extends javax.swing.JPanel {
-    private frameHome frame;
+    private FrameHome frame;
     private AccionesAltaClientes accionesalta;
     private AccionesBajaClientes accionesbaja;
     private AccionesEditaClientes accionesedita;
@@ -28,7 +28,7 @@ public class PanelClientes extends javax.swing.JPanel {
     /**
      * Creates new form panelClientes
      */
-    public PanelClientes(frameHome frame) {
+    public PanelClientes(FrameHome frame) {
         this.frame = frame;
         initComponents();
         accionesalta = new AccionesAltaClientes(this);
@@ -45,11 +45,11 @@ public class PanelClientes extends javax.swing.JPanel {
         this.txtIDBaja = txtIDBaja;
     }
 
-    public frameHome getFrame() {
+    public FrameHome getFrame() {
         return frame;
     }
 
-    public void setFrame(frameHome frame) {
+    public void setFrame(FrameHome frame) {
         this.frame = frame;
     }
 

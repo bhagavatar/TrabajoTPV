@@ -6,10 +6,12 @@
 package es.hauptman.vista;
 
 import es.hauptman.acciones.ventas.AccionesProductos;
-import es.hauptman.principal.frameHome;
+import es.hauptman.entities.ProductosTableView;
+import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
 import java.util.HashMap;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -20,24 +22,26 @@ import javax.swing.table.DefaultTableModel;
  * @author Diego
  */
 public class PanelVentas extends javax.swing.JPanel {
-    private frameHome frame;
+    private FrameHome frame;
     private AccionesProductos accionesProductos;
+    private ProductosTableView prodSeleccionado;
+    private JLabel labelProductosSeleccion;
     
     /**
      * Creates new form Ventas
      */
-    public PanelVentas(frameHome frame) {
+    public PanelVentas(FrameHome frame) {
         this.frame = frame;
         initComponents();
         accionesProductos = new AccionesProductos();
              
     }
 
-    public frameHome getFrame() {
+    public FrameHome getFrame() {
         return frame;
     }
 
-    public void setFrame(frameHome frame) {
+    public void setFrame(FrameHome frame) {
         this.frame = frame;
     }
     
@@ -481,6 +485,7 @@ public class PanelVentas extends javax.swing.JPanel {
         lblCafeLargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         lblCafeLargo.setInheritsPopupMenu(false);
         lblCafeLargo.setName("Café Largo"); // NOI18N
+        lblCafeLargo.setOpaque(true);
         lblCafeLargo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMouseClicked(evt);
@@ -492,6 +497,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel26.setText("Café Corto");
         jLabel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jLabel26.setName("Café Corto"); // NOI18N
+        jLabel26.setOpaque(true);
         jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMouseClicked(evt);
@@ -503,6 +509,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel5.setText("Cortado");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jLabel5.setName("Cortado"); // NOI18N
+        jLabel5.setOpaque(true);
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMouseClicked(evt);
@@ -514,6 +521,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel6.setText("Café con Leche");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jLabel6.setName("Café con Leche"); // NOI18N
+        jLabel6.setOpaque(true);
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMouseClicked(evt);
@@ -525,6 +533,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel9.setText("Capuccino");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jLabel9.setName("Capuccino"); // NOI18N
+        jLabel9.setOpaque(true);
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMouseClicked(evt);
@@ -536,6 +545,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel10.setText("Carajillo");
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
         jLabel10.setName("Carajillo"); // NOI18N
+        jLabel10.setOpaque(true);
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMouseClicked(evt);
@@ -545,14 +555,17 @@ public class PanelVentas extends javax.swing.JPanel {
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel11.setOpaque(true);
         pnlCafe.add(jLabel11);
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel12.setOpaque(true);
         pnlCafe.add(jLabel12);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel13.setOpaque(true);
         pnlCafe.add(jLabel13);
 
         panelCardTipo.add(pnlCafe, "cafe");
@@ -563,18 +576,36 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel16.setText("Chocolate Suizo");
         jLabel16.setToolTipText("");
         jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel16.setName("Chocolate Suizo"); // NOI18N
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         panelChocolate.add(jLabel16);
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Taza grande");
         jLabel27.setToolTipText("");
         jLabel27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel27.setName("Taza Grande"); // NOI18N
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         panelChocolate.add(jLabel27);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Taza pequeña");
         jLabel14.setToolTipText("");
         jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jLabel14.setName("Taza Pequeña"); // NOI18N
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMouseClicked(evt);
+            }
+        });
         panelChocolate.add(jLabel14);
 
         jLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
@@ -849,9 +880,13 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMouseClicked
+        
         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-        model.addRow(accionesProductos.getValoresProd().
-                get(evt.getComponent().getName()));
+        prodSeleccionado = accionesProductos.getValoresProdView().
+                get(evt.getComponent().getName());
+        System.out.println(prodSeleccionado);
+        //model.addRow(accionesProductos.getValoresProd().
+                //get(evt.getComponent().getName()));
     }//GEN-LAST:event_lblMouseClicked
 
     

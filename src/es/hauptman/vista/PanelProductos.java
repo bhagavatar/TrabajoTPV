@@ -5,18 +5,18 @@
  */
 package es.hauptman.vista;
 
-import es.hauptman.principal.frameHome;
+import es.hauptman.principal.FrameHome;
 
 /**
  *
  * @author Diego
  */
 public class PanelProductos extends javax.swing.JPanel {
-    private frameHome frame;
+    private FrameHome frame;
     /**
      * Creates new form PanelProductos
      */
-    public PanelProductos(frameHome frame) {
+    public PanelProductos(FrameHome frame) {
         this.frame = frame;
         initComponents();
     }
