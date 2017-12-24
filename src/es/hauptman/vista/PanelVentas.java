@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -101,15 +102,15 @@ public class PanelVentas extends javax.swing.JPanel {
         campoDisplay = new javax.swing.JTextField();
         panelCardTipo = new javax.swing.JPanel();
         pnlCafe = new javax.swing.JPanel();
-        lblCafeLargo = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton5 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
+        jToggleButton8 = new javax.swing.JToggleButton();
+        jToggleButton6 = new javax.swing.JToggleButton();
+        jToggleButton7 = new javax.swing.JToggleButton();
+        jToggleButton9 = new javax.swing.JToggleButton();
+        jToggleButton10 = new javax.swing.JToggleButton();
         panelChocolate = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -480,93 +481,37 @@ public class PanelVentas extends javax.swing.JPanel {
 
         pnlCafe.setLayout(new java.awt.GridLayout(3, 3));
 
-        lblCafeLargo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCafeLargo.setText("Café Largo");
-        lblCafeLargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        lblCafeLargo.setInheritsPopupMenu(false);
-        lblCafeLargo.setName("Café Largo"); // NOI18N
-        lblCafeLargo.setOpaque(true);
-        lblCafeLargo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMouseClicked(evt);
+        jToggleButton2.setText("Café Largo");
+        jToggleButton2.setName("Café Largo"); // NOI18N
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonActionPerformed(evt);
             }
         });
-        pnlCafe.add(lblCafeLargo);
+        pnlCafe.add(jToggleButton2);
 
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("Café Corto");
-        jLabel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel26.setName("Café Corto"); // NOI18N
-        jLabel26.setOpaque(true);
-        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMouseClicked(evt);
-            }
-        });
-        pnlCafe.add(jLabel26);
+        jToggleButton5.setText("Café Corto");
+        jToggleButton5.setName("Café Corto"); // NOI18N
+        pnlCafe.add(jToggleButton5);
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Cortado");
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel5.setName("Cortado"); // NOI18N
-        jLabel5.setOpaque(true);
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMouseClicked(evt);
-            }
-        });
-        pnlCafe.add(jLabel5);
+        jToggleButton3.setText("Cortado");
+        jToggleButton3.setName("Cortado"); // NOI18N
+        pnlCafe.add(jToggleButton3);
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Café con Leche");
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel6.setName("Café con Leche"); // NOI18N
-        jLabel6.setOpaque(true);
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMouseClicked(evt);
-            }
-        });
-        pnlCafe.add(jLabel6);
+        jToggleButton4.setText("Café con Leche");
+        jToggleButton4.setName("Café con Leche"); // NOI18N
+        pnlCafe.add(jToggleButton4);
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Capuccino");
-        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel9.setName("Capuccino"); // NOI18N
-        jLabel9.setOpaque(true);
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMouseClicked(evt);
-            }
-        });
-        pnlCafe.add(jLabel9);
+        jToggleButton8.setText("Capuccino");
+        jToggleButton8.setName("Capuccino"); // NOI18N
+        pnlCafe.add(jToggleButton8);
 
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Carajillo");
-        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel10.setName("Carajillo"); // NOI18N
-        jLabel10.setOpaque(true);
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMouseClicked(evt);
-            }
-        });
-        pnlCafe.add(jLabel10);
-
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel11.setOpaque(true);
-        pnlCafe.add(jLabel11);
-
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel12.setOpaque(true);
-        pnlCafe.add(jLabel12);
-
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        jLabel13.setOpaque(true);
-        pnlCafe.add(jLabel13);
+        jToggleButton6.setText("Carajillo");
+        jToggleButton6.setName("Carajillo"); // NOI18N
+        pnlCafe.add(jToggleButton6);
+        pnlCafe.add(jToggleButton7);
+        pnlCafe.add(jToggleButton9);
+        pnlCafe.add(jToggleButton10);
 
         panelCardTipo.add(pnlCafe, "cafe");
 
@@ -790,14 +735,14 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoDisplay)
                     .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
+                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -890,6 +835,13 @@ public class PanelVentas extends javax.swing.JPanel {
                 //get(evt.getComponent().getName()));
     }//GEN-LAST:event_lblMouseClicked
 
+    private void jToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonActionPerformed
+       DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        prodSeleccionado = accionesProductos.getValoresProdView().
+                get(evt.get
+        System.out.println(prodSeleccionado);
+    }//GEN-LAST:event_jToggleButtonActionPerformed
+
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
 
@@ -978,10 +930,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JTextField campoTotal;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -994,7 +942,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1020,19 +967,24 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JLabel lblCafeLargo;
+    private javax.swing.JToggleButton jToggleButton10;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton5;
+    private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton9;
     private javax.swing.JPanel panelBolleria;
     private javax.swing.JPanel panelCardTipo;
     private javax.swing.JPanel panelCategoria;

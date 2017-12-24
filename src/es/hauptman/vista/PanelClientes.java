@@ -36,7 +36,7 @@ public class PanelClientes extends javax.swing.JPanel {
         accionesedita = new AccionesEditaClientes(this);
         accioneslista = new AccionesListaClientes(this);
     }
-
+    // <editor-fold defaultstate="collapsed" desc="Getters and Setters"> 
     public JTextField getTxtIDBaja() {
         return txtIDBaja;
     }
@@ -203,7 +203,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
     public void setPnlTblClientes(JScrollPane pnlTblClientes) {
         this.pnlTblClientes = pnlTblClientes;
-    }
+    }// </editor-fold>
 
     
      /**
