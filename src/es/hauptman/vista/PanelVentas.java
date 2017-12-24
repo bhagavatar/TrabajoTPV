@@ -483,11 +483,6 @@ public class PanelVentas extends javax.swing.JPanel {
 
         jToggleButton2.setText("Café Largo");
         jToggleButton2.setName("Café Largo"); // NOI18N
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonActionPerformed(evt);
-            }
-        });
         pnlCafe.add(jToggleButton2);
 
         jToggleButton5.setText("Café Corto");
@@ -834,13 +829,6 @@ public class PanelVentas extends javax.swing.JPanel {
         //model.addRow(accionesProductos.getValoresProd().
                 //get(evt.getComponent().getName()));
     }//GEN-LAST:event_lblMouseClicked
-
-    private void jToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonActionPerformed
-       DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-        prodSeleccionado = accionesProductos.getValoresProdView().
-                get(evt.get
-        System.out.println(prodSeleccionado);
-    }//GEN-LAST:event_jToggleButtonActionPerformed
 
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
