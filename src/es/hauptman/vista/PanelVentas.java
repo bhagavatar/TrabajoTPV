@@ -9,7 +9,7 @@ import es.hauptman.acciones.ventas.AccionesProductos;
 import es.hauptman.entities.ProductosTableView;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
-import java.util.HashMap;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -880,7 +880,8 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void lblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMouseClicked
-        
+        labelProductosSeleccion = (JLabel) evt.getComponent();
+        labelProductosSeleccion.setBackground(Color.DARK_GRAY);
         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
         prodSeleccionado = accionesProductos.getValoresProdView().
                 get(evt.getComponent().getName());
