@@ -26,7 +26,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private FrameHome frame;
     private AccionesProductos accionesProductos;
     private ProductosTableView prodSeleccionado;
-    private JLabel labelProductosSeleccion;
+    
     
     /**
      * Creates new form Ventas
@@ -818,7 +818,13 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        prodSeleccionado = accionesProductos.getValoresProdView().
+                get(evt.getSource().getClass().getName());
+        System.out.println(prodSeleccionado);
+        //model.addRow(accionesProductos.getValoresProd().
+                //get(evt.getComponent().getName()));
+        
     }//GEN-LAST:event_jToggleButton10ActionPerformed
 
     private void btnAcceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptarActionPerformed
