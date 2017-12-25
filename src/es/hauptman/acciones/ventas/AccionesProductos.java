@@ -56,7 +56,8 @@ public class AccionesProductos {
     private String[] zumoMelocoton = new String[] {"1",arrayZumos[2],"-","0.80", "0.80"};
     
     public AccionesProductos() {
-        valoresProdView.put(arrayCafes[0], new ProductosTableView(0, "Café Largo", 0, 0, 0));
+        valoresProdView.put(arrayCafes[0], new ProductosTableView(1, "Café Largo", 0, 1.00, 1.00));
+        valoresProdView.put(arrayCafes[1], new ProductosTableView(1, "Café Corto", 0, 2.00, 2.00));
         
         //Insertar cafes en el HashMap
         valoresProd.put(arrayCafes[0],cafeLargo);

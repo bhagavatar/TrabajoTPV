@@ -10,7 +10,10 @@ import es.hauptman.entities.ProductosTableView;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.event.ItemEvent;
+import javax.swing.ButtonModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -123,25 +126,25 @@ public class PanelVentas extends javax.swing.JPanel {
         jToggleButton17 = new javax.swing.JToggleButton();
         jToggleButton18 = new javax.swing.JToggleButton();
         panelInfusiones = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
+        jToggleButton19 = new javax.swing.JToggleButton();
+        jToggleButton20 = new javax.swing.JToggleButton();
+        jToggleButton22 = new javax.swing.JToggleButton();
+        jToggleButton21 = new javax.swing.JToggleButton();
+        jToggleButton23 = new javax.swing.JToggleButton();
+        jToggleButton25 = new javax.swing.JToggleButton();
+        jToggleButton24 = new javax.swing.JToggleButton();
+        jToggleButton26 = new javax.swing.JToggleButton();
+        jToggleButton27 = new javax.swing.JToggleButton();
         panelZumos = new javax.swing.JPanel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
+        jToggleButton28 = new javax.swing.JToggleButton();
+        jToggleButton29 = new javax.swing.JToggleButton();
+        jToggleButton30 = new javax.swing.JToggleButton();
+        jToggleButton31 = new javax.swing.JToggleButton();
+        jToggleButton34 = new javax.swing.JToggleButton();
+        jToggleButton32 = new javax.swing.JToggleButton();
+        jToggleButton33 = new javax.swing.JToggleButton();
+        jToggleButton35 = new javax.swing.JToggleButton();
+        jToggleButton36 = new javax.swing.JToggleButton();
         panelBolleria = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -489,21 +492,56 @@ public class PanelVentas extends javax.swing.JPanel {
         buttonGroupTipo.add(jToggleButton1);
         jToggleButton1.setText("Café Largo");
         jToggleButton1.setName("Café Largo"); // NOI18N
+        jToggleButton1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonActionPerformed(evt);
+            }
+        });
         pnlCafe.add(jToggleButton1);
 
         buttonGroupTipo.add(jToggleButton2);
         jToggleButton2.setText("Café Corto");
         jToggleButton2.setName("Café Corto"); // NOI18N
+        jToggleButton2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonActionPerformed(evt);
+            }
+        });
         pnlCafe.add(jToggleButton2);
 
         buttonGroupTipo.add(jToggleButton3);
         jToggleButton3.setText("Cortado");
         jToggleButton3.setName("Cortado"); // NOI18N
+        jToggleButton3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonActionPerformed(evt);
+            }
+        });
         pnlCafe.add(jToggleButton3);
 
         buttonGroupTipo.add(jToggleButton4);
         jToggleButton4.setText("Café con Leche");
         jToggleButton4.setName("Café con Leche"); // NOI18N
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonActionPerformed(evt);
+            }
+        });
         pnlCafe.add(jToggleButton4);
 
         buttonGroupTipo.add(jToggleButton5);
@@ -531,11 +569,6 @@ public class PanelVentas extends javax.swing.JPanel {
 
         buttonGroupTipo.add(jToggleButton10);
         jToggleButton10.setText("Chocolate Suizo");
-        jToggleButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton10ActionPerformed(evt);
-            }
-        });
         panelChocolate.add(jToggleButton10);
 
         buttonGroupTipo.add(jToggleButton11);
@@ -568,89 +601,84 @@ public class PanelVentas extends javax.swing.JPanel {
 
         panelInfusiones.setLayout(new java.awt.GridLayout(3, 3));
 
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel22.setText("Té Negro");
-        jLabel22.setToolTipText("");
-        jLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel22);
+        buttonGroupTipo.add(jToggleButton19);
+        jToggleButton19.setText("Té Negro");
+        jToggleButton19.setName("Té Negro"); // NOI18N
+        panelInfusiones.add(jToggleButton19);
 
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("Té con leche");
-        jLabel28.setToolTipText("");
-        jLabel28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel28);
+        buttonGroupTipo.add(jToggleButton20);
+        jToggleButton20.setText("Té con Leche");
+        jToggleButton20.setName("Té con Leche"); // NOI18N
+        panelInfusiones.add(jToggleButton20);
 
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("Chai Latte");
-        jLabel23.setToolTipText("");
-        jLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel23);
+        buttonGroupTipo.add(jToggleButton22);
+        jToggleButton22.setText("Chai Latte");
+        jToggleButton22.setName("Chai Latte"); // NOI18N
+        panelInfusiones.add(jToggleButton22);
 
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Menta");
-        jLabel24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel24);
+        buttonGroupTipo.add(jToggleButton21);
+        jToggleButton21.setText("Menta");
+        jToggleButton21.setName("Menta"); // NOI18N
+        panelInfusiones.add(jToggleButton21);
 
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel29.setText("Manzanilla");
-        jLabel29.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel29);
+        buttonGroupTipo.add(jToggleButton23);
+        jToggleButton23.setText("Manzanilla");
+        jToggleButton23.setName("Manzanilla"); // NOI18N
+        panelInfusiones.add(jToggleButton23);
 
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel30);
+        buttonGroupTipo.add(jToggleButton25);
+        panelInfusiones.add(jToggleButton25);
 
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel31);
+        buttonGroupTipo.add(jToggleButton24);
+        panelInfusiones.add(jToggleButton24);
 
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel32.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel32);
+        buttonGroupTipo.add(jToggleButton26);
+        panelInfusiones.add(jToggleButton26);
 
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelInfusiones.add(jLabel33);
+        buttonGroupTipo.add(jToggleButton27);
+        panelInfusiones.add(jToggleButton27);
 
         panelCardTipo.add(panelInfusiones, "infusiones");
 
         panelZumos.setLayout(new java.awt.GridLayout(3, 3));
 
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel34.setText("Natural de Naranja");
-        jLabel34.setToolTipText("");
-        jLabel34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel34);
+        buttonGroupTipo.add(jToggleButton28);
+        jToggleButton28.setText("Natural Naranja");
+        jToggleButton28.setName("Natural Naranja"); // NOI18N
+        panelZumos.add(jToggleButton28);
 
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel35.setText("Piña");
-        jLabel35.setToolTipText("");
-        jLabel35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel35);
+        buttonGroupTipo.add(jToggleButton29);
+        jToggleButton29.setText("Piña");
+        jToggleButton29.setName("Piña"); // NOI18N
+        jToggleButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton29ActionPerformed(evt);
+            }
+        });
+        panelZumos.add(jToggleButton29);
 
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel36.setText("Melocotón");
-        jLabel36.setToolTipText("");
-        jLabel36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel36);
+        buttonGroupTipo.add(jToggleButton30);
+        jToggleButton30.setText("Melocotón");
+        jToggleButton30.setName("Melocotón"); // NOI18N
+        panelZumos.add(jToggleButton30);
 
-        jLabel37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel37);
+        buttonGroupTipo.add(jToggleButton31);
+        panelZumos.add(jToggleButton31);
 
-        jLabel38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel38);
+        buttonGroupTipo.add(jToggleButton34);
+        panelZumos.add(jToggleButton34);
 
-        jLabel39.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel39);
+        buttonGroupTipo.add(jToggleButton32);
+        panelZumos.add(jToggleButton32);
 
-        jLabel40.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel40);
+        buttonGroupTipo.add(jToggleButton33);
+        panelZumos.add(jToggleButton33);
 
-        jLabel41.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel41);
+        buttonGroupTipo.add(jToggleButton35);
+        panelZumos.add(jToggleButton35);
 
-        jLabel42.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelZumos.add(jLabel42);
+        buttonGroupTipo.add(jToggleButton36);
+        panelZumos.add(jToggleButton36);
 
         panelCardTipo.add(panelZumos, "zumos");
         panelZumos.getAccessibleContext().setAccessibleName("");
@@ -817,19 +845,37 @@ public class PanelVentas extends javax.swing.JPanel {
        getCampoDisplay().setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void jToggleButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton10ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-        prodSeleccionado = accionesProductos.getValoresProdView().
-                get(evt.getSource().getClass().getName());
-        System.out.println(prodSeleccionado);
-        //model.addRow(accionesProductos.getValoresProd().
-                //get(evt.getComponent().getName()));
-        
-    }//GEN-LAST:event_jToggleButton10ActionPerformed
-
     private void btnAcceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptarActionPerformed
         buttonGroupTipo.clearSelection();
     }//GEN-LAST:event_btnAcceptarActionPerformed
+
+    private void jToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        prodSeleccionado = accionesProductos.getValoresProdView().
+                get(evt.getActionCommand());
+        System.out.println(prodSeleccionado);
+        //model.addRow(accionesProductos.getValoresProd().
+                //get(evt.getActionCommand()));
+        
+    }//GEN-LAST:event_jToggleButtonActionPerformed
+
+    private void jToggleButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton1ItemStateChanged
+        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            System.out.println("Botón marcado");
+            //String btn = ((JToggleButton)evt.getItem()).getName();
+            //System.out.println(btn);
+            model.addRow(accionesProductos.getValoresProd().
+                get(((JToggleButton)evt.getItem()).getName()));
+            
+        }else if (evt.getStateChange() == ItemEvent.DESELECTED){
+            System.out.println("Botón desmarcado");
+        }
+    }//GEN-LAST:event_jToggleButton1ItemStateChanged
+
+    private void jToggleButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton29ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton29ActionPerformed
 
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
@@ -921,26 +967,8 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -967,8 +995,26 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButton16;
     private javax.swing.JToggleButton jToggleButton17;
     private javax.swing.JToggleButton jToggleButton18;
+    private javax.swing.JToggleButton jToggleButton19;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton20;
+    private javax.swing.JToggleButton jToggleButton21;
+    private javax.swing.JToggleButton jToggleButton22;
+    private javax.swing.JToggleButton jToggleButton23;
+    private javax.swing.JToggleButton jToggleButton24;
+    private javax.swing.JToggleButton jToggleButton25;
+    private javax.swing.JToggleButton jToggleButton26;
+    private javax.swing.JToggleButton jToggleButton27;
+    private javax.swing.JToggleButton jToggleButton28;
+    private javax.swing.JToggleButton jToggleButton29;
     private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton30;
+    private javax.swing.JToggleButton jToggleButton31;
+    private javax.swing.JToggleButton jToggleButton32;
+    private javax.swing.JToggleButton jToggleButton33;
+    private javax.swing.JToggleButton jToggleButton34;
+    private javax.swing.JToggleButton jToggleButton35;
+    private javax.swing.JToggleButton jToggleButton36;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
