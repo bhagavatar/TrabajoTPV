@@ -650,11 +650,6 @@ public class PanelVentas extends javax.swing.JPanel {
         buttonGroupTipo.add(jToggleButton29);
         jToggleButton29.setText("Piña");
         jToggleButton29.setName("Piña"); // NOI18N
-        jToggleButton29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton29ActionPerformed(evt);
-            }
-        });
         panelZumos.add(jToggleButton29);
 
         buttonGroupTipo.add(jToggleButton30);
@@ -872,10 +867,6 @@ public class PanelVentas extends javax.swing.JPanel {
             System.out.println("Botón desmarcado");
         }
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
-
-    private void jToggleButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton29ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton29ActionPerformed
 
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">

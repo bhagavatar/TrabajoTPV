@@ -878,9 +878,6 @@
                 <Property name="text" type="java.lang.String" value="Pi&#xf1;a"/>
                 <Property name="name" type="java.lang.String" value="Pi&#xf1;a" noResource="true"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton29ActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton30">
               <Properties>
