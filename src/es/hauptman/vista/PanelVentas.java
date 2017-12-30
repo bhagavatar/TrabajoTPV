@@ -49,6 +49,21 @@ public class PanelVentas extends javax.swing.JPanel {
         this.frame = frame;
     }
     
+    /**
+     * Método para sumar los valores del subtotal de la tabla.
+     * @return int
+     */
+    public double getSum(){
+        int rowCount = tablaVentas.getRowCount();
+        double sum = 0;
+        for(int i=0;i < rowCount;i++){
+            sum=sum+Double.parseDouble(tablaVentas.getValueAt(i, 4).toString());
+            
+        }
+        return sum;
+        
+    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -389,6 +404,8 @@ public class PanelVentas extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("TOTAL:");
+
+        campoTotal.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
         jLabel7.setText("Nº Ticket:");
 
@@ -781,7 +798,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(campoDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelNumerico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))
+                    .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -862,6 +879,7 @@ public class PanelVentas extends javax.swing.JPanel {
             //System.out.println(btn);
             model.addRow(accionesProductos.getValoresProd().
                 get(((JToggleButton)evt.getItem()).getName()));
+            campoTotal.setText(Double.toString(getSum()));
             
         }else if (evt.getStateChange() == ItemEvent.DESELECTED){
             System.out.println("Botón desmarcado");
