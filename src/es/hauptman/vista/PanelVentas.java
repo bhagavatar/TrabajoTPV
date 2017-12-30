@@ -9,12 +9,18 @@ import es.hauptman.acciones.ventas.AccionesProductos;
 import es.hauptman.entities.ProductosTableView;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -34,6 +40,16 @@ public class PanelVentas extends javax.swing.JPanel {
         this.frame = frame;
         initComponents();
         accionesProductos = new AccionesProductos();
+        
+        //Muestra la fecha en la caja de texto txtFecha
+        Date fecha = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MMM-YYYY");
+        txtFecha.setText(formato.format(fecha));
+        
+        //Muestra la hora en la caja de texto txtHora
+        Timer tiempo=new Timer(100, new PanelVentas.horas());
+        tiempo.start();
+
              
     }
 
@@ -57,9 +73,21 @@ public class PanelVentas extends javax.swing.JPanel {
             
         }
         return sum;
-        
+    }
+    
+    class horas implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Date sistHora=new Date();
+            String pmAm="hh:mm:ss a";
+            SimpleDateFormat format=new SimpleDateFormat(pmAm);
+            Calendar hoy=Calendar.getInstance();
+            txtHora.setText(String.format(format.format(sistHora),hoy));
+        }
     
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,10 +134,10 @@ public class PanelVentas extends javax.swing.JPanel {
         panelDisplay = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        lblFecha = new javax.swing.JLabel();
+        txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtHora = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -405,15 +433,18 @@ public class PanelVentas extends javax.swing.JPanel {
 
         jLabel7.setText("Nº Ticket:");
 
-        jLabel8.setText("Fecha:");
+        lblFecha.setText("Fecha:");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtFecha.setEditable(false);
+        txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtFechaActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Hora:");
+
+        txtHora.setEditable(false);
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,21 +475,21 @@ public class PanelVentas extends javax.swing.JPanel {
                             .addComponent(jTextField6))
                         .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDisplayLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
+                            .addGroup(panelDisplayLayout.createSequentialGroup()
                                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelDisplayLayout.createSequentialGroup()
                                         .addGap(30, 30, 30)
-                                        .addComponent(jLabel8)
-                                        .addGap(63, 63, 63)
-                                        .addComponent(jLabel2))
+                                        .addComponent(lblFecha))
                                     .addGroup(panelDisplayLayout.createSequentialGroup()
                                         .addGap(24, 24, 24)
-                                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(129, 129, 129))
-                            .addGroup(panelDisplayLayout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jTextField4))))
+                                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(49, 49, 49))))
                     .addGroup(panelDisplayLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
@@ -472,13 +503,13 @@ public class PanelVentas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel8)
+                    .addComponent(lblFecha)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -764,14 +795,14 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
                     .addComponent(panelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoDisplay)
                     .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -799,9 +830,9 @@ public class PanelVentas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtFechaActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -812,7 +843,7 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
-        getCampoDisplay().setText(getCampoDisplay().getText() + 
+        campoDisplay.setText(campoDisplay.getText() + 
                 ((JButton)evt.getSource()).getName());
     }//GEN-LAST:event_btnCalcActionPerformed
 
@@ -850,7 +881,7 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnZumoActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-       getCampoDisplay().setText("");
+       campoDisplay.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAcceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptarActionPerformed
@@ -884,60 +915,13 @@ public class PanelVentas extends javax.swing.JPanel {
 
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
-
-    public JButton getBtn1() {
-        return btn1;
-    }
-
-    public JButton getBtn2() {
-        return btn2;
-    }
-
-    public JButton getBtn3() {
-        return btn3;
-    }
-
-    public JButton getBtn4() {
-        return btn4;
-    }
-
-    public JButton getBtn5() {
-        return btn5;
-    }
-
-    public JButton getBtn6() {
-        return btn6;
-    }
-
-    public JButton getBtn7() {
-        return btn7;
-    }
-
-    public JButton getBtn8() {
-        return btn8;
-    }
-
-    public JButton getBtn9() {
-        return btn9;
-    }
-
-    public JTextField getCampoDisplay() {
-        return campoDisplay;
-    }
-
-    public void setCampoDisplay(JTextField campoDisplay) {
-        this.campoDisplay = campoDisplay;
-    }
-
     public JScrollPane getPanelTablaVentas() {
         return panelTablaVentas;
     }
 
     public JTable getTablaVentas() {
         return tablaVentas;
-    }
-  //</editor-fold>  
-    
+    } //</editor-fold>  
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -984,12 +968,9 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton11;
@@ -1026,6 +1007,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButton7;
     private javax.swing.JToggleButton jToggleButton8;
     private javax.swing.JToggleButton jToggleButton9;
+    private javax.swing.JLabel lblFecha;
     private javax.swing.JPanel panelBolleria;
     private javax.swing.JPanel panelCardTipo;
     private javax.swing.JPanel panelCategoria;
@@ -1037,5 +1019,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JPanel panelZumos;
     private javax.swing.JPanel pnlCafe;
     private javax.swing.JTable tablaVentas;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtHora;
     // End of variables declaration//GEN-END:variables
 }

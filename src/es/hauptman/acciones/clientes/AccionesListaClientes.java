@@ -2,6 +2,7 @@
 package es.hauptman.acciones.clientes;
 
 
+import es.hauptman.entities.Clientes;
 import es.hauptman.gestionbd.GestionSQL;
 import es.hauptman.gestionbd.IErrors;
 import es.hauptman.gestionbd.ServiceClientes;
@@ -87,6 +88,28 @@ public class AccionesListaClientes {
                 Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
                         IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
             }
+        }
+    }
+    
+    public void readTblClientes(){
+        
+        DefaultTableModel model = (DefaultTableModel) panel.getTblCliente().getModel();
+        model.setNumRows(0);
+        ServiceClientes dao = new ServiceClientes();
+        
+        for(Clientes c : dao.readCliente()){
+            
+            model.addRow(new Object[]{
+                
+                c.getId(),
+                c.getNombre(),
+                c.getApellido(),
+                c.getTelefono(),
+                c.getDireccion(),
+                c.getCodpostal(),
+                c.getCiudad(),
+                c.getProvincia()
+            });
         }
     }
 }

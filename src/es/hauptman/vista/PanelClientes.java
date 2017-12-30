@@ -13,6 +13,7 @@ import es.hauptman.principal.FrameHome;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,13 +30,18 @@ public class PanelClientes extends javax.swing.JPanel {
      * Creates new form panelClientes
      */
     public PanelClientes(FrameHome frame) {
+        
         this.frame = frame;
         initComponents();
         accionesalta = new AccionesAltaClientes(this);
         accionesbaja = new AccionesBajaClientes(this);
         accionesedita = new AccionesEditaClientes(this);
         accioneslista = new AccionesListaClientes(this);
+        accioneslista.readTblClientes();
     }
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="Getters and Setters"> 
     public JTextField getTxtIDBaja() {
         return txtIDBaja;
@@ -610,19 +616,58 @@ public class PanelClientes extends javax.swing.JPanel {
 
     private void btnGuardarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAltaActionPerformed
         accionesalta.guardarCliente();
+        accioneslista.readTblClientes();
+        
+        //Limpiar los campos
+        txtApellidoAlta.setText("");
+        txtNombreAlta.setText("");
+        txtCPAlta.setText("");
+        txtDireccionAlta.setText("");
+        txtTelefonoAlta.setText("");
+        txtProvinciaAlta.setText("");
+        txtCiudadAlta.setText("");
+        
+        
     }//GEN-LAST:event_btnGuardarAltaActionPerformed
 
     private void btnGuardarEditaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEditaActionPerformed
         accionesedita.editarCliente();
+        accioneslista.readTblClientes();
+        
+        //Limpiar los campos
+        txtApellidoAlta.setText("");
+        txtNombreAlta.setText("");
+        txtCPAlta.setText("");
+        txtDireccionAlta.setText("");
+        txtTelefonoAlta.setText("");
+        txtProvinciaAlta.setText("");
+        txtCiudadAlta.setText("");
     }//GEN-LAST:event_btnGuardarEditaActionPerformed
 
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
         accionesbaja.eliminarCliente();
+        accioneslista.readTblClientes();
+        
+//Lipiar los campos
+        txtApellidoBaja.setText("");
+        txtNombreBaja.setText("");
+        txtIDBaja.setText("");
     }//GEN-LAST:event_btnBajaActionPerformed
 
     private void btnUpdateListaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateListaClienteActionPerformed
         //accioneslista.cargaTabla();
-        accioneslista.actualizaTabla();
+        //accioneslista.actualizaTabla();
+        accioneslista.readTblClientes();
+        
+//Limpiar los Campos
+        txtIdEdita.setText("");
+        txtApellidoEdita.setText("");
+        txtNombreEdita.setText("");
+        txtCPEdita.setText("");
+        txtDireccionEdita.setText("");
+        txtTelefonoEdita.setText("");
+        txtProvinciaEdita.setText("");
+        txtCiudadEdita.setText("");
     }//GEN-LAST:event_btnUpdateListaClienteActionPerformed
 
 

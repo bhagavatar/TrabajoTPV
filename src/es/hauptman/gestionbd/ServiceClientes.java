@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,18 +28,27 @@ public class ServiceClientes {
     private final String UPDATE = "UPDATE clientes SET nombre = ?, apellido = ?,"
             + " telefono = ?, direccion = ?, cp = ?, ciudad = ?, provincia = ? "
             + "WHERE id = ? ";
-            
+    
+    Connection conn = null;     
+
+    public ServiceClientes() {
+        conn = GestionSQL.getConnection();
+    }
+    
+    
+    
+    
     /**
      * Método para insertar un cliente en la base de datos. Inserta el cliente
      * y le asigna un ID autoincremental en la base de datos
      * 
      * @param cliente
      */
-    public void saveCliente (Clientes cliente) {
+    public void createCliente (Clientes cliente) {
+        
         PreparedStatement query = null;
-        Connection conn = null;
+        
         try {
-            conn = GestionSQL.getConnection();
             query = conn.prepareStatement(INSERT, 
                     Statement.RETURN_GENERATED_KEYS);
             query.setString(1, cliente.getNombre());
@@ -64,6 +75,47 @@ public class ServiceClientes {
                         IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
             }
         }
+    }
+    
+    public List<Clientes> readCliente() {
+        
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        
+        List<Clientes> clientes = new ArrayList<>();
+        
+        try {
+            query = conn.prepareStatement("SELECT * from clientes");
+            rs = query.executeQuery();
+            
+            while (rs.next()) {
+                
+                Clientes cliente = new Clientes();
+                
+                cliente.setId(rs.getInt("id"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setTelefono(rs.getString("telefono"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setCodpostal(rs.getString("cp"));
+                cliente.setCiudad(rs.getString("ciudad"));
+                cliente.setProvincia(rs.getString("provincia"));
+                clientes.add(cliente);
+            }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE, 
+                    IErrors.ERROR_SQL_STATEMENT, ex);
+        } finally {
+            try {
+                query.close();
+                conn.close();
+            } catch (SQLException e) {
+                Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
+                        IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
+            }
+        }
+        return clientes;
     }
     
     /**
