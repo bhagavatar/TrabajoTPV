@@ -16,10 +16,19 @@ public class Productos {
     private double descuento;
     private double subtotal;
     private Categoria categoria;
-
+    
+    
     public Productos() {
     }
 
+    /**
+     * Constructor parametrizado sin la Categoria
+     * @param precio
+     * @param descripcion
+     * @param cantidad
+     * @param descuento
+     * @param subtotal
+     */
     public Productos(int precio, String descripcion, double cantidad, 
             double descuento, double subtotal) {
         this.precio = precio;
@@ -28,7 +37,16 @@ public class Productos {
         this.descuento = descuento;
         this.subtotal = subtotal;
     }
-
+    
+    /**
+     * Constructor parametrizado con la Categoria.
+     * @param precio
+     * @param descripcion
+     * @param cantidad
+     * @param descuento
+     * @param subtotal
+     * @param categoria
+     */
     public Productos(int precio, String descripcion, double cantidad, 
             double descuento, double subtotal, Categoria categoria) {
         this.precio = precio;

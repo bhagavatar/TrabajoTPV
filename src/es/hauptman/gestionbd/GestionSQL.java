@@ -2,6 +2,8 @@
 package es.hauptman.gestionbd;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +38,8 @@ public class GestionSQL {
             Connection conn = DriverManager.getConnection(SERVER + DATABASE,
                     USERNAME, PASSWORD);
             return conn;
-        } catch (ClassNotFoundException ex) {
+        } 
+        catch (ClassNotFoundException ex) {
             Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_DRIVER, ex);
         } 
@@ -46,6 +49,46 @@ public class GestionSQL {
         }
         return null;
     } 
+    
+    public static void closedConnection(Connection conn){
+        
+        if(conn != null){
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE, 
+                        IErrors.ERROR_SQL_CLOSE_CONNECTION, ex);
+            }
+        }
+    }
+    
+    public static void closedConnection(Connection conn, PreparedStatement query){
+        
+        if(query != null){
+            try {
+                query.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE, 
+                        IErrors.ERROR_SQL_CLOSE_CONNECTION, ex);
+            }
+        }
+        
+        closedConnection(conn);
+    }
+    
+    public static void closedConnection(Connection conn, PreparedStatement query, ResultSet rs){
+        
+        if(rs != null){
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE, 
+                        IErrors.ERROR_SQL_CLOSE_CONNECTION, ex);
+            }
+        }
+        
+        closedConnection(conn, query);
+    }
 }
 
 

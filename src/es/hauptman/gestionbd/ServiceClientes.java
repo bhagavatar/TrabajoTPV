@@ -67,13 +67,7 @@ public class ServiceClientes {
             Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
-            try {
-                query.close();
-                conn.close();
-            } catch (SQLException e) {
-                Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
-                        IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
-            }
+            GestionSQL.closedConnection(conn, query);
         }
     }
     
@@ -107,13 +101,7 @@ public class ServiceClientes {
             Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE, 
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
-            try {
-                query.close();
-                conn.close();
-            } catch (SQLException e) {
-                Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
-                        IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
-            }
+            GestionSQL.closedConnection(conn, query, rs);
         }
         return clientes;
     }
@@ -138,13 +126,7 @@ public class ServiceClientes {
             Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
-            try {
-                query.close();
-                conn.close();
-            } catch (SQLException e) {
-                Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
-                        IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
-            }
+            GestionSQL.closedConnection(conn, query);
         } 
     }
     
@@ -173,13 +155,7 @@ public class ServiceClientes {
             Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
-            try {
-                query.close();
-                conn.close();
-            } catch (SQLException e) {
-                Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
-                        IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
-            }
+            GestionSQL.closedConnection(conn, query);
         } 
     }
 }
