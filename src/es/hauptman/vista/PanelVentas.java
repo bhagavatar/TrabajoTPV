@@ -6,7 +6,7 @@
 package es.hauptman.vista;
 
 import es.hauptman.acciones.ventas.AccionesProductos;
-import es.hauptman.entities.ProductosTableView;
+import es.hauptman.entities.Productos;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -30,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
 public class PanelVentas extends javax.swing.JPanel {
     private FrameHome frame;
     private AccionesProductos accionesProductos;
-    private ProductosTableView prodSeleccionado;
+    private Productos prodSeleccionado;
     
     
     /**

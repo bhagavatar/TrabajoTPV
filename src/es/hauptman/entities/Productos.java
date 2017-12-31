@@ -9,20 +9,34 @@ package es.hauptman.entities;
  *
  * @author Diego
  */
-public class ProductosTableView {
+public class Productos {
     private int precio;
     private String descripcion;
     private double cantidad;
     private double descuento;
     private double subtotal;
+    private Categoria categoria;
 
-    public ProductosTableView(int precio, String descripcion, double cantidad, 
+    public Productos() {
+    }
+
+    public Productos(int precio, String descripcion, double cantidad, 
             double descuento, double subtotal) {
         this.precio = precio;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.descuento = descuento;
         this.subtotal = subtotal;
+    }
+
+    public Productos(int precio, String descripcion, double cantidad, 
+            double descuento, double subtotal, Categoria categoria) {
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.cantidad = cantidad;
+        this.descuento = descuento;
+        this.subtotal = subtotal;
+        this.categoria = categoria;
     }
     
     
@@ -69,10 +83,13 @@ public class ProductosTableView {
 
     @Override
     public String toString() {
-        return "ProductosTableView{" + "precio=" + precio + ", descripcion=" 
-                + descripcion + ", cantidad=" + cantidad + ", descuento=" 
-                + descuento + ", subtotal=" + subtotal + '}';
+        return "Productos{" + "precio=" + precio + ", descripcion=" + 
+                descripcion + ", cantidad=" + cantidad + ", descuento=" + 
+                descuento + ", subtotal=" + subtotal + ", categoria=" + 
+                categoria + '}';
     }
+
+    
     
     
     }
