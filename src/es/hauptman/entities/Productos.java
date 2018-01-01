@@ -10,9 +10,10 @@ package es.hauptman.entities;
  * @author Diego
  */
 public class Productos {
-    private int precio;
+    private int ID;
+    private double precio;
     private String descripcion;
-    private double cantidad;
+    private int cantidad;
     private double descuento;
     private double subtotal;
     private Categoria categoria;
@@ -29,7 +30,7 @@ public class Productos {
      * @param descuento
      * @param subtotal
      */
-    public Productos(int precio, String descripcion, double cantidad, 
+    public Productos(int precio, String descripcion, int cantidad, 
             double descuento, double subtotal) {
         this.precio = precio;
         this.descripcion = descripcion;
@@ -47,7 +48,7 @@ public class Productos {
      * @param subtotal
      * @param categoria
      */
-    public Productos(int precio, String descripcion, double cantidad, 
+    public Productos(int precio, String descripcion, int cantidad, 
             double descuento, double subtotal, Categoria categoria) {
         this.precio = precio;
         this.descripcion = descripcion;
@@ -56,14 +57,20 @@ public class Productos {
         this.subtotal = subtotal;
         this.categoria = categoria;
     }
-    
-    
 
-    public int getPrecio() {
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+    
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -75,11 +82,11 @@ public class Productos {
         this.descripcion = descripcion;
     }
 
-    public double getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(double cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -98,6 +105,16 @@ public class Productos {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    
 
     @Override
     public String toString() {
