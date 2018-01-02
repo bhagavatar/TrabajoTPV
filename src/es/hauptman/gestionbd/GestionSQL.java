@@ -21,7 +21,7 @@ public class GestionSQL {
     private static final String USERNAME = "tpv_user";
     private static final String PASSWORD = "tpvpwd";
     /**
-     * Constructor mínimo.
+     * Constructor.
      */
     public GestionSQL () {
         super();
