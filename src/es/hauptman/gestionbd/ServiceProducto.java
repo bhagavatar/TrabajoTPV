@@ -55,10 +55,7 @@ public class ServiceProducto {
     
     public List<Productos> findAll(){
         
-        String sql = "SELECT  p.id as prod_id, nombreProducto, categorias_id, "
-                + "precio, cantidadStock, c.id as id_cat, descripcion "
-                + "FROM tpv.productos p inner join "
-                + "categorias c on c.id = p.categorias_id";
+        String sql = "SELECT * FROM view_productocategoria";
         
         PreparedStatement query = null;
         ResultSet rs = null;
