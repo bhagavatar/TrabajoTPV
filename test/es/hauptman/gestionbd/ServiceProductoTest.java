@@ -5,9 +5,11 @@
  */
 package es.hauptman.gestionbd;
 
+import es.hauptman.entities.Categoria;
 import es.hauptman.entities.Productos;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -19,14 +21,39 @@ public class ServiceProductoTest {
     }
 
     @Test
+    @Ignore
     public void listar() {
         
         ServiceProducto dao = new ServiceProducto();
         
-        for (Productos p: dao.findAll()) {
+        for (Productos p: dao.readProductos()) {
             System.out.println("Descripcion Producto: "+p.getDescripcion()
                     +"Descripcion Categoria: "+p.getCategoria().getDescripcion());
         }
+    }
+    
+    
+    @Test
+    @Ignore
+    public void inserir() {
+
+        Categoria categoria = new Categoria();
+        categoria.setID(1);
+
+        Productos producto = new Productos();
+        producto.setDescripcion("Mocaccino");
+        producto.setCantidad(20);
+        producto.setPrecio(10);
+        producto.setCategoria(categoria);
+
+        ServiceProducto dao = new ServiceProducto();
+
+        if (dao.createProductos(producto)) {
+            System.out.println("Salvo com sucesso!");
+        } else {
+            fail("Erro ao salvar!");
+        }
+
     }
     
 }

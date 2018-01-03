@@ -23,7 +23,7 @@ public class ServiceCategoriaTest {
         
         ServiceCategoria dao = new ServiceCategoria();
         
-        dao.findAll().forEach((c) -> {
+        dao.readCategoria().forEach((c) -> {
             System.out.println("Descripción: "+c.getDescripcion());
         });
     }

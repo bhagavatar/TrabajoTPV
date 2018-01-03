@@ -34,10 +34,7 @@ public class ServiceClientes {
     public ServiceClientes() {
         conn = GestionSQL.getConnection();
     }
-    
-    
-    
-    
+     
     /**
      * Método para insertar un cliente en la base de datos. Inserta el cliente
      * y le asigna un ID autoincremental en la base de datos

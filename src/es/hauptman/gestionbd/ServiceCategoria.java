@@ -25,7 +25,7 @@ public class ServiceCategoria {
         conn = GestionSQL.getConnection();
     }
     
-    public boolean save(Categoria categoria){
+    public boolean createCategoria(Categoria categoria){
         
         String sql = "INSERT INTO categorias (descripcion) VALUES (?)";
         
@@ -46,7 +46,7 @@ public class ServiceCategoria {
         }
     }
     
-    public List<Categoria> findAll(){
+    public List<Categoria> readCategoria(){
         
         String sql = "SELECT * FROM categorias";
         
