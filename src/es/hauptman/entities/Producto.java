@@ -9,7 +9,7 @@ package es.hauptman.entities;
  *
  * @author Diego
  */
-public class Productos {
+public class Producto {
     private int ID;
     private double precio;
     private String descripcion;
@@ -19,7 +19,7 @@ public class Productos {
     private Categoria categoria;
     
     
-    public Productos() {
+    public Producto() {
     }
 
     /**
@@ -30,7 +30,7 @@ public class Productos {
      * @param descuento
      * @param subtotal
      */
-    public Productos(int precio, String descripcion, int cantidad, 
+    public Producto(int precio, String descripcion, int cantidad, 
             double descuento, double subtotal) {
         this.precio = precio;
         this.descripcion = descripcion;
@@ -48,7 +48,7 @@ public class Productos {
      * @param subtotal
      * @param categoria
      */
-    public Productos(int precio, String descripcion, int cantidad, 
+    public Producto(int precio, String descripcion, int cantidad, 
             double descuento, double subtotal, Categoria categoria) {
         this.precio = precio;
         this.descripcion = descripcion;
@@ -113,18 +113,13 @@ public class Productos {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Productos{" + "precio=" + precio + ", descripcion=" + 
-                descripcion + ", cantidad=" + cantidad + ", descuento=" + 
-                descuento + ", subtotal=" + subtotal + ", categoria=" + 
-                categoria + '}';
+        return "Producto{" + "ID=" + ID + ", precio=" + precio + ", "
+                + "descripcion=" + descripcion + ", cantidad=" + cantidad 
+                + ", descuento=" + descuento + ", subtotal=" + subtotal 
+                + ", categoria=" + categoria + '}';
     }
-
-    
-    
     
     }

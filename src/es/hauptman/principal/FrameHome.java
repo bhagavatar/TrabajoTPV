@@ -112,7 +112,7 @@ public class FrameHome extends javax.swing.JFrame {
         );
         panelBannerLayout.setVerticalGroup(
             panelBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 164, Short.MAX_VALUE)
+            .addGap(0, 170, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
@@ -124,12 +124,12 @@ public class FrameHome extends javax.swing.JFrame {
                     .addGroup(panelHomeLayout.createSequentialGroup()
                         .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelHomeLayout.createSequentialGroup()
-                                .addGap(159, 159, 159)
+                                .addContainerGap(161, Short.MAX_VALUE)
                                 .addComponent(panelBtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelHomeLayout.createSequentialGroup()
-                                .addGap(284, 284, 284)
+                                .addGap(283, 283, 283)
                                 .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 143, Short.MAX_VALUE))
+                        .addGap(0, 141, Short.MAX_VALUE))
                     .addGroup(panelHomeLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panelBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -140,11 +140,11 @@ public class FrameHome extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelBtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         panelContenedor.add(panelHome, java.awt.BorderLayout.CENTER);

@@ -28,26 +28,28 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panelNumerico" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="campoTotal" min="-2" pref="240" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton1" pref="94" max="32767" attributes="0"/>
+                      <Component id="campoTotal" min="-2" pref="129" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" pref="106" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton2" pref="106" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelDisplay" alignment="0" max="32767" attributes="0"/>
                   <Component id="campoDisplay" alignment="0" max="32767" attributes="0"/>
                   <Component id="panelTablaVentas" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="panelCategoria" max="32767" attributes="0"/>
-                  <Component id="panelCardTipo" pref="448" max="32767" attributes="0"/>
+                  <Component id="panelCardTipo" pref="455" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,8 +64,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-                          <Component id="campoTotal" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="jButton1" pref="36" max="32767" attributes="0"/>
+                          <Component id="campoTotal" alignment="1" pref="36" max="32767" attributes="0"/>
+                          <Component id="jButton2" alignment="3" pref="36" max="32767" attributes="0"/>
+                          <Component id="jButton1" alignment="3" pref="36" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="panelCardTipo" max="32767" attributes="0"/>
@@ -450,7 +453,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="jTextField4" pref="323" max="32767" attributes="0"/>
+                                  <Component id="jTextField4" pref="324" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1089,6 +1092,11 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cobrar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
     </Component>
   </SubComponents>

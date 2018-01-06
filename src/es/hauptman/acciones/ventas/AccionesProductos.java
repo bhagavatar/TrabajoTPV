@@ -5,7 +5,7 @@
  */
 package es.hauptman.acciones.ventas;
 
-import es.hauptman.entities.Productos;
+import es.hauptman.entities.Producto;
 import es.hauptman.vista.PanelVentas;
 import java.util.HashMap;
 import javax.swing.table.DefaultTableModel;
@@ -23,7 +23,7 @@ public class AccionesProductos {
     
     //Creaamos el HashMap
     private HashMap <String, Object[]> valoresProd = new HashMap<String, Object[]>();
-    private HashMap <String, Productos> valoresProdView = new HashMap<String, Productos>();
+    private HashMap <String, Producto> valoresProdView = new HashMap<String, Producto>();
     
     
     
@@ -56,8 +56,8 @@ public class AccionesProductos {
     private String[] zumoMelocoton = new String[] {"1",arrayZumos[2],"-","0.80", "0.80"};
     
     public AccionesProductos() {
-        valoresProdView.put(arrayCafes[0], new Productos(1, "Café Largo", 0, 1.00, 1.00));
-        valoresProdView.put(arrayCafes[1], new Productos(1, "Café Corto", 0, 2.00, 2.00));
+        valoresProdView.put(arrayCafes[0], new Producto(1, "Café Largo", 1, 0, 1.00));
+        valoresProdView.put(arrayCafes[1], new Producto(1, "Café Corto", 0, 2.00, 2.00));
         
         //Insertar cafes en el HashMap
         valoresProd.put(arrayCafes[0],cafeLargo);
@@ -91,7 +91,7 @@ public class AccionesProductos {
         return valoresProd;
     }
 
-    public HashMap<String, Productos> getValoresProdView() {
+    public HashMap<String, Producto> getValoresProdView() {
         return valoresProdView;
     }
     

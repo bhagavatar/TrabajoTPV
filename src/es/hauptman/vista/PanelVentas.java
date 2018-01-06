@@ -6,7 +6,7 @@
 package es.hauptman.vista;
 
 import es.hauptman.acciones.ventas.AccionesProductos;
-import es.hauptman.entities.Productos;
+import es.hauptman.entities.Producto;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,6 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
@@ -30,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
 public class PanelVentas extends javax.swing.JPanel {
     private FrameHome frame;
     private AccionesProductos accionesProductos;
-    private Productos prodSeleccionado;
+    private Producto prodSeleccionado;
     
     
     /**
@@ -195,6 +194,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(900, 800));
 
@@ -476,7 +476,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDisplayLayout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
                             .addGroup(panelDisplayLayout.createSequentialGroup()
                                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelDisplayLayout.createSequentialGroup()
@@ -782,28 +782,32 @@ public class PanelVentas extends javax.swing.JPanel {
 
         jButton1.setText("Cobrar");
 
+        jButton2.setText("Eliminar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelNumerico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
+                        .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
                     .addComponent(panelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoDisplay)
                     .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -816,7 +820,8 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)))
                     .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -889,10 +894,10 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAcceptarActionPerformed
 
     private void jToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-        prodSeleccionado = accionesProductos.getValoresProdView().
-                get(evt.getActionCommand());
-        System.out.println(prodSeleccionado);
+//        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+//        prodSeleccionado = accionesProductos.getValoresProdView().
+//                get(evt.getActionCommand());
+//        System.out.println(prodSeleccionado);
         //model.addRow(accionesProductos.getValoresProd().
                 //get(evt.getActionCommand()));
         
@@ -901,15 +906,18 @@ public class PanelVentas extends javax.swing.JPanel {
     private void jToggleButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton1ItemStateChanged
         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
         if(evt.getStateChange() == ItemEvent.SELECTED){
-            System.out.println("Botón marcado");
-            //String btn = ((JToggleButton)evt.getItem()).getName();
-            //System.out.println(btn);
-            model.addRow(accionesProductos.getValoresProd().
-                get(((JToggleButton)evt.getItem()).getName()));
+//            System.out.println("Botón marcado");
+//            String btn = ((JToggleButton)evt.getItem()).getName();
+//            System.out.println(btn);
+//            model.addRow(accionesProductos.getValoresProd().
+//                get(((JToggleButton)evt.getItem()).getName()));
+            prodSeleccionado = accionesProductos.getValoresProdView().
+                    get(((JToggleButton)evt.getItem()).getName());
+            System.out.println("Producto Seleccionado: "+ prodSeleccionado);
             campoTotal.setText(Double.toString(getSum()));
             
         }else if (evt.getStateChange() == ItemEvent.DESELECTED){
-            System.out.println("Botón desmarcado");
+//            System.out.println("Botón desmarcado");
         }
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
 
@@ -954,6 +962,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JTextField campoDisplay;
     private javax.swing.JTextField campoTotal;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

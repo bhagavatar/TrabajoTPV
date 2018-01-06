@@ -6,7 +6,7 @@
 package es.hauptman.gestionbd;
 
 import es.hauptman.entities.Categoria;
-import es.hauptman.entities.Productos;
+import es.hauptman.entities.Producto;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
@@ -26,7 +26,7 @@ public class ServiceProductoTest {
         
         ServiceProducto dao = new ServiceProducto();
         
-        for (Productos p: dao.readProductos()) {
+        for (Producto p: dao.readProductos()) {
             System.out.println("Descripcion Producto: "+p.getDescripcion()
                     +"Descripcion Categoria: "+p.getCategoria().getDescripcion());
         }
@@ -40,7 +40,7 @@ public class ServiceProductoTest {
         Categoria categoria = new Categoria();
         categoria.setID(1);
 
-        Productos producto = new Productos();
+        Producto producto = new Producto();
         producto.setDescripcion("Mocaccino");
         producto.setCantidad(20);
         producto.setPrecio(10);

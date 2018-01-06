@@ -6,7 +6,7 @@
 package es.hauptman.gestionbd;
 
 import es.hauptman.entities.Categoria;
-import es.hauptman.entities.Productos;
+import es.hauptman.entities.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ public class ServiceProducto {
         conn = GestionSQL.getConnection();
     }
 
-    public boolean createProductos(Productos producto) {
+    public boolean createProductos(Producto producto) {
 
         String sql = "INSERT INTO productos (nombreProducto, cantidadStock, "
                 + "precio, categorias_id) VALUES (?,?,?,?)";
@@ -53,14 +53,14 @@ public class ServiceProducto {
         }
     }
     
-    public List<Productos> readProductos(){
+    public List<Producto> readProductos(){
         
         String sql = "SELECT * FROM view_productocategoria";
         
         PreparedStatement query = null;
         ResultSet rs = null;
         
-        List<Productos> productos = new ArrayList<>();
+        List<Producto> productos = new ArrayList<>();
         
         try {
             
@@ -68,7 +68,7 @@ public class ServiceProducto {
             rs = query.executeQuery();
             
             while (rs.next()) {                
-                Productos producto = new Productos();
+                Producto producto = new Producto();
                 producto.setID(rs.getInt("prod_id"));
                 producto.setDescripcion(rs.getString("nombreProducto"));
                 producto.setPrecio(rs.getDouble("precio"));
@@ -92,7 +92,7 @@ public class ServiceProducto {
         return productos;
     }
     
-    public boolean update(Productos producto){
+    public boolean update(Producto producto){
         
         String sql = "UPDATE productos SET nombreProducto = ?, "
                 + "cantidadStock = ?, precio = ?, categorias_id = ?, "
@@ -119,7 +119,7 @@ public class ServiceProducto {
         }
     }
     
-    public boolean delete(Productos producto){
+    public boolean delete(Producto producto){
         
         String sql = "DELETE FROM productos WHERE id = ?";
         
