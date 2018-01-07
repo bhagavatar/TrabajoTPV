@@ -6,16 +6,14 @@
 package es.hauptman.acciones.ventas;
 
 import es.hauptman.entities.Producto;
-import es.hauptman.vista.PanelVentas;
 import java.util.HashMap;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Diego
  */
 public class AccionesProductos {
-    //Arrays de las Categorías
+    //Arrays de las llaves de Categorias para el HashMap.
     private String [] arrayCafes = {"Café Largo", "Café Corto","Cortado","Café con Leche", "Capuccino", "Carajillo"};
     private String [] arrayInfusiones = {"Té Negro", "Té con Leche", "Chai Latte", "Menta", "Manzanilla"};
     private String [] arrayChocolates = {"Chocolate Suizo", "Taza Grande", "Taza Pequeña"};
@@ -56,6 +54,7 @@ public class AccionesProductos {
     private String[] zumoMelocoton = new String[] {"1",arrayZumos[2],"-","0.80", "0.80"};
     
     public AccionesProductos() {
+        
         valoresProdView.put(arrayCafes[0], new Producto(1, "Café Largo", 1, 0, 1.00));
         valoresProdView.put(arrayCafes[1], new Producto(1, "Café Corto", 0, 2.00, 2.00));
         

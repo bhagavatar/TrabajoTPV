@@ -913,7 +913,11 @@ public class PanelVentas extends javax.swing.JPanel {
 //                get(((JToggleButton)evt.getItem()).getName()));
             prodSeleccionado = accionesProductos.getValoresProdView().
                     get(((JToggleButton)evt.getItem()).getName());
+            
+            //Imprime en consola los productos.
             System.out.println("Producto Seleccionado: "+ prodSeleccionado);
+            
+            //Pone la suma del subtotal en el campo Total.
             campoTotal.setText(Double.toString(getSum()));
             
         }else if (evt.getStateChange() == ItemEvent.DESELECTED){
