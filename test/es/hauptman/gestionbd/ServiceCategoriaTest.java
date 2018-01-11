@@ -21,7 +21,7 @@ public class ServiceCategoriaTest {
     @Test
     public void list() {
         
-        CategoriaDAO dao = new CategoriaDAO();
+        CategoriasDAO dao = new CategoriasDAO();
         
         dao.readCategoria().forEach((c) -> {
             System.out.println("Descripción: "+c.getDescripcion());
