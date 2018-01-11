@@ -7,7 +7,6 @@ package es.hauptman.vista;
 
 import es.hauptman.acciones.ventas.AccionesProductos;
 import es.hauptman.entities.Productos;
-import es.hauptman.gestionbd.ServiceProducto;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

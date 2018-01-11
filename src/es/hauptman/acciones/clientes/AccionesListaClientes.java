@@ -3,7 +3,7 @@ package es.hauptman.acciones.clientes;
 
 
 import es.hauptman.entities.Clientes;
-import es.hauptman.gestionbd.ServiceClientes;
+import es.hauptman.gestionbd.ClientesDAO;
 import es.hauptman.vista.PanelClientes;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,7 +33,7 @@ public class AccionesListaClientes {
         
         DefaultTableModel model = (DefaultTableModel) panel.getTblCliente().getModel();
         model.setNumRows(0);
-        ServiceClientes dao = new ServiceClientes();
+        ClientesDAO dao = new ClientesDAO();
         
         for(Clientes c : dao.readCliente()){
             

@@ -6,7 +6,7 @@
 package es.hauptman.acciones.ventas;
 
 import es.hauptman.entities.Productos;
-import es.hauptman.gestionbd.ServiceProducto;
+import es.hauptman.gestionbd.ProductosDAO;
 import java.util.HashMap;
 
 /**
@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class AccionesProductos {
     
-    private ServiceProducto dao = new ServiceProducto();
+    private ProductosDAO dao = new ProductosDAO();
     //Creaamos el HashMap
     private HashMap <String, Productos> productosVenta = new HashMap<>();
 

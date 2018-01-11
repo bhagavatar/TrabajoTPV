@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * 
  * @author Diego
  */
-public class ServiceClientes {
+public class ClientesDAO {
     //Sentencias SQL para insertar, eliminar y modificar los clientes en la 
     //base de datos.
     private final String INSERT = "INSERT INTO clientes (nombre, apellido, "
@@ -31,7 +31,7 @@ public class ServiceClientes {
     
     Connection conn = null;     
 
-    public ServiceClientes() {
+    public ClientesDAO() {
         conn = GestionSQL.getConnection();
     }
      
@@ -61,7 +61,7 @@ public class ServiceClientes {
                 cliente.setId(rs.getInt(1));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
             GestionSQL.closedConnection(conn, query);
@@ -95,7 +95,7 @@ public class ServiceClientes {
             }
         
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE, 
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, 
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
             GestionSQL.closedConnection(conn, query, rs);
@@ -120,7 +120,7 @@ public class ServiceClientes {
             query.setString(3, cliente.getApellido());
             query.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
             GestionSQL.closedConnection(conn, query);
@@ -149,7 +149,7 @@ public class ServiceClientes {
             query.setInt(8, cliente.getId());
             query.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
             GestionSQL.closedConnection(conn, query);

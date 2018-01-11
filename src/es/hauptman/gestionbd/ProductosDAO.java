@@ -19,11 +19,11 @@ import java.util.List;
  *
  * @author Diego
  */
-public class ServiceProducto {
+public class ProductosDAO {
 
     private Connection conn = null;
 
-    public ServiceProducto() {
+    public ProductosDAO() {
         conn = GestionSQL.getConnection();
     }
 

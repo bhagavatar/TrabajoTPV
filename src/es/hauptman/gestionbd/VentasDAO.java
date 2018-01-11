@@ -19,12 +19,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Diego
  */
-public class ServiceVentas {
+public class VentasDAO {
     private final PanelVentas panel;
     private DefaultTableModel tabla;
     private final String SELECT = "SELECT nombreProducto, precio FROM productos";
 
-    public ServiceVentas(PanelVentas panel) {
+    public VentasDAO(PanelVentas panel) {
         this.panel = panel;
     }
     
@@ -64,14 +64,14 @@ public class ServiceVentas {
                         .getTablaVentas());
                 }
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE,
                     IErrors.ERROR_SQL_STATEMENT, ex);
         } finally {
             try {
                 query.close();
                 conn.close();
             } catch (SQLException e) {
-                Logger.getLogger(ServiceClientes.class.getName()).log(Level.SEVERE,
+                Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE,
                         IErrors.ERROR_SQL_CLOSE_CONNECTION, e);
             }
         }

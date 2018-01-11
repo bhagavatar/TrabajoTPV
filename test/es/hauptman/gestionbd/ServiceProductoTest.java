@@ -24,7 +24,7 @@ public class ServiceProductoTest {
     @Ignore
     public void listar() {
         
-        ServiceProducto dao = new ServiceProducto();
+        ProductosDAO dao = new ProductosDAO();
         
         for (Productos p: dao.readProductos()) {
             System.out.println("Descripcion Producto: "+p.getDescripcion()
@@ -46,7 +46,7 @@ public class ServiceProductoTest {
         producto.setPrecio(10);
         producto.setCategoria(categoria);
 
-        ServiceProducto dao = new ServiceProducto();
+        ProductosDAO dao = new ProductosDAO();
 
         if (dao.createProductos(producto)) {
             System.out.println("Salvo com sucesso!");

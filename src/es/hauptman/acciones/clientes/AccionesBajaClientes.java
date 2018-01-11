@@ -2,7 +2,7 @@
 package es.hauptman.acciones.clientes;
 
 import es.hauptman.entities.Clientes;
-import es.hauptman.gestionbd.ServiceClientes;
+import es.hauptman.gestionbd.ClientesDAO;
 import es.hauptman.vista.PanelClientes;
 
 
@@ -35,7 +35,7 @@ public class AccionesBajaClientes {
         cliente.setId(Integer.parseInt(panel.getTxtIDBaja().getText()));
         cliente.setNombre(panel.getTxtNombreBaja().getText());
         cliente.setApellido(panel.getTxtApellidoBaja().getText());
-        ServiceClientes service = new ServiceClientes();
+        ClientesDAO service = new ClientesDAO();
         service.deleteCliente(cliente);
         
     }

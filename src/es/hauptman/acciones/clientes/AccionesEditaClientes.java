@@ -2,7 +2,7 @@
 package es.hauptman.acciones.clientes;
 
 import es.hauptman.entities.Clientes;
-import es.hauptman.gestionbd.ServiceClientes;
+import es.hauptman.gestionbd.ClientesDAO;
 import es.hauptman.vista.PanelClientes;
 
 
@@ -41,7 +41,7 @@ public class AccionesEditaClientes {
         cliente.setTelefono(panel.getTxtTelefonoEdita().getText());
         cliente.setProvincia(panel.getTxtProvinciaEdita().getText());
         
-        ServiceClientes service = new ServiceClientes();
+        ClientesDAO service = new ClientesDAO();
         service.updateCliente(cliente);
     }
 }

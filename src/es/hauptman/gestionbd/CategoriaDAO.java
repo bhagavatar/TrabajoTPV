@@ -17,11 +17,11 @@ import java.util.List;
  *
  * @author Diego
  */
-public class ServiceCategoria {
+public class CategoriaDAO {
     
     private Connection conn = null;
 
-    public ServiceCategoria() {
+    public CategoriaDAO() {
         conn = GestionSQL.getConnection();
     }
     
@@ -38,7 +38,7 @@ public class ServiceCategoria {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(ServiceCategoria.class.getName()).log(Level.SEVERE, 
+            //Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, 
             //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
@@ -88,7 +88,7 @@ public class ServiceCategoria {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(ServiceCategoria.class.getName()).log(Level.SEVERE, 
+            //Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, 
             //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
@@ -109,7 +109,7 @@ public class ServiceCategoria {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(ServiceCategoria.class.getName()).log(Level.SEVERE, 
+            //Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, 
             //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
