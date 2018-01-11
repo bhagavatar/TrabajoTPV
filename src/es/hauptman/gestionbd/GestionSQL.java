@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Clase que establece la conexión con la Base de Datos.
@@ -30,25 +28,45 @@ public class GestionSQL {
     /**
      * Método para recuperar una conexión a la base de datos.
      * 
-     * @return java.sql.Connection conexión o null.
+     * @return
      */
+//    public static Connection getConnection(){
+//        
+//        try {
+//            
+//            Class.forName(DRIVER);
+//            return DriverManager.getConnection(SERVER + DATABASE,
+//                    USERNAME, PASSWORD);
+//        } 
+//        catch (ClassNotFoundException ex) {
+//            Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE,
+//                    IErrors.ERROR_SQL_DRIVER, ex);
+//        } 
+//        catch (SQLException ex) {
+//           Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE,
+//                    IErrors.ERROR_SQL_OPEN_CONNECTION, ex);
+//        }
+//        
+//    } 
+    
     public static Connection getConnection(){
+        
         try {
+            
             Class.forName(DRIVER);
-            Connection conn = DriverManager.getConnection(SERVER + DATABASE,
+            return DriverManager.getConnection(SERVER + DATABASE, 
                     USERNAME, PASSWORD);
-            return conn;
-        } 
-        catch (ClassNotFoundException ex) {
-            Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE,
-                    IErrors.ERROR_SQL_DRIVER, ex);
-        } 
-        catch (SQLException ex) {
-           Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE,
-                    IErrors.ERROR_SQL_OPEN_CONNECTION, ex);
+            
+        } catch (ClassNotFoundException ex) {
+            
+             throw new RuntimeException(IErrors.ERROR_SQL_DRIVER, ex);
+             
+        } catch (SQLException ex) {
+            
+             throw new RuntimeException(IErrors.ERROR_SQL_OPEN_CONNECTION, ex);
         }
-        return null;
-    } 
+        
+    }
     
     public static void closedConnection(Connection conn){
         
@@ -56,8 +74,7 @@ public class GestionSQL {
             try {
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE, 
-                        IErrors.ERROR_SQL_CLOSE_CONNECTION, ex);
+                System.err.println(IErrors.ERROR_SQL_CLOSE_CONNECTION+ex);
             }
         }
     }
@@ -68,8 +85,7 @@ public class GestionSQL {
             try {
                 query.close();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE, 
-                        IErrors.ERROR_SQL_CLOSE_CONNECTION, ex);
+                System.err.println(IErrors.ERROR_SQL_STATEMENT+ex);
             }
         }
         
@@ -82,8 +98,7 @@ public class GestionSQL {
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE, 
-                        IErrors.ERROR_SQL_CLOSE_CONNECTION, ex);
+                System.err.println(IErrors.ERROR_SQL_CLOSE_CONNECTION+ex);
             }
         }
         

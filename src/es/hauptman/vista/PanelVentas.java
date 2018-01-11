@@ -6,7 +6,8 @@
 package es.hauptman.vista;
 
 import es.hauptman.acciones.ventas.AccionesProductos;
-import es.hauptman.entities.Producto;
+import es.hauptman.entities.Productos;
+import es.hauptman.gestionbd.ServiceProducto;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -29,7 +30,7 @@ import javax.swing.table.DefaultTableModel;
 public class PanelVentas extends javax.swing.JPanel {
     private FrameHome frame;
     private AccionesProductos accionesProductos;
-    private Producto prodSeleccionado;
+    private Productos prodSeleccionado;
     
     
     /**
@@ -48,8 +49,6 @@ public class PanelVentas extends javax.swing.JPanel {
         //Muestra la hora en la caja de texto txtHora
         Timer tiempo=new Timer(100, new PanelVentas.horas());
         tiempo.start();
-
-             
     }
 
     public FrameHome getFrame() {
@@ -65,6 +64,7 @@ public class PanelVentas extends javax.swing.JPanel {
      * @return int
      */
     public double getSum(){
+        
         int rowCount = tablaVentas.getRowCount();
         double sum = 0;
         for(int i=0;i < rowCount;i++){
@@ -322,11 +322,6 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn3);
 
         btnTogglePrecio.setText("Precio");
-        btnTogglePrecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTogglePrecioActionPerformed(evt);
-            }
-        });
         panelNumerico.add(btnTogglePrecio);
 
         btn4.setText("4");
@@ -436,31 +431,14 @@ public class PanelVentas extends javax.swing.JPanel {
         lblFecha.setText("Fecha:");
 
         txtFecha.setEditable(false);
-        txtFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Hora:");
 
         txtHora.setEditable(false);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
         jLabel3.setText("ID Cliente:");
 
         jLabel4.setText("Nombre Cliente:");
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelDisplayLayout = new javax.swing.GroupLayout(panelDisplay);
         panelDisplay.setLayout(panelDisplayLayout);
@@ -522,11 +500,6 @@ public class PanelVentas extends javax.swing.JPanel {
         );
 
         campoDisplay.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        campoDisplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoDisplayActionPerformed(evt);
-            }
-        });
 
         panelCardTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
         panelCardTipo.setLayout(new java.awt.CardLayout());
@@ -535,15 +508,10 @@ public class PanelVentas extends javax.swing.JPanel {
 
         buttonGroupTipo.add(jToggleButton1);
         jToggleButton1.setText("Café Largo");
-        jToggleButton1.setName("Café Largo"); // NOI18N
+        jToggleButton1.setName("cafe largo"); // NOI18N
         jToggleButton1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jToggleButton1ItemStateChanged(evt);
-            }
-        });
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonActionPerformed(evt);
             }
         });
         pnlCafe.add(jToggleButton1);
@@ -556,11 +524,6 @@ public class PanelVentas extends javax.swing.JPanel {
                 jToggleButton1ItemStateChanged(evt);
             }
         });
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonActionPerformed(evt);
-            }
-        });
         pnlCafe.add(jToggleButton2);
 
         buttonGroupTipo.add(jToggleButton3);
@@ -571,21 +534,11 @@ public class PanelVentas extends javax.swing.JPanel {
                 jToggleButton1ItemStateChanged(evt);
             }
         });
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonActionPerformed(evt);
-            }
-        });
         pnlCafe.add(jToggleButton3);
 
         buttonGroupTipo.add(jToggleButton4);
         jToggleButton4.setText("Café con Leche");
         jToggleButton4.setName("Café con Leche"); // NOI18N
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonActionPerformed(evt);
-            }
-        });
         pnlCafe.add(jToggleButton4);
 
         buttonGroupTipo.add(jToggleButton5);
@@ -818,11 +771,12 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))))
                     .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -835,30 +789,10 @@ public class PanelVentas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         campoDisplay.setText(campoDisplay.getText() + 
                 ((JButton)evt.getSource()).getName());
     }//GEN-LAST:event_btnCalcActionPerformed
-
-    private void btnTogglePrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTogglePrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTogglePrecioActionPerformed
-
-    private void campoDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDisplayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDisplayActionPerformed
 
     private void btnCafeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCafeActionPerformed
         CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
@@ -893,26 +827,14 @@ public class PanelVentas extends javax.swing.JPanel {
         buttonGroupTipo.clearSelection();
     }//GEN-LAST:event_btnAcceptarActionPerformed
 
-    private void jToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonActionPerformed
-//        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-//        prodSeleccionado = accionesProductos.getValoresProdView().
-//                get(evt.getActionCommand());
-//        System.out.println(prodSeleccionado);
-        //model.addRow(accionesProductos.getValoresProd().
-                //get(evt.getActionCommand()));
-        
-    }//GEN-LAST:event_jToggleButtonActionPerformed
-
     private void jToggleButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton1ItemStateChanged
+        
         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        
         if(evt.getStateChange() == ItemEvent.SELECTED){
-//            System.out.println("Botón marcado");
-//            String btn = ((JToggleButton)evt.getItem()).getName();
-//            System.out.println(btn);
-//            model.addRow(accionesProductos.getValoresProd().
-//                get(((JToggleButton)evt.getItem()).getName()));
-            prodSeleccionado = accionesProductos.getValoresProdView().
+            prodSeleccionado = accionesProductos.getProductosVenta().
                     get(((JToggleButton)evt.getItem()).getName());
+            model.addRow(prodSeleccionado.getRow());
             
             //Imprime en consola los productos.
             System.out.println("Producto Seleccionado: "+ prodSeleccionado);
@@ -920,8 +842,6 @@ public class PanelVentas extends javax.swing.JPanel {
             //Pone la suma del subtotal en el campo Total.
             campoTotal.setText(Double.toString(getSum()));
             
-        }else if (evt.getStateChange() == ItemEvent.DESELECTED){
-//            System.out.println("Botón desmarcado");
         }
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
 

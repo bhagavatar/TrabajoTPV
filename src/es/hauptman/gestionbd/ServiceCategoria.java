@@ -5,7 +5,7 @@
  */
 package es.hauptman.gestionbd;
 
-import es.hauptman.entities.Categoria;
+import es.hauptman.entities.Categorias;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class ServiceCategoria {
         conn = GestionSQL.getConnection();
     }
     
-    public boolean createCategoria(Categoria categoria){
+    public boolean createCategoria(Categorias categoria){
         
         String sql = "INSERT INTO categorias (descripcion) VALUES (?)";
         
@@ -46,14 +46,14 @@ public class ServiceCategoria {
         }
     }
     
-    public List<Categoria> readCategoria(){
+    public List<Categorias> readCategoria(){
         
         String sql = "SELECT * FROM categorias";
         
         PreparedStatement query = null;
         ResultSet rs = null;
         
-        List<Categoria> categorias = new ArrayList<>();
+        List<Categorias> categorias = new ArrayList<>();
         
         try {
             
@@ -61,7 +61,7 @@ public class ServiceCategoria {
             rs = query.executeQuery();
             
             while (rs.next()) {                
-                Categoria categoria = new Categoria();
+                Categorias categoria = new Categorias();
                 categoria.setDescripcion(rs.getString("descripcion"));
                 categorias.add(categoria);
             }
@@ -74,7 +74,7 @@ public class ServiceCategoria {
         return categorias;
     }
     
-    public boolean update(Categoria categoria){
+    public boolean update(Categorias categoria){
         
         String sql = "UPDATE categorias SET descripcion = ? WHERE id = ?";
         
@@ -96,7 +96,7 @@ public class ServiceCategoria {
         }
     }
     
-    public boolean delete(Categoria categoria){
+    public boolean delete(Categorias categoria){
         
         String sql = "DELETE FROM categoria WHERE id = ?";
         

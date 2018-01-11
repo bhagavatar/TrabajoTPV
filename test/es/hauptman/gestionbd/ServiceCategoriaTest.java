@@ -5,7 +5,7 @@
  */
 package es.hauptman.gestionbd;
 
-import es.hauptman.entities.Categoria;
+import es.hauptman.entities.Categorias;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

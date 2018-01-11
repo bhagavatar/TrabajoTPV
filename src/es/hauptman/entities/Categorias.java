@@ -9,14 +9,14 @@ package es.hauptman.entities;
  *
  * @author Diego
  */
-public class Categoria {
+public class Categorias {
     private int ID;
     private String descripcion;
 
-    public Categoria() {
+    public Categorias() {
     }
 
-    public Categoria(String descripcion) {
+    public Categorias(String descripcion) {
         this.descripcion = descripcion;
     }
 

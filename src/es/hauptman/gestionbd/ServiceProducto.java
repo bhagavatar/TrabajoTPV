@@ -5,14 +5,14 @@
  */
 package es.hauptman.gestionbd;
 
-import es.hauptman.entities.Categoria;
-import es.hauptman.entities.Producto;
+import es.hauptman.entities.Categorias;
+import es.hauptman.entities.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,7 +27,7 @@ public class ServiceProducto {
         conn = GestionSQL.getConnection();
     }
 
-    public boolean createProductos(Producto producto) {
+    public boolean createProductos(Productos producto) {
 
         String sql = "INSERT INTO productos (nombreProducto, cantidadStock, "
                 + "precio, categorias_id) VALUES (?,?,?,?)";
@@ -39,28 +39,26 @@ public class ServiceProducto {
             query.setString(1, producto.getDescripcion());
             query.setInt(2, producto.getCantidad());
             query.setDouble(3, producto.getPrecio());
-            //Aquí recupero el Id de la Categoria atraves de la foreign key.
+            //Aquí recupero el Id de la Categorias atraves de la foreign key.
             query.setInt(4, producto.getCategoria().getID());
             query.executeUpdate();
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT + ex);
-            //Logger.getLogger(ServiceCategoria.class.getName()).log(Level.SEVERE, 
-            //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         } finally {
             GestionSQL.closedConnection(conn, query);
         }
     }
     
-    public List<Producto> readProductos(){
+    public List<Productos> readProductos(){
         
         String sql = "SELECT * FROM view_productocategoria";
         
         PreparedStatement query = null;
         ResultSet rs = null;
         
-        List<Producto> productos = new ArrayList<>();
+        List<Productos> productos = new ArrayList<>();
         
         try {
             
@@ -68,14 +66,14 @@ public class ServiceProducto {
             rs = query.executeQuery();
             
             while (rs.next()) {                
-                Producto producto = new Producto();
+                Productos producto = new Productos();
                 producto.setID(rs.getInt("prod_id"));
                 producto.setDescripcion(rs.getString("nombreProducto"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setCantidad(rs.getInt("cantidadStock"));
                 
                 
-                Categoria categoria = new Categoria();
+                Categorias categoria = new Categorias();
                 categoria.setID(rs.getInt(rs.getInt("id_cat")));
                 categoria.setDescripcion(rs.getString("descripcion"));
                 
@@ -92,7 +90,41 @@ public class ServiceProducto {
         return productos;
     }
     
-    public boolean update(Producto producto){
+    public HashMap<String, Productos> readProdVentas(){
+        
+        String sql = "SELECT nombreProducto, precio, id_cat, descripcion FROM view_productocategoria";
+        
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        
+        HashMap<String, Productos> productos = new HashMap<>();
+        
+        try {
+            query = conn.prepareStatement(sql);
+            rs = query.executeQuery();
+            
+            while (rs.next()) {  
+                String descripcionProd = rs.getString("nombreProducto");
+                Productos producto = new Productos();
+                producto.setDescripcion(descripcionProd);
+                producto.setPrecio(rs.getDouble("precio"));
+                
+                productos.put(descripcionProd, producto);
+                
+            }
+        } catch (SQLException ex) {
+            
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+            
+        }finally {
+            
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        return productos;
+    }
+    
+    
+    public boolean update(Productos producto){
         
         String sql = "UPDATE productos SET nombreProducto = ?, "
                 + "cantidadStock = ?, precio = ?, categorias_id = ?, "
@@ -111,15 +143,13 @@ public class ServiceProducto {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(ServiceCategoria.class.getName()).log(Level.SEVERE, 
-            //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
             GestionSQL.closedConnection(conn, query);
         }
     }
     
-    public boolean delete(Producto producto){
+    public boolean delete(Productos producto){
         
         String sql = "DELETE FROM productos WHERE id = ?";
         
@@ -132,8 +162,6 @@ public class ServiceProducto {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(ServiceCategoria.class.getName()).log(Level.SEVERE, 
-            //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
             GestionSQL.closedConnection(conn, query);

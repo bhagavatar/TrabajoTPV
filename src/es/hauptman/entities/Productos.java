@@ -9,28 +9,28 @@ package es.hauptman.entities;
  *
  * @author Diego
  */
-public class Producto {
+public class Productos {
     private int ID;
     private double precio;
     private String descripcion;
     private int cantidad;
     private double descuento;
     private double subtotal;
-    private Categoria categoria;
+    private Categorias categoria;
     
     
-    public Producto() {
+    public Productos() {
     }
 
     /**
-     * Constructor parametrizado sin la Categoria
+     * Constructor parametrizado sin la Categorias
      * @param precio
      * @param descripcion
      * @param cantidad
      * @param descuento
      * @param subtotal
      */
-    public Producto(int precio, String descripcion, int cantidad, 
+    public Productos(int precio, String descripcion, int cantidad, 
             double descuento, double subtotal) {
         this.precio = precio;
         this.descripcion = descripcion;
@@ -40,7 +40,7 @@ public class Producto {
     }
     
     /**
-     * Constructor parametrizado con la Categoria.
+     * Constructor parametrizado con la Categorias.
      * @param precio
      * @param descripcion
      * @param cantidad
@@ -48,8 +48,8 @@ public class Producto {
      * @param subtotal
      * @param categoria
      */
-    public Producto(int precio, String descripcion, int cantidad, 
-            double descuento, double subtotal, Categoria categoria) {
+    public Productos(int precio, String descripcion, int cantidad, 
+            double descuento, double subtotal, Categorias categoria) {
         this.precio = precio;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
@@ -106,14 +106,31 @@ public class Producto {
         this.subtotal = subtotal;
     }
 
-    public Categoria getCategoria() {
+    public Categorias getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(Categorias categoria) {
         this.categoria = categoria;
     }
-
+    
+    /**
+     * Método que retorna un array de Object para insertar las líneas (row) en la tabla 
+     * del PanelVentas.
+     * @return Object[] rowProducto
+     */
+    public Object[] getRow() {
+        
+        Object[] rowProducto = new Object[] {
+            cantidad,
+            descripcion,
+            descuento, 
+            precio, 
+            subtotal = precio
+        };
+        return rowProducto;
+    }
+    
     @Override
     public String toString() {
         return "Producto{" + "ID=" + ID + ", precio=" + precio + ", "
