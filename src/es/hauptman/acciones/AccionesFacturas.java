@@ -10,8 +10,6 @@ import es.hauptman.entities.Facturas;
 import es.hauptman.entities.Productos;
 import es.hauptman.gestionbd.FacturasDAO;
 import es.hauptman.vista.PanelVentas;
-import java.time.Instant;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,9 +35,11 @@ public class AccionesFacturas {
     public void guardarDetalleFactura(){
         
         DetalleFactura detalleFactura = new DetalleFactura();
+        //FIXME
         Facturas factura = new Facturas();
         Productos producto = new Productos();
-
+        
+        //factura.setCliente(cliente);
         factura.setTotal(panel.getSum());
         FacturasDAO daoFactura = new FacturasDAO();
         
@@ -52,6 +52,5 @@ public class AccionesFacturas {
         }
         
         daoFactura.createFactura(factura);
-        
     }
 }

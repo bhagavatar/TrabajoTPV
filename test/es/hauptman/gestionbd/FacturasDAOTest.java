@@ -91,6 +91,7 @@ public class FacturasDAOTest {
         detalleFactura.setCantidadComprada(2);
         detalleFactura.setSubtotal(2.00);
         
+        
         factura.addDetalleFactura(detalleFactura);
         //FIXME nao pode colocar 2x o mesmo item
         //factura.addDetalleFactura(detalleFactura);

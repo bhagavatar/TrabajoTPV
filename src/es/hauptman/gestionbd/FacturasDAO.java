@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  *
@@ -31,13 +33,20 @@ public class FacturasDAO {
      
     public boolean createFactura (Facturas factura){
         
-        String sqlFactura = "INSERT INTO factura (ticket_id) VALUES (NULL)";
+        String sqlFactura = "INSERT INTO factura (fecha, total_compra, clientes_id) VALUES (?,?,?)";
         PreparedStatement queryFactura = null;
         ResultSet rs = null;
         
+        
+        
         try {
             
+            
             queryFactura = conn.prepareStatement(sqlFactura ,Statement.RETURN_GENERATED_KEYS);
+            
+            queryFactura.setTimestamp(1, new Timestamp(new Date().getTime()));
+            queryFactura.setDouble(2, factura.getTotal());
+            //queryFactura.setInt(3, factura.getCliente().getId());
             queryFactura.executeUpdate();
             queryFactura.getGeneratedKeys();
             
@@ -45,6 +54,8 @@ public class FacturasDAO {
             rs.next();  
             key = rs.getInt(1);
             factura.setTicketID(key);
+            
+          
             
             for (DetalleFactura df : factura.getListDetalleFacturas()) {
                 
