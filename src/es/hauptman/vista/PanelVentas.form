@@ -36,9 +36,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="campoTotal" min="-2" pref="129" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" pref="106" max="32767" attributes="0"/>
+                      <Component id="btnCobrar" pref="106" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton2" pref="106" max="32767" attributes="0"/>
+                      <Component id="btnEliminar" pref="106" max="32767" attributes="0"/>
                   </Group>
                   <Component id="panelDisplay" alignment="0" max="32767" attributes="0"/>
                   <Component id="campoDisplay" alignment="0" max="32767" attributes="0"/>
@@ -66,8 +66,8 @@
                           <Component id="campoTotal" alignment="1" pref="36" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jButton2" alignment="3" pref="36" max="32767" attributes="0"/>
-                              <Component id="jButton1" alignment="3" pref="36" max="32767" attributes="0"/>
+                              <Component id="btnEliminar" alignment="3" pref="36" max="32767" attributes="0"/>
+                              <Component id="btnCobrar" alignment="3" pref="36" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -226,11 +226,11 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="0">
-                <Column editable="true" title="Cant." type="java.lang.Object"/>
-                <Column editable="true" title="Descripci&#xf3;n" type="java.lang.Object"/>
-                <Column editable="true" title="Dto." type="java.lang.Object"/>
-                <Column editable="true" title="Precio" type="java.lang.Object"/>
-                <Column editable="true" title="Subtotal" type="java.lang.Object"/>
+                <Column editable="false" title="Cant." type="java.lang.Object"/>
+                <Column editable="false" title="Descripci&#xf3;n" type="java.lang.Object"/>
+                <Column editable="false" title="Dto." type="java.lang.Object"/>
+                <Column editable="false" title="Precio" type="java.lang.Object"/>
+                <Column editable="false" title="Subtotal" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -303,9 +303,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btnTogglePrecio">
+        <Component class="javax.swing.JToggleButton" name="btnToggleDescuento">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Precio"/>
+            <Property name="text" type="java.lang.String" value="%Dto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btn4">
@@ -335,12 +335,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btnToggleCantidad">
+        <Component class="javax.swing.JToggleButton" name="btnVacio1">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="buttonGroup1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cantidad"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -374,13 +373,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnDescuento">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="% Dto"/>
-          </Properties>
+        <Component class="javax.swing.JButton" name="btnVacio">
         </Component>
         <Component class="javax.swing.JButton" name="btn0">
           <Properties>
@@ -410,10 +403,8 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAcceptar">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="cc" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Acceptar"/>
+            <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAcceptarActionPerformed"/>
@@ -431,9 +422,16 @@
     </Component>
     <Component class="javax.swing.JTextField" name="campoTotal">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="33" type="rgb"/>
+        </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="18" style="0"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="panelDisplay">
@@ -447,7 +445,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel7" max="32767" attributes="0"/>
-                              <Component id="jTextField6" max="32767" attributes="0"/>
+                              <Component id="txtTicket" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -496,7 +494,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtTicket" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtHora" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -521,7 +519,7 @@
             <Property name="text" type="java.lang.String" value="N&#xba; Ticket:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField6">
+        <Component class="javax.swing.JTextField" name="txtTicket">
         </Component>
         <Component class="javax.swing.JLabel" name="lblFecha">
           <Properties>
@@ -564,6 +562,10 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Lucida Grande" size="20" style="0"/>
         </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Text Cursor"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="panelCardTipo">
@@ -607,7 +609,7 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Caf&#xe9; Corto"/>
-                <Property name="name" type="java.lang.String" value="Caf&#xe9; Corto" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="cafe corto" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
@@ -619,7 +621,7 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cortado"/>
-                <Property name="name" type="java.lang.String" value="Cortado" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="cafe cortado" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
@@ -631,8 +633,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Caf&#xe9; con Leche"/>
-                <Property name="name" type="java.lang.String" value="Caf&#xe9; con Leche" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="cafe con leche" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton5">
               <Properties>
@@ -640,8 +645,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Capuccino"/>
-                <Property name="name" type="java.lang.String" value="Capuccino" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="capuccino" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton6">
               <Properties>
@@ -649,8 +657,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Carajillo"/>
-                <Property name="name" type="java.lang.String" value="Carajillo" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="carajillo" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton7">
               <Properties>
@@ -693,7 +704,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Chocolate Suizo"/>
+                <Property name="name" type="java.lang.String" value="chocolate suizo" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton11">
               <Properties>
@@ -701,7 +716,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Taza Grande"/>
+                <Property name="name" type="java.lang.String" value="chocolate taza grande" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton13">
               <Properties>
@@ -709,7 +728,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Taza Peque&#xf1;a"/>
+                <Property name="name" type="java.lang.String" value="chocolate taza pequena" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton12">
               <Properties>
@@ -773,8 +796,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="T&#xe9; Negro"/>
-                <Property name="name" type="java.lang.String" value="T&#xe9; Negro" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="te negro" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton20">
               <Properties>
@@ -782,8 +808,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="T&#xe9; con Leche"/>
-                <Property name="name" type="java.lang.String" value="T&#xe9; con Leche" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="te con leche" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton22">
               <Properties>
@@ -791,8 +820,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Chai Latte"/>
-                <Property name="name" type="java.lang.String" value="Chai Latte" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="chai latte" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton21">
               <Properties>
@@ -800,8 +832,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Menta"/>
-                <Property name="name" type="java.lang.String" value="Menta" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="menta" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton23">
               <Properties>
@@ -809,8 +844,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Manzanilla"/>
-                <Property name="name" type="java.lang.String" value="Manzanilla" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="manzanilla" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton25">
               <Properties>
@@ -862,9 +900,12 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Natural Naranja"/>
-                <Property name="name" type="java.lang.String" value="Natural Naranja" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Naranja Natural"/>
+                <Property name="name" type="java.lang.String" value="naranja natural" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton29">
               <Properties>
@@ -872,8 +913,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Pi&#xf1;a"/>
-                <Property name="name" type="java.lang.String" value="Pi&#xf1;a" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="pina" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton30">
               <Properties>
@@ -881,8 +925,11 @@
                   <ComponentRef name="buttonGroupTipo"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Melocot&#xf3;n"/>
-                <Property name="name" type="java.lang.String" value="Melocot&#xf3;n" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="melocoton" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton31">
               <Properties>
@@ -940,129 +987,97 @@
             <Property name="rows" type="int" value="3"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel43">
+            <Component class="javax.swing.JToggleButton" name="jToggleButton37">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Croissant normal"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Croissant Normal"/>
+                <Property name="name" type="java.lang.String" value="croissant normal" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel44">
+            <Component class="javax.swing.JToggleButton" name="jToggleButton38">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Croissant integral"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Croissant Integral"/>
+                <Property name="name" type="java.lang.String" value="croissant integral" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel45">
+            <Component class="javax.swing.JToggleButton" name="jToggleButton39">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Croissant chocolate"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
                 </Property>
+                <Property name="text" type="java.lang.String" value="Croissant Chocolate"/>
+                <Property name="name" type="java.lang.String" value="croissant chocolate" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton39ActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel46">
+            <Component class="javax.swing.JToggleButton" name="jToggleButton40">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Madalena"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
                 </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel47">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Mini Madalena"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel48">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Madalena integral"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel49">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Brownie"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="name" type="java.lang.String" value="brownie" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton41">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pastel Chocolate"/>
+                <Property name="name" type="java.lang.String" value="pastel de chocolate" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton42">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tarta de Fresa"/>
+                <Property name="name" type="java.lang.String" value="tarta de fresa" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jToggleButton1ItemStateChanged"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="jToggleButton43">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel50">
+            <Component class="javax.swing.JToggleButton" name="jToggleButton44">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Trata de manzana"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel51">
+            <Component class="javax.swing.JToggleButton" name="jToggleButton45">
               <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Tarta de fresa"/>
-                <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="cc" green="33" red="0" type="rgb"/>
-                    </LineBorder>
-                  </Border>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupTipo"/>
                 </Property>
               </Properties>
             </Component>
@@ -1070,15 +1085,21 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnCobrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cobrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCobrarActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

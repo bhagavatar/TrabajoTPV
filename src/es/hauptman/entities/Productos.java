@@ -13,49 +13,14 @@ public class Productos {
     private int ID;
     private double precio;
     private String descripcion;
-    private int cantidad;
+    private int cantidadStock;
+    private int cantidadComprada;
     private double descuento;
     private double subtotal;
     private Categorias categoria;
     
     
     public Productos() {
-    }
-
-    /**
-     * Constructor parametrizado sin la Categorias
-     * @param precio
-     * @param descripcion
-     * @param cantidad
-     * @param descuento
-     * @param subtotal
-     */
-    public Productos(int precio, String descripcion, int cantidad, 
-            double descuento, double subtotal) {
-        this.precio = precio;
-        this.descripcion = descripcion;
-        this.cantidad = cantidad;
-        this.descuento = descuento;
-        this.subtotal = subtotal;
-    }
-    
-    /**
-     * Constructor parametrizado con la Categorias.
-     * @param precio
-     * @param descripcion
-     * @param cantidad
-     * @param descuento
-     * @param subtotal
-     * @param categoria
-     */
-    public Productos(int precio, String descripcion, int cantidad, 
-            double descuento, double subtotal, Categorias categoria) {
-        this.precio = precio;
-        this.descripcion = descripcion;
-        this.cantidad = cantidad;
-        this.descuento = descuento;
-        this.subtotal = subtotal;
-        this.categoria = categoria;
     }
 
     public int getID() {
@@ -82,14 +47,22 @@ public class Productos {
         this.descripcion = descripcion;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getCantidadStock() {
+        return cantidadStock;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCantidadStock(int cantidadStock) {
+        this.cantidadStock = cantidadStock;
     }
 
+    public int getCantidadComprada() {
+        return cantidadComprada;
+    }
+
+    public void setCantidadComprada(int cantidadComprada) {
+        this.cantidadComprada = cantidadComprada;
+    }
+    
     public double getDescuento() {
         return descuento;
     }
@@ -122,11 +95,11 @@ public class Productos {
     public Object[] getRow() {
         
         Object[] rowProducto = new Object[] {
-            cantidad,
+            cantidadComprada,
             descripcion,
             descuento, 
             precio, 
-            subtotal = precio
+            subtotal = precio * cantidadComprada
         };
         return rowProducto;
     }
@@ -134,7 +107,7 @@ public class Productos {
     @Override
     public String toString() {
         return "Producto{" + "ID=" + ID + ", precio=" + precio + ", "
-                + "descripcion=" + descripcion + ", cantidad=" + cantidad 
+                + "descripcion=" + descripcion + ", cantidad=" + cantidadStock 
                 + ", descuento=" + descuento + ", subtotal=" + subtotal 
                 + ", categoria=" + categoria + '}';
     }

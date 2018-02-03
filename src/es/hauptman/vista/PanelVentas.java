@@ -5,19 +5,27 @@
  */
 package es.hauptman.vista;
 
-import es.hauptman.acciones.ventas.AccionesProductos;
+import es.hauptman.acciones.AccionesFacturas;
+import es.hauptman.acciones.AccionesVentas;
 import es.hauptman.entities.Productos;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
@@ -28,8 +36,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PanelVentas extends javax.swing.JPanel {
     private FrameHome frame;
-    private AccionesProductos accionesProductos;
+    private AccionesVentas accionesVentas;
+    private AccionesFacturas accionesFacturas;
     private Productos prodSeleccionado;
+    List<Productos> listaProductosVenta = new ArrayList<>();
+    private static final AtomicInteger TICKET_ID = new AtomicInteger();
     
     
     /**
@@ -38,7 +49,9 @@ public class PanelVentas extends javax.swing.JPanel {
     public PanelVentas(FrameHome frame) {
         this.frame = frame;
         initComponents();
-        accionesProductos = new AccionesProductos();
+        accionesVentas = new AccionesVentas();
+        accionesFacturas = new AccionesFacturas(this);
+        prodSeleccionado = new Productos();
         
         //Muestra la fecha en la caja de texto txtFecha
         Date fecha = new Date();
@@ -68,7 +81,6 @@ public class PanelVentas extends javax.swing.JPanel {
         double sum = 0;
         for(int i=0;i < rowCount;i++){
             sum=sum+Double.parseDouble(tablaVentas.getValueAt(i, 4).toString());
-            
         }
         return sum;
     }
@@ -83,7 +95,6 @@ public class PanelVentas extends javax.swing.JPanel {
             Calendar hoy=Calendar.getInstance();
             txtHora.setText(String.format(format.format(sistHora),hoy));
         }
-    
     }
     
 
@@ -114,15 +125,15 @@ public class PanelVentas extends javax.swing.JPanel {
         btn1 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
-        btnTogglePrecio = new javax.swing.JToggleButton();
+        btnToggleDescuento = new javax.swing.JToggleButton();
         btn4 = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
         btn6 = new javax.swing.JButton();
-        javax.swing.JToggleButton btnToggleCantidad = new javax.swing.JToggleButton();
+        javax.swing.JToggleButton btnVacio1 = new javax.swing.JToggleButton();
         btn7 = new javax.swing.JButton();
         btn8 = new javax.swing.JButton();
         btn9 = new javax.swing.JButton();
-        btnDescuento = new javax.swing.JButton();
+        btnVacio = new javax.swing.JButton();
         btn0 = new javax.swing.JButton();
         btnPunto = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -131,7 +142,7 @@ public class PanelVentas extends javax.swing.JPanel {
         campoTotal = new javax.swing.JTextField();
         panelDisplay = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtTicket = new javax.swing.JTextField();
         lblFecha = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -183,17 +194,17 @@ public class PanelVentas extends javax.swing.JPanel {
         jToggleButton35 = new javax.swing.JToggleButton();
         jToggleButton36 = new javax.swing.JToggleButton();
         panelBolleria = new javax.swing.JPanel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jToggleButton37 = new javax.swing.JToggleButton();
+        jToggleButton38 = new javax.swing.JToggleButton();
+        jToggleButton39 = new javax.swing.JToggleButton();
+        jToggleButton40 = new javax.swing.JToggleButton();
+        jToggleButton41 = new javax.swing.JToggleButton();
+        jToggleButton42 = new javax.swing.JToggleButton();
+        jToggleButton43 = new javax.swing.JToggleButton();
+        jToggleButton44 = new javax.swing.JToggleButton();
+        jToggleButton45 = new javax.swing.JToggleButton();
+        btnCobrar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(900, 800));
 
@@ -288,7 +299,15 @@ public class PanelVentas extends javax.swing.JPanel {
             new String [] {
                 "Cant.", "Descripción", "Dto.", "Precio", "Subtotal"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         panelTablaVentas.setViewportView(tablaVentas);
 
         panelNumerico.setLayout(new java.awt.GridLayout(4, 4));
@@ -320,8 +339,8 @@ public class PanelVentas extends javax.swing.JPanel {
         });
         panelNumerico.add(btn3);
 
-        btnTogglePrecio.setText("Precio");
-        panelNumerico.add(btnTogglePrecio);
+        btnToggleDescuento.setText("%Dto");
+        panelNumerico.add(btnToggleDescuento);
 
         btn4.setText("4");
         btn4.setName("4"); // NOI18N
@@ -350,9 +369,8 @@ public class PanelVentas extends javax.swing.JPanel {
         });
         panelNumerico.add(btn6);
 
-        buttonGroup1.add(btnToggleCantidad);
-        btnToggleCantidad.setText("Cantidad");
-        panelNumerico.add(btnToggleCantidad);
+        buttonGroup1.add(btnVacio1);
+        panelNumerico.add(btnVacio1);
 
         btn7.setText("7");
         btn7.setName("7"); // NOI18N
@@ -380,10 +398,7 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         });
         panelNumerico.add(btn9);
-
-        btnDescuento.setBackground(new java.awt.Color(204, 204, 0));
-        btnDescuento.setText("% Dto");
-        panelNumerico.add(btnDescuento);
+        panelNumerico.add(btnVacio);
 
         btn0.setText("0");
         btn0.setName("0"); // NOI18N
@@ -411,8 +426,8 @@ public class PanelVentas extends javax.swing.JPanel {
         });
         panelNumerico.add(btnClear);
 
-        btnAcceptar.setBackground(new java.awt.Color(0, 204, 51));
         btnAcceptar.setText("Acceptar");
+        btnAcceptar.setOpaque(true);
         btnAcceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcceptarActionPerformed(evt);
@@ -423,7 +438,10 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("TOTAL:");
 
+        campoTotal.setBackground(new java.awt.Color(51, 102, 255));
         campoTotal.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        campoTotal.setForeground(new java.awt.Color(255, 255, 255));
+        campoTotal.setOpaque(true);
 
         jLabel7.setText("Nº Ticket:");
 
@@ -449,7 +467,7 @@ public class PanelVentas extends javax.swing.JPanel {
                     .addGroup(panelDisplayLayout.createSequentialGroup()
                         .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField6))
+                            .addComponent(txtTicket))
                         .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDisplayLayout.createSequentialGroup()
                                 .addGap(24, 24, 24)
@@ -484,7 +502,7 @@ public class PanelVentas extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTicket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -499,6 +517,8 @@ public class PanelVentas extends javax.swing.JPanel {
         );
 
         campoDisplay.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        campoDisplay.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        campoDisplay.setOpaque(true);
 
         panelCardTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
         panelCardTipo.setLayout(new java.awt.CardLayout());
@@ -517,7 +537,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
         buttonGroupTipo.add(jToggleButton2);
         jToggleButton2.setText("Café Corto");
-        jToggleButton2.setName("Café Corto"); // NOI18N
+        jToggleButton2.setName("cafe corto"); // NOI18N
         jToggleButton2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jToggleButton1ItemStateChanged(evt);
@@ -527,7 +547,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
         buttonGroupTipo.add(jToggleButton3);
         jToggleButton3.setText("Cortado");
-        jToggleButton3.setName("Cortado"); // NOI18N
+        jToggleButton3.setName("cafe cortado"); // NOI18N
         jToggleButton3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jToggleButton1ItemStateChanged(evt);
@@ -537,17 +557,32 @@ public class PanelVentas extends javax.swing.JPanel {
 
         buttonGroupTipo.add(jToggleButton4);
         jToggleButton4.setText("Café con Leche");
-        jToggleButton4.setName("Café con Leche"); // NOI18N
+        jToggleButton4.setName("cafe con leche"); // NOI18N
+        jToggleButton4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         pnlCafe.add(jToggleButton4);
 
         buttonGroupTipo.add(jToggleButton5);
         jToggleButton5.setText("Capuccino");
-        jToggleButton5.setName("Capuccino"); // NOI18N
+        jToggleButton5.setName("capuccino"); // NOI18N
+        jToggleButton5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         pnlCafe.add(jToggleButton5);
 
         buttonGroupTipo.add(jToggleButton6);
         jToggleButton6.setText("Carajillo");
-        jToggleButton6.setName("Carajillo"); // NOI18N
+        jToggleButton6.setName("carajillo"); // NOI18N
+        jToggleButton6.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         pnlCafe.add(jToggleButton6);
 
         buttonGroupTipo.add(jToggleButton7);
@@ -565,14 +600,32 @@ public class PanelVentas extends javax.swing.JPanel {
 
         buttonGroupTipo.add(jToggleButton10);
         jToggleButton10.setText("Chocolate Suizo");
+        jToggleButton10.setName("chocolate suizo"); // NOI18N
+        jToggleButton10.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelChocolate.add(jToggleButton10);
 
         buttonGroupTipo.add(jToggleButton11);
         jToggleButton11.setText("Taza Grande");
+        jToggleButton11.setName("chocolate taza grande"); // NOI18N
+        jToggleButton11.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelChocolate.add(jToggleButton11);
 
         buttonGroupTipo.add(jToggleButton13);
         jToggleButton13.setText("Taza Pequeña");
+        jToggleButton13.setName("chocolate taza pequena"); // NOI18N
+        jToggleButton13.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelChocolate.add(jToggleButton13);
 
         buttonGroupTipo.add(jToggleButton12);
@@ -599,27 +652,52 @@ public class PanelVentas extends javax.swing.JPanel {
 
         buttonGroupTipo.add(jToggleButton19);
         jToggleButton19.setText("Té Negro");
-        jToggleButton19.setName("Té Negro"); // NOI18N
+        jToggleButton19.setName("te negro"); // NOI18N
+        jToggleButton19.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelInfusiones.add(jToggleButton19);
 
         buttonGroupTipo.add(jToggleButton20);
         jToggleButton20.setText("Té con Leche");
-        jToggleButton20.setName("Té con Leche"); // NOI18N
+        jToggleButton20.setName("te con leche"); // NOI18N
+        jToggleButton20.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelInfusiones.add(jToggleButton20);
 
         buttonGroupTipo.add(jToggleButton22);
         jToggleButton22.setText("Chai Latte");
-        jToggleButton22.setName("Chai Latte"); // NOI18N
+        jToggleButton22.setName("chai latte"); // NOI18N
+        jToggleButton22.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelInfusiones.add(jToggleButton22);
 
         buttonGroupTipo.add(jToggleButton21);
         jToggleButton21.setText("Menta");
-        jToggleButton21.setName("Menta"); // NOI18N
+        jToggleButton21.setName("menta"); // NOI18N
+        jToggleButton21.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelInfusiones.add(jToggleButton21);
 
         buttonGroupTipo.add(jToggleButton23);
         jToggleButton23.setText("Manzanilla");
-        jToggleButton23.setName("Manzanilla"); // NOI18N
+        jToggleButton23.setName("manzanilla"); // NOI18N
+        jToggleButton23.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelInfusiones.add(jToggleButton23);
 
         buttonGroupTipo.add(jToggleButton25);
@@ -639,18 +717,33 @@ public class PanelVentas extends javax.swing.JPanel {
         panelZumos.setLayout(new java.awt.GridLayout(3, 3));
 
         buttonGroupTipo.add(jToggleButton28);
-        jToggleButton28.setText("Natural Naranja");
-        jToggleButton28.setName("Natural Naranja"); // NOI18N
+        jToggleButton28.setText("Naranja Natural");
+        jToggleButton28.setName("naranja natural"); // NOI18N
+        jToggleButton28.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelZumos.add(jToggleButton28);
 
         buttonGroupTipo.add(jToggleButton29);
         jToggleButton29.setText("Piña");
-        jToggleButton29.setName("Piña"); // NOI18N
+        jToggleButton29.setName("pina"); // NOI18N
+        jToggleButton29.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelZumos.add(jToggleButton29);
 
         buttonGroupTipo.add(jToggleButton30);
         jToggleButton30.setText("Melocotón");
-        jToggleButton30.setName("Melocotón"); // NOI18N
+        jToggleButton30.setName("melocoton"); // NOI18N
+        jToggleButton30.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
         panelZumos.add(jToggleButton30);
 
         buttonGroupTipo.add(jToggleButton31);
@@ -676,65 +769,95 @@ public class PanelVentas extends javax.swing.JPanel {
 
         panelBolleria.setLayout(new java.awt.GridLayout(3, 3));
 
-        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel43.setText("Croissant normal");
-        jLabel43.setToolTipText("");
-        jLabel43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel43);
+        buttonGroupTipo.add(jToggleButton37);
+        jToggleButton37.setText("Croissant Normal");
+        jToggleButton37.setName("croissant normal"); // NOI18N
+        jToggleButton37.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBolleria.add(jToggleButton37);
 
-        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setText("Croissant integral");
-        jLabel44.setToolTipText("");
-        jLabel44.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel44);
+        buttonGroupTipo.add(jToggleButton38);
+        jToggleButton38.setText("Croissant Integral");
+        jToggleButton38.setName("croissant integral"); // NOI18N
+        jToggleButton38.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBolleria.add(jToggleButton38);
 
-        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel45.setText("Croissant chocolate");
-        jLabel45.setToolTipText("");
-        jLabel45.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel45);
+        buttonGroupTipo.add(jToggleButton39);
+        jToggleButton39.setText("Croissant Chocolate");
+        jToggleButton39.setName("croissant chocolate"); // NOI18N
+        jToggleButton39.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        jToggleButton39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton39ActionPerformed(evt);
+            }
+        });
+        panelBolleria.add(jToggleButton39);
 
-        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel46.setText("Madalena");
-        jLabel46.setToolTipText("");
-        jLabel46.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel46);
+        buttonGroupTipo.add(jToggleButton40);
+        jToggleButton40.setText("Brownie");
+        jToggleButton40.setName("brownie"); // NOI18N
+        jToggleButton40.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBolleria.add(jToggleButton40);
 
-        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel47.setText("Mini Madalena");
-        jLabel47.setToolTipText("");
-        jLabel47.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel47);
+        buttonGroupTipo.add(jToggleButton41);
+        jToggleButton41.setText("Pastel Chocolate");
+        jToggleButton41.setName("pastel de chocolate"); // NOI18N
+        jToggleButton41.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBolleria.add(jToggleButton41);
 
-        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel48.setText("Madalena integral");
-        jLabel48.setToolTipText("");
-        jLabel48.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel48);
+        buttonGroupTipo.add(jToggleButton42);
+        jToggleButton42.setText("Tarta de Fresa");
+        jToggleButton42.setName("tarta de fresa"); // NOI18N
+        jToggleButton42.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBolleria.add(jToggleButton42);
 
-        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel49.setText("Brownie");
-        jLabel49.setToolTipText("");
-        jLabel49.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel49);
+        buttonGroupTipo.add(jToggleButton43);
+        panelBolleria.add(jToggleButton43);
 
-        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel50.setText("Trata de manzana");
-        jLabel50.setToolTipText("");
-        jLabel50.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel50);
+        buttonGroupTipo.add(jToggleButton44);
+        panelBolleria.add(jToggleButton44);
 
-        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel51.setText("Tarta de fresa");
-        jLabel51.setToolTipText("");
-        jLabel51.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
-        panelBolleria.add(jLabel51);
+        buttonGroupTipo.add(jToggleButton45);
+        panelBolleria.add(jToggleButton45);
 
         panelCardTipo.add(panelBolleria, "bolleria");
 
-        jButton1.setText("Cobrar");
+        btnCobrar.setText("Cobrar");
+        btnCobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCobrarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Eliminar");
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -749,16 +872,16 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                        .addComponent(btnCobrar, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
                     .addComponent(panelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoDisplay)
                     .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))
+                    .addComponent(panelCardTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 455, Short.MAX_VALUE))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -774,8 +897,8 @@ public class PanelVentas extends javax.swing.JPanel {
                             .addComponent(campoTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))))
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                                .addComponent(btnCobrar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))))
                     .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -823,7 +946,26 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAcceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptarActionPerformed
+        //accionesFacturas.crearFactura();
+        if (!campoDisplay.getText().equals("")) {
+            
+        prodSeleccionado.setCantidadComprada(Integer.parseInt(campoDisplay.getText())); 
+        listaProductosVenta.add(prodSeleccionado);
+        
+        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        
+        model.addRow(prodSeleccionado.getRow());
+        
+        //Pone la suma del subtotal en el campo Total.
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+        campoTotal.setText(currencyFormatter.format(getSum()));
+        
         buttonGroupTipo.clearSelection();
+        campoDisplay.setText("");
+        
+        }else {
+            JOptionPane.showMessageDialog(null, "Seleccione una cantidad y pulse el botón Acceptar");
+        }    
     }//GEN-LAST:event_btnAcceptarActionPerformed
 
     private void jToggleButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton1ItemStateChanged
@@ -831,18 +973,64 @@ public class PanelVentas extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
         
         if(evt.getStateChange() == ItemEvent.SELECTED){
-            prodSeleccionado = accionesProductos.getProductosVenta().
+            prodSeleccionado = accionesVentas.getProductosVenta().
                     get(((JToggleButton)evt.getItem()).getName());
-            model.addRow(prodSeleccionado.getRow());
-            
-            //Imprime en consola los productos.
-            System.out.println("Producto Seleccionado: "+ prodSeleccionado);
-            
-            //Pone la suma del subtotal en el campo Total.
-            campoTotal.setText(Double.toString(getSum()));
-            
+            btnAcceptar.setBackground(Color.GREEN);
+            campoDisplay.setText("");
         }
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
+
+    private void jToggleButton39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton39ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton39ActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+        
+        if (tablaVentas.getSelectedRow() != -1) {
+            
+            model.removeRow(tablaVentas.getSelectedRow());
+            NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+            campoTotal.setText(currencyFormatter.format(getSum()));
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
+
+         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+         accionesFacturas.guardarDetalleFactura();
+         
+         //Limpia el ArrayList para la proxima venta.
+         listaProductosVenta.clear();
+         
+        //Imprime ticket consola
+//         txtTicket.setText(Integer.toString(TICKET_ID.incrementAndGet()));
+         
+//         System.out.println("++++++++");
+//         System.out.println("Ticket: "+txtTicket.getText());
+//         System.out.println("++++++++");
+         System.out.println("Fecha: "+txtFecha.getText()+" "+ "Hora: "+txtHora.getText());
+         
+//         for (int i = 0; i < model.getRowCount(); i++) {
+//             
+//             System.out.println("-----");
+//             System.out.println("Producto: "+model.getValueAt(i, 1).toString());
+//             System.out.println("Cantidad: "+model.getValueAt(i, 0).toString());
+//             System.out.println("Descuento: "+model.getValueAt(i, 2).toString());
+//             System.out.println("Precio: "+model.getValueAt(i, 3).toString());
+//             System.out.println("Subtotal: "+model.getValueAt(i, 4).toString());
+//        }
+         
+         
+         System.out.println("Total: "+campoTotal.getText()); //Fim ticket consola
+         
+         model.setNumRows(0);
+         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+         campoTotal.setText(currencyFormatter.format(getSum()));
+         
+        
+       
+    }//GEN-LAST:event_btnCobrarActionPerformed
 
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
@@ -853,6 +1041,32 @@ public class PanelVentas extends javax.swing.JPanel {
     public JTable getTablaVentas() {
         return tablaVentas;
     } //</editor-fold>  
+    
+    public JTextField getTxtTicket() {
+        return txtTicket;
+    }
+
+    public Productos getProdSeleccionado() {
+        return prodSeleccionado;
+    }
+
+    public JTextField getTxtFecha() {
+        return txtFecha;
+    }
+
+    public JTextField getTxtHora() {
+        return txtHora;
+    }
+
+    public JTextField getCampoTotal() {
+        return campoTotal;
+    }
+
+    public List<Productos> getListaProductosVenta() {
+        return listaProductosVenta;
+    }
+    
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -870,39 +1084,29 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JButton btnCafe;
     private javax.swing.JButton btnChocolate;
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnCobrar;
     private javax.swing.JButton btnCookie;
     private javax.swing.JButton btnCroissant;
     private javax.swing.JButton btnDesayuno;
-    private javax.swing.JButton btnDescuento;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnHotDog;
     private javax.swing.JButton btnInfusion;
     private javax.swing.JButton btnMadalena;
     private javax.swing.JButton btnPunto;
-    private javax.swing.JToggleButton btnTogglePrecio;
+    private javax.swing.JToggleButton btnToggleDescuento;
+    private javax.swing.JButton btnVacio;
     private javax.swing.JButton btnZumo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JTextField campoDisplay;
     private javax.swing.JTextField campoTotal;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton11;
@@ -933,7 +1137,16 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButton34;
     private javax.swing.JToggleButton jToggleButton35;
     private javax.swing.JToggleButton jToggleButton36;
+    private javax.swing.JToggleButton jToggleButton37;
+    private javax.swing.JToggleButton jToggleButton38;
+    private javax.swing.JToggleButton jToggleButton39;
     private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JToggleButton jToggleButton40;
+    private javax.swing.JToggleButton jToggleButton41;
+    private javax.swing.JToggleButton jToggleButton42;
+    private javax.swing.JToggleButton jToggleButton43;
+    private javax.swing.JToggleButton jToggleButton44;
+    private javax.swing.JToggleButton jToggleButton45;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
@@ -953,5 +1166,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JTable tablaVentas;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtTicket;
     // End of variables declaration//GEN-END:variables
 }

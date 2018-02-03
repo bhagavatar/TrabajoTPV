@@ -41,8 +41,8 @@ public class ServiceProductoTest {
         categoria.setID(1);
 
         Productos producto = new Productos();
-        producto.setDescripcion("Mocaccino");
-        producto.setCantidad(20);
+        producto.setDescripcion("cafe test");
+        producto.setCantidadStock(20);
         producto.setPrecio(10);
         producto.setCategoria(categoria);
 

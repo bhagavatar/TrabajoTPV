@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,9 +36,9 @@ public class ProductosDAO {
         PreparedStatement query = null;
 
         try {
-            query = conn.prepareStatement(sql /*,Statement.RETURN_GENERATED_KEYS*/);//Not sure if I have to use the return generated keys
+            query = conn.prepareStatement(sql ,Statement.RETURN_GENERATED_KEYS);
             query.setString(1, producto.getDescripcion());
-            query.setInt(2, producto.getCantidad());
+            query.setInt(2, producto.getCantidadStock());
             query.setDouble(3, producto.getPrecio());
             //Aquí recupero el Id de la Categorias atraves de la foreign key.
             query.setInt(4, producto.getCategoria().getID());
@@ -70,11 +71,11 @@ public class ProductosDAO {
                 producto.setID(rs.getInt("prod_id"));
                 producto.setDescripcion(rs.getString("nombreProducto"));
                 producto.setPrecio(rs.getDouble("precio"));
-                producto.setCantidad(rs.getInt("cantidadStock"));
+                producto.setCantidadStock(rs.getInt("cantidadStock"));
                 
                 
                 Categorias categoria = new Categorias();
-                categoria.setID(rs.getInt(rs.getInt("id_cat")));
+                categoria.setID(rs.getInt("id_cat"));
                 categoria.setDescripcion(rs.getString("descripcion"));
                 
                 producto.setCategoria(categoria);
@@ -92,7 +93,8 @@ public class ProductosDAO {
     
     public HashMap<String, Productos> readProdVentas(){
         
-        String sql = "SELECT nombreProducto, precio, id_cat, descripcion FROM view_productocategoria";
+        String sql = "SELECT prod_id, nombreProducto, precio, id_cat, "
+                + "descripcion FROM view_productocategoria";
         
         PreparedStatement query = null;
         ResultSet rs = null;
@@ -111,6 +113,11 @@ public class ProductosDAO {
                 
                 productos.put(descripcionProd, producto);
                 
+                Categorias categoria = new Categorias();
+                categoria.setID(rs.getInt("id_cat"));
+                producto.setCategoria(categoria);
+                producto.setID(rs.getInt("prod_id"));
+                
             }
         } catch (SQLException ex) {
             
@@ -127,15 +134,15 @@ public class ProductosDAO {
     public boolean update(Productos producto){
         
         String sql = "UPDATE productos SET nombreProducto = ?, "
-                + "cantidadStock = ?, precio = ?, categorias_id = ?, "
-                + "WHERE id = ?";
+                + "cantidadStock = ?, precio = ?, "
+                + "categorias_id = ? WHERE id = ? ";
         
         PreparedStatement query = null;
         
         try {
             query = conn.prepareStatement(sql);
             query.setString(1, producto.getDescripcion());
-            query.setInt(2, producto.getCantidad());
+            query.setInt(2, producto.getCantidadStock());
             query.setDouble(3, producto.getPrecio());
             query.setInt(4, producto.getCategoria().getID());
             query.setInt(5, producto.getID());

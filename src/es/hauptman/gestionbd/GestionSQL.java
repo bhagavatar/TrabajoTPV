@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  * Clase que establece la conexión con la Base de Datos.
@@ -30,25 +31,6 @@ public class GestionSQL {
      * 
      * @return
      */
-//    public static Connection getConnection(){
-//        
-//        try {
-//            
-//            Class.forName(DRIVER);
-//            return DriverManager.getConnection(SERVER + DATABASE,
-//                    USERNAME, PASSWORD);
-//        } 
-//        catch (ClassNotFoundException ex) {
-//            Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE,
-//                    IErrors.ERROR_SQL_DRIVER, ex);
-//        } 
-//        catch (SQLException ex) {
-//           Logger.getLogger(GestionSQL.class.getName()).log(Level.SEVERE,
-//                    IErrors.ERROR_SQL_OPEN_CONNECTION, ex);
-//        }
-//        
-//    } 
-    
     public static Connection getConnection(){
         
         try {
@@ -63,7 +45,9 @@ public class GestionSQL {
              
         } catch (SQLException ex) {
             
+             JOptionPane.showMessageDialog(null, "Error al conectar con MySQL"+ex);
              throw new RuntimeException(IErrors.ERROR_SQL_OPEN_CONNECTION, ex);
+             
         }
         
     }
