@@ -147,10 +147,10 @@ public class PanelVentas extends javax.swing.JPanel {
         txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtIDCliente = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtNombreCliente = new javax.swing.JTextField();
         campoDisplay = new javax.swing.JTextField();
         panelCardTipo = new javax.swing.JPanel();
         pnlCafe = new javax.swing.JPanel();
@@ -471,7 +471,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDisplayLayout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
+                                .addComponent(txtNombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
                             .addGroup(panelDisplayLayout.createSequentialGroup()
                                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelDisplayLayout.createSequentialGroup()
@@ -489,7 +489,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelDisplayLayout.setVerticalGroup(
@@ -511,8 +511,8 @@ public class PanelVentas extends javax.swing.JPanel {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1000,36 +1000,19 @@ public class PanelVentas extends javax.swing.JPanel {
          DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
          accionesFacturas.guardarDetalleFactura();
          
+         if(!txtIDCliente.getText().equals("")){
+             
+         };
+         
          //Limpia el ArrayList para la proxima venta.
          listaProductosVenta.clear();
          
-        //Imprime ticket consola
-//         txtTicket.setText(Integer.toString(TICKET_ID.incrementAndGet()));
-         
-//         System.out.println("++++++++");
-//         System.out.println("Ticket: "+txtTicket.getText());
-//         System.out.println("++++++++");
          System.out.println("Fecha: "+txtFecha.getText()+" "+ "Hora: "+txtHora.getText());
-         
-//         for (int i = 0; i < model.getRowCount(); i++) {
-//             
-//             System.out.println("-----");
-//             System.out.println("Producto: "+model.getValueAt(i, 1).toString());
-//             System.out.println("Cantidad: "+model.getValueAt(i, 0).toString());
-//             System.out.println("Descuento: "+model.getValueAt(i, 2).toString());
-//             System.out.println("Precio: "+model.getValueAt(i, 3).toString());
-//             System.out.println("Subtotal: "+model.getValueAt(i, 4).toString());
-//        }
-         
-         
-         System.out.println("Total: "+campoTotal.getText()); //Fim ticket consola
+         System.out.println("Total: "+campoTotal.getText()); 
          
          model.setNumRows(0);
          NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
          campoTotal.setText(currencyFormatter.format(getSum()));
-         
-        
-       
     }//GEN-LAST:event_btnCobrarActionPerformed
 
     
@@ -1105,8 +1088,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton11;
@@ -1166,6 +1147,8 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JTable tablaVentas;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtIDCliente;
+    private javax.swing.JTextField txtNombreCliente;
     private javax.swing.JTextField txtTicket;
     // End of variables declaration//GEN-END:variables
 }

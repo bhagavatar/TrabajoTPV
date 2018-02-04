@@ -37,8 +37,6 @@ public class FacturasDAO {
         PreparedStatement queryFactura = null;
         ResultSet rs = null;
         
-        
-        
         try {
             
             

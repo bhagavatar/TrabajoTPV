@@ -5,6 +5,7 @@
  */
 package es.hauptman.acciones;
 
+import es.hauptman.entities.Clientes;
 import es.hauptman.entities.DetalleFactura;
 import es.hauptman.entities.Facturas;
 import es.hauptman.entities.Productos;
@@ -35,11 +36,11 @@ public class AccionesFacturas {
     public void guardarDetalleFactura(){
         
         DetalleFactura detalleFactura = new DetalleFactura();
-        //FIXME
         Facturas factura = new Facturas();
         Productos producto = new Productos();
+        Clientes cliente = new Clientes();
         
-        //factura.setCliente(cliente);
+        factura.setCliente(cliente);
         factura.setTotal(panel.getSum());
         FacturasDAO daoFactura = new FacturasDAO();
         
