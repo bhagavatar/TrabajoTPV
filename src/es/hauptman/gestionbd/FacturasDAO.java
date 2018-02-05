@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.Date;
 
 /**
@@ -27,9 +28,9 @@ public class FacturasDAO {
         conn = GestionSQL.getConnection();
     }
 
-    public int getKey() {
-        return key;
-    }
+//    public int getKey() {
+//        return key;
+//    }
      
     public boolean createFactura (Facturas factura){
         
@@ -44,7 +45,11 @@ public class FacturasDAO {
             
             queryFactura.setTimestamp(1, new Timestamp(new Date().getTime()));
             queryFactura.setDouble(2, factura.getTotal());
-            //queryFactura.setInt(3, factura.getCliente().getId());
+            if(factura.getCliente().getId() != 0){
+                queryFactura.setInt(3, factura.getCliente().getId());
+            } else {
+                queryFactura.setNull(3, Types.INTEGER);
+            }
             queryFactura.executeUpdate();
             queryFactura.getGeneratedKeys();
             

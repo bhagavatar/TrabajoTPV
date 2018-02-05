@@ -25,20 +25,17 @@ public class AccionesFacturas {
         this.panel = panel;
     }
     
-    public void crearFactura() {
-        
-        Facturas factura = new Facturas();
-        FacturasDAO dao = new FacturasDAO();
-        
-        dao.createFactura(factura);
-    }
-    
     public void guardarDetalleFactura(){
         
         DetalleFactura detalleFactura = new DetalleFactura();
         Facturas factura = new Facturas();
         Productos producto = new Productos();
         Clientes cliente = new Clientes();
+        
+        if(!panel.getTxtIDCliente().getText().equals("")){
+             cliente.setId(Integer.parseInt(panel.getTxtIDCliente().getText()));
+         } 
+        
         
         factura.setCliente(cliente);
         factura.setTotal(panel.getSum());

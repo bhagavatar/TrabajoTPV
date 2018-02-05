@@ -946,7 +946,7 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAcceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptarActionPerformed
-        //accionesFacturas.crearFactura();
+        
         if (!campoDisplay.getText().equals("")) {
             
         prodSeleccionado.setCantidadComprada(Integer.parseInt(campoDisplay.getText())); 
@@ -1000,15 +1000,8 @@ public class PanelVentas extends javax.swing.JPanel {
          DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
          accionesFacturas.guardarDetalleFactura();
          
-         if(!txtIDCliente.getText().equals("")){
-             
-         };
-         
          //Limpia el ArrayList para la proxima venta.
          listaProductosVenta.clear();
-         
-         System.out.println("Fecha: "+txtFecha.getText()+" "+ "Hora: "+txtHora.getText());
-         System.out.println("Total: "+campoTotal.getText()); 
          
          model.setNumRows(0);
          NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
@@ -1048,9 +1041,11 @@ public class PanelVentas extends javax.swing.JPanel {
     public List<Productos> getListaProductosVenta() {
         return listaProductosVenta;
     }
-    
-    
 
+    public JTextField getTxtIDCliente() {
+        return txtIDCliente;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn0;

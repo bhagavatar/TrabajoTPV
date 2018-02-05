@@ -50,7 +50,7 @@ public class FacturasDAOTest {
         FacturasDAO daoFactura = new FacturasDAO();
         
         daoFactura.createFactura(factura);
-        factura.setTicketID(daoFactura.getKey());
+        //factura.setTicketID(daoFactura.getKey());
         producto.setID(1);
         categoria.setID(1);
         
