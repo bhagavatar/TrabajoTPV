@@ -5,8 +5,10 @@
  */
 package es.hauptman.gestionbd;
 
+import es.hauptman.entities.Clientes;
 import es.hauptman.entities.DetalleFactura;
 import es.hauptman.entities.Facturas;
+import es.hauptman.entities.Productos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +16,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -28,9 +32,9 @@ public class FacturasDAO {
         conn = GestionSQL.getConnection();
     }
 
-//    public int getKey() {
-//        return key;
-//    }
+    public int getKey() {
+        return key;
+    }
      
     public boolean createFactura (Facturas factura){
         
@@ -81,5 +85,50 @@ public class FacturasDAO {
         } finally {
             GestionSQL.closedConnection(conn, queryFactura, rs);
         }
+    }
+    
+    public List<Facturas> readFacturaDisplay(){
+        
+        String sql = "SELECT * FROM view_facturadisplay";
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        
+        List<Facturas> facturas = new ArrayList<>();
+        
+        try {
+            query = conn.prepareStatement(sql);
+            rs = query.executeQuery();
+            
+            while(rs.next()){
+                Facturas factura = new Facturas();
+                factura.setTicketID(rs.getInt("ticket_id"));
+                factura.setTotal(rs.getDouble("total_compra"));
+                
+                DetalleFactura detalleFactura = new DetalleFactura();
+                detalleFactura.setSubtotal(rs.getDouble("subtotal"));
+                detalleFactura.setCantidadComprada(rs.getInt("cantidad_comprada"));
+                
+                Productos producto = new Productos();
+                producto.setDescripcion(rs.getString("nombreProducto"));
+                producto.setPrecio(rs.getDouble("precio"));
+                
+                Clientes cliente = new Clientes();
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                
+                detalleFactura.setProducto(producto);
+                factura.setDetalleFactura(detalleFactura);
+                factura.setCliente(cliente);
+                
+                facturas.add(factura);
+                
+            }
+        
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+        }finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        return facturas;
     }
 }

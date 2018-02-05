@@ -10,6 +10,7 @@ import es.hauptman.entities.DetalleFactura;
 import es.hauptman.entities.Facturas;
 import es.hauptman.entities.Productos;
 import es.hauptman.gestionbd.FacturasDAO;
+import es.hauptman.vista.DialogFactura;
 import es.hauptman.vista.PanelVentas;
 import javax.swing.table.DefaultTableModel;
 
@@ -50,5 +51,9 @@ public class AccionesFacturas {
         }
         
         daoFactura.createFactura(factura);
+    }
+    
+    public void displayFactura(){
+        
     }
 }

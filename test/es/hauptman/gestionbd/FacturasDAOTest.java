@@ -22,57 +22,10 @@ public class FacturasDAOTest {
     public FacturasDAOTest() {
     }
 
-    @Test
-    @Ignore
-    public void insertFactura() {
-        
-        Facturas factura = new Facturas();
-        
-        factura.setTotal(3.00);
-        
-        
-        FacturasDAO dao = new FacturasDAO();
-        
-        if (dao.createFactura(factura)) {
-            System.out.println("Salvo com sucesso!");
-        } else {
-            fail("Erro ao salvar!");
-        }
-    }
     
     @Test
     @Ignore
-    public void insertDetalleFactura() {
-        DetalleFactura detalleFactura = new DetalleFactura();
-        Facturas factura = new Facturas();
-        Productos producto = new Productos();
-        Categorias categoria = new Categorias();
-        FacturasDAO daoFactura = new FacturasDAO();
-        
-        daoFactura.createFactura(factura);
-        //factura.setTicketID(daoFactura.getKey());
-        producto.setID(1);
-        categoria.setID(1);
-        
-        
-        detalleFactura.setFactura(factura);
-        detalleFactura.setProducto(producto);
-        detalleFactura.setCategoria(categoria);
-        detalleFactura.setCantidadComprada(2);
-        detalleFactura.setSubtotal(2.00);
-        
-        
-        FacturasDAO dao = new FacturasDAO();
-        
-        if (dao.createFactura(factura)) {
-            System.out.println("Salvo com sucesso!");
-        } else {
-            fail("Erro ao salvar!");
-        }
-    }
-    
-    @Test
-    public void Factura() {
+    public void createFactura() {
         
         FacturasDAO dao = new FacturasDAO();
         
@@ -93,14 +46,25 @@ public class FacturasDAOTest {
         
         
         factura.addDetalleFactura(detalleFactura);
-        //FIXME nao pode colocar 2x o mesmo item
-        //factura.addDetalleFactura(detalleFactura);
+        factura.addDetalleFactura(detalleFactura);
         
         
         if (daoFactura.createFactura(factura)) {
             System.out.println("Salvo com sucesso!");
         } else {
             fail("Erro ao salvar!");
+        }
+    }
+    
+    @Test
+    public void readFactura() {
+        FacturasDAO dao = new FacturasDAO();
+        
+        for (Facturas f : dao.readFacturaDisplay()) {
+            System.out.println("Ticket ID: " + f.getTicketID()+" " 
+                    + "Producto: "+f.getDetalleFactura().getProducto()
+                            .getDescripcion()+" "+"Nombre Cliente: "
+                    + f.getCliente().getNombre() +" "+f.getCliente().getApellido());
         }
     }
 }
