@@ -20,11 +20,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AccionesFacturas {
     PanelVentas panel;
-    Facturas factura = new Facturas();
+    DialogFactura dialog;
+    //FIXME apparently unused object, please test first.
+//    Facturas factura = new Facturas();
+    
 
     public AccionesFacturas(PanelVentas panel) {
         this.panel = panel;
     }
+
+    public AccionesFacturas(DialogFactura dialog) {
+        this.dialog = dialog;
+    }
+    
+    
     
     public void guardarDetalleFactura(){
         
@@ -55,5 +64,24 @@ public class AccionesFacturas {
     
     public void displayFactura(){
         
+        DefaultTableModel model = (DefaultTableModel)dialog.getTblDisplayFactura().getModel();
+        model.setNumRows(0);
+        
+        FacturasDAO dao = new FacturasDAO();
+        DetalleFactura detalleFactura = new DetalleFactura();
+        
+        for (DetalleFactura f : dao.readFacturaDisplay()) {
+            model.addRow(new Object[]{
+            f.getProducto().getDescripcion(),
+            f.getProducto().getCantidadComprada(),
+            f.getProducto().getPrecio(),
+            f.getDescuento(),
+            f.getSubtotal(),
+        });
+            dialog.getLblNumFactura().setText(String.valueOf(dao.getKey()));
+            dialog.getLblClienteNombre().setText(f.getFactura().getCliente().getNombre());
+            dialog.getLblClienteApellido().setText(f.getFactura().getCliente().getApellido());
+            dialog.getTxtTotal().setText(String.valueOf(f.getFactura().getTotal()));
+        }
     }
 }

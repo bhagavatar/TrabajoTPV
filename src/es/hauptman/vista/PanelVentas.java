@@ -1006,6 +1006,10 @@ public class PanelVentas extends javax.swing.JPanel {
          model.setNumRows(0);
          NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
          campoTotal.setText(currencyFormatter.format(getSum()));
+         
+         DialogFactura dialog = new DialogFactura(frame, true);
+         dialog.setLocationRelativeTo(this);
+         dialog.setVisible(true);
     }//GEN-LAST:event_btnCobrarActionPerformed
 
     

@@ -60,11 +60,11 @@ public class FacturasDAOTest {
     public void readFactura() {
         FacturasDAO dao = new FacturasDAO();
         
-        for (Facturas f : dao.readFacturaDisplay()) {
-            System.out.println("Ticket ID: " + f.getTicketID()+" " 
-                    + "Producto: "+f.getDetalleFactura().getProducto()
+        for (DetalleFactura f : dao.readFacturaDisplay()) {
+            System.out.println("Ticket ID: " + f.getFactura().getTicketID()+" " 
+                    + "Producto: "+f.getProducto()
                             .getDescripcion()+" "+"Nombre Cliente: "
-                    + f.getCliente().getNombre() +" "+f.getCliente().getApellido());
+                    + f.getFactura().getCliente().getNombre() +" "+f.getFactura().getCliente().getApellido());
         }
     }
 }

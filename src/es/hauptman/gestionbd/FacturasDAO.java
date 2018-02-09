@@ -26,7 +26,7 @@ import java.util.List;
  */
 public class FacturasDAO {
     private Connection conn = null;
-    private int key;
+    private static int key;
 
     public FacturasDAO() {
         conn = GestionSQL.getConnection();
@@ -49,6 +49,7 @@ public class FacturasDAO {
             
             queryFactura.setTimestamp(1, new Timestamp(new Date().getTime()));
             queryFactura.setDouble(2, factura.getTotal());
+            //Check si la factura no tiene cliente que inserte un valor null.
             if(factura.getCliente().getId() != 0){
                 queryFactura.setInt(3, factura.getCliente().getId());
             } else {
@@ -56,14 +57,14 @@ public class FacturasDAO {
             }
             queryFactura.executeUpdate();
             queryFactura.getGeneratedKeys();
-            
+            //Recupera el ID autoincremental.
             rs = queryFactura.getGeneratedKeys();    
             rs.next();  
             key = rs.getInt(1);
             factura.setTicketID(key);
             
           
-            
+            //Inserta los detalles en la factura creada.
             for (DetalleFactura df : factura.getListDetalleFacturas()) {
                 
                 PreparedStatement queryDetalle = null;
@@ -87,41 +88,44 @@ public class FacturasDAO {
         }
     }
     
-    public List<Facturas> readFacturaDisplay(){
+    public List<DetalleFactura> readFacturaDisplay(){
         
-        String sql = "SELECT * FROM view_facturadisplay";
+        String sql = "SELECT * FROM view_facturadisplay WHERE ticket_id=?";
         PreparedStatement query = null;
         ResultSet rs = null;
         
-        List<Facturas> facturas = new ArrayList<>();
+        List<DetalleFactura> listaDetalleFacturas = new ArrayList<>();
         
         try {
             query = conn.prepareStatement(sql);
+            query.setInt(1, key);
             rs = query.executeQuery();
             
             while(rs.next()){
+                
                 Facturas factura = new Facturas();
                 factura.setTicketID(rs.getInt("ticket_id"));
                 factura.setTotal(rs.getDouble("total_compra"));
-                
-                DetalleFactura detalleFactura = new DetalleFactura();
-                detalleFactura.setSubtotal(rs.getDouble("subtotal"));
-                detalleFactura.setCantidadComprada(rs.getInt("cantidad_comprada"));
+            
+                Clientes cliente = new Clientes();
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                factura.setCliente(cliente);
                 
                 Productos producto = new Productos();
                 producto.setDescripcion(rs.getString("nombreProducto"));
                 producto.setPrecio(rs.getDouble("precio"));
+                producto.setCantidadComprada(rs.getInt("cantidad_comprada"));
                 
-                Clientes cliente = new Clientes();
-                cliente.setNombre(rs.getString("nombre"));
-                cliente.setApellido(rs.getString("apellido"));
-                
+                DetalleFactura detalleFactura = new DetalleFactura();
                 detalleFactura.setProducto(producto);
-                factura.setDetalleFactura(detalleFactura);
-                factura.setCliente(cliente);
+                detalleFactura.setFactura(factura);
+                detalleFactura.setSubtotal(rs.getDouble("subtotal"));
                 
-                facturas.add(factura);
                 
+                listaDetalleFacturas.add(detalleFactura);
+                factura.setListDetalleFacturas(listaDetalleFacturas);
+                listaDetalleFacturas = factura.getListDetalleFacturas();
             }
         
         } catch (SQLException ex) {
@@ -129,6 +133,6 @@ public class FacturasDAO {
         }finally {
             GestionSQL.closedConnection(conn, query, rs);
         }
-        return facturas;
+        return listaDetalleFacturas;
     }
 }
