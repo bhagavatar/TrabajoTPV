@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -40,7 +39,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private AccionesFacturas accionesFacturas;
     private Productos prodSeleccionado;
     List<Productos> listaProductosVenta = new ArrayList<>();
-    private static final AtomicInteger TICKET_ID = new AtomicInteger();
     
     
     /**

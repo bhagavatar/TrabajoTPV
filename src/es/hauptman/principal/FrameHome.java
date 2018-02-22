@@ -50,7 +50,10 @@ public class FrameHome extends javax.swing.JFrame {
         itemClientes = new javax.swing.JMenuItem();
         itemProductos = new javax.swing.JMenuItem();
         itemUsuarios = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         itemInicio = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        itemSalir = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -190,6 +193,7 @@ public class FrameHome extends javax.swing.JFrame {
             }
         });
         menu.add(itemUsuarios);
+        menu.add(jSeparator2);
 
         itemInicio.setText("Home");
         itemInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +202,15 @@ public class FrameHome extends javax.swing.JFrame {
             }
         });
         menu.add(itemInicio);
+        menu.add(jSeparator1);
+
+        itemSalir.setText("Salir de la Aplicación");
+        itemSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSalirActionPerformed(evt);
+            }
+        });
+        menu.add(itemSalir);
 
         barraMenu.add(menu);
 
@@ -261,6 +274,11 @@ public class FrameHome extends javax.swing.JFrame {
         cargaPanel (new PanelClientes(this));
     }//GEN-LAST:event_btnClientesActionPerformed
 
+    private void itemSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_itemSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -309,8 +327,11 @@ public class FrameHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemIniVentas;
     private javax.swing.JMenuItem itemInicio;
     private javax.swing.JMenuItem itemProductos;
+    private javax.swing.JMenuItem itemSalir;
     private javax.swing.JMenuItem itemUsuarios;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenu menu;
     private javax.swing.JPanel panelBanner;
     private javax.swing.JPanel panelBtnHome;

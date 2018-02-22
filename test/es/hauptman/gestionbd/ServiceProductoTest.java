@@ -7,6 +7,7 @@ package es.hauptman.gestionbd;
 
 import es.hauptman.entities.Categorias;
 import es.hauptman.entities.Productos;
+import es.hauptman.vista.PanelProductos;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Ignore;
@@ -17,7 +18,10 @@ import org.junit.Ignore;
  */
 public class ServiceProductoTest {
     
-    public ServiceProductoTest() {
+    PanelProductos panel;
+    
+    public ServiceProductoTest(PanelProductos panel) {
+        this.panel = panel;
     }
 
     @Test
@@ -54,6 +58,14 @@ public class ServiceProductoTest {
             fail("Erro ao salvar!");
         }
 
+    }
+    
+    @Test
+    public void testComboBox() {
+        
+        Categorias categoria = new Categorias();
+        categoria = (Categorias) panel.getCboCatProd().getSelectedItem();
+        System.out.println(categoria.getID());
     }
     
 }

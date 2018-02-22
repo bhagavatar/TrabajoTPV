@@ -11,6 +11,7 @@ import es.hauptman.entities.Facturas;
 import es.hauptman.entities.Productos;
 import es.hauptman.gestionbd.FacturasDAO;
 import es.hauptman.vista.DialogFactura;
+import es.hauptman.vista.PanelGestVentas;
 import es.hauptman.vista.PanelVentas;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,9 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class AccionesFacturas {
     PanelVentas panel;
     DialogFactura dialog;
-    //FIXME apparently unused object, please test first.
-//    Facturas factura = new Facturas();
-    
+    PanelGestVentas panelGestVentas;
 
     public AccionesFacturas(PanelVentas panel) {
         this.panel = panel;
@@ -32,9 +31,11 @@ public class AccionesFacturas {
     public AccionesFacturas(DialogFactura dialog) {
         this.dialog = dialog;
     }
-    
-    
-    
+
+    public AccionesFacturas(PanelGestVentas panelGestVentas) {
+        this.panelGestVentas = panelGestVentas;
+    }
+        
     public void guardarDetalleFactura(){
         
         DetalleFactura detalleFactura = new DetalleFactura();
@@ -64,13 +65,16 @@ public class AccionesFacturas {
     
     public void displayFactura(){
         
-        DefaultTableModel model = (DefaultTableModel)dialog.getTblDisplayFactura().getModel();
+        DefaultTableModel model = (DefaultTableModel)dialog
+                .getTblDisplayFactura().getModel();
         model.setNumRows(0);
         
         FacturasDAO dao = new FacturasDAO();
         DetalleFactura detalleFactura = new DetalleFactura();
         
+        //Recorre la lista del DAO
         for (DetalleFactura f : dao.readFacturaDisplay()) {
+            //Añade los valores de la base de datos a la tabla
             model.addRow(new Object[]{
             f.getProducto().getDescripcion(),
             f.getProducto().getCantidadComprada(),
@@ -78,10 +82,62 @@ public class AccionesFacturas {
             f.getDescuento(),
             f.getSubtotal(),
         });
+            //Añade los valores de la base de datos a las etiquetas y campo de texto.
             dialog.getLblNumFactura().setText(String.valueOf(dao.getKey()));
             dialog.getLblClienteNombre().setText(f.getFactura().getCliente().getNombre());
             dialog.getLblClienteApellido().setText(f.getFactura().getCliente().getApellido());
             dialog.getTxtTotal().setText(String.valueOf(f.getFactura().getTotal()));
+        }
+    }
+    
+    public void searchFactura(int ticketID, int clienteID, String fecha, String nombreCliente) {
+        
+        DefaultTableModel model = (DefaultTableModel) panelGestVentas
+                .getTblFacturas().getModel();
+        model.setNumRows(0);
+        
+        FacturasDAO dao = new FacturasDAO();
+        //Facturas factura = new Facturas();
+        
+        for (Facturas f : dao.readFactura(ticketID, clienteID, fecha, nombreCliente)) {
+            model.addRow(new Object[]{
+            f.getTicketID(),
+            " ",
+            f.getCliente().getId(),
+            f.getCliente().getNombre(),
+            f.getCliente().getApellido(),
+            f.getFecha(),
+            f.getTotal(),
+        });
+            
+            panelGestVentas.getTxtDetalleIDFactura().setText(String.valueOf(f.getTicketID()));
+            
+        }
+    }
+    
+    public void getDetalleFactura(int ticketID) {
+        
+        DefaultTableModel model = (DefaultTableModel)panelGestVentas
+                .getTblDetalleFactura().getModel();
+        model.setNumRows(0);
+        
+        FacturasDAO dao = new FacturasDAO();
+        DetalleFactura detalleFactura = new DetalleFactura();
+        
+        //Recorre la lista del DAO
+        for (DetalleFactura f : dao.readDetalleFactura(ticketID)) {
+            //Añade los valores de la base de datos a la tabla
+            model.addRow(new Object[]{
+            f.getProducto().getDescripcion(),
+            f.getProducto().getCantidadComprada(),
+            f.getProducto().getPrecio(),
+            f.getDescuento(),
+            f.getSubtotal(),
+        });
+            
+           panelGestVentas.getTxtDetalleNombre().setText(f.getFactura().getCliente().getNombre());
+           panelGestVentas.getTxtDetalleApellido().setText(f.getFactura().getCliente().getApellido());
+           panelGestVentas.getTxtDetalleTotalCompra().setText(String.valueOf(f.getFactura().getTotal()));
         }
     }
 }

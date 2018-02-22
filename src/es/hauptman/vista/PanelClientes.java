@@ -7,6 +7,7 @@ package es.hauptman.vista;
 
 import es.hauptman.acciones.AccionesClientes;
 import es.hauptman.principal.FrameHome;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -561,7 +562,7 @@ public class PanelClientes extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, true, false, true, true
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -625,48 +626,45 @@ public class PanelClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAltaActionPerformed
+        
+        if(txtNombreAlta.getText().equals("")){
+            JOptionPane.showMessageDialog(frame, "Rellene al menos un nombre.", 
+                    "No se ha guardado.", JOptionPane.WARNING_MESSAGE);
+        }else{
         accionesClientes.guardarCliente();
         accionesClientes.readTblClientes();
-        
-        //Limpiar los campos
-        txtApellidoAlta.setText("");
-        txtNombreAlta.setText("");
-        txtCPAlta.setText("");
-        txtDireccionAlta.setText("");
-        txtTelefonoAlta.setText("");
-        txtProvinciaAlta.setText("");
-        txtCiudadAlta.setText("");
-        
+        limpiaCampos();
+        }
         
     }//GEN-LAST:event_btnGuardarAltaActionPerformed
 
     private void btnGuardarEditaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEditaActionPerformed
+        if(txtIdEdita.getText().equals("")){
+            JOptionPane.showMessageDialog(frame, "Seleccione un Cliente o su ID.", 
+                    "No se ha modificado.", JOptionPane.WARNING_MESSAGE);
+        }else {
         accionesClientes.editarCliente();
         accionesClientes.readTblClientes();
-        
-        //Limpiar los campos
-        txtApellidoAlta.setText("");
-        txtNombreAlta.setText("");
-        txtCPAlta.setText("");
-        txtDireccionAlta.setText("");
-        txtTelefonoAlta.setText("");
-        txtProvinciaAlta.setText("");
-        txtCiudadAlta.setText("");
+        limpiaCampos();
+        }
     }//GEN-LAST:event_btnGuardarEditaActionPerformed
 
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
+        if(txtIDBaja.getText().equals("")){
+           JOptionPane.showMessageDialog(frame, "Seleccione un Cliente o su ID.",
+                   "No se ha eliminado.", JOptionPane.WARNING_MESSAGE); 
+        }else
         accionesClientes.eliminarCliente();
         accionesClientes.readTblClientes();
-        
-        //Lipiar los campos
-        txtApellidoBaja.setText("");
-        txtNombreBaja.setText("");
-        txtIDBaja.setText("");
+        limpiaCampos();
     }//GEN-LAST:event_btnBajaActionPerformed
 
     private void btnUpdateListaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateListaClienteActionPerformed
         accionesClientes.readTblClientes();
-        
+        limpiaCampos();
+    }//GEN-LAST:event_btnUpdateListaClienteActionPerformed
+
+    private void limpiaCampos() {
         //Limpiar los Campos
         txtIdEdita.setText("");
         txtApellidoEdita.setText("");
@@ -676,10 +674,31 @@ public class PanelClientes extends javax.swing.JPanel {
         txtTelefonoEdita.setText("");
         txtProvinciaEdita.setText("");
         txtCiudadEdita.setText("");
-    }//GEN-LAST:event_btnUpdateListaClienteActionPerformed
+        
+        txtApellidoAlta.setText("");
+        txtNombreAlta.setText("");
+        txtCPAlta.setText("");
+        txtDireccionAlta.setText("");
+        txtTelefonoAlta.setText("");
+        txtProvinciaAlta.setText("");
+        txtCiudadAlta.setText("");
+        
+        txtApellidoBaja.setText("");
+        txtNombreBaja.setText("");
+        txtIDBaja.setText("");
+    }
 
     private void tblClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMousePressed
+        fillTextFiledsFromTable();
+    }//GEN-LAST:event_tblClienteMousePressed
 
+   
+
+    private void tblClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblClienteKeyReleased
+       fillTextFiledsFromTable();
+    }//GEN-LAST:event_tblClienteKeyReleased
+
+     private void fillTextFiledsFromTable() {
         DefaultTableModel model = (DefaultTableModel) tblCliente.getModel();
         if (tblCliente.getSelectedRow() != -1) {
             
@@ -697,29 +716,7 @@ public class PanelClientes extends javax.swing.JPanel {
             txtApellidoBaja.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 2).toString());
             
         }
-    }//GEN-LAST:event_tblClienteMousePressed
-
-    private void tblClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblClienteKeyReleased
-
-        DefaultTableModel model = (DefaultTableModel) tblCliente.getModel();
-        if (tblCliente.getSelectedRow() != -1) {
-            
-            txtIdEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 0).toString());
-            txtNombreEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 1).toString());
-            txtApellidoEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 2).toString());
-            txtTelefonoEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 3).toString());
-            txtDireccionEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 4).toString());
-            txtCPEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 5).toString());
-            txtCiudadEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 6).toString());
-            txtProvinciaEdita.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 7).toString());
-            
-            txtIDBaja.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 0).toString());
-            txtNombreBaja.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 1).toString());
-            txtApellidoBaja.setText(tblCliente.getValueAt(tblCliente.getSelectedRow(), 2).toString());
-            
-        }
-    }//GEN-LAST:event_tblClienteKeyReleased
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBaja;

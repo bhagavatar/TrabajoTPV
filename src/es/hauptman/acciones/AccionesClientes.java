@@ -29,13 +29,13 @@ public class AccionesClientes {
      */
     public void guardarCliente() {
         Clientes cliente = new Clientes();
-        cliente.setNombre(panel.getTxtNombreAlta().getText());
-        cliente.setApellido(panel.getTxtApellidoAlta().getText());
-        cliente.setCiudad(panel.getTxtCiudadAlta().getText());
-        cliente.setCodpostal(panel.getTxtCPAlta().getText());
-        cliente.setDireccion(panel.getTxtDireccionAlta().getText());
-        cliente.setTelefono(panel.getTxtTelefonoAlta().getText());
-        cliente.setProvincia(panel.getTxtProvinciaAlta().getText());
+        cliente.setNombre(panel.getTxtNombreAlta().getText().trim());
+        cliente.setApellido(panel.getTxtApellidoAlta().getText().trim());
+        cliente.setCiudad(panel.getTxtCiudadAlta().getText().trim());
+        cliente.setCodpostal(panel.getTxtCPAlta().getText().trim());
+        cliente.setDireccion(panel.getTxtDireccionAlta().getText().trim());
+        cliente.setTelefono(panel.getTxtTelefonoAlta().getText().trim());
+        cliente.setProvincia(panel.getTxtProvinciaAlta().getText().trim());
         ClientesDAO dao = new ClientesDAO();
         dao.createCliente(cliente);    
     }
@@ -46,9 +46,9 @@ public class AccionesClientes {
      */
     public void eliminarCliente() {
         Clientes cliente = new Clientes();
-        cliente.setId(Integer.parseInt(panel.getTxtIDBaja().getText()));
-        cliente.setNombre(panel.getTxtNombreBaja().getText());
-        cliente.setApellido(panel.getTxtApellidoBaja().getText());
+        cliente.setId(Integer.parseInt(panel.getTxtIDBaja().getText().trim()));
+        cliente.setNombre(panel.getTxtNombreBaja().getText().trim());
+        cliente.setApellido(panel.getTxtApellidoBaja().getText().trim());
         ClientesDAO service = new ClientesDAO();
         service.deleteCliente(cliente);
         
@@ -60,14 +60,14 @@ public class AccionesClientes {
      */
     public void editarCliente() {
         Clientes cliente = new Clientes();
-        cliente.setId(Integer.parseInt(panel.getTxtIdEdita().getText()));
-        cliente.setNombre(panel.getTxtNombreEdita().getText());
-        cliente.setApellido(panel.getTxtApellidoEdita().getText());
-        cliente.setCiudad(panel.getTxtCiudadEdita().getText());
-        cliente.setCodpostal(panel.getTxtCPEdita().getText());
-        cliente.setDireccion(panel.getTxtDireccionEdita().getText());
-        cliente.setTelefono(panel.getTxtTelefonoEdita().getText());
-        cliente.setProvincia(panel.getTxtProvinciaEdita().getText());
+        cliente.setId(Integer.parseInt(panel.getTxtIdEdita().getText().trim()));
+        cliente.setNombre(panel.getTxtNombreEdita().getText().trim());
+        cliente.setApellido(panel.getTxtApellidoEdita().getText().trim());
+        cliente.setCiudad(panel.getTxtCiudadEdita().getText().trim());
+        cliente.setCodpostal(panel.getTxtCPEdita().getText().trim());
+        cliente.setDireccion(panel.getTxtDireccionEdita().getText().trim());
+        cliente.setTelefono(panel.getTxtTelefonoEdita().getText().trim());
+        cliente.setProvincia(panel.getTxtProvinciaEdita().getText().trim());
         
         ClientesDAO service = new ClientesDAO();
         service.updateCliente(cliente);
@@ -75,7 +75,8 @@ public class AccionesClientes {
     
      public void readTblClientes(){
         
-        DefaultTableModel model = (DefaultTableModel) panel.getTblCliente().getModel();
+        DefaultTableModel model = (DefaultTableModel) panel.getTblCliente().
+                getModel();
         model.setNumRows(0);
         ClientesDAO dao = new ClientesDAO();
         

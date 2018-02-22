@@ -7,11 +7,7 @@ package es.hauptman.gestionbd;
 
 import es.hauptman.entities.Categorias;
 import es.hauptman.entities.Productos;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +19,11 @@ import java.util.List;
 public class ProductosDAO {
 
     private Connection conn = null;
+    private static int key;
+    
+    public int getKey() {
+        return key;
+    }
 
     public ProductosDAO() {
         conn = GestionSQL.getConnection();
@@ -34,6 +35,7 @@ public class ProductosDAO {
                 + "precio, categorias_id) VALUES (?,?,?,?)";
 
         PreparedStatement query = null;
+        ResultSet rs =null;
 
         try {
             query = conn.prepareStatement(sql ,Statement.RETURN_GENERATED_KEYS);
@@ -43,6 +45,10 @@ public class ProductosDAO {
             //Aquí recupero el Id de la Categorias atraves de la foreign key.
             query.setInt(4, producto.getCategoria().getID());
             query.executeUpdate();
+            rs = query.getGeneratedKeys();
+            rs.next();
+            key = rs.getInt(1);
+            
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT + ex);
@@ -130,6 +136,84 @@ public class ProductosDAO {
         return productos;
     }
     
+    public List<Productos> readProductosByCatId(Categorias categoria){
+        
+        String sql = "SELECT * FROM  view_productocategoria WHERE categorias_id = ?";
+        
+        List<Productos> listaProductos = new ArrayList<>();
+        
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setInt(1, categoria.getID());
+            rs = query.executeQuery();
+            
+            while(rs.next()){
+                Productos producto = new Productos();
+                producto.setID(rs.getInt("prod_id"));
+                producto.setDescripcion(rs.getString("nombreProducto"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setCantidadStock(rs.getInt("cantidadStock"));
+                categoria.setID(rs.getInt("id_cat"));
+                categoria.setDescripcion(rs.getString("descripcion"));
+                
+                producto.setCategoria(categoria);
+                
+                listaProductos.add(producto);
+            }
+            
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+            
+        }finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        
+        return listaProductos;
+        
+    }
+    
+    public List<Productos> readProductosById(Productos producto){
+        
+        String sql = "SELECT * FROM  view_productocategoria WHERE prod_id = ?";
+        
+        List<Productos> listaProductos = new ArrayList<>();
+        
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setInt(1, producto.getID());
+            rs = query.executeQuery();
+            
+            while(rs.next()){
+                
+                producto.setID(rs.getInt("prod_id"));
+                producto.setDescripcion(rs.getString("nombreProducto"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setCantidadStock(rs.getInt("cantidadStock"));
+                Categorias categoria = new Categorias();
+                categoria.setID(rs.getInt("id_cat"));
+                categoria.setDescripcion(rs.getString("descripcion"));
+                
+                producto.setCategoria(categoria);
+                
+                listaProductos.add(producto);
+            }
+            
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+            
+        }finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        
+        return listaProductos;
+        
+    }
     
     public boolean update(Productos producto){
         

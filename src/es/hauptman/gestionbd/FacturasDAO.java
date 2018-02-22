@@ -44,25 +44,23 @@ public class FacturasDAO {
         
         try {
             
-            
             queryFactura = conn.prepareStatement(sqlFactura ,Statement.RETURN_GENERATED_KEYS);
             
             queryFactura.setTimestamp(1, new Timestamp(new Date().getTime()));
             queryFactura.setDouble(2, factura.getTotal());
-            //Check si la factura no tiene cliente que inserte un valor null.
+            //Comprueba que si la factura no tiene cliente, inserte un valor null.
             if(factura.getCliente().getId() != 0){
                 queryFactura.setInt(3, factura.getCliente().getId());
             } else {
                 queryFactura.setNull(3, Types.INTEGER);
             }
             queryFactura.executeUpdate();
-            queryFactura.getGeneratedKeys();
             //Recupera el ID autoincremental.
+            queryFactura.getGeneratedKeys();
             rs = queryFactura.getGeneratedKeys();    
             rs.next();  
             key = rs.getInt(1);
             factura.setTicketID(key);
-            
           
             //Inserta los detalles en la factura creada.
             for (DetalleFactura df : factura.getListDetalleFacturas()) {
@@ -78,6 +76,7 @@ public class FacturasDAO {
                 queryDetalle.setInt(4, df.getProducto().getCantidadComprada());
                 queryDetalle.setDouble(5, df.getProducto().getSubtotal());
                 queryDetalle.executeUpdate();
+                queryDetalle.close();
         }
             return true;
         } catch (SQLException ex) {
@@ -88,6 +87,10 @@ public class FacturasDAO {
         }
     }
     
+    /**
+     * Recupera detalles de la factura que se muestran en el DialogFactura.
+     * @return Lista de tipo DetalleFactura.
+     */
     public List<DetalleFactura> readFacturaDisplay(){
         
         String sql = "SELECT * FROM view_facturadisplay WHERE ticket_id=?";
@@ -122,6 +125,94 @@ public class FacturasDAO {
                 detalleFactura.setFactura(factura);
                 detalleFactura.setSubtotal(rs.getDouble("subtotal"));
                 
+                listaDetalleFacturas.add(detalleFactura);
+                factura.setListDetalleFacturas(listaDetalleFacturas);
+                listaDetalleFacturas = factura.getListDetalleFacturas();
+            }
+        
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+        }finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        return listaDetalleFacturas;
+    }
+    
+    public List<Facturas> readFactura(int ticketID, int clienteID, String fecha, String nombreCliente){
+        
+        String sql = "SELECT * FROM view_facturaclientes WHERE ticket_id=? or clientes_id=? or fecha LIKE ? or nombre=?";
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        List<Facturas> listaFactura = new ArrayList<>();
+        List<DetalleFactura> listaDetalleFacturas = new ArrayList<>();
+        
+         try {
+             
+            query = conn.prepareStatement(sql);
+            query.setInt(1, ticketID);
+            query.setInt(2, clienteID);
+            query.setString(3, fecha + "%");
+            query.setString(4, nombreCliente);
+            rs = query.executeQuery();
+            
+            while(rs.next()){
+                
+                Facturas factura = new Facturas();
+                factura.setTicketID(rs.getInt("ticket_id"));
+                factura.setTotal(rs.getDouble("total_compra"));
+                factura.setFecha(rs.getString("fecha"));
+            
+                Clientes cliente = new Clientes();
+                cliente.setId(rs.getInt("clientes_id"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                factura.setCliente(cliente);
+                
+                listaFactura.add(factura);
+            }
+        
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+        }finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        
+        return listaFactura;
+    }
+    
+    public List<DetalleFactura> readDetalleFactura(int ticketID){
+        
+        String sql = "SELECT * FROM view_facturadisplay WHERE ticket_id=?";
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        
+        List<DetalleFactura> listaDetalleFacturas = new ArrayList<>();
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setInt(1, ticketID);
+            rs = query.executeQuery();
+            
+            while(rs.next()){
+                
+                Facturas factura = new Facturas();
+                factura.setTicketID(rs.getInt("ticket_id"));
+                factura.setTotal(rs.getDouble("total_compra"));
+            
+                Clientes cliente = new Clientes();
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                factura.setCliente(cliente);
+                
+                Productos producto = new Productos();
+                producto.setDescripcion(rs.getString("nombreProducto"));
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setCantidadComprada(rs.getInt("cantidad_comprada"));
+                
+                DetalleFactura detalleFactura = new DetalleFactura();
+                detalleFactura.setProducto(producto);
+                detalleFactura.setFactura(factura);
+                detalleFactura.setSubtotal(rs.getDouble("subtotal"));
                 
                 listaDetalleFacturas.add(detalleFactura);
                 factura.setListDetalleFacturas(listaDetalleFacturas);

@@ -6,7 +6,6 @@
 package es.hauptman.entities;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -22,7 +21,7 @@ public class Facturas {
     private Clientes cliente;
     private double iva;
     private double total;
-    private Date fecha;
+    private String fecha;
     //FIXME mudar para ArrayList
     private DetalleFactura detalleFactura;
     
@@ -82,11 +81,11 @@ public class Facturas {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

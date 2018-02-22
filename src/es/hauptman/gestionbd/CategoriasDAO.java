@@ -38,8 +38,6 @@ public class CategoriasDAO {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(CategoriasDAO.class.getName()).log(Level.SEVERE, 
-            //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
             GestionSQL.closedConnection(conn, query);
@@ -63,6 +61,7 @@ public class CategoriasDAO {
             while (rs.next()) {                
                 Categorias categoria = new Categorias();
                 categoria.setDescripcion(rs.getString("descripcion"));
+                categoria.setID(rs.getInt("id"));
                 categorias.add(categoria);
             }
             
@@ -88,8 +87,6 @@ public class CategoriasDAO {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(CategoriasDAO.class.getName()).log(Level.SEVERE, 
-            //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
             GestionSQL.closedConnection(conn, query);
@@ -98,7 +95,7 @@ public class CategoriasDAO {
     
     public boolean delete(Categorias categoria){
         
-        String sql = "DELETE FROM categoria WHERE id = ?";
+        String sql = "DELETE FROM categorias WHERE id = ?";
         
         PreparedStatement query = null;
         
@@ -109,8 +106,6 @@ public class CategoriasDAO {
             return true;
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
-            //Logger.getLogger(CategoriasDAO.class.getName()).log(Level.SEVERE, 
-            //IErrors.ERROR_SQL_STATEMENT, ex);
             return false;
         }finally {
             GestionSQL.closedConnection(conn, query);
