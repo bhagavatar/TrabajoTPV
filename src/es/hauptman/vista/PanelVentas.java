@@ -114,9 +114,9 @@ public class PanelVentas extends javax.swing.JPanel {
         btnZumo = new javax.swing.JButton();
         btnCroissant = new javax.swing.JButton();
         btnCookie = new javax.swing.JButton();
-        btnDesayuno = new javax.swing.JButton();
+        btnMenus = new javax.swing.JButton();
         btnMadalena = new javax.swing.JButton();
-        btnHotDog = new javax.swing.JButton();
+        btnBocadillos = new javax.swing.JButton();
         panelTablaVentas = new javax.swing.JScrollPane();
         tablaVentas = new javax.swing.JTable();
         panelNumerico = new javax.swing.JPanel();
@@ -211,6 +211,36 @@ public class PanelVentas extends javax.swing.JPanel {
         jToggleButton52 = new javax.swing.JToggleButton();
         jToggleButton53 = new javax.swing.JToggleButton();
         jToggleButton54 = new javax.swing.JToggleButton();
+        panelMenus = new javax.swing.JPanel();
+        jToggleButton55 = new javax.swing.JToggleButton();
+        jToggleButton56 = new javax.swing.JToggleButton();
+        jToggleButton57 = new javax.swing.JToggleButton();
+        jToggleButton58 = new javax.swing.JToggleButton();
+        jToggleButton59 = new javax.swing.JToggleButton();
+        jToggleButton61 = new javax.swing.JToggleButton();
+        jToggleButton60 = new javax.swing.JToggleButton();
+        jToggleButton62 = new javax.swing.JToggleButton();
+        jToggleButton63 = new javax.swing.JToggleButton();
+        panelMadalenas = new javax.swing.JPanel();
+        jToggleButton64 = new javax.swing.JToggleButton();
+        jToggleButton65 = new javax.swing.JToggleButton();
+        jToggleButton66 = new javax.swing.JToggleButton();
+        jToggleButton67 = new javax.swing.JToggleButton();
+        jToggleButton68 = new javax.swing.JToggleButton();
+        jToggleButton69 = new javax.swing.JToggleButton();
+        jToggleButton70 = new javax.swing.JToggleButton();
+        jToggleButton71 = new javax.swing.JToggleButton();
+        jToggleButton72 = new javax.swing.JToggleButton();
+        panelBocadillos = new javax.swing.JPanel();
+        jToggleButton73 = new javax.swing.JToggleButton();
+        jToggleButton74 = new javax.swing.JToggleButton();
+        jToggleButton75 = new javax.swing.JToggleButton();
+        jToggleButton76 = new javax.swing.JToggleButton();
+        jToggleButton77 = new javax.swing.JToggleButton();
+        jToggleButton79 = new javax.swing.JToggleButton();
+        jToggleButton78 = new javax.swing.JToggleButton();
+        jToggleButton80 = new javax.swing.JToggleButton();
+        jToggleButton81 = new javax.swing.JToggleButton();
         btnCobrar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
 
@@ -286,24 +316,40 @@ public class PanelVentas extends javax.swing.JPanel {
         });
         panelCategoria.add(btnCookie);
 
-        btnDesayuno.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
-        btnDesayuno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/hauptman/imagenes/Breakfast-icon.png"))); // NOI18N
-        btnDesayuno.setText("Menú Desayuno");
-        btnDesayuno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDesayuno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        panelCategoria.add(btnDesayuno);
+        btnMenus.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
+        btnMenus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/hauptman/imagenes/Breakfast-icon.png"))); // NOI18N
+        btnMenus.setText("Menús");
+        btnMenus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMenus.setName(""); // NOI18N
+        btnMenus.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMenus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenusActionPerformed(evt);
+            }
+        });
+        panelCategoria.add(btnMenus);
 
         btnMadalena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/hauptman/imagenes/muffin-icon.png"))); // NOI18N
-        btnMadalena.setText("Madalena");
         btnMadalena.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMadalena.setLabel("Madalenas");
         btnMadalena.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMadalena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMadalenaActionPerformed(evt);
+            }
+        });
         panelCategoria.add(btnMadalena);
 
-        btnHotDog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/hauptman/imagenes/icons8-hot-dog-40.png"))); // NOI18N
-        btnHotDog.setText("Bocadillos");
-        btnHotDog.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnHotDog.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        panelCategoria.add(btnHotDog);
+        btnBocadillos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/hauptman/imagenes/icons8-hot-dog-40.png"))); // NOI18N
+        btnBocadillos.setText("Bocadillos");
+        btnBocadillos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBocadillos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBocadillos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBocadillosActionPerformed(evt);
+            }
+        });
+        panelCategoria.add(btnBocadillos);
 
         tablaVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -905,6 +951,177 @@ public class PanelVentas extends javax.swing.JPanel {
 
         panelCardTipo.add(panelCookies, "cookies");
 
+        panelMenus.setName(""); // NOI18N
+        panelMenus.setLayout(new java.awt.GridLayout(3, 3));
+
+        buttonGroupTipo.add(jToggleButton55);
+        jToggleButton55.setText("Menu del dia");
+        jToggleButton55.setName("menu del dia"); // NOI18N
+        jToggleButton55.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelMenus.add(jToggleButton55);
+
+        buttonGroupTipo.add(jToggleButton56);
+        jToggleButton56.setText("Menu desayuno");
+        jToggleButton56.setName("menu desayuno"); // NOI18N
+        jToggleButton56.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelMenus.add(jToggleButton56);
+
+        buttonGroupTipo.add(jToggleButton57);
+        panelMenus.add(jToggleButton57);
+
+        buttonGroupTipo.add(jToggleButton58);
+        panelMenus.add(jToggleButton58);
+
+        buttonGroupTipo.add(jToggleButton59);
+        panelMenus.add(jToggleButton59);
+
+        buttonGroupTipo.add(jToggleButton61);
+        panelMenus.add(jToggleButton61);
+
+        buttonGroupTipo.add(jToggleButton60);
+        panelMenus.add(jToggleButton60);
+
+        buttonGroupTipo.add(jToggleButton62);
+        panelMenus.add(jToggleButton62);
+
+        buttonGroupTipo.add(jToggleButton63);
+        panelMenus.add(jToggleButton63);
+
+        panelCardTipo.add(panelMenus, "menus");
+
+        panelMadalenas.setLayout(new java.awt.GridLayout(3, 3));
+
+        buttonGroupTipo.add(jToggleButton64);
+        jToggleButton64.setText("Mini Madalena");
+        jToggleButton64.setName("mini madalena"); // NOI18N
+        jToggleButton64.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelMadalenas.add(jToggleButton64);
+
+        buttonGroupTipo.add(jToggleButton65);
+        jToggleButton65.setText("Madalena Integral");
+        jToggleButton65.setName("madalena integral"); // NOI18N
+        jToggleButton65.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelMadalenas.add(jToggleButton65);
+
+        buttonGroupTipo.add(jToggleButton66);
+        jToggleButton66.setText("Mad. de Chocolate");
+        jToggleButton66.setName("madalena de chocolate"); // NOI18N
+        jToggleButton66.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelMadalenas.add(jToggleButton66);
+
+        buttonGroupTipo.add(jToggleButton67);
+        jToggleButton67.setText("Mad. de Arandanos");
+        jToggleButton67.setName("madalena de arandano"); // NOI18N
+        jToggleButton67.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelMadalenas.add(jToggleButton67);
+
+        buttonGroupTipo.add(jToggleButton68);
+        panelMadalenas.add(jToggleButton68);
+
+        buttonGroupTipo.add(jToggleButton69);
+        panelMadalenas.add(jToggleButton69);
+
+        buttonGroupTipo.add(jToggleButton70);
+        panelMadalenas.add(jToggleButton70);
+
+        buttonGroupTipo.add(jToggleButton71);
+        panelMadalenas.add(jToggleButton71);
+
+        buttonGroupTipo.add(jToggleButton72);
+        panelMadalenas.add(jToggleButton72);
+
+        panelCardTipo.add(panelMadalenas, "madalenas");
+
+        panelBocadillos.setLayout(new java.awt.GridLayout(3, 3));
+
+        buttonGroupTipo.add(jToggleButton73);
+        jToggleButton73.setText("Bocadillo de Carne");
+        jToggleButton73.setName("bocadillo carne"); // NOI18N
+        jToggleButton73.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBocadillos.add(jToggleButton73);
+
+        buttonGroupTipo.add(jToggleButton74);
+        jToggleButton74.setText("Bocadillo de Atún");
+        jToggleButton74.setName("bocadillo atun"); // NOI18N
+        jToggleButton74.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBocadillos.add(jToggleButton74);
+
+        buttonGroupTipo.add(jToggleButton75);
+        jToggleButton75.setText("Bikini");
+        jToggleButton75.setName("bikini"); // NOI18N
+        jToggleButton75.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBocadillos.add(jToggleButton75);
+
+        buttonGroupTipo.add(jToggleButton76);
+        jToggleButton76.setText("Bocadillo de Pollo");
+        jToggleButton76.setName("bocadillo pollo"); // NOI18N
+        jToggleButton76.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBocadillos.add(jToggleButton76);
+
+        buttonGroupTipo.add(jToggleButton77);
+        jToggleButton77.setText("Jamón Serrano");
+        jToggleButton77.setName("bocadillo jamon serrano"); // NOI18N
+        jToggleButton77.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jToggleButton1ItemStateChanged(evt);
+            }
+        });
+        panelBocadillos.add(jToggleButton77);
+
+        buttonGroupTipo.add(jToggleButton79);
+        panelBocadillos.add(jToggleButton79);
+
+        buttonGroupTipo.add(jToggleButton78);
+        panelBocadillos.add(jToggleButton78);
+
+        buttonGroupTipo.add(jToggleButton80);
+        panelBocadillos.add(jToggleButton80);
+
+        buttonGroupTipo.add(jToggleButton81);
+        panelBocadillos.add(jToggleButton81);
+
+        panelCardTipo.add(panelBocadillos, "bocadillos");
+
         btnCobrar.setText("Cobrar");
         btnCobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -954,11 +1171,11 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                            .addComponent(campoTotal, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                                .addComponent(btnCobrar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))))
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCobrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -966,7 +1183,7 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(campoDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelNumerico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE))
+                    .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1073,6 +1290,24 @@ public class PanelVentas extends javax.swing.JPanel {
          cl.show(panelCardTipo, "cookies"); 
     }//GEN-LAST:event_btnCookieActionPerformed
 
+    private void btnMenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenusActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
+         cl.show(panelCardTipo, "menus"); 
+    }//GEN-LAST:event_btnMenusActionPerformed
+
+    private void btnMadalenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMadalenaActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
+         cl.show(panelCardTipo, "madalenas"); 
+    }//GEN-LAST:event_btnMadalenaActionPerformed
+
+    private void btnBocadillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBocadillosActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
+         cl.show(panelCardTipo, "bocadillos"); 
+    }//GEN-LAST:event_btnBocadillosActionPerformed
+
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public JScrollPane getPanelTablaVentas() {
@@ -1124,17 +1359,17 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
     private javax.swing.JButton btnAcceptar;
+    private javax.swing.JButton btnBocadillos;
     private javax.swing.JButton btnCafe;
     private javax.swing.JButton btnChocolate;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnCobrar;
     private javax.swing.JButton btnCookie;
     private javax.swing.JButton btnCroissant;
-    private javax.swing.JButton btnDesayuno;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnHotDog;
     private javax.swing.JButton btnInfusion;
     private javax.swing.JButton btnMadalena;
+    private javax.swing.JButton btnMenus;
     private javax.swing.JButton btnPunto;
     private javax.swing.JToggleButton btnToggleDescuento;
     private javax.swing.JButton btnVacio;
@@ -1198,11 +1433,39 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButton52;
     private javax.swing.JToggleButton jToggleButton53;
     private javax.swing.JToggleButton jToggleButton54;
+    private javax.swing.JToggleButton jToggleButton55;
+    private javax.swing.JToggleButton jToggleButton56;
+    private javax.swing.JToggleButton jToggleButton57;
+    private javax.swing.JToggleButton jToggleButton58;
+    private javax.swing.JToggleButton jToggleButton59;
     private javax.swing.JToggleButton jToggleButton6;
+    private javax.swing.JToggleButton jToggleButton60;
+    private javax.swing.JToggleButton jToggleButton61;
+    private javax.swing.JToggleButton jToggleButton62;
+    private javax.swing.JToggleButton jToggleButton63;
+    private javax.swing.JToggleButton jToggleButton64;
+    private javax.swing.JToggleButton jToggleButton65;
+    private javax.swing.JToggleButton jToggleButton66;
+    private javax.swing.JToggleButton jToggleButton67;
+    private javax.swing.JToggleButton jToggleButton68;
+    private javax.swing.JToggleButton jToggleButton69;
     private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton70;
+    private javax.swing.JToggleButton jToggleButton71;
+    private javax.swing.JToggleButton jToggleButton72;
+    private javax.swing.JToggleButton jToggleButton73;
+    private javax.swing.JToggleButton jToggleButton74;
+    private javax.swing.JToggleButton jToggleButton75;
+    private javax.swing.JToggleButton jToggleButton76;
+    private javax.swing.JToggleButton jToggleButton77;
+    private javax.swing.JToggleButton jToggleButton78;
+    private javax.swing.JToggleButton jToggleButton79;
     private javax.swing.JToggleButton jToggleButton8;
+    private javax.swing.JToggleButton jToggleButton80;
+    private javax.swing.JToggleButton jToggleButton81;
     private javax.swing.JToggleButton jToggleButton9;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JPanel panelBocadillos;
     private javax.swing.JPanel panelBolleria;
     private javax.swing.JPanel panelCardTipo;
     private javax.swing.JPanel panelCategoria;
@@ -1210,6 +1473,8 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JPanel panelCookies;
     private javax.swing.JPanel panelDisplay;
     private javax.swing.JPanel panelInfusiones;
+    private javax.swing.JPanel panelMadalenas;
+    private javax.swing.JPanel panelMenus;
     private javax.swing.JPanel panelNumerico;
     private javax.swing.JScrollPane panelTablaVentas;
     private javax.swing.JPanel panelZumos;
