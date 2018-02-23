@@ -1291,19 +1291,16 @@ public class PanelVentas extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCookieActionPerformed
 
     private void btnMenusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenusActionPerformed
-        // TODO add your handling code here:
         CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
          cl.show(panelCardTipo, "menus"); 
     }//GEN-LAST:event_btnMenusActionPerformed
 
     private void btnMadalenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMadalenaActionPerformed
-        // TODO add your handling code here:
         CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
          cl.show(panelCardTipo, "madalenas"); 
     }//GEN-LAST:event_btnMadalenaActionPerformed
 
     private void btnBocadillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBocadillosActionPerformed
-        // TODO add your handling code here:
         CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
          cl.show(panelCardTipo, "bocadillos"); 
     }//GEN-LAST:event_btnBocadillosActionPerformed
