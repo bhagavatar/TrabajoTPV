@@ -1229,19 +1229,25 @@ public class PanelVentas extends javax.swing.JPanel {
         
         if (!campoDisplay.getText().equals("")) {
             
-        prodSeleccionado.setCantidadComprada(Integer.parseInt(campoDisplay.getText())); 
-        listaProductosVenta.add(prodSeleccionado);
+            prodSeleccionado.setCantidadComprada(Integer.parseInt(campoDisplay.getText())); 
+            int cantidad = prodSeleccionado.getCantidadStock() - prodSeleccionado.getCantidadComprada();
         
-        DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-        
-        model.addRow(prodSeleccionado.getRow());
-        
-        //Pone la suma del subtotal en el campo Total.
-        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
-        campoTotal.setText(currencyFormatter.format(getSum()));
-        
-        buttonGroupTipo.clearSelection();
-        campoDisplay.setText("");
+            if(cantidad > 0){
+                listaProductosVenta.add(prodSeleccionado);
+
+                DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+
+                model.addRow(prodSeleccionado.getRow());
+            } else if (cantidad <= 0){
+                JOptionPane.showMessageDialog(this, "No hay esta cantidad de: "+prodSeleccionado.getDescripcion());
+            }
+
+            //Pone la suma del subtotal en el campo Total.
+            NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
+            campoTotal.setText(currencyFormatter.format(getSum()));
+
+            buttonGroupTipo.clearSelection();
+            campoDisplay.setText("");
         
         }else {
             JOptionPane.showMessageDialog(null, "Seleccione una cantidad y pulse el botón Acceptar");

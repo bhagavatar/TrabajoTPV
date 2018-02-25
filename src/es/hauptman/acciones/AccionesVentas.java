@@ -15,14 +15,11 @@ import java.util.HashMap;
  */
 public class AccionesVentas {
     private ProductosDAO dao = new ProductosDAO();
-    //Creaamos el HashMap
     private HashMap <String, Productos> productosVenta = new HashMap<>();
-    
 
     public AccionesVentas() {
         productosVenta = dao.readProdVentas();
     }
-    
     
     public HashMap <String, Productos> getProductosVenta() {
         return productosVenta;
