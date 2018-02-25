@@ -6,6 +6,7 @@
 package es.hauptman.vista;
 
 import es.hauptman.acciones.AccionesFacturas;
+import es.hauptman.acciones.AccionesProductos;
 import es.hauptman.acciones.AccionesVentas;
 import es.hauptman.entities.Productos;
 import es.hauptman.principal.FrameHome;
@@ -37,6 +38,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private FrameHome frame;
     private AccionesVentas accionesVentas;
     private AccionesFacturas accionesFacturas;
+    private AccionesProductos accionesProductos;
     private Productos prodSeleccionado;
     List<Productos> listaProductosVenta = new ArrayList<>();
     
@@ -49,6 +51,7 @@ public class PanelVentas extends javax.swing.JPanel {
         initComponents();
         accionesVentas = new AccionesVentas();
         accionesFacturas = new AccionesFacturas(this);
+        accionesProductos = new AccionesProductos(this);
         prodSeleccionado = new Productos();
         
         //Muestra la fecha en la caja de texto txtFecha
@@ -1272,7 +1275,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
          DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
          accionesFacturas.guardarDetalleFactura();
-         
+         accionesProductos.updateQdtVenta();
          //Limpia el ArrayList para la proxima venta.
          listaProductosVenta.clear();
          

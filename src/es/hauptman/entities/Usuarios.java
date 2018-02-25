@@ -13,7 +13,9 @@ public class Usuarios {
     private int id;
     private String nombre;
     private String apellido;
-    private String funcion;
+    private String tipo;
+    private String nombreUsuario;
+    private String password;
 
     public Usuarios() {
     }
@@ -42,12 +44,33 @@ public class Usuarios {
         this.apellido = apellido;
     }
 
-    public String getFuncion() {
-        return funcion;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setFuncion(String funcion) {
-        this.funcion = funcion;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return getNombreUsuario();
     }
     
     

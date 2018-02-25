@@ -99,7 +99,7 @@ public class ProductosDAO {
     
     public HashMap<String, Productos> readProdVentas(){
         
-        String sql = "SELECT prod_id, nombreProducto, precio, id_cat, "
+        String sql = "SELECT prod_id, nombreProducto, precio, cantidadStock, id_cat, "
                 + "descripcion FROM view_productocategoria";
         
         PreparedStatement query = null;
@@ -116,6 +116,7 @@ public class ProductosDAO {
                 Productos producto = new Productos();
                 producto.setDescripcion(descripcionProd);
                 producto.setPrecio(rs.getDouble("precio"));
+                producto.setCantidadStock(rs.getInt("cantidadStock"));
                 
                 productos.put(descripcionProd, producto);
                 
@@ -232,6 +233,33 @@ public class ProductosDAO {
             query.setInt(5, producto.getID());
             query.executeUpdate();
             return true;
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+            return false;
+        }finally {
+            GestionSQL.closedConnection(conn, query);
+        }
+    }
+    
+    //FIXME
+    public boolean updateCantidad(List<Productos> listaProd){
+        
+        String sql = "UPDATE productos SET cantidadStock = ? WHERE id = ? ";
+        
+        PreparedStatement query = null;
+        
+        try {
+            query = conn.prepareStatement(sql);
+            
+            for(Productos p : listaProd){
+            query.setInt(1, p.getCantidadStock());
+            query.setInt(2, p.getID());
+            query.addBatch();
+            
+            }
+            query.executeBatch();
+            return true;
+            
         } catch (SQLException ex) {
             System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
             return false;

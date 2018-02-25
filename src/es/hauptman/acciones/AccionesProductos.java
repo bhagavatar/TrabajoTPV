@@ -9,6 +9,9 @@ import es.hauptman.entities.Categorias;
 import es.hauptman.entities.Productos;
 import es.hauptman.gestionbd.ProductosDAO;
 import es.hauptman.vista.PanelProductos;
+import es.hauptman.vista.PanelVentas;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,25 +20,31 @@ import javax.swing.table.DefaultTableModel;
  * @author Diego
  */
 public class AccionesProductos {
-    PanelProductos panel;
+    PanelProductos panelProductos;
+    PanelVentas panelVentas;
     
 
     public AccionesProductos(PanelProductos panel) {
-        this.panel = panel;
+        this.panelProductos = panel;
         
     }
+
+    public AccionesProductos(PanelVentas panelVentas) {
+        this.panelVentas = panelVentas;
+    }
+    
     
     public void guardarProductos(){
         
         Categorias categoria = new Categorias();
-        categoria = (Categorias) panel.getCboCatProd().getSelectedItem();
+        categoria = (Categorias) panelProductos.getCboCatProd().getSelectedItem();
         categoria.setID(categoria.getID());
         
         Productos producto = new Productos();
-        producto.setDescripcion(panel.getTxtProducto().getText().trim());
-        producto.setCantidadStock(Integer.parseInt(panel.getTxtCtd().
+        producto.setDescripcion(panelProductos.getTxtProducto().getText().trim());
+        producto.setCantidadStock(Integer.parseInt(panelProductos.getTxtCtd().
                 getText().trim()));
-        producto.setPrecio(Double.parseDouble(panel.getTxtPrecio().
+        producto.setPrecio(Double.parseDouble(panelProductos.getTxtPrecio().
                 getText().trim()));
         
         producto.setCategoria(categoria);
@@ -46,7 +55,7 @@ public class AccionesProductos {
     
     public void readListaProductos(){
         DefaultTableModel model = (DefaultTableModel) 
-                panel.getTablaProductos().getModel();
+                panelProductos.getTablaProductos().getModel();
         model.setNumRows(0);
         
         ProductosDAO dao = new ProductosDAO();
@@ -65,7 +74,7 @@ public class AccionesProductos {
     
     public void getLastCreatedProduct(){
         DefaultTableModel model = (DefaultTableModel) 
-                panel.getTablaProductos().getModel();
+                panelProductos.getTablaProductos().getModel();
         ProductosDAO dao = new ProductosDAO();
         Productos producto = new Productos();
         int recienCreado = dao.getKey();
@@ -85,11 +94,11 @@ public class AccionesProductos {
     
     public void readProdCatID(){
         
-        DefaultTableModel model = (DefaultTableModel) panel
+        DefaultTableModel model = (DefaultTableModel) panelProductos
                 .getTablaProductos().getModel();
         model.setNumRows(0);
         Categorias categoria = new Categorias();
-        categoria = (Categorias) panel.getCboSearchCat().getSelectedItem();
+        categoria = (Categorias) panelProductos.getCboSearchCat().getSelectedItem();
         
         ProductosDAO dao = new ProductosDAO();
         
@@ -107,11 +116,11 @@ public class AccionesProductos {
     
     public void readAccionesProdByID(){
         
-        DefaultTableModel model = (DefaultTableModel) panel
+        DefaultTableModel model = (DefaultTableModel) panelProductos
                 .getTablaProductos().getModel();
         model.setNumRows(0);
         Productos producto = new Productos();
-        producto = (Productos) panel.getCboSearchProd().getSelectedItem();
+        producto = (Productos) panelProductos.getCboSearchProd().getSelectedItem();
         
         ProductosDAO dao = new ProductosDAO();
         
@@ -131,28 +140,28 @@ public class AccionesProductos {
         
         ProductosDAO dao = new ProductosDAO();
         Productos producto = new Productos();
-        panel.getCboSearchProd().removeAllItems();
+        panelProductos.getCboSearchProd().removeAllItems();
         DefaultComboBoxModel<Object> model = 
                 new DefaultComboBoxModel<>(new String[] {"<Producto>"});
         //model.insertElementAt("<Producto>", 0);
-        panel.getCboSearchProd().setModel(model);
+        panelProductos.getCboSearchProd().setModel(model);
         
         for (Productos p : dao.readProductos()){
-            panel.getCboSearchProd().addItem(p);
+            panelProductos.getCboSearchProd().addItem(p);
         }    
     }
     
     public void editaProducto(){
         
         Categorias categoria = new Categorias();
-        categoria.setID(Integer.parseInt(panel.getTxtIdCat().getText()));
+        categoria.setID(Integer.parseInt(panelProductos.getTxtIdCat().getText()));
         
         Productos producto = new Productos();
-        producto.setID(Integer.parseInt(panel.getTxtIdProd().getText().trim()));
-        producto.setDescripcion(panel.getTxtProducto().getText().trim());
-        producto.setCantidadStock(Integer.parseInt(panel.getTxtCtd().
+        producto.setID(Integer.parseInt(panelProductos.getTxtIdProd().getText().trim()));
+        producto.setDescripcion(panelProductos.getTxtProducto().getText().trim());
+        producto.setCantidadStock(Integer.parseInt(panelProductos.getTxtCtd().
                 getText().trim()));
-        producto.setPrecio(Double.parseDouble(panel.getTxtPrecio().
+        producto.setPrecio(Double.parseDouble(panelProductos.getTxtPrecio().
                 getText().trim()));
         
         producto.setCategoria(categoria);
@@ -161,11 +170,24 @@ public class AccionesProductos {
         dao.update(producto);
         
     }
+    //FIXME
+    public void updateQdtVenta(){
+        ProductosDAO dao = new ProductosDAO();
+        List<Productos> listaProd = new ArrayList<>();
+        
+        for (Productos p : panelVentas.getListaProductosVenta()){
+            p.setCantidadStock(p.getCantidadStock() - p.getCantidadComprada());
+            listaProd.add(p);
+        }
+        
+       dao.updateCantidad(listaProd);
+        
+    }
     
     public void eliminaProducto(){
         Productos producto = new Productos();
         ProductosDAO dao = new ProductosDAO();
-        producto.setID(Integer.parseInt(panel.getTxtIdProd().getText().trim()));
+        producto.setID(Integer.parseInt(panelProductos.getTxtIdProd().getText().trim()));
         dao.delete(producto);
     }
 }
