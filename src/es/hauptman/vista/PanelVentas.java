@@ -29,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -40,11 +41,14 @@ public class PanelVentas extends javax.swing.JPanel {
     private AccionesFacturas accionesFacturas;
     private AccionesProductos accionesProductos;
     private Productos prodSeleccionado;
+    
+    
     List<Productos> listaProductosVenta = new ArrayList<>();
     
     
     /**
      * Creates new form Ventas
+     * @param frame
      */
     public PanelVentas(FrameHome frame) {
         this.frame = frame;
@@ -53,6 +57,10 @@ public class PanelVentas extends javax.swing.JPanel {
         accionesFacturas = new AccionesFacturas(this);
         accionesProductos = new AccionesProductos(this);
         prodSeleccionado = new Productos();
+        
+        //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
+        PlainDocument doc = (PlainDocument) campoDisplay.getDocument();
+        doc.setDocumentFilter(new MyIntFilter(this));
         
         //Muestra la fecha en la caja de texto txtFecha
         Date fecha = new Date();
@@ -84,6 +92,13 @@ public class PanelVentas extends javax.swing.JPanel {
             sum=sum+Double.parseDouble(tablaVentas.getValueAt(i, 4).toString());
         }
         return sum;
+    }
+    
+    public double getDescuento(double precio, double descuento){
+        double porCiento = 100 - descuento;
+        double preciofinal = (porCiento*precio)/100;
+        
+        return preciofinal;
     }
     
     class horas implements ActionListener {
@@ -126,11 +141,11 @@ public class PanelVentas extends javax.swing.JPanel {
         btn1 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
         btn3 = new javax.swing.JButton();
-        btnToggleDescuento = new javax.swing.JToggleButton();
+        btnDescuento = new javax.swing.JButton();
         btn4 = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
         btn6 = new javax.swing.JButton();
-        javax.swing.JToggleButton btnVacio1 = new javax.swing.JToggleButton();
+        jButton1 = new javax.swing.JButton();
         btn7 = new javax.swing.JButton();
         btn8 = new javax.swing.JButton();
         btn9 = new javax.swing.JButton();
@@ -249,7 +264,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(900, 800));
 
-        panelCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder("Categoria"));
+        panelCategoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categoria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(0, 0, 204))); // NOI18N
         panelCategoria.setLayout(new java.awt.GridLayout(0, 3));
 
         btnCafe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/hauptman/imagenes/Coffee-icon.png"))); // NOI18N
@@ -401,8 +416,8 @@ public class PanelVentas extends javax.swing.JPanel {
         });
         panelNumerico.add(btn3);
 
-        btnToggleDescuento.setText("%Dto");
-        panelNumerico.add(btnToggleDescuento);
+        btnDescuento.setText("%Dto.");
+        panelNumerico.add(btnDescuento);
 
         btn4.setText("4");
         btn4.setName("4"); // NOI18N
@@ -430,9 +445,7 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         });
         panelNumerico.add(btn6);
-
-        buttonGroup1.add(btnVacio1);
-        panelNumerico.add(btnVacio1);
+        panelNumerico.add(jButton1);
 
         btn7.setText("7");
         btn7.setName("7"); // NOI18N
@@ -582,7 +595,7 @@ public class PanelVentas extends javax.swing.JPanel {
         campoDisplay.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         campoDisplay.setOpaque(true);
 
-        panelCardTipo.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo"));
+        panelCardTipo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(0, 0, 204))); // NOI18N
         panelCardTipo.setLayout(new java.awt.CardLayout());
 
         pnlCafe.setLayout(new java.awt.GridLayout(3, 3));
@@ -1230,17 +1243,24 @@ public class PanelVentas extends javax.swing.JPanel {
         if (!campoDisplay.getText().equals("")) {
             
             prodSeleccionado.setCantidadComprada(Integer.parseInt(campoDisplay.getText())); 
+            int cantidadInicial = prodSeleccionado.getCantidadStock();
             int cantidad = prodSeleccionado.getCantidadStock() - prodSeleccionado.getCantidadComprada();
-        
-            if(cantidad > 0){
+            
+            if(cantidadInicial == 0){
+                JOptionPane.showMessageDialog(this, "El producto: " 
+                        + prodSeleccionado.getDescripcion() + " se ha terminado.");
+                
+            }else if(cantidadInicial > 0 & cantidad >= 0){
                 listaProductosVenta.add(prodSeleccionado);
-
                 DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-
                 model.addRow(prodSeleccionado.getRow());
-            } else if (cantidad <= 0){
-                JOptionPane.showMessageDialog(this, "No hay esta cantidad de: "+prodSeleccionado.getDescripcion());
-            }
+                
+            }else if (cantidad < 0){
+                JOptionPane.showMessageDialog(this, "No hay esta cantidad de: " 
+                        + prodSeleccionado.getDescripcion().toUpperCase()
+                        + "\nHay "+prodSeleccionado.getCantidadStock() 
+                        + " " + prodSeleccionado.getDescripcion() + ".");
+            } 
 
             //Pone la suma del subtotal en el campo Total.
             NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
@@ -1250,7 +1270,7 @@ public class PanelVentas extends javax.swing.JPanel {
             campoDisplay.setText("");
         
         }else {
-            JOptionPane.showMessageDialog(null, "Seleccione una cantidad y pulse el botón Acceptar");
+            JOptionPane.showMessageDialog(this, "Seleccione una cantidad y pulse el botón Acceptar");
         }    
     }//GEN-LAST:event_btnAcceptarActionPerformed
 
@@ -1372,18 +1392,19 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JButton btnCobrar;
     private javax.swing.JButton btnCookie;
     private javax.swing.JButton btnCroissant;
+    private javax.swing.JButton btnDescuento;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInfusion;
     private javax.swing.JButton btnMadalena;
     private javax.swing.JButton btnMenus;
     private javax.swing.JButton btnPunto;
-    private javax.swing.JToggleButton btnToggleDescuento;
     private javax.swing.JButton btnVacio;
     private javax.swing.JButton btnZumo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JTextField campoDisplay;
     private javax.swing.JTextField campoTotal;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
