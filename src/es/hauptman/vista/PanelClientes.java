@@ -30,6 +30,8 @@ public class PanelClientes extends javax.swing.JPanel {
         this.frame = frame;
         accionesClientes = new AccionesClientes(this);
         accionesClientes.readTblClientes();
+        MyIntFilter.formatInt(txtIDBaja);
+        MyIntFilter.formatInt(txtIdEdita);
     }
     
     

@@ -59,8 +59,7 @@ public class PanelVentas extends javax.swing.JPanel {
         prodSeleccionado = new Productos();
         
         //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
-        PlainDocument doc = (PlainDocument) campoDisplay.getDocument();
-        doc.setDocumentFilter(new MyIntFilter(this));
+        MyIntFilter.formatInt(campoDisplay);
         
         //Muestra la fecha en la caja de texto txtFecha
         Date fecha = new Date();
@@ -417,6 +416,11 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn3);
 
         btnDescuento.setText("%Dto.");
+        btnDescuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescuentoActionPerformed(evt);
+            }
+        });
         panelNumerico.add(btnDescuento);
 
         btn4.setText("4");
@@ -513,6 +517,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("TOTAL:");
 
+        campoTotal.setEditable(false);
         campoTotal.setBackground(new java.awt.Color(51, 102, 255));
         campoTotal.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         campoTotal.setForeground(new java.awt.Color(255, 255, 255));
@@ -1300,6 +1305,8 @@ public class PanelVentas extends javax.swing.JPanel {
     private void btnCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobrarActionPerformed
 
          DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+         
+         if(model.getRowCount() != 0 && model.getColumnCount() != 0){
          accionesFacturas.guardarDetalleFactura();
          accionesProductos.updateQdtVenta();
          //Limpia el ArrayList para la proxima venta.
@@ -1312,6 +1319,10 @@ public class PanelVentas extends javax.swing.JPanel {
          DialogFactura dialog = new DialogFactura(frame, true);
          dialog.setLocationRelativeTo(this);
          dialog.setVisible(true);
+         } else{
+             JOptionPane.showMessageDialog(this, "Seleccione un Producto.");
+         }
+             
     }//GEN-LAST:event_btnCobrarActionPerformed
 
     private void btnCookieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCookieActionPerformed
@@ -1333,6 +1344,11 @@ public class PanelVentas extends javax.swing.JPanel {
         CardLayout cl = (CardLayout) (panelCardTipo.getLayout());
          cl.show(panelCardTipo, "bocadillos"); 
     }//GEN-LAST:event_btnBocadillosActionPerformed
+
+    private void btnDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescuentoActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showInputDialog(this, "Dialog");
+    }//GEN-LAST:event_btnDescuentoActionPerformed
 
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">

@@ -14,17 +14,15 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
 /**
- * Classe que usa el DocumentFilter para que el campo de texto solo 
- * accepte integer.
- * 
+ *
  * @author Diego
  */
-public class MyIntFilter extends DocumentFilter{
+public class MyDoubleFilter extends DocumentFilter {
 
-    public MyIntFilter() {
+    public MyDoubleFilter() {
     }
     
-    public static void formatInt (JTextField campoTexto){
+    public static void formatDouble (JTextField campoTexto){
         //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
         PlainDocument doc = (PlainDocument) campoTexto.getDocument();
         doc.setDocumentFilter(new MyIntFilter());
@@ -43,7 +41,7 @@ public class MyIntFilter extends DocumentFilter{
          super.insertString(fb, offset, string, attr);
       } else {
          // warn the user and don't allow the insert
-          JOptionPane.showMessageDialog(null, "Por favor solo números enteros.");
+          JOptionPane.showMessageDialog(null, "Por favor solo números.");
       }
    }
 
@@ -52,7 +50,7 @@ public class MyIntFilter extends DocumentFilter{
          if(text.trim().isEmpty()){
              return true;
          }
-         Integer.parseInt(text);
+         Double.parseDouble(text);
          return true;
       } catch (NumberFormatException e) {
          return false;
@@ -72,7 +70,7 @@ public class MyIntFilter extends DocumentFilter{
          super.replace(fb, offset, length, text, attrs);
       } else {
          // warn the user and don't allow the insert
-         JOptionPane.showMessageDialog(null, "Por favor solo números enteros.");
+         JOptionPane.showMessageDialog(null, "Por favor solo números.");
       }
 
    }
@@ -91,8 +89,9 @@ public class MyIntFilter extends DocumentFilter{
           super.remove(fb, offset, length);
       }  else { 
             // warn the user and don't allow the insert  
-            JOptionPane.showMessageDialog(null, "Por favor solo números enteros.");
+            JOptionPane.showMessageDialog(null, "Por favor solo números.");
       }
 
    }
+    
 }

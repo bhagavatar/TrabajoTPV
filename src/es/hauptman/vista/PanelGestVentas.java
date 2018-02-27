@@ -36,6 +36,9 @@ public class PanelGestVentas extends javax.swing.JPanel {
         txtIDCliente.setEnabled(false);
         txtNombreCliente.setEnabled(false);
         txtFecha.setEnabled(false);
+        MyIntFilter.formatInt(txtIDCliente);
+        MyIntFilter.formatInt(txtDetalleIDFactura);
+        MyIntFilter.formatInt(txtTicketID);
     }
     
     public JTable getTblFacturas() {
