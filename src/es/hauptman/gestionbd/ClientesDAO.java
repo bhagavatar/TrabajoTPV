@@ -103,6 +103,37 @@ public class ClientesDAO {
         return clientes;
     }
     
+    public List<Clientes> readClienteById(Clientes cliente) {
+        
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        
+        List<Clientes> clientes = new ArrayList<>();
+        
+        try {
+            query = conn.prepareStatement("SELECT id, nombre, apellido FROM clientes WHERE id=?");
+            query.setInt(1, cliente.getId());
+            rs = query.executeQuery();
+            
+            while (rs.next()) {
+                
+                //Clientes cliente = new Clientes();
+                
+                cliente.setId(rs.getInt("id"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                clientes.add(cliente);
+            }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesDAO.class.getName()).log(Level.SEVERE, 
+                    IErrors.ERROR_SQL_STATEMENT, ex);
+        } finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        return clientes;
+    }
+    
     /**
      * Método para eliminar un cliente de la base de datos. Para eliminar hay
      * rellenar los campos id y nombre del cliente.

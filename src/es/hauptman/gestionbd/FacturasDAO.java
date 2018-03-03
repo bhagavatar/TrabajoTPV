@@ -38,22 +38,32 @@ public class FacturasDAO {
      
     public boolean createFactura (Facturas factura){
         
-        String sqlFactura = "INSERT INTO factura (fecha, total_compra, clientes_id) VALUES (?,?,?)";
+        String sqlFactura = "INSERT INTO factura (fecha, total_compra, "
+                + "clientes_id, descuento) VALUES (?,?,?,?)";
         PreparedStatement queryFactura = null;
         ResultSet rs = null;
         
         try {
             
-            queryFactura = conn.prepareStatement(sqlFactura ,Statement.RETURN_GENERATED_KEYS);
+            queryFactura = conn.prepareStatement(sqlFactura ,
+                    Statement.RETURN_GENERATED_KEYS);
             
             queryFactura.setTimestamp(1, new Timestamp(new Date().getTime()));
             queryFactura.setDouble(2, factura.getTotal());
-            //Comprueba que si la factura no tiene cliente, inserte un valor null.
+            //Comprueba que si la factura no tiene cliente o descuento, 
+            //inserte un valor null.
             if(factura.getCliente().getId() != 0){
                 queryFactura.setInt(3, factura.getCliente().getId());
             } else {
                 queryFactura.setNull(3, Types.INTEGER);
             }
+            
+            if(factura.getDescuento() != 0){
+                queryFactura.setDouble(4, factura.getTicketID());
+            } else {
+                queryFactura.setNull(4, Types.DOUBLE);
+            }
+            
             queryFactura.executeUpdate();
             //Recupera el ID autoincremental.
             queryFactura.getGeneratedKeys();
@@ -66,8 +76,10 @@ public class FacturasDAO {
             for (DetalleFactura df : factura.getListDetalleFacturas()) {
                 
                 PreparedStatement queryDetalle = null;
-                String sqlDetalle = "INSERT INTO detalle_factura (factura_ticket_id, productos_id, "
-                + "productos_categorias_id, cantidad_comprada, subtotal) VALUES (?,?,?,?,?)";
+                String sqlDetalle = "INSERT INTO detalle_factura "
+                        + "(factura_ticket_id, productos_id, "
+                        + "productos_categorias_id, cantidad_comprada, "
+                        + "subtotal) VALUES (?,?,?,?,?)";
         
                 queryDetalle = conn.prepareStatement(sqlDetalle);
                 queryDetalle.setInt(1, df.getFactura().getTicketID());
@@ -109,6 +121,7 @@ public class FacturasDAO {
                 Facturas factura = new Facturas();
                 factura.setTicketID(rs.getInt("ticket_id"));
                 factura.setTotal(rs.getDouble("total_compra"));
+                factura.setDescuento(rs.getDouble("descuento"));
             
                 Clientes cliente = new Clientes();
                 cliente.setNombre(rs.getString("nombre"));
@@ -138,9 +151,11 @@ public class FacturasDAO {
         return listaDetalleFacturas;
     }
     
-    public List<Facturas> readFactura(int ticketID, int clienteID, String fecha, String nombreCliente){
+    public List<Facturas> readFactura(int ticketID, int clienteID, String fecha, 
+            String nombreCliente, double descuento){
         
-        String sql = "SELECT * FROM view_facturaclientes WHERE ticket_id=? or clientes_id=? or fecha LIKE ? or nombre=?";
+        String sql = "SELECT * FROM view_facturaclientes WHERE ticket_id=? or "
+                + "clientes_id=? or fecha LIKE ? or nombre=?";
         PreparedStatement query = null;
         ResultSet rs = null;
         List<Facturas> listaFactura = new ArrayList<>();
@@ -161,6 +176,7 @@ public class FacturasDAO {
                 factura.setTicketID(rs.getInt("ticket_id"));
                 factura.setTotal(rs.getDouble("total_compra"));
                 factura.setFecha(rs.getString("fecha"));
+                factura.setDescuento(rs.getDouble("descuento"));
             
                 Clientes cliente = new Clientes();
                 cliente.setId(rs.getInt("clientes_id"));

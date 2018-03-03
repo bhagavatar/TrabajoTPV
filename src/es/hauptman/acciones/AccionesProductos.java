@@ -170,7 +170,6 @@ public class AccionesProductos {
         dao.update(producto);
         
     }
-    //FIXME
     public void updateQdtVenta(){
         ProductosDAO dao = new ProductosDAO();
         List<Productos> listaProd = new ArrayList<>();

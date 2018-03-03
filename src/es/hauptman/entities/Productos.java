@@ -97,7 +97,7 @@ public class Productos {
         Object[] rowProducto = new Object[] {
             cantidadComprada,
             descripcion,
-            descuento, 
+            descuento,
             precio, 
             subtotal = precio * cantidadComprada
         };

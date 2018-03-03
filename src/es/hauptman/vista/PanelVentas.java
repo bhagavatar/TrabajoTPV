@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -29,7 +30,6 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.PlainDocument;
 
 /**
  *
@@ -41,10 +41,13 @@ public class PanelVentas extends javax.swing.JPanel {
     private AccionesFacturas accionesFacturas;
     private AccionesProductos accionesProductos;
     private Productos prodSeleccionado;
+    //private DialogDescuento dialogDescuento;
+    static double totalBruto;
+    static double totalNeto;
     
     
     List<Productos> listaProductosVenta = new ArrayList<>();
-    
+
     
     /**
      * Creates new form Ventas
@@ -69,8 +72,9 @@ public class PanelVentas extends javax.swing.JPanel {
         //Muestra la hora en la caja de texto txtHora
         Timer tiempo=new Timer(100, new PanelVentas.horas());
         tiempo.start();
+        
     }
-
+    
     public FrameHome getFrame() {
         return frame;
     }
@@ -91,13 +95,6 @@ public class PanelVentas extends javax.swing.JPanel {
             sum=sum+Double.parseDouble(tablaVentas.getValueAt(i, 4).toString());
         }
         return sum;
-    }
-    
-    public double getDescuento(double precio, double descuento){
-        double porCiento = 100 - descuento;
-        double preciofinal = (porCiento*precio)/100;
-        
-        return preciofinal;
     }
     
     class horas implements ActionListener {
@@ -385,6 +382,9 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         });
         panelTablaVentas.setViewportView(tablaVentas);
+        if (tablaVentas.getColumnModel().getColumnCount() > 0) {
+            tablaVentas.getColumnModel().getColumn(2).setHeaderValue("Dto.");
+        }
 
         panelNumerico.setLayout(new java.awt.GridLayout(4, 4));
 
@@ -1268,8 +1268,9 @@ public class PanelVentas extends javax.swing.JPanel {
             } 
 
             //Pone la suma del subtotal en el campo Total.
-            NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
-            campoTotal.setText(currencyFormatter.format(getSum()));
+            totalBruto = getSum();
+            NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+            campoTotal.setText(currencyFormatter.format(totalBruto));
 
             buttonGroupTipo.clearSelection();
             campoDisplay.setText("");
@@ -1347,7 +1348,12 @@ public class PanelVentas extends javax.swing.JPanel {
 
     private void btnDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescuentoActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showInputDialog(this, "Dialog");
+         DialogDescuento dialogDescuento = new DialogDescuento(this);
+         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+         dialogDescuento.getTxtPrecio().setText(currencyFormatter.format(totalBruto));
+         dialogDescuento.setLocationRelativeTo(this);
+         dialogDescuento.setVisible(true);
+         
     }//GEN-LAST:event_btnDescuentoActionPerformed
 
     

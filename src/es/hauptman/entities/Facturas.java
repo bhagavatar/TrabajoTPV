@@ -19,7 +19,7 @@ public class Facturas {
     private int ticketID;
     private Usuarios usuario;
     private Clientes cliente;
-    private double iva;
+    private double descuento;
     private double total;
     private String fecha;
     //FIXME mudar para ArrayList
@@ -27,12 +27,6 @@ public class Facturas {
     
     private List<DetalleFactura> listDetalleFacturas;
     
-    //TODO: 1.Criar lista de Detalles Facturas
-    //        a) criar a lista a partir do getListaProductosVenta()
-    //      2.Ao adicionar DetalleFactura na Factura passar a referencia a esta clase:
-    //        DetalleFactura.setFactura(this);
-    //      3.
-
     public Facturas() {
         listDetalleFacturas = new ArrayList<DetalleFactura>();
     }
@@ -65,12 +59,12 @@ public class Facturas {
         this.cliente = cliente;
     }
 
-    public double getIva() {
-        return iva;
+    public double getDescuento() {
+        return descuento;
     }
 
-    public void setIva(double iva) {
-        this.iva = iva;
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
     }
 
     public double getTotal() {

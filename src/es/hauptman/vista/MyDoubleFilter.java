@@ -25,7 +25,7 @@ public class MyDoubleFilter extends DocumentFilter {
     public static void formatDouble (JTextField campoTexto){
         //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
         PlainDocument doc = (PlainDocument) campoTexto.getDocument();
-        doc.setDocumentFilter(new MyIntFilter());
+        doc.setDocumentFilter(new MyDoubleFilter());
     }
     
      @Override

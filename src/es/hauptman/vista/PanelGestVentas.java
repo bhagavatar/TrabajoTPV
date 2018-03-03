@@ -186,15 +186,15 @@ public class PanelGestVentas extends javax.swing.JPanel {
         tblFacturas.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Factura", "Usuário", "ID Cliente", "Nombre", "Apellido", "Fecha", "Total Compra"
+                "Factura", "Usuário", "ID Cliente", "Nombre", "Apellido", "Fecha", "Descuento", "Total Compra"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -306,7 +306,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", "Descuento", "Subtotal"
+                "Producto", "Cantidad", "Precio", "Subtotal"
             }
         ));
         jScrollPane2.setViewportView(tblDetalleFactura);
@@ -412,7 +412,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
         if(!txtIDCliente.getText().equals("")) {
             
             cliente.setId(Integer.parseInt(txtIDCliente.getText().trim()));
-            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre());
+            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre(), factura.getDescuento());
             
         } else if(!txtTicketID.getText().equals("")) {
             
@@ -420,7 +420,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
             txtFecha.setText("");
             
             factura.setTicketID(Integer.parseInt(txtTicketID.getText().trim()));
-            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre());
+            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre(), factura.getDescuento());
             
         } else if(!txtFecha.getText().equals("  /  /    ")){
             
@@ -435,13 +435,13 @@ public class PanelGestVentas extends javax.swing.JPanel {
                 ex.printStackTrace();
             }
             
-            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre());
+            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre(), factura.getDescuento());
             
         } 
         else if(!txtNombreCliente.getText().equals("")) {
         
             cliente.setNombre(txtNombreCliente.getText().trim());
-            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre());
+            accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre(), factura.getDescuento());
         
         }
     }//GEN-LAST:event_jButton7ActionPerformed

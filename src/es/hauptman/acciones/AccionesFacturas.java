@@ -79,7 +79,6 @@ public class AccionesFacturas {
             f.getProducto().getDescripcion(),
             f.getProducto().getCantidadComprada(),
             f.getProducto().getPrecio(),
-            f.getDescuento(),
             f.getSubtotal(),
         });
             //Añade los valores de la base de datos a las etiquetas y campo de texto.
@@ -90,7 +89,8 @@ public class AccionesFacturas {
         }
     }
     
-    public void searchFactura(int ticketID, int clienteID, String fecha, String nombreCliente) {
+    public void searchFactura(int ticketID, int clienteID, String fecha, 
+            String nombreCliente, double descuento) {
         
         DefaultTableModel model = (DefaultTableModel) panelGestVentas
                 .getTblFacturas().getModel();
@@ -99,7 +99,7 @@ public class AccionesFacturas {
         FacturasDAO dao = new FacturasDAO();
         //Facturas factura = new Facturas();
         
-        for (Facturas f : dao.readFactura(ticketID, clienteID, fecha, nombreCliente)) {
+        for (Facturas f : dao.readFactura(ticketID, clienteID, fecha, nombreCliente, descuento)) {
             model.addRow(new Object[]{
             f.getTicketID(),
             " ",
@@ -107,6 +107,7 @@ public class AccionesFacturas {
             f.getCliente().getNombre(),
             f.getCliente().getApellido(),
             f.getFecha(),
+            f.getDescuento(),
             f.getTotal(),
         });
             
@@ -131,7 +132,6 @@ public class AccionesFacturas {
             f.getProducto().getDescripcion(),
             f.getProducto().getCantidadComprada(),
             f.getProducto().getPrecio(),
-            f.getDescuento(),
             f.getSubtotal(),
         });
             

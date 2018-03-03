@@ -7,7 +7,9 @@ package es.hauptman.acciones;
 
 import es.hauptman.entities.Clientes;
 import es.hauptman.gestionbd.ClientesDAO;
+import es.hauptman.vista.DialogDescuento;
 import es.hauptman.vista.PanelClientes;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,11 +19,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AccionesClientes {
     
-    private final PanelClientes panel;
+    PanelClientes panel;
+    DialogDescuento dialogDesc;
 
     public AccionesClientes(PanelClientes panel) {
         this.panel = panel;
     }
+
+    public AccionesClientes(DialogDescuento dialogDesc) {
+        this.dialogDesc = dialogDesc;
+    }
+    
+    
     
     /**
      * Método que recupera los valores del formulario y los guarda en la
@@ -95,6 +104,31 @@ public class AccionesClientes {
             });
         }
     }
+     
+     public void readCboClientes(){
+          DefaultComboBoxModel<Object> model = 
+                new DefaultComboBoxModel<>(new String[] {"<Clientes>"});
+        dialogDesc.getCboCliente().setModel(model);
+         ClientesDAO dao = new ClientesDAO();
+         
+         for(Clientes c : dao.readCliente()){
+             dialogDesc.getCboCliente().addItem(c);
+         }
+         
+     }
+     
+     public void getClientesById(Clientes cliente){
+         //Clientes cliente = new Clientes();
+         ClientesDAO dao = new ClientesDAO();
+         cliente = (Clientes) dialogDesc.getCboCliente().getSelectedItem();
+         
+         for(Clientes c : dao.readClienteById(cliente)){
+             dialogDesc.getTxtNombre().setText(c.getNombre());
+             dialogDesc.getTxtApellido().setText(c.getApellido());
+         }
+         
+         
+     }
     
 }
 
