@@ -38,7 +38,8 @@ public class AccionesFacturas {
         
     public void guardarDetalleFactura(){
         
-        DetalleFactura detalleFactura = new DetalleFactura();
+        //DetalleFactura detalleFactura = new DetalleFactura();
+        DetalleFactura detalleFactura;
         Facturas factura = new Facturas();
         Productos producto = new Productos();
         Clientes cliente = new Clientes();
@@ -50,6 +51,8 @@ public class AccionesFacturas {
         
         factura.setCliente(cliente);
         factura.setTotal(panel.getSum());
+        double descuento = Double.parseDouble(panel.getTxtDesc().getText());
+        factura.setDescuento(descuento/100);
         FacturasDAO daoFactura = new FacturasDAO();
         
         DefaultTableModel model = (DefaultTableModel) panel.getTablaVentas().getModel();

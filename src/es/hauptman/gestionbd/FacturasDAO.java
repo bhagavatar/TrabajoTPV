@@ -59,7 +59,7 @@ public class FacturasDAO {
             }
             
             if(factura.getDescuento() != 0){
-                queryFactura.setDouble(4, factura.getTicketID());
+                queryFactura.setDouble(4, factura.getDescuento());
             } else {
                 queryFactura.setNull(4, Types.DOUBLE);
             }

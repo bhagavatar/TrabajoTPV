@@ -12,6 +12,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -23,7 +24,8 @@ public class DialogDescuento extends javax.swing.JDialog {
     PanelVentas panelVentas;  
     AccionesClientes accionesClientes;
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-    static double descuento;
+    static double valorPrecioDesc;
+    static double porCiento;
 
     /**
      * Creates new form DialogDescuento
@@ -34,20 +36,20 @@ public class DialogDescuento extends javax.swing.JDialog {
         panelVentas = new PanelVentas(frame);
         accionesClientes = new AccionesClientes(this);
         accionesClientes.readCboClientes();
-        //accionesClientes.getClientesById((Clientes) cboCliente.getSelectedItem());
-        
         MyDoubleFilter.formatDouble(txtDisplayCalc);
         
     }
 
+    /**
+     * Constructor que pasa el PanelVentas como parámetro para poder acceder 
+     * a los componentes del panel.
+     * @param panelVentas
+     */
     public DialogDescuento(PanelVentas panelVentas) {
         this.panelVentas = panelVentas;
         initComponents();
-        //panelVentas = new PanelVentas(frame);
         accionesClientes = new AccionesClientes(this);
         accionesClientes.readCboClientes();
-        //accionesClientes.getClientesById((Clientes) cboCliente.getSelectedItem());
-        
         MyDoubleFilter.formatDouble(txtDisplayCalc);
     }
     
@@ -70,10 +72,15 @@ public class DialogDescuento extends javax.swing.JDialog {
         return txtNombre;
     }
     
-     public double getDescuento(double precio, double descuento){
-        double porCiento = 100 - descuento;
-        double preciofinal = (porCiento*precio)/100;
-        
+    /**
+     * Método que calcula el descuento e retorna el precio final.
+     * @param precio
+     * @param descuento
+     * @return
+     */
+    public double getDescuento(double precio, double descuento){
+        porCiento = (100 - descuento)/100;
+        double preciofinal = porCiento*precio;
         return preciofinal;
     }
     
@@ -438,18 +445,18 @@ public class DialogDescuento extends javax.swing.JDialog {
         txtDisplayCalc.setText(txtDisplayCalc.getText() +
             ((JButton)evt.getSource()).getName());
         
-        descuento = getDescuento(PanelVentas.totalBruto, Double.parseDouble(txtDisplayCalc.getText()));
-        txtPrecioDesc.setText(currencyFormatter.format(descuento));
+        valorPrecioDesc = getDescuento(PanelVentas.totalBruto, Double.parseDouble(txtDisplayCalc.getText()));
+        txtPrecioDesc.setText(currencyFormatter.format(valorPrecioDesc));
     }//GEN-LAST:event_btnCalcActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         txtDisplayCalc.setText("");
         txtPrecioDesc.setText("");
-        descuento = PanelVentas.totalBruto;
+        valorPrecioDesc = PanelVentas.totalBruto;
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void cboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboClienteActionPerformed
-        Clientes cliente = new Clientes();
+        Clientes cliente;
         cliente = (Clientes) cboCliente.getSelectedItem();
         txtNombre.setText(cliente.getNombre());
         txtApellido.setText(cliente.getApellido());
@@ -460,10 +467,26 @@ public class DialogDescuento extends javax.swing.JDialog {
     }//GEN-LAST:event_lblCancelarMouseClicked
 
     private void lblAcceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAcceptarMouseClicked
-        // TODO add your handling code here:
+        if(cboCliente.getSelectedIndex() == 0 
+                && (!txtDisplayCalc.getText().equals("") 
+                    && !txtDisplayCalc.getText().equals("0")))
+        {
+            JOptionPane.showMessageDialog(this, "Solo se puede aplicar el "
+                    + "descuento a un cliente registrado.\n"+"Por favor "
+                    + "pulse otra vez el botón \"%Dto.\" y seleccione un Cliente");
+        }
+        
+        else if(txtDisplayCalc.getText().equals("")){
+            panelVentas.getTxtTotalNeto().setText(currencyFormatter.format(PanelVentas.totalBruto));
+            panelVentas.getTxtDesc().setText(txtDisplayCalc.getText());
+        }else{
+        panelVentas.getTxtTotalNeto().setText(currencyFormatter.format(valorPrecioDesc));
+        panelVentas.getTxtDesc().setText(txtDisplayCalc.getText());
+        Clientes cliente;
+        cliente = (Clientes) cboCliente.getSelectedItem();
+        panelVentas.getTxtIDCliente().setText(String.valueOf(cliente.getId()));
+        }
         dispose();
-        PanelVentas.totalNeto = descuento;
-        panelVentas.getCampoTotal().setText(currencyFormatter.format(PanelVentas.totalNeto));
     }//GEN-LAST:event_lblAcceptarMouseClicked
 
     /**
