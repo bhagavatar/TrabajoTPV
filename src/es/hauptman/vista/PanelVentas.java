@@ -1309,6 +1309,8 @@ public class PanelVentas extends javax.swing.JPanel {
                         + prodSeleccionado.getDescripcion() + " se ha terminado.");
                 
             }else if(cantidadInicial > 0 & cantidad >= 0){
+                //FIXME
+                checkRepeatedItem();
                 listaProductosVenta.add(prodSeleccionado);
                 DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
                 model.addRow(prodSeleccionado.getRow());
@@ -1339,18 +1341,33 @@ public class PanelVentas extends javax.swing.JPanel {
         }    
     }//GEN-LAST:event_btnAcceptarActionPerformed
 
+    private boolean checkRepeatedItem(){
+        String s = "";
+        boolean exists = false;
+        for(int i = 0; i < tablaVentas.getRowCount(); i++ ){
+            s = tablaVentas.getValueAt(i, 1).toString().trim();
+            if(prodSeleccionado.getDescripcion().equals(s)){
+                exists = true;
+                break;
+            }
+        }
+        System.out.println(prodSeleccionado +" exists: "+exists);
+        return exists;
+        
+    }
+    
+    
     private void jToggleButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton1ItemStateChanged
         
         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
         
         if(evt.getStateChange() == ItemEvent.SELECTED){
-            //Productos prodSeleccionado = new Productos();
             prodSeleccionado = accionesVentas.getProductosVenta().
                     get(((JToggleButton)evt.getItem()).getName());
             btnAcceptar.setBackground(Color.GREEN);
             txtCantidad.setText("");
             //FIXME
-            System.out.println(prodSeleccionado.getCantidadComprada());
+            checkRepeatedItem();
         }
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
 
