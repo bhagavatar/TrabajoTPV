@@ -57,7 +57,6 @@ public class PanelVentas extends javax.swing.JPanel {
         accionesVentas = new AccionesVentas();
         accionesFacturas = new AccionesFacturas(this);
         accionesProductos = new AccionesProductos(this);
-        //FIXME
         prodSeleccionado = new Productos();
         currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
@@ -1361,7 +1360,6 @@ public class PanelVentas extends javax.swing.JPanel {
         if (tablaVentas.getSelectedRow() != -1) {
             
             model.removeRow(tablaVentas.getSelectedRow());
-            //NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
             totalBruto = getSumPrecio();
             txtTotalBruto.setText(currencyFormatter.format(totalBruto));
             
@@ -1431,7 +1429,6 @@ public class PanelVentas extends javax.swing.JPanel {
          dialogDescuento.getTxtPrecio().setText(currencyFormatter.format(getSumPrecio()));
          dialogDescuento.setLocationRelativeTo(this);
          dialogDescuento.setVisible(true);
-         
     }//GEN-LAST:event_btnDescuentoActionPerformed
 
     private void btnResetIDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetIDClienteActionPerformed
@@ -1450,7 +1447,7 @@ public class PanelVentas extends javax.swing.JPanel {
         return tablaVentas;
     } //</editor-fold>  
     
-     //FIXME
+     
     public Productos getProdSeleccionado() {
         return prodSeleccionado;
     }
