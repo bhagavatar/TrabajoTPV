@@ -13,6 +13,8 @@ import es.hauptman.gestionbd.FacturasDAO;
 import es.hauptman.vista.DialogFactura;
 import es.hauptman.vista.PanelGestVentas;
 import es.hauptman.vista.PanelVentas;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +25,7 @@ public class AccionesFacturas {
     PanelVentas panel;
     DialogFactura dialog;
     PanelGestVentas panelGestVentas;
+    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     public AccionesFacturas(PanelVentas panel) {
         this.panel = panel;
@@ -50,9 +53,11 @@ public class AccionesFacturas {
         
         
         factura.setCliente(cliente);
-        factura.setTotal(panel.getSum());
-        double descuento = Double.parseDouble(panel.getTxtDesc().getText());
-        factura.setDescuento(descuento/100);
+        factura.setTotal(panel.getSumPrecio());
+        if(!panel.getTxtDesc().getText().equals("")){
+            double descuento = Double.parseDouble(panel.getTxtDesc().getText());
+            factura.setDescuento(descuento/100);
+        }
         FacturasDAO daoFactura = new FacturasDAO();
         
         DefaultTableModel model = (DefaultTableModel) panel.getTablaVentas().getModel();
@@ -88,7 +93,7 @@ public class AccionesFacturas {
             dialog.getLblNumFactura().setText(String.valueOf(dao.getKey()));
             dialog.getLblClienteNombre().setText(f.getFactura().getCliente().getNombre());
             dialog.getLblClienteApellido().setText(f.getFactura().getCliente().getApellido());
-            dialog.getTxtTotal().setText(String.valueOf(f.getFactura().getTotal()));
+            dialog.getTxtTotal().setText(currencyFormatter.format(f.getFactura().getTotal()));
         }
     }
     

@@ -40,13 +40,10 @@ public class PanelVentas extends javax.swing.JPanel {
     private AccionesVentas accionesVentas;
     private AccionesFacturas accionesFacturas;
     private AccionesProductos accionesProductos;
+    //FIXME
     private Productos prodSeleccionado;
-     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-    //private DialogDescuento dialogDescuento;
+    private NumberFormat currencyFormatter; 
     static double totalBruto;
-    //static double totalNeto;
-    
-    
     List<Productos> listaProductosVenta = new ArrayList<>();
 
     
@@ -60,8 +57,9 @@ public class PanelVentas extends javax.swing.JPanel {
         accionesVentas = new AccionesVentas();
         accionesFacturas = new AccionesFacturas(this);
         accionesProductos = new AccionesProductos(this);
+        //FIXME
         prodSeleccionado = new Productos();
-        
+        currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
         MyIntFilter.formatInt(txtCantidad);
         
@@ -73,7 +71,6 @@ public class PanelVentas extends javax.swing.JPanel {
         //Muestra la hora en la caja de texto txtHora
         Timer tiempo=new Timer(100, new PanelVentas.horas());
         tiempo.start();
-        
     }
     
     public FrameHome getFrame() {
@@ -88,12 +85,21 @@ public class PanelVentas extends javax.swing.JPanel {
      * Método para sumar los valores del subtotal de la tabla.
      * @return int
      */
-    public double getSum(){
+    public double getSumPrecio(){
         
         int rowCount = tablaVentas.getRowCount();
         double sum = 0;
         for(int i=0;i < rowCount;i++){
             sum=sum+Double.parseDouble(tablaVentas.getValueAt(i, 4).toString());
+        }
+        return sum;
+    }
+    
+    public int getSumCantidad(){
+        int rowCount = tablaVentas.getRowCount();
+        int sum = 0;
+        for(int i=0;i < rowCount;i++){
+            sum=sum+Integer.parseInt(tablaVentas.getValueAt(i, 0).toString());
         }
         return sum;
     }
@@ -158,8 +164,10 @@ public class PanelVentas extends javax.swing.JPanel {
         txtFecha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtHora = new javax.swing.JTextField();
-        txtIDCliente = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        txtIDCliente = new javax.swing.JTextField();
+        btnResetIDCliente = new javax.swing.JButton();
         txtCantidad = new javax.swing.JTextField();
         panelCardTipo = new javax.swing.JPanel();
         pnlCafe = new javax.swing.JPanel();
@@ -545,7 +553,44 @@ public class PanelVentas extends javax.swing.JPanel {
 
         txtHora.setEditable(false);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Lucida Grande", 0, 13), new java.awt.Color(0, 0, 204))); // NOI18N
+
         jLabel3.setText("ID Cliente:");
+
+        txtIDCliente.setEditable(false);
+
+        btnResetIDCliente.setText("Reset");
+        btnResetIDCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetIDClienteActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnResetIDCliente)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResetIDCliente))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout panelDisplayLayout = new javax.swing.GroupLayout(panelDisplay);
         panelDisplay.setLayout(panelDisplayLayout);
@@ -562,26 +607,25 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         panelDisplayLayout.setVerticalGroup(
             panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDisplayLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFecha)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(7, Short.MAX_VALUE))
+            .addGroup(panelDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         txtCantidad.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
@@ -1153,37 +1197,35 @@ public class PanelVentas extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(panelNumerico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCantidad))
-                            .addComponent(panelTablaVentas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(txtTotalBruto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txtTotalBruto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(61, 61, 61)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4))
+                            .addComponent(jLabel8))
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(64, 64, 64))
+                            .addComponent(txtTotalNeto)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidad))
+                    .addComponent(panelNumerico, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCardTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE))
-                .addGap(0, 9, Short.MAX_VALUE))
+                    .addComponent(panelCardTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 473, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1207,7 +1249,7 @@ public class PanelVentas extends javax.swing.JPanel {
                                     .addComponent(jLabel4)))
                             .addComponent(txtTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE))
+                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -1216,7 +1258,7 @@ public class PanelVentas extends javax.swing.JPanel {
                             .addComponent(jLabel5))
                         .addGap(13, 13, 13)
                         .addComponent(panelNumerico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
+                    .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1258,8 +1300,8 @@ public class PanelVentas extends javax.swing.JPanel {
     private void btnAcceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptarActionPerformed
         
         if (!txtCantidad.getText().equals("")) {
-            
-            prodSeleccionado.setCantidadComprada(Integer.parseInt(txtCantidad.getText())); 
+            //FIXME cantidad comprada para um mismo producto várias veces.
+            prodSeleccionado.setCantidadComprada(Integer.parseInt(txtCantidad.getText()));
             int cantidadInicial = prodSeleccionado.getCantidadStock();
             int cantidad = prodSeleccionado.getCantidadStock() - prodSeleccionado.getCantidadComprada();
             
@@ -1280,7 +1322,7 @@ public class PanelVentas extends javax.swing.JPanel {
             } 
 
             //Pone la suma del subtotal en el campo Total.
-            totalBruto = getSum();
+            totalBruto = getSumPrecio();
             //NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
             txtTotalBruto.setText(currencyFormatter.format(totalBruto));
             
@@ -1303,10 +1345,13 @@ public class PanelVentas extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
         
         if(evt.getStateChange() == ItemEvent.SELECTED){
+            //Productos prodSeleccionado = new Productos();
             prodSeleccionado = accionesVentas.getProductosVenta().
                     get(((JToggleButton)evt.getItem()).getName());
             btnAcceptar.setBackground(Color.GREEN);
             txtCantidad.setText("");
+            //FIXME
+            System.out.println(prodSeleccionado.getCantidadComprada());
         }
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
 
@@ -1317,13 +1362,13 @@ public class PanelVentas extends javax.swing.JPanel {
             
             model.removeRow(tablaVentas.getSelectedRow());
             //NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
-            totalBruto = getSum();
+            totalBruto = getSumPrecio();
             txtTotalBruto.setText(currencyFormatter.format(totalBruto));
             
             if(!txtDesc.getText().equals("") && !txtDesc.getText().equals("0")){
                 actualizaDescuento(currencyFormatter);
             }else if (txtDesc.getText().equals("") || txtDesc.getText().equals("0")){
-                totalBruto = getSum();
+                totalBruto = getSumPrecio();
                 txtTotalNeto.setText(currencyFormatter.format(totalBruto));
             }
         }
@@ -1348,8 +1393,8 @@ public class PanelVentas extends javax.swing.JPanel {
          
          model.setNumRows(0);
          //NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance();
-         txtTotalNeto.setText(currencyFormatter.format(getSum()));
-         txtTotalBruto.setText(currencyFormatter.format(getSum()));
+         txtTotalNeto.setText(currencyFormatter.format(getSumPrecio()));
+         txtTotalBruto.setText(currencyFormatter.format(getSumPrecio()));
          
          DialogFactura dialog = new DialogFactura(frame, true);
          dialog.setLocationRelativeTo(this);
@@ -1383,12 +1428,17 @@ public class PanelVentas extends javax.swing.JPanel {
     private void btnDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescuentoActionPerformed
         // TODO add your handling code here:
          DialogDescuento dialogDescuento = new DialogDescuento(this);
-         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-         dialogDescuento.getTxtPrecio().setText(currencyFormatter.format(getSum()));
+         dialogDescuento.getTxtPrecio().setText(currencyFormatter.format(getSumPrecio()));
          dialogDescuento.setLocationRelativeTo(this);
          dialogDescuento.setVisible(true);
          
     }//GEN-LAST:event_btnDescuentoActionPerformed
+
+    private void btnResetIDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetIDClienteActionPerformed
+        // TODO add your handling code here:
+        txtIDCliente.setText("");
+        txtDesc.setText("");
+    }//GEN-LAST:event_btnResetIDClienteActionPerformed
 
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
@@ -1400,7 +1450,7 @@ public class PanelVentas extends javax.swing.JPanel {
         return tablaVentas;
     } //</editor-fold>  
     
-
+     //FIXME
     public Productos getProdSeleccionado() {
         return prodSeleccionado;
     }
@@ -1461,6 +1511,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JButton btnMadalena;
     private javax.swing.JButton btnMenus;
     private javax.swing.JButton btnPunto;
+    private javax.swing.JButton btnResetIDCliente;
     private javax.swing.JButton btnZumo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroupTipo;
@@ -1471,6 +1522,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton10;
     private javax.swing.JToggleButton jToggleButton11;

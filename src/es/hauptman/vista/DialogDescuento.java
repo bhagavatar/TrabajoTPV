@@ -126,6 +126,8 @@ public class DialogDescuento extends javax.swing.JDialog {
         lblCancelar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setModal(true);
 
         panelNumericoDesc.setLayout(new java.awt.GridLayout(4, 4));
 
@@ -305,7 +307,6 @@ public class DialogDescuento extends javax.swing.JDialog {
         txtPrecioDesc.setForeground(new java.awt.Color(255, 255, 255));
         txtPrecioDesc.setMinimumSize(new java.awt.Dimension(14, 23));
         txtPrecioDesc.setOpaque(true);
-        txtPrecioDesc.setPreferredSize(new java.awt.Dimension(14, 23));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -479,15 +480,25 @@ public class DialogDescuento extends javax.swing.JDialog {
         else if(txtDisplayCalc.getText().equals("")){
             panelVentas.getTxtTotalNeto().setText(currencyFormatter.format(PanelVentas.totalBruto));
             panelVentas.getTxtDesc().setText(txtDisplayCalc.getText());
+            if(cboCliente.getSelectedIndex() != 0)
+                setTxtIdClienteFromCboCliente();
         }else{
-        panelVentas.getTxtTotalNeto().setText(currencyFormatter.format(valorPrecioDesc));
-        panelVentas.getTxtDesc().setText(txtDisplayCalc.getText());
-        Clientes cliente;
-        cliente = (Clientes) cboCliente.getSelectedItem();
-        panelVentas.getTxtIDCliente().setText(String.valueOf(cliente.getId()));
+            panelVentas.getTxtTotalNeto().setText(currencyFormatter.format(valorPrecioDesc));
+            panelVentas.getTxtDesc().setText(txtDisplayCalc.getText());
+            setTxtIdClienteFromCboCliente();
         }
         dispose();
     }//GEN-LAST:event_lblAcceptarMouseClicked
+
+    /**
+     * Método que inserta el ID del Cliente en el campo txtIDCliente en 
+     * PanelVentas desde el cboCliente.
+     */
+    private void setTxtIdClienteFromCboCliente() {
+        Clientes cliente;
+        cliente = (Clientes) cboCliente.getSelectedItem();
+        panelVentas.getTxtIDCliente().setText(String.valueOf(cliente.getId()));
+    }
 
     /**
      * @param args the command line arguments

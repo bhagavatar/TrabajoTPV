@@ -22,6 +22,8 @@ public class FrameHome extends javax.swing.JFrame {
      */
     public FrameHome() {
         initComponents();
+        this.setContentPane(panelContenedor);
+        
     }
 
     /**
@@ -55,9 +57,13 @@ public class FrameHome extends javax.swing.JFrame {
         itemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setName("FrameHome"); // NOI18N
 
+        panelContenedor.setName("panelContenedor"); // NOI18N
         panelContenedor.setPreferredSize(new java.awt.Dimension(900, 800));
         panelContenedor.setLayout(new java.awt.BorderLayout());
+
+        panelHome.setName("panelHome"); // NOI18N
 
         panelBtnHome.setLayout(new java.awt.GridLayout(2, 2));
 
@@ -326,9 +332,16 @@ public class FrameHome extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 //Método que carga los distintos paneles a la ventana.
+//    private void cargaPanel(JPanel panel){
+//        panelContenedor.removeAll();
+//        panelContenedor.add(panel, BorderLayout.CENTER);
+//        pack();
+//    }
+    
     private void cargaPanel(JPanel panel){
         panelContenedor.removeAll();
         panelContenedor.add(panel, BorderLayout.CENTER);
         pack();
     }
+    
 }
