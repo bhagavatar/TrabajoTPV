@@ -1310,11 +1310,12 @@ public class PanelVentas extends javax.swing.JPanel {
                 
             }else if(cantidadInicial > 0 & cantidad >= 0){
                 //FIXME
-                checkRepeatedItem();
-                listaProductosVenta.add(prodSeleccionado);
-                DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
-                model.addRow(prodSeleccionado.getRow());
-                
+                boolean productExists = updateRowQuantity(prodSeleccionado.getCantidadComprada());
+                if(!productExists){
+                    listaProductosVenta.add(prodSeleccionado);
+                    DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+                    model.addRow(prodSeleccionado.getRow());
+                }
             }else if (cantidad < 0){
                 JOptionPane.showMessageDialog(this, "No hay esta cantidad de: " 
                         + prodSeleccionado.getDescripcion().toUpperCase()
@@ -1340,22 +1341,37 @@ public class PanelVentas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Seleccione una cantidad y pulse el botón Acceptar");
         }    
     }//GEN-LAST:event_btnAcceptarActionPerformed
-
-    private boolean checkRepeatedItem(){
-        String s = "";
+     
+    //FIXME
+//    private boolean checkRepeatedItem(){
+//        String s;
+//        boolean exists = false;
+//        for(int i = 0; i < tablaVentas.getRowCount(); i++ ){
+//            s = tablaVentas.getValueAt(i, 1).toString().trim();
+//            if(prodSeleccionado.getDescripcion().equals(s)){
+//                exists = true;
+//                break;
+//            }
+//        }
+//        System.out.println(prodSeleccionado +" exists: "+exists);
+//        return exists;
+//    }
+    
+    private boolean updateRowQuantity(int cantidad){
+        String s;
         boolean exists = false;
         for(int i = 0; i < tablaVentas.getRowCount(); i++ ){
             s = tablaVentas.getValueAt(i, 1).toString().trim();
             if(prodSeleccionado.getDescripcion().equals(s)){
                 exists = true;
+                DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
+                model.removeRow(i);
+                model.insertRow(i, prodSeleccionado.getRow());
                 break;
             }
         }
-        System.out.println(prodSeleccionado +" exists: "+exists);
         return exists;
-        
     }
-    
     
     private void jToggleButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton1ItemStateChanged
         
@@ -1367,7 +1383,7 @@ public class PanelVentas extends javax.swing.JPanel {
             btnAcceptar.setBackground(Color.GREEN);
             txtCantidad.setText("");
             //FIXME
-            checkRepeatedItem();
+            //checkRepeatedItem();
         }
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
 
