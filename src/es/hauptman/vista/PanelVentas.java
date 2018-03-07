@@ -390,16 +390,6 @@ public class PanelVentas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablaVentas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tablaVentasMousePressed(evt);
-            }
-        });
-        tablaVentas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                tablaVentasKeyReleased(evt);
-            }
-        });
         panelTablaVentas.setViewportView(tablaVentas);
         if (tablaVentas.getColumnModel().getColumnCount() > 0) {
             tablaVentas.getColumnModel().getColumn(2).setHeaderValue("Dto.");
@@ -1377,6 +1367,7 @@ public class PanelVentas extends javax.swing.JPanel {
         
         }else {
             JOptionPane.showMessageDialog(this, "Seleccione una cantidad válida y pulse el botón Acceptar");
+            txtCantidad.setText("");
         }    
     }//GEN-LAST:event_btnAcceptarActionPerformed
     
@@ -1499,24 +1490,6 @@ public class PanelVentas extends javax.swing.JPanel {
         txtIDCliente.setText("");
         txtDesc.setText("");
     }//GEN-LAST:event_btnResetIDClienteActionPerformed
-
-    private void tablaVentasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaVentasMousePressed
-        // TODO add your handling code here:
-//        if (tablaVentas.getSelectedRow() != -1) {
-//            
-//            txtCantidad.setText(tablaVentas.getValueAt(tablaVentas.
-//                    getSelectedRow(), 0).toString());
-//        }
-    }//GEN-LAST:event_tablaVentasMousePressed
-
-    private void tablaVentasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tablaVentasKeyReleased
-        // TODO add your handling code here:
-//        if (tablaVentas.getSelectedRow() != -1) {
-//            
-//            txtCantidad.setText(tablaVentas.getValueAt(tablaVentas.
-//                    getSelectedRow(), 0).toString());
-//        }
-    }//GEN-LAST:event_tablaVentasKeyReleased
 
     private void lblDecrementaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDecrementaMouseClicked
         // TODO add your handling code here:
