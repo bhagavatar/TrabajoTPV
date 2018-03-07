@@ -24,8 +24,8 @@ public class DialogDescuento extends javax.swing.JDialog {
     PanelVentas panelVentas;  
     AccionesClientes accionesClientes;
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-    static double valorPrecioDesc;
-    static double porCiento;
+    public static double valorPrecioDesc;
+    public static double porCiento;
 
     /**
      * Creates new form DialogDescuento

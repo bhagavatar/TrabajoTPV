@@ -10,6 +10,7 @@ import es.hauptman.entities.DetalleFactura;
 import es.hauptman.entities.Facturas;
 import es.hauptman.entities.Productos;
 import es.hauptman.gestionbd.FacturasDAO;
+import es.hauptman.vista.DialogDescuento;
 import es.hauptman.vista.DialogFactura;
 import es.hauptman.vista.PanelGestVentas;
 import es.hauptman.vista.PanelVentas;
@@ -76,9 +77,9 @@ public class AccionesFacturas {
         DefaultTableModel model = (DefaultTableModel)dialog
                 .getTblDisplayFactura().getModel();
         model.setNumRows(0);
+        DetalleFactura detalleFactura = new DetalleFactura();
         
         FacturasDAO dao = new FacturasDAO();
-        DetalleFactura detalleFactura = new DetalleFactura();
         
         //Recorre la lista del DAO
         for (DetalleFactura f : dao.readFacturaDisplay()) {
@@ -93,7 +94,14 @@ public class AccionesFacturas {
             dialog.getLblNumFactura().setText(String.valueOf(dao.getKey()));
             dialog.getLblClienteNombre().setText(f.getFactura().getCliente().getNombre());
             dialog.getLblClienteApellido().setText(f.getFactura().getCliente().getApellido());
-            dialog.getTxtTotal().setText(currencyFormatter.format(f.getFactura().getTotal()));
+            dialog.getTxtSubtotal().setText(currencyFormatter.format(f.getFactura().getTotal()));
+            //FIXME
+            if (f.getFactura().getDescuento() != 0){
+                //FIXME
+                dialog.getTxtTotal().setText(currencyFormatter.format(DialogDescuento.valorPrecioDesc));
+                dialog.getTxtDesc().setText(String.valueOf(f.getFactura().getDescuento() * 100));
+                
+            }
         }
     }
     
