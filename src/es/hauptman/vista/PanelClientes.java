@@ -319,7 +319,7 @@ public class PanelClientes extends javax.swing.JPanel {
                     .addComponent(txtCiudadAlta)
                     .addComponent(txtDireccionAlta)
                     .addComponent(txtProvinciaAlta))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelAltaClienteLayout.setVerticalGroup(
             panelAltaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,6 +381,15 @@ public class PanelClientes extends javax.swing.JPanel {
         panelBajaClienteLayout.setHorizontalGroup(
             panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBajaClienteLayout.createSequentialGroup()
+                .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBajaClienteLayout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel4))
+                    .addGroup(panelBajaClienteLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(txtIDBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(panelBajaClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNombreBaja, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -388,24 +397,12 @@ public class PanelClientes extends javax.swing.JPanel {
                     .addGroup(panelBajaClienteLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jLabel7)
-                        .addContainerGap(96, Short.MAX_VALUE))
+                        .addContainerGap(85, Short.MAX_VALUE))
                     .addGroup(panelBajaClienteLayout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(panelBajaClienteLayout.createSequentialGroup()
-                .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBajaClienteLayout.createSequentialGroup()
-                        .addGroup(panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelBajaClienteLayout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(jLabel4))
-                            .addGroup(panelBajaClienteLayout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(txtIDBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnBaja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(btnBaja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         panelBajaClienteLayout.setVerticalGroup(
             panelBajaClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,7 +496,7 @@ public class PanelClientes extends javax.swing.JPanel {
                                 .addGroup(panelEditaCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtTelefonoEdita, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCPEdita, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 138, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(btnGuardarEdita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(6, 6, 6))
         );
@@ -537,27 +534,12 @@ public class PanelClientes extends javax.swing.JPanel {
                     .addComponent(jLabel39)
                     .addComponent(txtProvinciaEdita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardarEdita, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnGuardarEdita, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
         );
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nombre", "Apellido ", "Teléfono", "Dirección", "C.P.", "Ciudad", "Província"
@@ -616,13 +598,13 @@ public class PanelClientes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelBajaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                    .addComponent(panelAltaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelEditaCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE))
+                    .addComponent(panelEditaCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                    .addComponent(panelAltaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(panelBajaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUpdateListaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                .addGap(9, 9, 9)
-                .addComponent(pnlTblClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdateListaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlTblClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
