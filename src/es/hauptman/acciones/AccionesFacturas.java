@@ -58,6 +58,7 @@ public class AccionesFacturas {
         if(!panel.getTxtDesc().getText().equals("")){
             double descuento = Double.parseDouble(panel.getTxtDesc().getText());
             factura.setDescuento(descuento/100);
+            factura.setTotalConDesc(DialogDescuento.valorPrecioDesc);
         }
         FacturasDAO daoFactura = new FacturasDAO();
         
@@ -101,6 +102,8 @@ public class AccionesFacturas {
                 dialog.getTxtTotal().setText(currencyFormatter.format(DialogDescuento.valorPrecioDesc));
                 dialog.getTxtDesc().setText(String.valueOf(f.getFactura().getDescuento() * 100));
                 
+            } else if (f.getFactura().getDescuento() == 0){
+                dialog.getTxtTotal().setText(currencyFormatter.format(f.getFactura().getTotal()));
             }
         }
     }
@@ -118,13 +121,13 @@ public class AccionesFacturas {
         for (Facturas f : dao.readFactura(ticketID, clienteID, fecha, nombreCliente, descuento)) {
             model.addRow(new Object[]{
             f.getTicketID(),
-            " ",
             f.getCliente().getId(),
             f.getCliente().getNombre(),
             f.getCliente().getApellido(),
             f.getFecha(),
             f.getDescuento(),
             f.getTotal(),
+            f.getTotalConDesc()
         });
             
             panelGestVentas.getTxtDetalleIDFactura().setText(String.valueOf(f.getTicketID()));

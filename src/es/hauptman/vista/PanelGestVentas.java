@@ -190,7 +190,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Factura", "Usuário", "ID Cliente", "Nombre", "Apellido", "Fecha", "Descuento", "Total Compra"
+                "Factura", "ID Cliente", "Nombre", "Apellido", "Fecha", "Descuento", "Total Compra", "Total Descuento"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -201,6 +201,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblFacturas.setToolTipText("");
         tblFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblFacturasMousePressed(evt);
@@ -215,10 +216,10 @@ public class PanelGestVentas extends javax.swing.JPanel {
         if (tblFacturas.getColumnModel().getColumnCount() > 0) {
             tblFacturas.getColumnModel().getColumn(0).setResizable(false);
             tblFacturas.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblFacturas.getColumnModel().getColumn(2).setResizable(false);
-            tblFacturas.getColumnModel().getColumn(2).setPreferredWidth(50);
-            tblFacturas.getColumnModel().getColumn(5).setResizable(false);
-            tblFacturas.getColumnModel().getColumn(5).setPreferredWidth(150);
+            tblFacturas.getColumnModel().getColumn(1).setResizable(false);
+            tblFacturas.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tblFacturas.getColumnModel().getColumn(4).setResizable(false);
+            tblFacturas.getColumnModel().getColumn(4).setPreferredWidth(150);
         }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -314,6 +315,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
         btnDetalles.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         btnDetalles.setForeground(new java.awt.Color(0, 0, 204));
         btnDetalles.setText("Mostrar Detalles");
+        btnDetalles.setToolTipText("Seleccione una factura de la tabla de Facturas.");
         btnDetalles.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

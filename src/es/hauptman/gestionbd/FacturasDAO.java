@@ -39,7 +39,7 @@ public class FacturasDAO {
     public boolean createFactura (Facturas factura){
         
         String sqlFactura = "INSERT INTO factura (fecha, total_compra, "
-                + "clientes_id, descuento) VALUES (?,?,?,?)";
+                + "clientes_id, descuento, total_con_descuento) VALUES (?,?,?,?,?)";
         PreparedStatement queryFactura = null;
         ResultSet rs = null;
         
@@ -60,8 +60,10 @@ public class FacturasDAO {
             
             if(factura.getDescuento() != 0){
                 queryFactura.setDouble(4, factura.getDescuento());
+                queryFactura.setDouble(5, factura.getTotalConDesc());
             } else {
                 queryFactura.setNull(4, Types.DOUBLE);
+                queryFactura.setNull(5, Types.DOUBLE);
             }
             
             queryFactura.executeUpdate();
@@ -177,6 +179,7 @@ public class FacturasDAO {
                 factura.setTotal(rs.getDouble("total_compra"));
                 factura.setFecha(rs.getString("fecha"));
                 factura.setDescuento(rs.getDouble("descuento"));
+                factura.setTotalConDesc(rs.getDouble("total_con_descuento"));
             
                 Clientes cliente = new Clientes();
                 cliente.setId(rs.getInt("clientes_id"));

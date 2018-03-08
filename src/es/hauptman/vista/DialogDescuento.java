@@ -293,6 +293,10 @@ public class DialogDescuento extends javax.swing.JDialog {
 
         jLabel6.setText("Apellido.");
 
+        txtNombre.setEditable(false);
+
+        txtApellido.setEditable(false);
+
         cboCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboClienteActionPerformed(evt);

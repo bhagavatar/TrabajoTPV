@@ -21,6 +21,7 @@ public class Facturas {
     private Clientes cliente;
     private double descuento;
     private double total;
+    private double totalConDesc;
     private String fecha;
     //FIXME mudar para ArrayList
     private DetalleFactura detalleFactura;
@@ -75,6 +76,14 @@ public class Facturas {
         this.total = total;
     }
 
+    public double getTotalConDesc() {
+        return totalConDesc;
+    }
+
+    public void setTotalConDesc(double totalConDesc) {
+        this.totalConDesc = totalConDesc;
+    }
+    
     public String getFecha() {
         return fecha;
     }

@@ -266,6 +266,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         lblIncrementa = new javax.swing.JLabel();
         lblDecrementa = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(900, 800));
 
@@ -425,6 +426,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn3);
 
         btnDescuento.setText("%Dto.");
+        btnDescuento.setToolTipText("Descuento a un cliente registrado.");
         btnDescuento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDescuentoActionPerformed(evt);
@@ -460,6 +462,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn6);
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.setToolTipText("Selecione un producto de la tabla.");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -495,6 +498,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btn9);
 
         btnCobrar.setText("Cobrar");
+        btnCobrar.setToolTipText("Genera la Factura");
         btnCobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCobrarActionPerformed(evt);
@@ -521,6 +525,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btnPunto);
 
         btnClear.setText("C");
+        btnClear.setToolTipText("Reset Cantidad");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
@@ -529,6 +534,7 @@ public class PanelVentas extends javax.swing.JPanel {
         panelNumerico.add(btnClear);
 
         btnAcceptar.setText("Acceptar");
+        btnAcceptar.setToolTipText("Seleccione un producto y una cantidad.");
         btnAcceptar.setOpaque(true);
         btnAcceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -558,6 +564,7 @@ public class PanelVentas extends javax.swing.JPanel {
         jLabel3.setText("ID Cliente:");
 
         txtIDCliente.setEditable(false);
+        txtIDCliente.setToolTipText("Seleccione un cliente al puldar el botón '%Dto.'");
 
         btnResetIDCliente.setText("Reset");
         btnResetIDCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -1191,6 +1198,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
         lblIncrementa.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblIncrementa.setText("+");
+        lblIncrementa.setToolTipText("incrementa la cantidad en 1.");
         lblIncrementa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblIncrementaMouseClicked(evt);
@@ -1199,11 +1207,15 @@ public class PanelVentas extends javax.swing.JPanel {
 
         lblDecrementa.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         lblDecrementa.setText("-");
+        lblDecrementa.setToolTipText("Decrementa la cantidad en 1.");
         lblDecrementa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDecrementaMouseClicked(evt);
             }
         });
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabel5.setText("Cantidad:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1218,11 +1230,20 @@ public class PanelVentas extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(130, 130, 130)
-                                .addComponent(lblDecrementa))
-                            .addComponent(jLabel6)
-                            .addComponent(txtTotalBruto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(130, 130, 130)
+                                        .addComponent(lblDecrementa))
+                                    .addComponent(jLabel6))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblIncrementa))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtTotalBruto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75)
+                                .addComponent(jLabel5)))
+                        .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1231,17 +1252,11 @@ public class PanelVentas extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel4))
                                     .addComponent(jLabel8))
-                                .addGap(66, 66, 66)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(64, 64, 64))
-                                    .addComponent(txtTotalNeto)))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblIncrementa)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(jLabel1)
+                                .addGap(64, 79, Short.MAX_VALUE))
+                            .addComponent(txtTotalNeto))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1256,31 +1271,33 @@ public class PanelVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelTablaVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtTotalBruto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5)))
+                            .addComponent(txtTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel1))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtTotalBruto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtTotalNeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblIncrementa)
+                                .addComponent(lblDecrementa))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(panelCardTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblIncrementa)
-                            .addComponent(lblDecrementa))
-                        .addGap(13, 13, 13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelNumerico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
                 .addContainerGap())
@@ -1400,6 +1417,7 @@ public class PanelVentas extends javax.swing.JPanel {
                 txtCantidad.setText(String.valueOf(cantidad));
             }else if(cantidad == 0){
                 //FIXME
+                txtCantidad.setText("");
                 //JOptionPane.showMessageDialog(this, "Seleccione una cantidad válida.");
             }
         } 
@@ -1413,6 +1431,7 @@ public class PanelVentas extends javax.swing.JPanel {
             model.removeRow(tablaVentas.getSelectedRow());
             totalBruto = getSumPrecio();
             txtTotalBruto.setText(currencyFormatter.format(totalBruto));
+            txtCantidad.setText("");
             
             if(!txtDesc.getText().equals("") && !txtDesc.getText().equals("0")){
                 actualizaDescuento(currencyFormatter);
@@ -1600,6 +1619,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
