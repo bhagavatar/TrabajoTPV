@@ -89,9 +89,11 @@ public class PanelGestVentas extends javax.swing.JPanel {
         rbtnCliente = new javax.swing.JRadioButton();
         rbtnNombre = new javax.swing.JRadioButton();
         rbtnFecha = new javax.swing.JRadioButton();
-        jButton7 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblFacturas = new javax.swing.JTable();
+        btnAllFactura = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -173,13 +175,13 @@ public class PanelGestVentas extends javax.swing.JPanel {
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 0, 204));
-        jButton7.setText("Buscar Factura ");
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(0, 0, 204));
+        btnBuscar.setText("Buscar");
+        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -221,6 +223,24 @@ public class PanelGestVentas extends javax.swing.JPanel {
             tblFacturas.getColumnModel().getColumn(4).setPreferredWidth(150);
         }
 
+        btnAllFactura.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnAllFactura.setForeground(new java.awt.Color(0, 0, 204));
+        btnAllFactura.setText("Todas las Facturas");
+        btnAllFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllFacturaActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(0, 0, 204));
+        btnLimpiar.setText("Reset");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -232,18 +252,22 @@ public class PanelGestVentas extends javax.swing.JPanel {
                     .addComponent(rbtnCliente)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rbtnTicket)
-                            .addComponent(txtTicketID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(221, 221, 221)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnAllFactura)
+                                .addGap(277, 277, 277)
+                                .addComponent(btnLimpiar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(rbtnTicket)
+                                        .addComponent(txtTicketID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnBuscar))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -266,12 +290,16 @@ public class PanelGestVentas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbtnFecha)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAllFactura)
+                    .addComponent(btnLimpiar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -343,17 +371,17 @@ public class PanelGestVentas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(302, 302, 302))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(343, 343, 343)
+                .addComponent(btnDetalles)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnDetalles)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -391,7 +419,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -405,7 +433,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreClienteActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         Facturas factura = new Facturas();
         Clientes cliente = new Clientes();
@@ -445,7 +473,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
             accionesFacturas.searchFactura(factura.getTicketID(), cliente.getId(), factura.getFecha(), cliente.getNombre(), factura.getDescuento());
         
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void radiobtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiobtnActionPerformed
         // TODO add your handling code here:
@@ -512,6 +540,21 @@ public class PanelGestVentas extends javax.swing.JPanel {
             txtDetalleIDFactura.setText(tblFacturas.getValueAt(tblFacturas.getSelectedRow(), 0).toString());
         }
     }//GEN-LAST:event_tblFacturasKeyReleased
+
+    private void btnAllFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllFacturaActionPerformed
+        // TODO add your handling code here:
+        accionesFacturas.getAllFactura();
+    }//GEN-LAST:event_btnAllFacturaActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelFactura = (DefaultTableModel)tblFacturas.getModel();
+        DefaultTableModel modelDetalleFactura = (DefaultTableModel)tblDetalleFactura.getModel();
+        modelDetalleFactura.setNumRows(0);
+        modelFactura.setNumRows(0);
+        limpiaCamposDetalles();
+        txtDetalleIDFactura.setText("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
     
     private void limpiaCamposDetalles() {
         
@@ -521,9 +564,11 @@ public class PanelGestVentas extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAllFactura;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnDetalles;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

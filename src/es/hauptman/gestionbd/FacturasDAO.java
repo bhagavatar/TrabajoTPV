@@ -153,7 +153,7 @@ public class FacturasDAO {
         return listaDetalleFacturas;
     }
     
-    public List<Facturas> readFactura(int ticketID, int clienteID, String fecha, 
+    public List<Facturas> readFacturaByParameters(int ticketID, int clienteID, String fecha, 
             String nombreCliente, double descuento){
         
         String sql = "SELECT * FROM view_facturaclientes WHERE ticket_id=? or "
@@ -170,6 +170,46 @@ public class FacturasDAO {
             query.setInt(2, clienteID);
             query.setString(3, fecha + "%");
             query.setString(4, nombreCliente);
+            rs = query.executeQuery();
+            
+            while(rs.next()){
+                
+                Facturas factura = new Facturas();
+                factura.setTicketID(rs.getInt("ticket_id"));
+                factura.setTotal(rs.getDouble("total_compra"));
+                factura.setFecha(rs.getString("fecha"));
+                factura.setDescuento(rs.getDouble("descuento"));
+                factura.setTotalConDesc(rs.getDouble("total_con_descuento"));
+            
+                Clientes cliente = new Clientes();
+                cliente.setId(rs.getInt("clientes_id"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                factura.setCliente(cliente);
+                
+                listaFactura.add(factura);
+            }
+        
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+        }finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }
+        
+        return listaFactura;
+    }
+    
+    public List<Facturas> readAllFactura(){
+        
+        String sql = "SELECT * FROM view_facturaclientes";
+        PreparedStatement query = null;
+        ResultSet rs = null;
+        List<Facturas> listaFactura = new ArrayList<>();
+        List<DetalleFactura> listaDetalleFacturas = new ArrayList<>();
+        
+         try {
+             
+            query = conn.prepareStatement(sql);
             rs = query.executeQuery();
             
             while(rs.next()){

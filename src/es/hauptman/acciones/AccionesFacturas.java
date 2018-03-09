@@ -118,7 +118,33 @@ public class AccionesFacturas {
         FacturasDAO dao = new FacturasDAO();
         //Facturas factura = new Facturas();
         
-        for (Facturas f : dao.readFactura(ticketID, clienteID, fecha, nombreCliente, descuento)) {
+        for (Facturas f : dao.readFacturaByParameters(ticketID, clienteID, fecha, nombreCliente, descuento)) {
+            model.addRow(new Object[]{
+            f.getTicketID(),
+            f.getCliente().getId(),
+            f.getCliente().getNombre(),
+            f.getCliente().getApellido(),
+            f.getFecha(),
+            f.getDescuento(),
+            f.getTotal(),
+            f.getTotalConDesc()
+        });
+            
+            panelGestVentas.getTxtDetalleIDFactura().setText(String.valueOf(f.getTicketID()));
+            
+        }
+    }
+    
+       public void getAllFactura() {
+        
+        DefaultTableModel model = (DefaultTableModel) panelGestVentas
+                .getTblFacturas().getModel();
+        model.setNumRows(0);
+        
+        FacturasDAO dao = new FacturasDAO();
+        //Facturas factura = new Facturas();
+        
+        for (Facturas f : dao.readAllFactura()) {
             model.addRow(new Object[]{
             f.getTicketID(),
             f.getCliente().getId(),
