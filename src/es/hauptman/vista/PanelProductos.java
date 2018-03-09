@@ -552,6 +552,8 @@ public class PanelProductos extends javax.swing.JPanel {
             
         }else{
             accionesProductos.guardarProductos();
+            model = (DefaultTableModel) tablaProductos.getModel();
+            model.setNumRows(0);
             accionesProductos.getLastCreatedProduct();
             limpiaCampos();
         }
@@ -579,6 +581,13 @@ public class PanelProductos extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(frame, "Seleccione un Producto o su ID.", 
                     "No se ha modificado.", JOptionPane.WARNING_MESSAGE);
             
+        }else if(txtCtd.getText().equals("") 
+                || txtPrecio.getText().equals("") 
+                || txtProducto.getText().equals("")){
+            
+            JOptionPane.showMessageDialog(frame, "Rellene todos los campos.", 
+                    "No se ha actualizado", JOptionPane.WARNING_MESSAGE);
+        
         }else{
         accionesProductos.editaProducto();
         accionesProductos.readListaProductos();

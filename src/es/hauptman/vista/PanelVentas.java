@@ -1506,6 +1506,7 @@ public class PanelVentas extends javax.swing.JPanel {
             
             txtCantidad.setText("");
             txtDesc.setText("");
+            txtIDCliente.setText("");
          
             DialogFactura dialog = new DialogFactura(frame, true);
             dialog.setLocationRelativeTo(this);

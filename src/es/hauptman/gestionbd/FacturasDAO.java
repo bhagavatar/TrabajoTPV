@@ -285,4 +285,22 @@ public class FacturasDAO {
         }
         return listaDetalleFacturas;
     }
+    
+    public boolean deleteFactura(Facturas factura){
+        
+        String sql = "DELETE FROM factura WHERE ticket_id = ?";
+        PreparedStatement query = null;
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setInt(1, factura.getTicketID());
+            query.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+            return false;
+        }finally {
+            GestionSQL.closedConnection(conn, query);
+        }
+    }
 }

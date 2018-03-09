@@ -185,4 +185,12 @@ public class AccionesFacturas {
            panelGestVentas.getTxtDetalleTotalCompra().setText(String.valueOf(f.getFactura().getTotal()));
         }
     }
+    
+    public void eliminaFactura() {
+        FacturasDAO dao = new FacturasDAO();
+        Facturas factura = new Facturas();
+        factura.setTicketID(Integer.parseInt(panelGestVentas.getTxtDetalleIDFactura().getText().trim()));
+        dao.deleteFactura(factura);
+        
+    }
 }
