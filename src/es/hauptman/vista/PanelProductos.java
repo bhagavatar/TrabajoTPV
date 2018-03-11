@@ -7,6 +7,7 @@ package es.hauptman.vista;
 
 import es.hauptman.acciones.AccionesCategorias;
 import es.hauptman.acciones.AccionesProductos;
+import es.hauptman.entities.Categorias;
 import es.hauptman.principal.FrameHome;
 import java.awt.event.ItemEvent;
 import javax.swing.JComboBox;
@@ -166,7 +167,7 @@ public class PanelProductos extends javax.swing.JPanel {
         lblDescCat.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblDescCat.setText("Descripcíon:");
 
-        txtCategoria.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        txtCategoria.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
 
         lblCatId.setText("ID Categoria:");
 
@@ -302,7 +303,7 @@ public class PanelProductos extends javax.swing.JPanel {
         lblDescProd.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblDescProd.setText("Producto:");
 
-        txtProducto.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        txtProducto.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
 
         lblPrecio.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblPrecio.setText("Precio:");
@@ -310,13 +311,18 @@ public class PanelProductos extends javax.swing.JPanel {
         lblCantidad.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblCantidad.setText("Cantidad:");
 
-        txtCtd.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        txtCtd.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
 
-        txtPrecio.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        txtPrecio.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
 
         lblCboCatProd.setText("Categoria:");
 
         cboCatProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Categoria>" }));
+        cboCatProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboCatProdActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setForeground(new java.awt.Color(0, 0, 204));
         btnGuardar.setText("Crear");
@@ -390,7 +396,7 @@ public class PanelProductos extends javax.swing.JPanel {
         pnlProductosLayout.setVerticalGroup(
             pnlProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProductosLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(pnlProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCboCatProd)
                     .addComponent(cboCatProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -532,7 +538,7 @@ public class PanelProductos extends javax.swing.JPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -608,6 +614,8 @@ public class PanelProductos extends javax.swing.JPanel {
                     getSelectedRow(), 0).toString());
             txtCategoria.setText(tablaProductos.getValueAt(tablaProductos.
                     getSelectedRow(), 1).toString());
+            cboCatProd.getModel().setSelectedItem(tablaProductos.getValueAt(tablaProductos.
+                    getSelectedRow(), 1));
             
             if(tablaProductos.getValueAt(tablaProductos.getSelectedRow(), 2) != null 
                     || tablaProductos.getValueAt(tablaProductos.getSelectedRow(), 3) != null
@@ -624,7 +632,6 @@ public class PanelProductos extends javax.swing.JPanel {
                     getValueAt(tablaProductos.getSelectedRow(), 5).toString());
             }
         }
-        
     }
     
     /**
@@ -802,6 +809,16 @@ public class PanelProductos extends javax.swing.JPanel {
         limpiaCampos();
         }
     }//GEN-LAST:event_btnEliminarCatActionPerformed
+
+    private void cboCatProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCatProdActionPerformed
+        // TODO add your handling code here:
+        if(cboCatProd.getSelectedItem() instanceof String == false){
+            Categorias categoria = new Categorias();
+            categoria = (Categorias) cboCatProd.getSelectedItem();
+            if(categoria != null)
+                txtIdCat.setText(String.valueOf(categoria.getID()));
+        }
+    }//GEN-LAST:event_cboCatProdActionPerformed
     /**
      * Método paara desabilitar componentes.
      */

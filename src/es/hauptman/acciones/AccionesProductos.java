@@ -180,8 +180,8 @@ public class AccionesProductos {
         
         Categorias categoria = new Categorias();
         //FIXME
-        //categoria.setID(Integer.parseInt(panelProductos.getTxtIdCat().getText()));
-        categoria = (Categorias) panelProductos.getCboCatProd().getSelectedItem();
+        categoria.setID(Integer.parseInt(panelProductos.getTxtIdCat().getText()));
+        //categoria = (Categorias) panelProductos.getCboCatProd().getModel().getSelectedItem();
         
         Productos producto = new Productos();
         producto.setID(Integer.parseInt(panelProductos.getTxtIdProd().getText().trim()));
