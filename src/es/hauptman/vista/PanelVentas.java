@@ -79,7 +79,7 @@ public class PanelVentas extends javax.swing.JPanel {
         int rowCount = tablaVentas.getRowCount();
         double sum = 0;
         for(int i=0;i < rowCount;i++){
-            sum=sum+Double.parseDouble(tablaVentas.getValueAt(i, 4).toString());
+            sum=sum+Double.parseDouble(tablaVentas.getValueAt(i, 3).toString());
         }
         return sum;
     }
@@ -378,11 +378,11 @@ public class PanelVentas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Cant.", "Descripción", "Dto.", "Precio", "Subtotal"
+                "Cant.", "Descripción", "Precio", "Subtotal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

@@ -15,7 +15,6 @@ public class Productos {
     private String descripcion;
     private int cantidadStock;
     private int cantidadComprada;
-    private double descuento;
     private double subtotal;
     private Categorias categoria;
     
@@ -63,14 +62,6 @@ public class Productos {
         this.cantidadComprada = cantidadComprada;
     }
     
-    public double getDescuento() {
-        return descuento;
-    }
-
-    public void setDescuento(double descuento) {
-        this.descuento = descuento;
-    }
-
     public double getSubtotal() {
         return subtotal;
     }
@@ -94,11 +85,10 @@ public class Productos {
      * @return Object[] rowProducto
      */
     public Object[] getRow() {
-        
+        //FIXME descuento
         Object[] rowProducto = new Object[] {
             cantidadComprada,
             descripcion,
-            descuento,
             precio, 
             subtotal = precio * cantidadComprada
         };
