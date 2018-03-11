@@ -80,15 +80,16 @@ public class AccionesProductos {
     }
     
     /**
-     * Metodo que recupera el ID del último Producto creado.
+     * Metodo que recupera el ID del Producto recien creado o modificado y lo 
+     * muestra en la JTable.
      */
-    public void getLastCreatedProduct(){
+    public void getLastUpdatedProduct(){
         DefaultTableModel model = (DefaultTableModel) 
                 panelProductos.getTablaProductos().getModel();
         ProductosDAO dao = new ProductosDAO();
         Productos producto = new Productos();
-        int recienCreado = dao.getKey();
-        producto.setID(recienCreado);
+        int recienModificado = dao.getKey();
+        producto.setID(recienModificado);
         
         for(Productos p : dao.readProductosById(producto))
             model.addRow(new Object[]{
@@ -179,9 +180,7 @@ public class AccionesProductos {
     public void editaProducto(){
         
         Categorias categoria = new Categorias();
-        //FIXME
         categoria.setID(Integer.parseInt(panelProductos.getTxtIdCat().getText()));
-        //categoria = (Categorias) panelProductos.getCboCatProd().getModel().getSelectedItem();
         
         Productos producto = new Productos();
         producto.setID(Integer.parseInt(panelProductos.getTxtIdProd().getText().trim()));

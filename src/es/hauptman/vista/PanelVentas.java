@@ -153,7 +153,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btn0 = new javax.swing.JButton();
         btnPunto = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-        btnAcceptar = new javax.swing.JButton();
+        btnAddItem = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtTotalNeto = new javax.swing.JTextField();
         panelDisplay = new javax.swing.JPanel();
@@ -474,6 +474,7 @@ public class PanelVentas extends javax.swing.JPanel {
         btnEliminar.setForeground(new java.awt.Color(255, 51, 0));
         btnEliminar.setText("Eliminar");
         btnEliminar.setToolTipText("Selecione un producto de la tabla.");
+        btnEliminar.setActionCommand("Eliminar ");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -558,17 +559,17 @@ public class PanelVentas extends javax.swing.JPanel {
         });
         panelNumerico.add(btnClear);
 
-        btnAcceptar.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-        btnAcceptar.setForeground(new java.awt.Color(0, 153, 102));
-        btnAcceptar.setText("Acceptar");
-        btnAcceptar.setToolTipText("Seleccione un producto y una cantidad.");
-        btnAcceptar.setOpaque(true);
-        btnAcceptar.addActionListener(new java.awt.event.ActionListener() {
+        btnAddItem.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        btnAddItem.setForeground(new java.awt.Color(0, 153, 102));
+        btnAddItem.setText("Add Item");
+        btnAddItem.setToolTipText("Seleccione un producto y una cantidad.");
+        btnAddItem.setOpaque(true);
+        btnAddItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAcceptarActionPerformed(evt);
+                btnAddItemActionPerformed(evt);
             }
         });
-        panelNumerico.add(btnAcceptar);
+        panelNumerico.add(btnAddItem);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel1.setText("Total:");
@@ -1373,7 +1374,7 @@ public class PanelVentas extends javax.swing.JPanel {
        txtCantidad.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void btnAcceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptarActionPerformed
+    private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
         
         if(buttonGroupTipo.getSelection() == null){
             JOptionPane.showMessageDialog(this, "Seleccione un producto");
@@ -1418,7 +1419,7 @@ public class PanelVentas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Seleccione una cantidad válida y pulse el botón Acceptar");
             txtCantidad.setText("");
         }    
-    }//GEN-LAST:event_btnAcceptarActionPerformed
+    }//GEN-LAST:event_btnAddItemActionPerformed
     /**
      * Metodo que actualiza la cantidad del producto seleccionado en la 
      * tablaVetas. Devuelve true si el producto seleccionado ya existe en la tabla.
@@ -1451,9 +1452,7 @@ public class PanelVentas extends javax.swing.JPanel {
             if(cantidad > 0){
                 txtCantidad.setText(String.valueOf(cantidad));
             }else if(cantidad == 0){
-                //FIXME
                 txtCantidad.setText("");
-                //JOptionPane.showMessageDialog(this, "Seleccione una cantidad válida.");
             }
         } 
     }//GEN-LAST:event_jToggleButton1ItemStateChanged
@@ -1474,6 +1473,8 @@ public class PanelVentas extends javax.swing.JPanel {
                 totalBruto = getSumPrecio();
                 txtTotalNeto.setText(currencyFormatter.format(totalBruto));
             }
+        }else{
+            JOptionPane.showMessageDialog(this, "Hay que seleccionar un producto de la tabla.");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
     /**
@@ -1646,7 +1647,7 @@ public class PanelVentas extends javax.swing.JPanel {
     private javax.swing.JButton btn7;
     private javax.swing.JButton btn8;
     private javax.swing.JButton btn9;
-    private javax.swing.JButton btnAcceptar;
+    private javax.swing.JButton btnAddItem;
     private javax.swing.JButton btnBocadillos;
     private javax.swing.JButton btnCafe;
     private javax.swing.JButton btnChocolate;

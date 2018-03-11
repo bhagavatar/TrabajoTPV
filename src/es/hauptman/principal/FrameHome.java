@@ -7,7 +7,7 @@ package es.hauptman.principal;
 
 import es.hauptman.vista.PanelVentas;
 import es.hauptman.vista.PanelClientes;
-import es.hauptman.vista.PanelGestVentas;
+import es.hauptman.vista.PanelGestFacturas;
 import es.hauptman.vista.PanelProductos;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -104,7 +104,7 @@ public class FrameHome extends javax.swing.JFrame {
         panelBtnHome.add(btnProductos);
 
         btnGestVentas.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
-        btnGestVentas.setLabel("Gestionar Ventas");
+        btnGestVentas.setText("Gestionar Facturas");
         btnGestVentas.setOpaque(true);
         btnGestVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,7 +224,7 @@ public class FrameHome extends javax.swing.JFrame {
         });
         menu.add(itemIniVentas);
 
-        itemGesVentas.setText("Gestionar Ventas");
+        itemGesVentas.setText("Gestionar Facturas");
         itemGesVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemGesVentasActionPerformed(evt);
@@ -295,7 +295,7 @@ public class FrameHome extends javax.swing.JFrame {
     }//GEN-LAST:event_itemClientesActionPerformed
 
     private void itemGesVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGesVentasActionPerformed
-        cargaPanel (new PanelGestVentas(this));
+        cargaPanel (new PanelGestFacturas(this));
     }//GEN-LAST:event_itemGesVentasActionPerformed
 
     private void itemInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInicioActionPerformed
@@ -318,7 +318,7 @@ public class FrameHome extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductosActionPerformed
 
     private void btnGestVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestVentasActionPerformed
-        cargaPanel (new PanelGestVentas(this));
+        cargaPanel (new PanelGestFacturas(this));
     }//GEN-LAST:event_btnGestVentasActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed

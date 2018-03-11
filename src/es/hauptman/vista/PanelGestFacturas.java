@@ -21,14 +21,14 @@ import javax.swing.table.DefaultTableModel;
  * Clase del panel de gestion de ventas.
  * @author Diego
  */
-public class PanelGestVentas extends javax.swing.JPanel {
+public class PanelGestFacturas extends javax.swing.JPanel {
     private FrameHome frame;
     private AccionesFacturas accionesFacturas;
     /**
      * Creates new form PanelGestVentas
      * @param frame
      */
-    public PanelGestVentas(FrameHome frame) {
+    public PanelGestFacturas(FrameHome frame) {
         this.frame = frame;
         initComponents();
         accionesFacturas = new AccionesFacturas(this);
@@ -194,7 +194,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Factura", "ID Cliente", "Nombre", "Apellido", "Fecha", "Descuento", "Total Compra", "Total Descuento"
+                "Factura", "ID Cliente", "Nombre", "Apellido", "Fecha", "Descuento", "Subtotal", "Total "
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -218,11 +218,8 @@ public class PanelGestVentas extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblFacturas);
         if (tblFacturas.getColumnModel().getColumnCount() > 0) {
-            tblFacturas.getColumnModel().getColumn(0).setResizable(false);
             tblFacturas.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tblFacturas.getColumnModel().getColumn(1).setResizable(false);
             tblFacturas.getColumnModel().getColumn(1).setPreferredWidth(50);
-            tblFacturas.getColumnModel().getColumn(4).setResizable(false);
             tblFacturas.getColumnModel().getColumn(4).setPreferredWidth(150);
         }
 
@@ -349,7 +346,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", "Subtotal"
+                "Producto", "Cantidad", "Precio", "Subtotal Productos"
             }
         ));
         jScrollPane2.setViewportView(tblDetalleFactura);

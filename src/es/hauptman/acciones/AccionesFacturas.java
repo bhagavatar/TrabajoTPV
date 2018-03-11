@@ -12,7 +12,7 @@ import es.hauptman.entities.Productos;
 import es.hauptman.gestionbd.FacturasDAO;
 import es.hauptman.vista.DialogDescuento;
 import es.hauptman.vista.DialogFactura;
-import es.hauptman.vista.PanelGestVentas;
+import es.hauptman.vista.PanelGestFacturas;
 import es.hauptman.vista.PanelVentas;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class AccionesFacturas {
     PanelVentas panel;
     DialogFactura dialog;
-    PanelGestVentas panelGestVentas;
+    PanelGestFacturas panelGestVentas;
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     public AccionesFacturas(PanelVentas panel) {
@@ -37,7 +37,7 @@ public class AccionesFacturas {
         this.dialog = dialog;
     }
 
-    public AccionesFacturas(PanelGestVentas panelGestVentas) {
+    public AccionesFacturas(PanelGestFacturas panelGestVentas) {
         this.panelGestVentas = panelGestVentas;
     }
         

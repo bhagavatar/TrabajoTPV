@@ -104,8 +104,8 @@ public class PanelProductos extends javax.swing.JPanel {
         txtCategoria = new javax.swing.JTextField();
         lblCatId = new javax.swing.JLabel();
         txtIdCat = new javax.swing.JTextField();
-        btnGuardarCat = new javax.swing.JButton();
-        btnEditarCat = new javax.swing.JButton();
+        btnCrearCat = new javax.swing.JButton();
+        btnActualizarCat = new javax.swing.JButton();
         btnEliminarCat = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnLimpiar = new javax.swing.JButton();
@@ -123,9 +123,9 @@ public class PanelProductos extends javax.swing.JPanel {
         txtPrecio = new javax.swing.JTextField();
         lblCboCatProd = new javax.swing.JLabel();
         cboCatProd = new javax.swing.JComboBox<>();
-        btnGuardar = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnCrearProd = new javax.swing.JButton();
+        btnActualizarProd = new javax.swing.JButton();
+        btnEliminarProd = new javax.swing.JButton();
         pnlBuscar = new javax.swing.JPanel();
         rdoBuscarCat = new javax.swing.JRadioButton();
         cboSearchCat = new javax.swing.JComboBox<>();
@@ -171,19 +171,19 @@ public class PanelProductos extends javax.swing.JPanel {
 
         lblCatId.setText("ID Categoria:");
 
-        btnGuardarCat.setForeground(new java.awt.Color(0, 0, 204));
-        btnGuardarCat.setText("Crear");
-        btnGuardarCat.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearCat.setForeground(new java.awt.Color(0, 0, 204));
+        btnCrearCat.setText("Crear");
+        btnCrearCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarCatActionPerformed(evt);
+                btnCrearCatActionPerformed(evt);
             }
         });
 
-        btnEditarCat.setForeground(new java.awt.Color(0, 0, 204));
-        btnEditarCat.setText("Actualizar");
-        btnEditarCat.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarCat.setForeground(new java.awt.Color(0, 0, 204));
+        btnActualizarCat.setText("Actualizar");
+        btnActualizarCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarCatActionPerformed(evt);
+                btnActualizarCatActionPerformed(evt);
             }
         });
 
@@ -211,9 +211,9 @@ public class PanelProductos extends javax.swing.JPanel {
                             .addComponent(txtIdCat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnlCategoriasLayout.createSequentialGroup()
-                        .addComponent(btnGuardarCat)
+                        .addComponent(btnCrearCat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditarCat)
+                        .addComponent(btnActualizarCat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEliminarCat)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -231,8 +231,8 @@ public class PanelProductos extends javax.swing.JPanel {
                     .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(pnlCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardarCat)
-                    .addComponent(btnEditarCat)
+                    .addComponent(btnCrearCat)
+                    .addComponent(btnActualizarCat)
                     .addComponent(btnEliminarCat))
                 .addContainerGap())
         );
@@ -324,27 +324,27 @@ public class PanelProductos extends javax.swing.JPanel {
             }
         });
 
-        btnGuardar.setForeground(new java.awt.Color(0, 0, 204));
-        btnGuardar.setText("Crear");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearProd.setForeground(new java.awt.Color(0, 0, 204));
+        btnCrearProd.setText("Crear");
+        btnCrearProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnCrearProdActionPerformed(evt);
             }
         });
 
-        btnEditar.setForeground(new java.awt.Color(0, 0, 204));
-        btnEditar.setText("Actualizar");
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarProd.setForeground(new java.awt.Color(0, 0, 204));
+        btnActualizarProd.setText("Actualizar");
+        btnActualizarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
+                btnActualizarProdActionPerformed(evt);
             }
         });
 
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 204));
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarProd.setForeground(new java.awt.Color(0, 0, 204));
+        btnEliminarProd.setText("Eliminar");
+        btnEliminarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnEliminarProdActionPerformed(evt);
             }
         });
 
@@ -356,11 +356,11 @@ public class PanelProductos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(pnlProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlProductosLayout.createSequentialGroup()
-                        .addComponent(btnGuardar)
+                        .addComponent(btnCrearProd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)
+                        .addComponent(btnActualizarProd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEliminar)
+                        .addComponent(btnEliminarProd)
                         .addGap(257, 257, 257))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProductosLayout.createSequentialGroup()
                         .addGroup(pnlProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -414,9 +414,9 @@ public class PanelProductos extends javax.swing.JPanel {
                     .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnEditar)
-                    .addComponent(btnEliminar))
+                    .addComponent(btnCrearProd)
+                    .addComponent(btnActualizarProd)
+                    .addComponent(btnEliminarProd))
                 .addContainerGap())
         );
 
@@ -542,7 +542,7 @@ public class PanelProductos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnCrearProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearProdActionPerformed
         if(cboCatProd.getSelectedIndex() == 0)
             {
                 
@@ -560,12 +560,12 @@ public class PanelProductos extends javax.swing.JPanel {
             accionesProductos.guardarProductos();
             model = (DefaultTableModel) tablaProductos.getModel();
             model.setNumRows(0);
-            accionesProductos.getLastCreatedProduct();
+            accionesProductos.getLastUpdatedProduct();
             limpiaCampos();
         }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnCrearProdActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnEliminarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProdActionPerformed
         if(txtIdProd.getText().equals("")){
             
             JOptionPane.showMessageDialog(frame, "Seleccione un Producto o su ID.", 
@@ -578,9 +578,9 @@ public class PanelProductos extends javax.swing.JPanel {
         model.removeRow(tablaProductos.getSelectedRow());
        limpiaCampos();
         }
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnEliminarProdActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+    private void btnActualizarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarProdActionPerformed
         // TODO add your handling code here:
         if(txtIdProd.getText().equals("")){
             
@@ -596,10 +596,14 @@ public class PanelProductos extends javax.swing.JPanel {
         
         }else{
         accionesProductos.editaProducto();
-        accionesProductos.readListaProductos();
+        //FIXME
+        //accionesProductos.readListaProductos();
+        model = (DefaultTableModel) tablaProductos.getModel();
+        model.setNumRows(0);
+        accionesProductos.getLastUpdatedProduct();
         limpiaCampos();
         }
-    }//GEN-LAST:event_btnEditarActionPerformed
+    }//GEN-LAST:event_btnActualizarProdActionPerformed
     
     /**
      * Muestra las informaciones de las líneas de la tabla en los campos de texto. 
@@ -718,8 +722,8 @@ public class PanelProductos extends javax.swing.JPanel {
             pnlCategorias.setEnabled(true);
             txtIdCat.setEnabled(true);
             txtCategoria.setEnabled(true);
-            btnGuardarCat.setEnabled(true);
-            btnEditarCat.setEnabled(true);
+            btnCrearCat.setEnabled(true);
+            btnActualizarCat.setEnabled(true);
             btnEliminarCat.setEnabled(true);
             lblCatId.setEnabled(true);
             lblDescCat.setEnabled(true);
@@ -727,8 +731,8 @@ public class PanelProductos extends javax.swing.JPanel {
             pnlCategorias.setEnabled(false);
             txtIdCat.setEnabled(false);
             txtCategoria.setEnabled(false);
-            btnGuardarCat.setEnabled(false);
-            btnEditarCat.setEnabled(false);
+            btnCrearCat.setEnabled(false);
+            btnActualizarCat.setEnabled(false);
             btnEliminarCat.setEnabled(false);
             lblCatId.setEnabled(false);
             lblDescCat.setEnabled(false);
@@ -743,9 +747,9 @@ public class PanelProductos extends javax.swing.JPanel {
         
         if(state == ItemEvent.SELECTED){
             pnlProductos.setEnabled(true);
-            btnEditar.setEnabled(true);
-            btnEliminar.setEnabled(true);
-            btnGuardar.setEnabled(true);
+            btnActualizarProd.setEnabled(true);
+            btnEliminarProd.setEnabled(true);
+            btnCrearProd.setEnabled(true);
             txtCtd.setEnabled(true);
             txtIdProd.setEnabled(true);
             txtProducto.setEnabled(true);
@@ -758,9 +762,9 @@ public class PanelProductos extends javax.swing.JPanel {
             lblProdId.setEnabled(true);
         }  else if (state == ItemEvent.DESELECTED){
             pnlProductos.setEnabled(false);
-            btnEditar.setEnabled(false);
-            btnEliminar.setEnabled(false);
-            btnGuardar.setEnabled(false);
+            btnActualizarProd.setEnabled(false);
+            btnEliminarProd.setEnabled(false);
+            btnCrearProd.setEnabled(false);
             txtCtd.setEnabled(false);
             txtIdProd.setEnabled(false);
             txtProducto.setEnabled(false);
@@ -777,27 +781,27 @@ public class PanelProductos extends javax.swing.JPanel {
         
     }//GEN-LAST:event_rdoCrearProdItemStateChanged
 
-    private void btnGuardarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCatActionPerformed
+    private void btnCrearCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearCatActionPerformed
         if(txtCategoria.getText().equals("")){
             JOptionPane.showMessageDialog(frame, "Rellene el campo 'Categoria'.", 
                     "No se ha creado la Categoria.", JOptionPane.WARNING_MESSAGE);
         }else{
         accionesCategorias.createAccionesCategorias();
         }
-    }//GEN-LAST:event_btnGuardarCatActionPerformed
+    }//GEN-LAST:event_btnCrearCatActionPerformed
 
     private void btnListarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarCategoriasActionPerformed
         accionesCategorias.readAllCategorias();
     }//GEN-LAST:event_btnListarCategoriasActionPerformed
 
-    private void btnEditarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCatActionPerformed
+    private void btnActualizarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarCatActionPerformed
         if(txtIdCat.getText().equals("")){
             JOptionPane.showMessageDialog(frame, "Seleccione una Categoria o su ID.", 
                     "No se ha modificado la Categoria.", JOptionPane.WARNING_MESSAGE);
         }else{
         accionesCategorias.updateAccionesCategorias();
         }
-    }//GEN-LAST:event_btnEditarCatActionPerformed
+    }//GEN-LAST:event_btnActualizarCatActionPerformed
 
     private void btnEliminarCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCatActionPerformed
         if(txtIdCat.getText().equals("")){
@@ -820,16 +824,16 @@ public class PanelProductos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cboCatProdActionPerformed
     /**
-     * Método paara desabilitar componentes.
+     * Método para desabilitar componentes.
      */
     private void disableComponents (){
             pnlBuscar.setEnabled(false);
             pnlCategorias.setEnabled(false);
             pnlProductos.setEnabled(false);
             
-            btnEditar.setEnabled(false);
-            btnEliminar.setEnabled(false);
-            btnGuardar.setEnabled(false);
+            btnActualizarProd.setEnabled(false);
+            btnEliminarProd.setEnabled(false);
+            btnCrearProd.setEnabled(false);
             txtCtd.setEnabled(false);
             txtIdProd.setEnabled(false);
             txtProducto.setEnabled(false);
@@ -837,8 +841,8 @@ public class PanelProductos extends javax.swing.JPanel {
             
             txtIdCat.setEnabled(false);
             txtCategoria.setEnabled(false);
-            btnGuardarCat.setEnabled(false);
-            btnEditarCat.setEnabled(false);
+            btnCrearCat.setEnabled(false);
+            btnActualizarCat.setEnabled(false);
             btnEliminarCat.setEnabled(false);
             
             cboSearchProd.setEnabled(false);
@@ -861,12 +865,12 @@ public class PanelProductos extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEditarCat;
-    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnActualizarCat;
+    private javax.swing.JButton btnActualizarProd;
+    private javax.swing.JButton btnCrearCat;
+    private javax.swing.JButton btnCrearProd;
     private javax.swing.JButton btnEliminarCat;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnGuardarCat;
+    private javax.swing.JButton btnEliminarProd;
     private javax.swing.JButton btnLimpiaTabla;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnListarCategorias;

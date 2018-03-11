@@ -66,7 +66,7 @@ public class ProductosDAO {
             System.err.println(IErrors.ERROR_SQL_STATEMENT + ex);
             return false;
         } finally {
-            GestionSQL.closedConnection(conn, query);
+            GestionSQL.closedConnection(conn, query, rs);
         }
     }
     

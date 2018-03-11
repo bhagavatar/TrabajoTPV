@@ -6,8 +6,6 @@
 package es.hauptman.vista;
 
 import es.hauptman.acciones.AccionesFacturas;
-import java.text.NumberFormat;
-import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTable;

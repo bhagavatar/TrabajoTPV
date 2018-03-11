@@ -75,7 +75,7 @@ public class FacturasDAO {
                 queryFactura.setDouble(5, factura.getTotalConDesc());
             } else {
                 queryFactura.setNull(4, Types.DOUBLE);
-                queryFactura.setNull(5, Types.DOUBLE);
+                queryFactura.setDouble(5, factura.getTotal());
             }
             
             queryFactura.executeUpdate();

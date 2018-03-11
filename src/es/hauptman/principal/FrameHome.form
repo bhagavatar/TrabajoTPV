@@ -22,7 +22,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemGesVentas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gestionar Ventas"/>
+                <Property name="text" type="java.lang.String" value="Gestionar Facturas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemGesVentasActionPerformed"/>
@@ -247,7 +247,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="18" style="2"/>
                         </Property>
-                        <Property name="label" type="java.lang.String" value="Gestionar Ventas"/>
+                        <Property name="text" type="java.lang.String" value="Gestionar Facturas"/>
                         <Property name="opaque" type="boolean" value="true"/>
                       </Properties>
                       <Events>
