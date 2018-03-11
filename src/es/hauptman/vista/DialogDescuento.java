@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
- *
+ * Clase de la ventana de dialogo de los descuentos.
+ * 
  * @author Diego
  */
 public class DialogDescuento extends javax.swing.JDialog {
@@ -29,6 +30,8 @@ public class DialogDescuento extends javax.swing.JDialog {
 
     /**
      * Creates new form DialogDescuento
+     * @param parent
+     * @param modal
      */
     public DialogDescuento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -55,7 +58,7 @@ public class DialogDescuento extends javax.swing.JDialog {
     
     
     
-
+    // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public JTextField getTxtPrecio() {
         return txtPrecio;
     }
@@ -70,7 +73,7 @@ public class DialogDescuento extends javax.swing.JDialog {
 
     public JTextField getTxtNombre() {
         return txtNombre;
-    }
+    } // </editor-fold>
     
     /**
      * Método que calcula el descuento e retorna el precio final.

@@ -14,7 +14,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
- *
+ * Clase de la ventana de dialogo que muestra el resumen de la Factura al 
+ * realizar una venta.
  * @author Diego
  */
 public class DialogFactura extends javax.swing.JDialog {
@@ -30,13 +31,13 @@ public class DialogFactura extends javax.swing.JDialog {
         initComponents();
         acciones = new AccionesFacturas(this);
         acciones.displayFactura();
-        
        
     }
 
     public DialogFactura() {
     }
 
+    // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public JButton getBtnOK() {
         return btnOK;
     }
@@ -85,14 +86,6 @@ public class DialogFactura extends javax.swing.JDialog {
         this.txtTotal = txtTotal;
     }
 
-    public JLabel getLblUsuario() {
-        return lblUsuario;
-    }
-
-    public void setLblUsuario(JLabel lblUsuario) {
-        this.lblUsuario = lblUsuario;
-    }
-
     public JTextField getTxtSubtotal() {
         return txtSubtotal;
     }
@@ -103,7 +96,7 @@ public class DialogFactura extends javax.swing.JDialog {
 
     public JTextField getTxtDesc() {
         return txtDesc;
-    }
+    } //</editor-fold>
     
     
     /**
@@ -120,8 +113,6 @@ public class DialogFactura extends javax.swing.JDialog {
         btnOK = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblNumFactura = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblUsuario = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         lblClienteNombre = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -159,11 +150,6 @@ public class DialogFactura extends javax.swing.JDialog {
         jLabel1.setText("Nº Factura: ");
 
         lblNumFactura.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
-        jLabel3.setText("Usuário:");
-
-        lblUsuario.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
         jLabel5.setText("Cliente:");
@@ -205,16 +191,9 @@ public class DialogFactura extends javax.swing.JDialog {
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(150, 150, 150)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addGap(0, 0, Short.MAX_VALUE))
-                                            .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)))
                                     .addComponent(lblNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
-                                .addGap(18, 18, 18)
+                                .addGap(18, 322, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -255,12 +234,10 @@ public class DialogFactura extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lblNumFactura, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblClienteApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblClienteNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -335,7 +312,6 @@ public class DialogFactura extends javax.swing.JDialog {
     private javax.swing.JButton btnOK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -345,7 +321,6 @@ public class DialogFactura extends javax.swing.JDialog {
     private javax.swing.JLabel lblClienteApellido;
     private javax.swing.JLabel lblClienteNombre;
     private javax.swing.JLabel lblNumFactura;
-    private javax.swing.JLabel lblUsuario;
     private javax.swing.JTable tblDisplayFactura;
     private javax.swing.JTextField txtDesc;
     private javax.swing.JTextField txtSubtotal;

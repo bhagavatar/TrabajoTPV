@@ -11,7 +11,6 @@ import es.hauptman.acciones.AccionesVentas;
 import es.hauptman.entities.Productos;
 import es.hauptman.principal.FrameHome;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -32,7 +31,7 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase del panel de Ventas, donde se realizaran todas las ventas.
  * @author Diego
  */
 public class PanelVentas extends javax.swing.JPanel {
@@ -40,7 +39,6 @@ public class PanelVentas extends javax.swing.JPanel {
     private AccionesVentas accionesVentas;
     private AccionesFacturas accionesFacturas;
     private AccionesProductos accionesProductos;
-    //FIXME
     private Productos prodSeleccionado;
     private NumberFormat currencyFormatter; 
     public static double totalBruto;
@@ -72,19 +70,9 @@ public class PanelVentas extends javax.swing.JPanel {
         tiempo.start();
     }
     
-    //FIXME Antes de eliminar estar seguro de que este metodo no hace falta
-//    public FrameHome getFrame() {
-//        return frame;
-//    }
-
-//    public void setFrame(FrameHome frame) {
-//        this.frame = frame;
-//    }
-    
-    
     /**
      * Método para sumar los valores del subtotal de la tabla.
-     * @return int
+     * @return int sum
      */
     public double getSumPrecio(){
         
@@ -96,6 +84,10 @@ public class PanelVentas extends javax.swing.JPanel {
         return sum;
     }
     
+    /**
+     * Metodo que suma los valores de la columna cantidad de la tablaVentas.
+     * @return int sum
+     */
     public int getSumCantidad(){
         int rowCount = tablaVentas.getRowCount();
         int sum = 0;
@@ -104,7 +96,11 @@ public class PanelVentas extends javax.swing.JPanel {
         }
         return sum;
     }
-    
+    /**
+     * Clase que implementa la interfaz ActionListener.
+     * Sobrescribe el metodo actionPerformed para mostrar la hora formateada 
+     * en el campo de texto txtHora.
+     */
     class horas implements ActionListener {
 
         @Override
@@ -1393,8 +1389,8 @@ public class PanelVentas extends javax.swing.JPanel {
                         + prodSeleccionado.getDescripcion() + " se ha terminado.");
                 
             }else if(cantidadInicial > 0 & cantidad >= 0){
-                //FIXME
-                boolean productExists = updateRowQuantity(prodSeleccionado.getCantidadComprada());
+                //permite actualizar la cantidad del producto en la tabla.
+                boolean productExists = updateRowQuantity();
                 if(!productExists){
                     listaProductosVenta.add(prodSeleccionado);
                     DefaultTableModel model = (DefaultTableModel) tablaVentas.getModel();
@@ -1417,17 +1413,18 @@ public class PanelVentas extends javax.swing.JPanel {
             }else if (txtDesc.getText().equals("") || txtDesc.getText().equals("0")){
                 txtTotalNeto.setText(currencyFormatter.format(totalBruto));
             }
-            //FIXME 
-//            buttonGroupTipo.clearSelection();
-//            txtCantidad.setText("");
         
         }else {
             JOptionPane.showMessageDialog(this, "Seleccione una cantidad válida y pulse el botón Acceptar");
             txtCantidad.setText("");
         }    
     }//GEN-LAST:event_btnAcceptarActionPerformed
-    
-    private boolean updateRowQuantity(int cantidad){
+    /**
+     * Metodo que actualiza la cantidad del producto seleccionado en la 
+     * tablaVetas. Devuelve true si el producto seleccionado ya existe en la tabla.
+     * @return boolean exists
+     */
+    private boolean updateRowQuantity(){
         String s;
         boolean exists = false;
         for(int i = 0; i < tablaVentas.getRowCount(); i++ ){
@@ -1479,7 +1476,12 @@ public class PanelVentas extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    /**
+     * Metodo que hace el calculo de porcentaje del descuento y actualiza su 
+     * valor formatado en el campo de texto txtTotalNeto.
+     * @param currencyFormatter
+     * @throws NumberFormatException 
+     */
     private void actualizaDescuento(NumberFormat currencyFormatter) throws NumberFormatException {
         double descuento = Double.parseDouble(txtDesc.getText());
         double porCien = totalBruto*(descuento/100);
@@ -1560,7 +1562,10 @@ public class PanelVentas extends javax.swing.JPanel {
         // TODO add your handling code here:
         incrementaCant();
     }//GEN-LAST:event_lblIncrementaMouseClicked
-    
+    /**
+     * Metodo que decrementa el valor de la cantidad de productos. Se usa en la 
+     * label lblDecrementa.
+     */
     private void decrementaCant(){
         if (!txtCantidad.getText().equals("")){
             int cantidad = Integer.parseInt(txtCantidad.getText());
@@ -1571,7 +1576,10 @@ public class PanelVentas extends javax.swing.JPanel {
         } else 
             JOptionPane.showMessageDialog(this, "Seleccione una cantidad válida.");
     }
-    
+    /**
+     * Metodo que incrementa el valor de la cantidad de productos. Se usa en la 
+     * label lblIncrementa.
+     */
     private void incrementaCant(){
         if (!txtCantidad.getText().equals("")){
             int cantidad = Integer.parseInt(txtCantidad.getText());
@@ -1589,7 +1597,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
     public JTable getTablaVentas() {
         return tablaVentas;
-    } //</editor-fold>  
+    }  
     
      
     public Productos getProdSeleccionado() {
@@ -1622,7 +1630,7 @@ public class PanelVentas extends javax.swing.JPanel {
 
     public JTextField getTxtDesc() {
         return txtDesc;
-    }
+    }//</editor-fold> 
     
     
     

@@ -6,7 +6,7 @@
 package es.hauptman.entities;
 
 /**
- *
+ * Clase bean de la entidad Productos.
  * @author Diego
  */
 public class Productos {
@@ -88,7 +88,8 @@ public class Productos {
     }
     
     /**
-     * Método que retorna un array de Object para insertar las líneas (row) en la tabla 
+     * Método que retorna un array de Object, sirve para insertar las 
+     * líneas (row) en la tabla 
      * del PanelVentas.
      * @return Object[] rowProducto
      */

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- *
+ * Clase de acceso a la base de datos para la entidad Productos.
  * @author Diego
  */
 public class ProductosDAO {
@@ -21,14 +21,26 @@ public class ProductosDAO {
     private Connection conn = null;
     private static int key;
     
+    /**
+     * Getter que retorna el ID del último producto creado.
+     * @return
+     */
     public int getKey() {
         return key;
     }
 
+    /**
+     * Constructor que inicializa la conexion con la BBDD.
+     */
     public ProductosDAO() {
         conn = GestionSQL.getConnection();
     }
 
+    /**
+     * rea un nuevo producto en la BBDD.
+     * @param producto
+     * @return
+     */
     public boolean createProductos(Productos producto) {
 
         String sql = "INSERT INTO productos (nombreProducto, cantidadStock, "
@@ -58,6 +70,10 @@ public class ProductosDAO {
         }
     }
     
+    /**
+     * Recupera todos los productos de la BBDD.
+     * @return ArrayList productos.
+     */
     public List<Productos> readProductos(){
         
         String sql = "SELECT * FROM view_productocategoria";
@@ -97,6 +113,11 @@ public class ProductosDAO {
         return productos;
     }
     
+    /**
+     * Método que recupera los productos de la BBDD y los guarda en un HashMap 
+     * que recibirá como llave el nombre del producto que está definido en los botones del PanelVentas.
+     * @return HashMap productos.
+     */
     public HashMap<String, Productos> readProdVentas(){
         
         String sql = "SELECT prod_id, nombreProducto, precio, cantidadStock, id_cat, "
@@ -137,6 +158,12 @@ public class ProductosDAO {
         return productos;
     }
     
+    /**
+     * Recupera todos los productos de una determinada Categoria atraves del ID 
+     * de una categoria.
+     * @param categoria
+     * @return ArrayList listaProductos.
+     */
     public List<Productos> readProductosByCatId(Categorias categoria){
         
         String sql = "SELECT * FROM  view_productocategoria WHERE categorias_id = ?";
@@ -176,6 +203,11 @@ public class ProductosDAO {
         
     }
     
+    /**
+     * Recupera un producto de la BBDD por su ID.
+     * @param producto
+     * @return
+     */
     public List<Productos> readProductosById(Productos producto){
         
         String sql = "SELECT * FROM  view_productocategoria WHERE prod_id = ?";
@@ -216,6 +248,11 @@ public class ProductosDAO {
         
     }
     
+    /**
+     * Actualiza un Producto en la BBDD atraves de su ID.
+     * @param producto
+     * @return
+     */
     public boolean update(Productos producto){
         
         String sql = "UPDATE productos SET nombreProducto = ?, "
@@ -241,7 +278,11 @@ public class ProductosDAO {
         }
     }
     
-    //FIXME
+    /**
+     * Actualiza la cantidad de los productos vendidos en la BBDD.
+     * @param listaProd
+     * @return
+     */
     public boolean updateCantidad(List<Productos> listaProd){
         
         String sql = "UPDATE productos SET cantidadStock = ? WHERE id = ? ";
@@ -268,6 +309,11 @@ public class ProductosDAO {
         }
     }
     
+    /**
+     * Elimina un producto de la BBDD atraves de su ID.
+     * @param producto
+     * @return valor booleano.
+     */
     public boolean delete(Productos producto){
         
         String sql = "DELETE FROM productos WHERE id = ?";

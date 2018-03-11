@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase del panel de gestion de ventas.
  * @author Diego
  */
 public class PanelGestVentas extends javax.swing.JPanel {
@@ -26,6 +26,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
     private AccionesFacturas accionesFacturas;
     /**
      * Creates new form PanelGestVentas
+     * @param frame
      */
     public PanelGestVentas(FrameHome frame) {
         this.frame = frame;
@@ -41,6 +42,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
         MyIntFilter.formatInt(txtTicketID);
     }
     
+    // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public JTable getTblFacturas() {
         return tblFacturas;
     }
@@ -67,7 +69,7 @@ public class PanelGestVentas extends javax.swing.JPanel {
 
     public JTextField getTxtDetalleNombre() {
         return txtDetalleNombre;
-    }
+    }//</editor-fold> 
     
     
     /**

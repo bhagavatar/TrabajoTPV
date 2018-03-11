@@ -14,7 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Clase que implementa los métodos de interacción con la base de datos.
+ * Clase que implementa los métodos de interacción de Clientes 
+ * con la base de datos.
  * 
  * @author Diego
  */

@@ -27,7 +27,7 @@ public class GestionSQL {
     }
     
     /**
-     * Método para recuperar una conexión a la base de datos.
+     * Método para hacer una conexión a la base de datos.
      * 
      * @return
      */
@@ -52,6 +52,10 @@ public class GestionSQL {
         
     }
     
+    /**
+     * Metodo para cerrar la conexion con la BBDD.
+     * @param conn
+     */
     public static void closedConnection(Connection conn){
         
         if(conn != null){
@@ -63,6 +67,12 @@ public class GestionSQL {
         }
     }
     
+    /**
+     * Sobrecarga del método closedConnection que cierra la conexion 
+     * y el PreparedStatement
+     * @param conn
+     * @param query
+     */
     public static void closedConnection(Connection conn, PreparedStatement query){
         
         if(query != null){
@@ -76,6 +86,13 @@ public class GestionSQL {
         closedConnection(conn);
     }
     
+    /**
+     * Sobrecarga del método closedConnection que cierra la conexion, 
+     * el PreparedStatement y el ResultSet.
+     * @param conn
+     * @param query
+     * @param rs
+     */
     public static void closedConnection(Connection conn, PreparedStatement query, ResultSet rs){
         
         if(rs != null){

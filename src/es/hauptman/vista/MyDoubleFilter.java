@@ -14,7 +14,8 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
 /**
- *
+ * Clase que hace la formatacion del un campo de texto para que solo se permita 
+ * numeros de tipo double. Hereda de DocumentFilter.
  * @author Diego
  */
 public class MyDoubleFilter extends DocumentFilter {
@@ -22,8 +23,13 @@ public class MyDoubleFilter extends DocumentFilter {
     public MyDoubleFilter() {
     }
     
+    /**
+     * Metodo de clase que recibe un JTextField como argumento para formatearlo.
+     * @param campoTexto
+     */
     public static void formatDouble (JTextField campoTexto){
-        //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
+        //Usa la clase DocumentFilter para limitar el campo de texto para 
+        //recibir solo numeros double.
         PlainDocument doc = (PlainDocument) campoTexto.getDocument();
         doc.setDocumentFilter(new MyDoubleFilter());
     }
@@ -44,7 +50,11 @@ public class MyDoubleFilter extends DocumentFilter {
           JOptionPane.showMessageDialog(null, "Por favor solo números.");
       }
    }
-
+   /**
+    * Metodo que hace la validacion del campo de texto.
+    * @param text
+    * @return 
+    */
    private boolean test(String text) {
       try {
          if(text.trim().isEmpty()){

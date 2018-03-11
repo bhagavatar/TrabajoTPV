@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase del Panel de Clientes. Aqui el usuario gestionara los clientes.
  * @author Diego
  */
 public class PanelClientes extends javax.swing.JPanel {
@@ -23,6 +23,7 @@ public class PanelClientes extends javax.swing.JPanel {
 
     /**
      * Creates new form panelClientes
+     * @param frame
      */
     public PanelClientes(FrameHome frame) {
         

@@ -2,7 +2,7 @@
 package es.hauptman.entities;
 
 /**
- * Clase que define la entidad Clientes.
+ * Clase bean de la entidad Clientes.
  * 
  * @author Diego
  */
@@ -37,7 +37,9 @@ public class Clientes {
      * @param telefono int del teléfono
      * @param codpostal int del C.P
      */
-    public Clientes(int id, String nombre, String apellido, String direccion, String ciudad, String provincia, String telefono, String codpostal) {    
+    public Clientes(int id, String nombre, String apellido, String direccion, 
+            String ciudad, String provincia, String telefono, 
+            String codpostal) {    
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;

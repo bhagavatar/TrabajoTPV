@@ -6,7 +6,8 @@
 package es.hauptman.entities;
 
 /**
- *
+ * Clase bean de la entidad Categorias.
+ * 
  * @author Diego
  */
 public class Categorias {

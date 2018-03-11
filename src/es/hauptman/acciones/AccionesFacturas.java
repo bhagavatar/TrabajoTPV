@@ -19,7 +19,8 @@ import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase con las acciones relacionada a la Factura y sus detalles.
+ * 
  * @author Diego
  */
 public class AccionesFacturas {
@@ -40,14 +41,17 @@ public class AccionesFacturas {
         this.panelGestVentas = panelGestVentas;
     }
         
+    /**
+     * Guarda los detalles de una factura en la base de datos.
+     */
     public void guardarDetalleFactura(){
         
-        //DetalleFactura detalleFactura = new DetalleFactura();
         DetalleFactura detalleFactura;
         Facturas factura = new Facturas();
         Productos producto = new Productos();
         Clientes cliente = new Clientes();
         
+        //Validacion de campo de texto vacio.
         if(!panel.getTxtIDCliente().getText().equals("")){
              cliente.setId(Integer.parseInt(panel.getTxtIDCliente().getText()));
          } 
@@ -73,6 +77,10 @@ public class AccionesFacturas {
         daoFactura.createFactura(factura);
     }
     
+    /**
+     * Recupera los detalles de la factura recien creada en el panel de ventas 
+     * y muestra en el DilogFactura.
+     */
     public void displayFactura(){
         
         DefaultTableModel model = (DefaultTableModel)dialog
@@ -108,6 +116,15 @@ public class AccionesFacturas {
         }
     }
     
+    /**
+     * Método que permite recuperar las facturas de la BBDD através de 
+     * distintos parametros de busqueda.
+     * @param ticketID
+     * @param clienteID
+     * @param fecha
+     * @param nombreCliente
+     * @param descuento
+     */
     public void searchFactura(int ticketID, int clienteID, String fecha, 
             String nombreCliente, double descuento) {
         
@@ -135,7 +152,10 @@ public class AccionesFacturas {
         }
     }
     
-       public void getAllFactura() {
+    /**
+     * Recupera todas las facturas. 
+     */
+    public void getAllFactura() {
         
         DefaultTableModel model = (DefaultTableModel) panelGestVentas
                 .getTblFacturas().getModel();
@@ -161,6 +181,10 @@ public class AccionesFacturas {
         }
     }
     
+    /**
+     * Recupera los detalles de una factura de la BBDD por el ID.
+     * @param ticketID
+     */
     public void getDetalleFactura(int ticketID) {
         
         DefaultTableModel model = (DefaultTableModel)panelGestVentas
@@ -186,6 +210,9 @@ public class AccionesFacturas {
         }
     }
     
+    /**
+     * Elimina una factura de la base de datos.
+     */
     public void eliminaFactura() {
         FacturasDAO dao = new FacturasDAO();
         Facturas factura = new Facturas();

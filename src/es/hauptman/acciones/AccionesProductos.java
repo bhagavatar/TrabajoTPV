@@ -16,7 +16,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase que realiza las acciones de Productos.
+ * 
  * @author Diego
  */
 public class AccionesProductos {
@@ -33,7 +34,9 @@ public class AccionesProductos {
         this.panelVentas = panelVentas;
     }
     
-    
+    /**
+     * Guarda un producto en la base de datos.
+     */
     public void guardarProductos(){
         
         Categorias categoria = new Categorias();
@@ -53,6 +56,10 @@ public class AccionesProductos {
         dao.createProductos(producto);
     }
     
+    /**
+     * Recupera los productos de la base de datos y los muestra en la JTable 
+     * del PanelProductos.
+     */
     public void readListaProductos(){
         DefaultTableModel model = (DefaultTableModel) 
                 panelProductos.getTablaProductos().getModel();
@@ -72,6 +79,9 @@ public class AccionesProductos {
         }
     }
     
+    /**
+     * Metodo que recupera el ID del último Producto creado.
+     */
     public void getLastCreatedProduct(){
         DefaultTableModel model = (DefaultTableModel) 
                 panelProductos.getTablaProductos().getModel();
@@ -92,6 +102,10 @@ public class AccionesProductos {
         
     }
     
+    /**
+     * Método que recupera una Categoria del ComboBox en la clase PanelProductos
+     * y muestra sus productos asociados en la JTable.
+     */
     public void readProdCatID(){
         
         DefaultTableModel model = (DefaultTableModel) panelProductos
@@ -114,6 +128,10 @@ public class AccionesProductos {
         }
     }
     
+    /**
+     * Método que recupera un Producto desde el ComboBox en la clase 
+     * PanelProductos y lo muestra en la JTable.
+     */
     public void readAccionesProdByID(){
         
         DefaultTableModel model = (DefaultTableModel) panelProductos
@@ -136,6 +154,10 @@ public class AccionesProductos {
         }
     }
     
+    /**
+     * Recupera los productos de la base de datos y los muestra en el ComboBox 
+     * de la clase PanelProductos.
+     */
     public void readProdCombo(){
         
         ProductosDAO dao = new ProductosDAO();
@@ -143,7 +165,6 @@ public class AccionesProductos {
         panelProductos.getCboSearchProd().removeAllItems();
         DefaultComboBoxModel<Object> model = 
                 new DefaultComboBoxModel<>(new String[] {"<Producto>"});
-        //model.insertElementAt("<Producto>", 0);
         panelProductos.getCboSearchProd().setModel(model);
         
         for (Productos p : dao.readProductos()){
@@ -151,6 +172,10 @@ public class AccionesProductos {
         }    
     }
     
+    /**
+     * Método que gestiona la actualizacion los valores de los productos en la base de 
+     * datos através de su ID desde la clase PanelProductos.
+     */
     public void editaProducto(){
         
         Categorias categoria = new Categorias();
@@ -170,6 +195,11 @@ public class AccionesProductos {
         dao.update(producto);
         
     }
+
+    /**
+     * Método que gestiona la actualización en la base de datos la cantidad en 
+     * stock del producto vendido através de la clase PanelVentas.
+     */
     public void updateQdtVenta(){
         ProductosDAO dao = new ProductosDAO();
         List<Productos> listaProd = new ArrayList<>();
@@ -183,6 +213,10 @@ public class AccionesProductos {
         
     }
     
+    /**
+     * Elimina un producto de base de datos através de su ID desde la clase 
+     * PanelProductos.
+     */
     public void eliminaProducto(){
         Productos producto = new Productos();
         ProductosDAO dao = new ProductosDAO();

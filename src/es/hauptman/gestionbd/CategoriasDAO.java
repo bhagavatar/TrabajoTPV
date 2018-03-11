@@ -14,17 +14,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Clase de acceso a la base de datos para la entidad Categorias.
  * @author Diego
  */
 public class CategoriasDAO {
     
     private Connection conn = null;
 
+    /**
+     * Constructor que inicializa la conexion a la BBDD
+     */
     public CategoriasDAO() {
         conn = GestionSQL.getConnection();
     }
     
+    /**
+     * Crea una Categoria en la base de datos.
+     * @param categoria 
+     * @return un valor booleano 
+     */
     public boolean createCategoria(Categorias categoria){
         
         String sql = "INSERT INTO categorias (descripcion) VALUES (?)";
@@ -44,6 +52,10 @@ public class CategoriasDAO {
         }
     }
     
+    /**
+     * Recupera todas las Categorias de la base de datos.
+     * @return ArrayList categorias.
+     */
     public List<Categorias> readCategoria(){
         
         String sql = "SELECT * FROM categorias";
@@ -73,6 +85,11 @@ public class CategoriasDAO {
         return categorias;
     }
     
+    /**
+     * Actuliza una categoria en la BBDD por su ID.
+     * @param categoria
+     * @return un valor booleano.
+     */
     public boolean update(Categorias categoria){
         
         String sql = "UPDATE categorias SET descripcion = ? WHERE id = ?";
@@ -93,6 +110,11 @@ public class CategoriasDAO {
         }
     }
     
+    /**
+     * Elimina una Categoria de la BBDD por su ID.
+     * @param categoria
+     * @return valor booleano.
+     */
     public boolean delete(Categorias categoria){
         
         String sql = "DELETE FROM categorias WHERE id = ?";

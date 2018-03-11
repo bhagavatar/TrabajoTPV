@@ -12,7 +12,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase que realiza las acciones de las Categorias.
+ * 
  * @author Diego
  */
 public class AccionesCategorias {
@@ -22,6 +23,10 @@ public class AccionesCategorias {
         this.panel = panel;
     }
     
+    /**
+     * Rellena el Combobox de Categorias del PanelGestVentas con los datos 
+     * de la BBDD.
+     */
     public void readCboAccionesCategorias(){
         CategoriasDAO dao = new CategoriasDAO();
         Categorias categoria = new Categorias();
@@ -39,6 +44,9 @@ public class AccionesCategorias {
         }    
     }
     
+    /**
+     * Recupera todas las Categorias de la BBDD.
+     */
     public void readAllCategorias(){
         Categorias categoria = new Categorias();
         CategoriasDAO dao = new CategoriasDAO();
@@ -53,6 +61,9 @@ public class AccionesCategorias {
             
     }
     
+    /**
+     * Inserta una nova Categoria en la BBDD desde el PanelGestVentas.
+     */
     public void createAccionesCategorias(){
         CategoriasDAO dao = new CategoriasDAO();
         Categorias categoria = new Categorias();
@@ -60,6 +71,9 @@ public class AccionesCategorias {
         dao.createCategoria(categoria);
     }
     
+    /**
+     * Actualiza una Categoria en la BBDD através de la ID.
+     */
     public void updateAccionesCategorias(){
         CategoriasDAO dao = new CategoriasDAO();
         Categorias categoria = new Categorias();
@@ -69,6 +83,9 @@ public class AccionesCategorias {
         
     }
     
+    /**
+     * Elimina una Categoria de la base de datos através de la ID.
+     */
     public void deleteAccionesCategorias(){
         CategoriasDAO dao = new CategoriasDAO();
         Categorias categoria = new Categorias();

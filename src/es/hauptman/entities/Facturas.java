@@ -11,21 +11,19 @@ import java.util.List;
 
 
 /**
- *
+ * Clase bean de la entidad Facturas.
+ * 
  * @author Diego
  */
 public class Facturas {
     
     private int ticketID;
-    private Usuarios usuario;
     private Clientes cliente;
     private double descuento;
     private double total;
     private double totalConDesc;
     private String fecha;
-    //FIXME mudar para ArrayList
     private DetalleFactura detalleFactura;
-    
     private List<DetalleFactura> listDetalleFacturas;
     
     public Facturas() {
@@ -42,14 +40,6 @@ public class Facturas {
 
     public void setTicketID(int ticketID) {
         this.ticketID = ticketID;
-    }
-
-    public Usuarios getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuarios usuario) {
-        this.usuario = usuario;
     }
 
     public Clientes getCliente() {
@@ -108,6 +98,11 @@ public class Facturas {
         this.listDetalleFacturas = listDetalleFacturas;
     }
     
+    /**
+     * Metodo que define los detalles de una factura los anade en la ArrayList
+     * listDetalleFacturas.
+     * @param detalleFactura
+     */
     public void addDetalleFactura(DetalleFactura detalleFactura){
         
         detalleFactura.setFactura(this);

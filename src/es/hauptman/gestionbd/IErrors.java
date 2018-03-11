@@ -1,7 +1,7 @@
 package es.hauptman.gestionbd;
 
 /**
- * Interfaz con los mensajes de error.
+ * Interfaz con los mensajes de error de SQL.
  *
  * @author Diego
  */

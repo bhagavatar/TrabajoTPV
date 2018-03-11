@@ -21,21 +21,33 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
+ * Clase de acceso a la base de datos para la entidad Facturas.
  * @author Diego
  */
 public class FacturasDAO {
     private Connection conn = null;
     private static int key;
 
+    /**
+     * Constructor que inicializa la conexion con la BBDD.
+     */
     public FacturasDAO() {
         conn = GestionSQL.getConnection();
     }
 
+    /**
+     * GETTER que recupera el ID de la Factura recién generada.
+     * @return
+     */
     public int getKey() {
         return key;
     }
      
+    /**
+     * Crea una Factura y sus detalles en la BBDD.
+     * @param factura
+     * @return valor bboleano.
+     */
     public boolean createFactura (Facturas factura){
         
         String sqlFactura = "INSERT INTO factura (fecha, total_compra, "
@@ -102,7 +114,8 @@ public class FacturasDAO {
     }
     
     /**
-     * Recupera detalles de la factura que se muestran en el DialogFactura.
+     * Recupera detalles de la factura en la BBDD y les muestra 
+     * en el DialogFactura.
      * @return Lista de tipo DetalleFactura.
      */
     public List<DetalleFactura> readFacturaDisplay(){
@@ -153,6 +166,16 @@ public class FacturasDAO {
         return listaDetalleFacturas;
     }
     
+    /**
+     * Recupera una Factura de la BBDD através de algunos parametros de busqueda.
+     * 
+     * @param ticketID
+     * @param clienteID
+     * @param fecha
+     * @param nombreCliente
+     * @param descuento
+     * @return ArrayList listaFactura.
+     */
     public List<Facturas> readFacturaByParameters(int ticketID, int clienteID, String fecha, 
             String nombreCliente, double descuento){
         
@@ -161,7 +184,6 @@ public class FacturasDAO {
         PreparedStatement query = null;
         ResultSet rs = null;
         List<Facturas> listaFactura = new ArrayList<>();
-        List<DetalleFactura> listaDetalleFacturas = new ArrayList<>();
         
          try {
              
@@ -199,13 +221,17 @@ public class FacturasDAO {
         return listaFactura;
     }
     
+    /**
+     * Recupera todas las Facturas de la BBDD.
+     * 
+     * @return ArrayList listaFactura.
+     */
     public List<Facturas> readAllFactura(){
         
         String sql = "SELECT * FROM view_facturaclientes";
         PreparedStatement query = null;
         ResultSet rs = null;
         List<Facturas> listaFactura = new ArrayList<>();
-        List<DetalleFactura> listaDetalleFacturas = new ArrayList<>();
         
          try {
              
@@ -239,6 +265,11 @@ public class FacturasDAO {
         return listaFactura;
     }
     
+    /**
+     * Recupera los detalles de la factura através del ID de la Factura.
+     * @param ticketID
+     * @return ArrayList listaDetalleFactura.
+     */
     public List<DetalleFactura> readDetalleFactura(int ticketID){
         
         String sql = "SELECT * FROM view_facturadisplay WHERE ticket_id=?";
@@ -286,6 +317,11 @@ public class FacturasDAO {
         return listaDetalleFacturas;
     }
     
+    /**
+     * Elimina una Factura de la BBDD.
+     * @param factura
+     * @return valor booleano.
+     */
     public boolean deleteFactura(Facturas factura){
         
         String sql = "DELETE FROM factura WHERE ticket_id = ?";

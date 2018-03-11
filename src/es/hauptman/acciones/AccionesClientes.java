@@ -82,7 +82,11 @@ public class AccionesClientes {
         service.updateCliente(cliente);
     }
     
-     public void readTblClientes(){
+    /**
+     * Recupera los clientes de la base de datos e les inserta en la JTable 
+     * del PanelClientes.
+     */
+    public void readTblClientes(){
         
         DefaultTableModel model = (DefaultTableModel) panel.getTblCliente().
                 getModel();
@@ -105,7 +109,11 @@ public class AccionesClientes {
         }
     }
      
-     public void readCboClientes(){
+    /**
+     * Recupera los Clienets de la base de datos e les inserta en el ComboBox 
+     * del DialogDescuento.
+     */
+    public void readCboClientes(){
           DefaultComboBoxModel<Object> model = 
                 new DefaultComboBoxModel<>(new String[] {"<Clientes>"});
         dialogDesc.getCboCliente().setModel(model);
@@ -117,7 +125,11 @@ public class AccionesClientes {
          
      }
      
-     public void getClientesById(Clientes cliente){
+    /**
+     * Recupera el nombre y apellido del cliente por su ID para el dialogo de descuento.
+     * @param cliente  
+     */
+    public void getClientesById(Clientes cliente){
          //Clientes cliente = new Clientes();
          ClientesDAO dao = new ClientesDAO();
          cliente = (Clientes) dialogDesc.getCboCliente().getSelectedItem();

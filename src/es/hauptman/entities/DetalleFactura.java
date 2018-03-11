@@ -6,7 +6,8 @@
 package es.hauptman.entities;
 
 /**
- *
+ * Clase bean de la entidad DetallesFactura que define las propriedades de los
+ * detalles de las facturas.
  * @author Diego
  */
 public class DetalleFactura {

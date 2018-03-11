@@ -14,8 +14,8 @@ import javax.swing.text.DocumentFilter;
 import javax.swing.text.PlainDocument;
 
 /**
- * Classe que usa el DocumentFilter para que el campo de texto solo 
- * accepte integer.
+ * Clase que hace la formatacion del un campo de texto para que solo se permita 
+ * numeros de tipo integer. Hereda de DocumentFilter.
  * 
  * @author Diego
  */
@@ -24,6 +24,11 @@ public class MyIntFilter extends DocumentFilter{
     public MyIntFilter() {
     }
     
+    /**
+     * Metodo de clase que recibe un JTextField como argumento para formatearlo.
+     * @param campoTexto
+     * @param campoTexto
+     */
     public static void formatInt (JTextField campoTexto){
         //Usa la clase DocumentFilter para limitar el campo de texto para recibir solo numeros enteros.
         PlainDocument doc = (PlainDocument) campoTexto.getDocument();
@@ -46,7 +51,11 @@ public class MyIntFilter extends DocumentFilter{
           JOptionPane.showMessageDialog(null, "Por favor solo números enteros.");
       }
    }
-
+   /**
+    * Metodo que hace la validacion del campo de texto.
+    * @param text
+    * @return 
+    */
    private boolean test(String text) {
       try {
          if(text.trim().isEmpty()){

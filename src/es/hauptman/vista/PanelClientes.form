@@ -48,7 +48,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="panelEditaCliente1" pref="313" max="32767" attributes="0"/>
-                  <Component id="panelAltaCliente" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="panelAltaCliente" alignment="0" pref="313" max="32767" attributes="0"/>
                   <Component id="panelBajaCliente" alignment="0" pref="313" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>

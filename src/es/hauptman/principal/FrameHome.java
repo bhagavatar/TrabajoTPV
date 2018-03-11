@@ -13,7 +13,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 /**
- *
+ * Clase de la ventana principal de la aplicacion.
  * @author Diego
  */
 public class FrameHome extends javax.swing.JFrame {
@@ -284,7 +284,8 @@ public class FrameHome extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+     // <editor-fold defaultstate="collapsed" desc="Eventos">
     private void itemIniVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemIniVentasActionPerformed
         cargaPanel(new PanelVentas(this));
     }//GEN-LAST:event_itemIniVentasActionPerformed
@@ -328,7 +329,7 @@ public class FrameHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_itemSalirActionPerformed
-
+// </editor-fold>
     /**
      * @param args the command line arguments
      */
@@ -390,14 +391,11 @@ public class FrameHome extends javax.swing.JFrame {
     private javax.swing.JPanel panelContenedor;
     private javax.swing.JPanel panelHome;
     // End of variables declaration//GEN-END:variables
-
-//Método que carga los distintos paneles a la ventana.
-//    private void cargaPanel(JPanel panel){
-//        panelContenedor.removeAll();
-//        panelContenedor.add(panel, BorderLayout.CENTER);
-//        pack();
-//    }
     
+    /**
+     * Método que carga los distintos paneles a la ventana.
+     * @param panel 
+     */
     private void cargaPanel(JPanel panel){
         panelContenedor.removeAll();
         panelContenedor.add(panel, BorderLayout.CENTER);

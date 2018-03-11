@@ -14,10 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.PlainDocument;
 
 /**
- *
+ * Clase del panel que gestiona los productos.
  * @author Diego
  */
 public class PanelProductos extends javax.swing.JPanel {
@@ -27,6 +26,7 @@ public class PanelProductos extends javax.swing.JPanel {
     private DefaultTableModel model;
     /**
      * Creates new form PanelProductos
+     * @param frame
      */
     public PanelProductos(FrameHome frame) {
         this.frame = frame;
@@ -43,7 +43,7 @@ public class PanelProductos extends javax.swing.JPanel {
         
     }
     
-
+// <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public JTable getTablaProductos() {
         return tablaProductos;
     }
@@ -82,7 +82,7 @@ public class PanelProductos extends javax.swing.JPanel {
 
     public JComboBox<Object> getCboSearchProd() {
         return cboSearchProd;
-    }
+    }//</editor-fold> 
     
     
 
