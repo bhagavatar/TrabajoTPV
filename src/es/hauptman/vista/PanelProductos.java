@@ -163,7 +163,7 @@ public class PanelProductos extends javax.swing.JPanel {
 
         pnlCategorias.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Categorias", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
-        lblDescCat.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        lblDescCat.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblDescCat.setText("Descripcíon:");
 
         txtCategoria.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -299,15 +299,15 @@ public class PanelProductos extends javax.swing.JPanel {
 
         lblProdId.setText("ID Prod:");
 
-        lblDescProd.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        lblDescProd.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblDescProd.setText("Producto:");
 
         txtProducto.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
-        lblPrecio.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        lblPrecio.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblPrecio.setText("Precio:");
 
-        lblCantidad.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        lblCantidad.setFont(new java.awt.Font("Lucida Grande", 0, 12)); // NOI18N
         lblCantidad.setText("Cantidad:");
 
         txtCtd.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -596,7 +596,7 @@ public class PanelProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarActionPerformed
     
     /**
-     * Muestra las informaciones de las líneas de latabla en los campos de texto. 
+     * Muestra las informaciones de las líneas de la tabla en los campos de texto. 
      * Hace una validacíon de los campos vacíos.
      * 
      */
@@ -679,6 +679,7 @@ public class PanelProductos extends javax.swing.JPanel {
         if(state == ItemEvent.SELECTED){
             pnlBuscar.setEnabled(true);
             cboSearchCat.setEnabled(true);
+            limpiaCampos();
         } else if(state == ItemEvent.DESELECTED) {
             pnlBuscar.setEnabled(false);
             cboSearchCat.setEnabled(false);
@@ -694,6 +695,7 @@ public class PanelProductos extends javax.swing.JPanel {
         if(state == ItemEvent.SELECTED){
             pnlBuscar.setEnabled(true);
             cboSearchProd.setEnabled(true);
+            limpiaCampos();
         } else if(state == ItemEvent.DESELECTED) {
             pnlBuscar.setEnabled(false);
             cboSearchProd.setEnabled(false);

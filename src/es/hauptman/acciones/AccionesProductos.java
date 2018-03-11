@@ -179,7 +179,9 @@ public class AccionesProductos {
     public void editaProducto(){
         
         Categorias categoria = new Categorias();
-        categoria.setID(Integer.parseInt(panelProductos.getTxtIdCat().getText()));
+        //FIXME
+        //categoria.setID(Integer.parseInt(panelProductos.getTxtIdCat().getText()));
+        categoria = (Categorias) panelProductos.getCboCatProd().getSelectedItem();
         
         Productos producto = new Productos();
         producto.setID(Integer.parseInt(panelProductos.getTxtIdProd().getText().trim()));
