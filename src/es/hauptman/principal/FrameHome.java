@@ -9,6 +9,7 @@ import es.hauptman.vista.PanelVentas;
 import es.hauptman.vista.PanelClientes;
 import es.hauptman.vista.PanelGestFacturas;
 import es.hauptman.vista.PanelProductos;
+import es.hauptman.vista.PanelUsuarios;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -40,7 +41,7 @@ public class FrameHome extends javax.swing.JFrame {
         panelBanner = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         panelBtnHome = new javax.swing.JPanel();
-        btnIniVenta = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
         btnProductos = new javax.swing.JButton();
         btnGestVentas = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
@@ -48,12 +49,15 @@ public class FrameHome extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        btnIniVenta = new javax.swing.JButton();
         barraMenu = new javax.swing.JMenuBar();
         menu = new javax.swing.JMenu();
         itemIniVentas = new javax.swing.JMenuItem();
         itemGesVentas = new javax.swing.JMenuItem();
         itemClientes = new javax.swing.JMenuItem();
         itemProductos = new javax.swing.JMenuItem();
+        itemUsuarios = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         itemInicio = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -83,15 +87,14 @@ public class FrameHome extends javax.swing.JFrame {
 
         panelBtnHome.setLayout(new java.awt.GridLayout(2, 2));
 
-        btnIniVenta.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
-        btnIniVenta.setLabel("Iniciar Venta");
-        btnIniVenta.setOpaque(true);
-        btnIniVenta.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuarios.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
+        btnUsuarios.setText("Usuários");
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniVentaActionPerformed(evt);
+                btnUsuariosActionPerformed(evt);
             }
         });
-        panelBtnHome.add(btnIniVenta);
+        panelBtnHome.add(btnUsuarios);
 
         btnProductos.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
         btnProductos.setLabel("Productos");
@@ -127,21 +130,21 @@ public class FrameHome extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 645, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(21, 21, 21)
-                    .addComponent(panelBtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(11, Short.MAX_VALUE)))
+                    .addComponent(panelBtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(19, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 446, Short.MAX_VALUE)
+            .addGap(0, 307, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(19, 19, 19)
-                    .addComponent(panelBtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(23, Short.MAX_VALUE)))
+                    .addComponent(panelBtnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(11, Short.MAX_VALUE)))
         );
 
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -183,18 +186,54 @@ public class FrameHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnIniVenta.setBackground(new java.awt.Color(204, 255, 255));
+        btnIniVenta.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
+        btnIniVenta.setLabel("Iniciar Venta");
+        btnIniVenta.setOpaque(true);
+        btnIniVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniVentaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnIniVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnIniVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHomeLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(213, 213, 213)
                 .addComponent(panelBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(317, 317, 317))
+            .addGroup(panelHomeLayout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,9 +243,11 @@ public class FrameHome extends javax.swing.JFrame {
                     .addGroup(panelHomeLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109))
+                        .addGap(102, 102, 102))
                     .addGroup(panelHomeLayout.createSequentialGroup()
                         .addComponent(panelBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -247,6 +288,14 @@ public class FrameHome extends javax.swing.JFrame {
             }
         });
         menu.add(itemProductos);
+
+        itemUsuarios.setText("Usuários");
+        itemUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemUsuariosActionPerformed(evt);
+            }
+        });
+        menu.add(itemUsuarios);
         menu.add(jSeparator2);
 
         itemInicio.setText("Home");
@@ -329,6 +378,14 @@ public class FrameHome extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_itemSalirActionPerformed
+
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        cargaPanel(new PanelUsuarios(this));
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void itemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUsuariosActionPerformed
+        cargaPanel(new PanelUsuarios(this));
+    }//GEN-LAST:event_itemUsuariosActionPerformed
 // </editor-fold>
     /**
      * @param args the command line arguments
@@ -372,17 +429,20 @@ public class FrameHome extends javax.swing.JFrame {
     private javax.swing.JButton btnGestVentas;
     private javax.swing.JButton btnIniVenta;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnUsuarios;
     private javax.swing.JMenuItem itemClientes;
     private javax.swing.JMenuItem itemGesVentas;
     private javax.swing.JMenuItem itemIniVentas;
     private javax.swing.JMenuItem itemInicio;
     private javax.swing.JMenuItem itemProductos;
     private javax.swing.JMenuItem itemSalir;
+    private javax.swing.JMenuItem itemUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenu menu;

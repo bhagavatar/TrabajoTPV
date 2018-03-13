@@ -22,7 +22,7 @@ public class ProductosDAO {
     private static int key;
     
     /**
-     * Getter que retorna el ID del último producto creado.
+     * Getter que devuelve el ID del último producto creado.
      * @return
      */
     public int getKey() {
@@ -37,7 +37,7 @@ public class ProductosDAO {
     }
 
     /**
-     * rea un nuevo producto en la BBDD.
+     * Crea un nuevo producto en la BBDD.
      * @param producto
      * @return
      */
