@@ -576,7 +576,7 @@ public class PanelProductos extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) 
                 tablaProductos.getModel();
         model.removeRow(tablaProductos.getSelectedRow());
-       limpiaCampos();
+        limpiaCampos();
         }
     }//GEN-LAST:event_btnEliminarProdActionPerformed
 

@@ -63,8 +63,8 @@ public class AccionesUsuarios {
         int id = Integer.parseInt(panelUsuarios.getTxtIDUsuario().getText());
         
         usuario.setId(id);
-        usuario.setLogin(panelUsuarios.getTxtLogin().getText().trim());
-        usuario.setContrasena(panelUsuarios.getTxtContrasena().getText().trim());
+        usuario.setLogin(panelUsuarios.getTxtLoginEditar().getText().trim());
+        usuario.setContrasena(panelUsuarios.getTxtContrasenaEditar().getText().trim());
         
         dao.update(usuario);
         

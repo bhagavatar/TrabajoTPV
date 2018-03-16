@@ -9,6 +9,7 @@ import es.hauptman.acciones.AccionesUsuarios;
 import es.hauptman.principal.FrameHome;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +19,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     private final FrameHome frame;
     AccionesUsuarios accionesUsuarios;
+    private DefaultTableModel model;
 
     /**
      * Creates new form PanelUsuarios
@@ -45,6 +47,16 @@ public class PanelUsuarios extends javax.swing.JPanel {
         return txtIDUsuario;
     }
 
+    public JTextField getTxtContrasenaEditar() {
+        return txtContrasenaEditar;
+    }
+
+    public JTextField getTxtLoginEditar() {
+        return txtLoginEditar;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,9 +78,13 @@ public class PanelUsuarios extends javax.swing.JPanel {
         tblUsuarios = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtIDUsuario = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtLoginEditar = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtContrasenaEditar = new javax.swing.JTextField();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuários", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(51, 102, 255))); // NOI18N
 
@@ -156,9 +172,18 @@ public class PanelUsuarios extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Editar");
+        btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("ID:");
+
+        jLabel4.setText("Usuario (Login):");
+
+        jLabel5.setText("Contraseña:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -170,28 +195,41 @@ public class PanelUsuarios extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLoginEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(114, 114, 114)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtLoginEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListar)
                     .addComponent(btnEliminar)
-                    .addComponent(jButton3))
+                    .addComponent(btnEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -238,10 +276,17 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         accionesUsuarios.guardarUsuarios();
-        txtLogin.setText("");
-        txtContrasena.setText("");
+        resetTableAndForms();
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void limpiaCampos() {
+        txtLogin.setText("");
+        txtContrasena.setText("");
+        txtIDUsuario.setText("");
+        txtContrasenaEditar.setText("");
+        txtLoginEditar.setText("");
+    }
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         accionesUsuarios.readUsuarios();
@@ -255,39 +300,58 @@ public class PanelUsuarios extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(tblUsuarios.getSelectedRow() != -1){
             txtIDUsuario.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 0).toString());
-            txtLogin.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 1).toString());
+            txtLoginEditar.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 1).toString());
             if(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 2) != null)
-                txtContrasena.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 2).toString());
+                txtContrasenaEditar.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 2).toString());
         }
     }
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        if(!txtIDUsuario.getText().equals(""))
+        if(!txtIDUsuario.getText().equals("")){
             accionesUsuarios.deleteUsuarios();
-               
+            resetTableAndForms();
+        }       
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void resetTableAndForms() {
+        model = (DefaultTableModel) tblUsuarios.getModel();
+        model.setNumRows(0);
+        accionesUsuarios.readUsuarios();
+        limpiaCampos();
+    }
 
     private void tblUsuariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuariosKeyReleased
         rowToTxtField();
     }//GEN-LAST:event_tblUsuariosKeyReleased
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        if(!txtIDUsuario.getText().equals(""))
+            accionesUsuarios.updateUsuarios();
+            resetTableAndForms();
+    }//GEN-LAST:event_btnEditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnListar;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtContrasenaEditar;
     private javax.swing.JTextField txtIDUsuario;
     private javax.swing.JTextField txtLogin;
+    private javax.swing.JTextField txtLoginEditar;
     // End of variables declaration//GEN-END:variables
 }

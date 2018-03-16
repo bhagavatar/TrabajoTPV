@@ -96,14 +96,15 @@ public class UsuariosDAO {
     
     public boolean update(Usuarios usuario){
         
-        String sql = "UPDATE usuarios SET login = ?, WHERE id = ? ";
+        String sql = "UPDATE usuarios SET login = ?, contrasena = ? WHERE id = ? ";
         
         PreparedStatement query = null;
         
         try {
             query = conn.prepareStatement(sql);
             query.setString(1, usuario.getLogin());
-            query.setInt(2, usuario.getId());
+            query.setString(2, usuario.getContrasena());
+            query.setInt(3, usuario.getId());
             query.executeUpdate();
             return true;
         } catch (SQLException ex) {
