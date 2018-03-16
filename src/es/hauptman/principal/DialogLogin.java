@@ -247,7 +247,7 @@ public class DialogLogin extends javax.swing.JDialog {
     }
 
     private void checkLoginDialog() {
-        if(accionesUsuarios.checkLogin()){
+        if(accionesUsuarios.checkLoginteste()){
             new FrameHome().setVisible(true);
             this.dispose();
         }else{

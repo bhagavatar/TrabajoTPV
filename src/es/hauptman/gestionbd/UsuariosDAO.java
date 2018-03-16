@@ -159,4 +159,33 @@ public class UsuariosDAO {
         return check;
     
     }
+    
+    public Usuarios checkLoginDAOteste(String login, char[] contrasena){
+        String sql = "SELECT * FROM usuarios WHERE login = ? AND contrasena = ?";
+        PreparedStatement query = null;
+        ResultSet rs =null;
+        Usuarios usuario = null;
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setString(1, login);
+            query.setString(2, String.valueOf(contrasena));
+            rs = query.executeQuery();
+            
+            if(rs.next()){
+                int id = rs.getInt("id");
+                usuario = new Usuarios();
+                usuario.setId(id);
+                usuario.setLogin(login);
+            }
+                
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT + ex);
+        } finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }   
+        
+        return usuario;
+    
+    }
 }

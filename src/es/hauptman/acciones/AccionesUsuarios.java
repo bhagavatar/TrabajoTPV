@@ -8,6 +8,7 @@ package es.hauptman.acciones;
 import es.hauptman.entities.Usuarios;
 import es.hauptman.gestionbd.UsuariosDAO;
 import es.hauptman.principal.DialogLogin;
+import es.hauptman.principal.FrameHome;
 import es.hauptman.vista.PanelUsuarios;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class AccionesUsuarios {
     PanelUsuarios panelUsuarios;
     DialogLogin dialogLogin;
+    public static String nombreUsuario; 
 
     public AccionesUsuarios(PanelUsuarios panelUsuarios) {
         this.panelUsuarios = panelUsuarios;
@@ -79,7 +81,7 @@ public class AccionesUsuarios {
         usuario.setId(id);
         dao.deleteUsuarios(usuario);
     }
-    
+    //FIXME
     public boolean checkLogin(){
         boolean check = false;
         UsuariosDAO daoLogin = new UsuariosDAO();
@@ -87,6 +89,21 @@ public class AccionesUsuarios {
         char[] contrasena = dialogLogin.getTxtContrasena().getPassword();
         if(daoLogin.checkLoginDAO(login, contrasena))
             check = true;
+        return check;
+    }
+    
+    public boolean checkLoginteste(){
+        boolean check = false;
+        UsuariosDAO daoLogin = new UsuariosDAO();
+        String login = dialogLogin.getTxtLogin().getText();
+        char[] contrasena = dialogLogin.getTxtContrasena().getPassword();
+        Usuarios usuarioLogin = new Usuarios();
+        usuarioLogin = daoLogin.checkLoginDAOteste(login, contrasena);
+        if(usuarioLogin != null){
+            check = true;
+            nombreUsuario = usuarioLogin.getLogin();
+            System.out.println(nombreUsuario);
+        }    
         return check;
     }
 }

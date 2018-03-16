@@ -5,12 +5,14 @@
  */
 package es.hauptman.principal;
 
+import es.hauptman.acciones.AccionesUsuarios;
 import es.hauptman.vista.PanelVentas;
 import es.hauptman.vista.PanelClientes;
 import es.hauptman.vista.PanelGestFacturas;
 import es.hauptman.vista.PanelProductos;
 import es.hauptman.vista.PanelUsuarios;
 import java.awt.BorderLayout;
+import javax.swing.Box;
 import javax.swing.JPanel;
 
 /**
@@ -26,7 +28,7 @@ public class FrameHome extends javax.swing.JFrame {
         initComponents();
         this.setContentPane(panelContenedor);
         dialogLogin = new DialogLogin(this, true);
-        
+        menuUsuario.setText("Usuário: "+AccionesUsuarios.nombreUsuario);
     }
 
     /**
@@ -65,6 +67,8 @@ public class FrameHome extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         itemLogout = new javax.swing.JMenuItem();
         itemSalir = new javax.swing.JMenuItem();
+        menuUsuario = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("FrameHome"); // NOI18N
@@ -242,23 +246,22 @@ public class FrameHome extends javax.swing.JFrame {
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHomeLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHomeLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102))
-                    .addGroup(panelHomeLayout.createSequentialGroup()
-                        .addComponent(panelBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(panelBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelHomeLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
         );
 
         panelContenedor.add(panelHome, java.awt.BorderLayout.CENTER);
 
         menu.setText("Menu");
+        menu.setFont(new java.awt.Font("sansserif", 0, 13)); // NOI18N
 
         itemIniVentas.setText("Iniciar Ventas");
         itemIniVentas.addActionListener(new java.awt.event.ActionListener() {
@@ -327,6 +330,19 @@ public class FrameHome extends javax.swing.JFrame {
         menu.add(itemSalir);
 
         barraMenu.add(menu);
+
+        menuUsuario.setForeground(new java.awt.Color(255, 0, 0));
+        menuUsuario.setText("Usuário: Guest");
+        menuUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuUsuario.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+
+        barraMenu.add(Box.createHorizontalGlue());
+
+        barraMenu.add(menuUsuario);
+
+        barraMenu.add(Box.createHorizontalGlue());
+
+        barraMenu.add(jMenu1);
 
         setJMenuBar(barraMenu);
 
@@ -458,12 +474,14 @@ public class FrameHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenu menu;
+    private javax.swing.JMenu menuUsuario;
     private javax.swing.JPanel panelBanner;
     private javax.swing.JPanel panelBtnHome;
     private javax.swing.JPanel panelContenedor;
