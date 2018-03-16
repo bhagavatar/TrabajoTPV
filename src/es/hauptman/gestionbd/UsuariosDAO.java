@@ -94,5 +94,68 @@ public class UsuariosDAO {
         return usuariosList;
     }
     
+    public boolean update(Usuarios usuario){
+        
+        String sql = "UPDATE usuarios SET login = ?, WHERE id = ? ";
+        
+        PreparedStatement query = null;
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setString(1, usuario.getLogin());
+            query.setInt(2, usuario.getId());
+            query.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+            return false;
+        }finally {
+            GestionSQL.closedConnection(conn, query);
+        }
+    }
     
+    public boolean deleteUsuarios(Usuarios usuario){
+        String sql = "DELETE FROM usuarios WHERE id = ?";
+        
+        PreparedStatement query = null;
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setInt(1, usuario.getId());
+            query.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT +ex);
+            return false;
+        }finally {
+            GestionSQL.closedConnection(conn, query);
+        }
+        
+    }
+    
+    public boolean checkLoginDAO(String login, char[] contrasena){
+        String sql = "SELECT * FROM usuarios WHERE login = ? AND contrasena = ?";
+        PreparedStatement query = null;
+        ResultSet rs =null;
+        boolean check = false;
+        
+        
+        try {
+            query = conn.prepareStatement(sql);
+            query.setString(1, login);
+            query.setString(2, String.valueOf(contrasena));
+            rs = query.executeQuery();
+            
+            if(rs.next())
+                check = true;
+            
+        } catch (SQLException ex) {
+            System.err.println(IErrors.ERROR_SQL_STATEMENT + ex);
+        } finally {
+            GestionSQL.closedConnection(conn, query, rs);
+        }   
+        
+        return check;
+    
+    }
 }

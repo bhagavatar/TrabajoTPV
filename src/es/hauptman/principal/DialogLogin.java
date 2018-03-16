@@ -6,19 +6,35 @@
 
 package es.hauptman.principal;
 
+import es.hauptman.acciones.AccionesUsuarios;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Diego
  */
 public class DialogLogin extends javax.swing.JDialog {
+     AccionesUsuarios accionesUsuarios;
 
     /** Creates new form DialogLogin */
     public DialogLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        accionesUsuarios = new AccionesUsuarios(this);
     }
+
+    public JPasswordField getTxtContrasena() {
+        return txtContrasena;
+    }
+
+    public JTextField getTxtLogin() {
+        return txtLogin;
+    }
+    
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -40,10 +56,11 @@ public class DialogLogin extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Acceso");
+        setUndecorated(true);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -87,11 +104,21 @@ public class DialogLogin extends javax.swing.JDialog {
         jLabel4.setText("Usuário");
 
         txtLogin.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        txtLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLoginKeyPressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel5.setText("Contraseña");
 
         txtContrasena.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        txtContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContrasenaKeyPressed(evt);
+            }
+        });
 
         btnLogin.setBackground(new java.awt.Color(51, 153, 255));
         btnLogin.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
@@ -103,10 +130,15 @@ public class DialogLogin extends javax.swing.JDialog {
             }
         });
 
-        btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
-        btnCancelar.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("Cancelar");
+        btnCerrar.setBackground(new java.awt.Color(51, 153, 255));
+        btnCerrar.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -120,7 +152,7 @@ public class DialogLogin extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
-                        .addComponent(btnCancelar))
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtLogin)
                     .addComponent(txtContrasena))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -139,7 +171,7 @@ public class DialogLogin extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
-                    .addComponent(btnCancelar))
+                    .addComponent(btnCerrar))
                 .addGap(34, 34, 34))
         );
 
@@ -185,20 +217,43 @@ public class DialogLogin extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean checkLogin(String login, String contrasena){
-        return login.equals("usuario") && contrasena.equals("123");
-    }
+//    public boolean checkLogin(String login, String contrasena){
+//        return login.equals("usuario") && contrasena.equals("123");
+//    }
     
     
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
-        if(this.checkLogin(txtLogin.getText(), new String (txtContrasena.getPassword()))){
+        checkLoginDialog();
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void txtContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            checkLoginDialog();
+        
+    }//GEN-LAST:event_txtContrasenaKeyPressed
+
+    private void txtLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            checkLoginDialog();
+    }//GEN-LAST:event_txtLoginKeyPressed
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarActionPerformed
+
+    public void limpiarCampos() {
+        txtLogin.setText("");
+        txtContrasena.setText("");
+    }
+
+    private void checkLoginDialog() {
+        if(accionesUsuarios.checkLogin()){
             new FrameHome().setVisible(true);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Datos Incorrectos.");
         }
-    }//GEN-LAST:event_btnLoginActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -243,7 +298,7 @@ public class DialogLogin extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -18,12 +18,14 @@ import javax.swing.JPanel;
  * @author Diego
  */
 public class FrameHome extends javax.swing.JFrame {
+    DialogLogin dialogLogin;
     /**
      * Creates new form frameHome
      */
     public FrameHome() {
         initComponents();
         this.setContentPane(panelContenedor);
+        dialogLogin = new DialogLogin(this, true);
         
     }
 
@@ -61,6 +63,7 @@ public class FrameHome extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         itemInicio = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        itemLogout = new javax.swing.JMenuItem();
         itemSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -307,6 +310,14 @@ public class FrameHome extends javax.swing.JFrame {
         menu.add(itemInicio);
         menu.add(jSeparator1);
 
+        itemLogout.setText("Logout");
+        itemLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemLogoutActionPerformed(evt);
+            }
+        });
+        menu.add(itemLogout);
+
         itemSalir.setText("Salir de la Aplicación");
         itemSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,6 +397,12 @@ public class FrameHome extends javax.swing.JFrame {
     private void itemUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemUsuariosActionPerformed
         cargaPanel(new PanelUsuarios(this));
     }//GEN-LAST:event_itemUsuariosActionPerformed
+
+    private void itemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLogoutActionPerformed
+        this.dispose();
+        dialogLogin.setVisible(true);
+        dialogLogin.limpiarCampos();
+    }//GEN-LAST:event_itemLogoutActionPerformed
 // </editor-fold>
     /**
      * @param args the command line arguments
@@ -434,6 +451,7 @@ public class FrameHome extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemGesVentas;
     private javax.swing.JMenuItem itemIniVentas;
     private javax.swing.JMenuItem itemInicio;
+    private javax.swing.JMenuItem itemLogout;
     private javax.swing.JMenuItem itemProductos;
     private javax.swing.JMenuItem itemSalir;
     private javax.swing.JMenuItem itemUsuarios;
