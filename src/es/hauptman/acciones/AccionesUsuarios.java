@@ -60,7 +60,6 @@ public class AccionesUsuarios {
         UsuariosDAO dao = new UsuariosDAO();
         Usuarios usuario = new Usuarios();
         
-        DefaultTableModel model = (DefaultTableModel) panelUsuarios.getTblUsuarios().getModel();
         int id = Integer.parseInt(panelUsuarios.getTxtIDUsuario().getText());
         
         usuario.setId(id);
@@ -69,6 +68,16 @@ public class AccionesUsuarios {
         
         dao.update(usuario);
         
+    }
+    
+    public void deleteUsuarios(){
+        UsuariosDAO dao = new UsuariosDAO();
+        Usuarios usuario = new Usuarios();
+        
+        int id = Integer.parseInt(panelUsuarios.getTxtIDUsuario().getText());
+        
+        usuario.setId(id);
+        dao.deleteUsuarios(usuario);
     }
     
     public boolean checkLogin(){

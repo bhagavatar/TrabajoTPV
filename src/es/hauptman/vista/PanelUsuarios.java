@@ -45,9 +45,6 @@ public class PanelUsuarios extends javax.swing.JPanel {
         return txtIDUsuario;
     }
 
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,7 +65,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtIDUsuario = new javax.swing.JTextField();
@@ -138,6 +135,11 @@ public class PanelUsuarios extends javax.swing.JPanel {
                 tblUsuariosMousePressed(evt);
             }
         });
+        tblUsuarios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblUsuariosKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUsuarios);
 
         btnListar.setText("Listar");
@@ -147,7 +149,12 @@ public class PanelUsuarios extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setText("Eliminar");
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Editar");
 
@@ -168,7 +175,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(114, 114, 114)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -183,7 +190,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListar)
-                    .addComponent(jButton2)
+                    .addComponent(btnEliminar)
                     .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,19 +248,35 @@ public class PanelUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void tblUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuariosMousePressed
+        rowToTxtField();
+    }//GEN-LAST:event_tblUsuariosMousePressed
+
+    private void rowToTxtField() {
         // TODO add your handling code here:
         if(tblUsuarios.getSelectedRow() != -1){
             txtIDUsuario.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 0).toString());
             txtLogin.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 1).toString());
-            txtContrasena.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 2).toString());
+            if(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 2) != null)
+                txtContrasena.setText(tblUsuarios.getValueAt(tblUsuarios.getSelectedRow(), 2).toString());
         }
-    }//GEN-LAST:event_tblUsuariosMousePressed
+    }
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if(!txtIDUsuario.getText().equals(""))
+            accionesUsuarios.deleteUsuarios();
+               
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tblUsuariosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUsuariosKeyReleased
+        rowToTxtField();
+    }//GEN-LAST:event_tblUsuariosKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnListar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
