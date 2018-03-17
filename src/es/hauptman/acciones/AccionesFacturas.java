@@ -206,7 +206,8 @@ public class AccionesFacturas {
             
            panelGestVentas.getTxtDetalleNombre().setText(f.getFactura().getCliente().getNombre());
            panelGestVentas.getTxtDetalleApellido().setText(f.getFactura().getCliente().getApellido());
-           panelGestVentas.getTxtDetalleTotalCompra().setText(String.valueOf(f.getFactura().getTotal()));
+           panelGestVentas.getTxtSubTotal().setText(String.valueOf(f.getFactura().getTotal()));
+           panelGestVentas.getTxtDetalleTotalCompra().setText(String.valueOf(f.getFactura().getTotalConDesc()));
         }
     }
     

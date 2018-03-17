@@ -288,6 +288,7 @@ public class FacturasDAO {
                 Facturas factura = new Facturas();
                 factura.setTicketID(rs.getInt("ticket_id"));
                 factura.setTotal(rs.getDouble("total_compra"));
+                factura.setTotalConDesc(rs.getDouble("total_con_descuento"));
             
                 Clientes cliente = new Clientes();
                 cliente.setNombre(rs.getString("nombre"));
