@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Clase que accede a los datos de usuarios en la BBDD.
  * @author Diego
  */
 public class UsuariosDAO {
@@ -66,6 +66,10 @@ public class UsuariosDAO {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Usuarios> readUsuarios() {
 
         String sql = "SELECT * FROM usuarios";
@@ -94,6 +98,11 @@ public class UsuariosDAO {
         return usuariosList;
     }
     
+    /**
+     *
+     * @param usuario
+     * @return
+     */
     public boolean update(Usuarios usuario){
         
         String sql = "UPDATE usuarios SET login = ?, contrasena = ? WHERE id = ? ";
@@ -115,6 +124,11 @@ public class UsuariosDAO {
         }
     }
     
+    /**
+     *
+     * @param usuario
+     * @return
+     */
     public boolean deleteUsuarios(Usuarios usuario){
         String sql = "DELETE FROM usuarios WHERE id = ?";
         
@@ -134,6 +148,12 @@ public class UsuariosDAO {
         
     }
     
+    /**
+     *
+     * @param login
+     * @param contrasena
+     * @return
+     */
     public boolean checkLoginDAO(String login, char[] contrasena){
         String sql = "SELECT * FROM usuarios WHERE login = ? AND contrasena = ?";
         PreparedStatement query = null;
@@ -160,6 +180,12 @@ public class UsuariosDAO {
     
     }
     
+    /**
+     *
+     * @param login
+     * @param contrasena
+     * @return
+     */
     public Usuarios checkLoginDAOteste(String login, char[] contrasena){
         String sql = "SELECT * FROM usuarios WHERE login = ? AND contrasena = ?";
         PreparedStatement query = null;

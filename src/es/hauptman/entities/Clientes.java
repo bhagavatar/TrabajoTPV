@@ -86,50 +86,98 @@ public class Clientes {
         this.nombre = nombre;
     }
 
+    /**
+     * Getter del apellido.
+     * @return apellido
+     */
     public String getApellido() {
         return apellido;
     }
 
+    /**
+     * Setter del apellido.
+     * @param apellido
+     */
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
+    /**
+     * Getter de direccion del cliente
+     * @return
+     */
     public String getDireccion() {
         return direccion;
     }
 
+    /**
+     * setter de la dirección.
+     * @param direccion
+     */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    /**
+     * Getter de ciudad.
+     * @return ciudad
+     */
     public String getCiudad() {
         return ciudad;
     }
 
+    /**
+     * Setter de ciudad.
+     * @param ciudad
+     */
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
 
+    /**
+     * Getter de província.
+     * @return província
+     */
     public String getProvincia() {
         return provincia;
     }
 
+    /**
+     * Setter de provincia
+     * @param provincia.
+     */
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
 
+    /**
+     * Getter de telefono.
+     * @return telefono
+     */
     public String getTelefono() {
         return telefono;
     }
 
+    /**
+     * Setter de telefono.
+     * @param telefono
+     */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
+    /**
+     * Getter de codigo postal.
+     * @return cod postal.
+     */
     public String getCodpostal() {
         return codpostal;
     }
 
+    /**
+     * Setter de codigo postal.
+     * @param codpostal
+     */
     public void setCodpostal(String codpostal) {
         this.codpostal = codpostal;
     }

@@ -14,6 +14,7 @@ import es.hauptman.vista.DialogDescuento;
 import es.hauptman.vista.DialogFactura;
 import es.hauptman.vista.PanelGestFacturas;
 import es.hauptman.vista.PanelVentas;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
@@ -28,15 +29,28 @@ public class AccionesFacturas {
     DialogFactura dialog;
     PanelGestFacturas panelGestVentas;
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+    DecimalFormat formatDecimal = new DecimalFormat("0.00");
 
+    /**
+     * Constructor que recibe PanlVentas.
+     * @param panel
+     */
     public AccionesFacturas(PanelVentas panel) {
         this.panel = panel;
     }
 
+    /**
+     * Constructor que recibe el Diálogo de Factura.
+     * @param dialog
+     */
     public AccionesFacturas(DialogFactura dialog) {
         this.dialog = dialog;
     }
 
+    /**
+     * Constructor que recibe el Panel de Gestón de Facuras.
+     * @param panelGestVentas
+     */
     public AccionesFacturas(PanelGestFacturas panelGestVentas) {
         this.panelGestVentas = panelGestVentas;
     }
@@ -96,17 +110,16 @@ public class AccionesFacturas {
             model.addRow(new Object[]{
             f.getProducto().getDescripcion(),
             f.getProducto().getCantidadComprada(),
-            f.getProducto().getPrecio(),
-            f.getSubtotal(),
+            formatDecimal.format(f.getProducto().getPrecio()),
+            formatDecimal.format(f.getSubtotal()),
         });
             //Añade los valores de la base de datos a las etiquetas y campo de texto.
             dialog.getLblNumFactura().setText(String.valueOf(dao.getKey()));
             dialog.getLblClienteNombre().setText(f.getFactura().getCliente().getNombre());
             dialog.getLblClienteApellido().setText(f.getFactura().getCliente().getApellido());
             dialog.getTxtSubtotal().setText(currencyFormatter.format(f.getFactura().getTotal()));
-            //FIXME
             if (f.getFactura().getDescuento() != 0){
-                //FIXME
+
                 dialog.getTxtTotal().setText(currencyFormatter.format(DialogDescuento.valorPrecioDesc));
                 dialog.getTxtDesc().setText(String.valueOf(f.getFactura().getDescuento() * 100));
                 
@@ -118,7 +131,7 @@ public class AccionesFacturas {
     
     /**
      * Método que permite recuperar las facturas de la BBDD através de 
-     * distintos parametros de busqueda.
+     * distintos parametros de busqueda y mostrarlos en la tabla de Facturas..
      * @param ticketID
      * @param clienteID
      * @param fecha
@@ -142,9 +155,9 @@ public class AccionesFacturas {
             f.getCliente().getNombre(),
             f.getCliente().getApellido(),
             f.getFecha(),
-            f.getDescuento(),
-            f.getTotal(),
-            f.getTotalConDesc()
+            formatDecimal.format(f.getDescuento()),
+            formatDecimal.format(f.getTotal()),
+            formatDecimal.format(f.getTotalConDesc())
         });
             
             panelGestVentas.getTxtDetalleIDFactura().setText(String.valueOf(f.getTicketID()));
@@ -153,7 +166,8 @@ public class AccionesFacturas {
     }
     
     /**
-     * Recupera todas las facturas. 
+     * Recupera todas las facturas y las muestra en la tabla de Facturas 
+     * del PanelGestVentas. 
      */
     public void getAllFactura() {
         
@@ -171,9 +185,9 @@ public class AccionesFacturas {
             f.getCliente().getNombre(),
             f.getCliente().getApellido(),
             f.getFecha(),
-            f.getDescuento(),
-            f.getTotal(),
-            f.getTotalConDesc()
+            formatDecimal.format(f.getDescuento()),
+            formatDecimal.format(f.getTotal()),
+            formatDecimal.format(f.getTotalConDesc())
         });
             
             panelGestVentas.getTxtDetalleIDFactura().setText(String.valueOf(f.getTicketID()));
@@ -182,7 +196,8 @@ public class AccionesFacturas {
     }
     
     /**
-     * Recupera los detalles de una factura de la BBDD por el ID.
+     * Recupera los detalles de una factura de la BBDD por el ID y los muestra 
+     * en la tabla de detalles del PanelGestVentas.
      * @param ticketID
      */
     public void getDetalleFactura(int ticketID) {
@@ -200,14 +215,14 @@ public class AccionesFacturas {
             model.addRow(new Object[]{
             f.getProducto().getDescripcion(),
             f.getProducto().getCantidadComprada(),
-            f.getProducto().getPrecio(),
-            f.getSubtotal(),
+            formatDecimal.format(f.getProducto().getPrecio()),
+            formatDecimal.format(f.getSubtotal()),
         });
             
            panelGestVentas.getTxtDetalleNombre().setText(f.getFactura().getCliente().getNombre());
            panelGestVentas.getTxtDetalleApellido().setText(f.getFactura().getCliente().getApellido());
-           panelGestVentas.getTxtSubTotal().setText(String.valueOf(f.getFactura().getTotal()));
-           panelGestVentas.getTxtDetalleTotalCompra().setText(String.valueOf(f.getFactura().getTotalConDesc()));
+           panelGestVentas.getTxtSubTotal().setText(currencyFormatter.format(f.getFactura().getTotal()));
+           panelGestVentas.getTxtDetalleTotalCompra().setText(currencyFormatter.format(f.getFactura().getTotalConDesc()));
         }
     }
     

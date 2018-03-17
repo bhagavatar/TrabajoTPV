@@ -7,7 +7,6 @@ package es.hauptman.vista;
 
 import es.hauptman.acciones.AccionesFacturas;
 import es.hauptman.acciones.AccionesProductos;
-import es.hauptman.acciones.AccionesUsuarios;
 import es.hauptman.acciones.AccionesVentas;
 import es.hauptman.entities.Productos;
 import es.hauptman.principal.FrameHome;
@@ -42,7 +41,14 @@ public class PanelVentas extends javax.swing.JPanel {
     private AccionesProductos accionesProductos;
     private Productos prodSeleccionado;
     private NumberFormat currencyFormatter; 
+
+    /**
+     * variable de clase de guarda el total de la venta sin descuento.
+     */
     public static double totalBruto;
+    /**
+     * ArrayList que guarda la lsta de compras.
+     */
     List<Productos> listaProductosVenta = new ArrayList<>();
 
     
@@ -1593,43 +1599,83 @@ public class PanelVentas extends javax.swing.JPanel {
     }
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
+
+    /**
+     *
+     * @return
+     */
     public JScrollPane getPanelTablaVentas() {
         return panelTablaVentas;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTablaVentas() {
         return tablaVentas;
     }  
     
-     
+    /**
+     *
+     * @return
+     */
     public Productos getProdSeleccionado() {
         return prodSeleccionado;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtFecha() {
         return txtFecha;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtHora() {
         return txtHora;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtTotalNeto() {
         return txtTotalNeto;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtTotalBruto() {
         return txtTotalBruto;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Productos> getListaProductosVenta() {
         return listaProductosVenta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtIDCliente() {
         return txtIDCliente;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtDesc() {
         return txtDesc;
     }//</editor-fold> 

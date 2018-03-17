@@ -24,12 +24,19 @@ public class AccionesProductos {
     PanelProductos panelProductos;
     PanelVentas panelVentas;
     
-
+    /**
+     * Constructor que recibe PanelProductos.
+     * @param panel
+     */
     public AccionesProductos(PanelProductos panel) {
         this.panelProductos = panel;
         
     }
 
+    /**
+     * Constructor que recibe PanelVentas.
+     * @param panelVentas
+     */
     public AccionesProductos(PanelVentas panelVentas) {
         this.panelVentas = panelVentas;
     }

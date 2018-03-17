@@ -38,170 +38,339 @@ public class PanelClientes extends javax.swing.JPanel {
     
     
     // <editor-fold defaultstate="collapsed" desc="Getters and Setters"> 
+
+    /**
+     * 
+     * @return
+     */
     public JTextField getTxtIDBaja() {
         return txtIDBaja;
     }
 
+    /**
+     *
+     * @param txtIDBaja
+     */
     public void setTxtIDBaja(JTextField txtIDBaja) {
         this.txtIDBaja = txtIDBaja;
     }
 
+    /**
+     *
+     * @return
+     */
     public FrameHome getFrame() {
         return frame;
     }
 
+    /**
+     *
+     * @param frame
+     */
     public void setFrame(FrameHome frame) {
         this.frame = frame;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtApellidoAlta() {
         return txtApellidoAlta;
     }
 
+    /**
+     *
+     * @param txtApellidoAlta
+     */
     public void setTxtApellidoAlta(JTextField txtApellidoAlta) {
         this.txtApellidoAlta = txtApellidoAlta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtApellidoBaja() {
         return txtApellidoBaja;
     }
 
+    /**
+     *
+     * @param txtApellidoBaja
+     */
     public void setTxtApellidoBaja(JTextField txtApellidoBaja) {
         this.txtApellidoBaja = txtApellidoBaja;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtApellidoEdita() {
         return txtApellidoEdita;
     }
 
+    /**
+     *
+     * @param txtApellidoEdita
+     */
     public void setTxtApellidoEdita(JTextField txtApellidoEdita) {
         this.txtApellidoEdita = txtApellidoEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtCPAlta() {
         return txtCPAlta;
     }
 
+    /**
+     *
+     * @param txtCPAlta
+     */
     public void setTxtCPAlta(JTextField txtCPAlta) {
         this.txtCPAlta = txtCPAlta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtCPEdita() {
         return txtCPEdita;
     }
 
+    /**
+     *
+     * @param txtCPEdita
+     */
     public void setTxtCPEdita(JTextField txtCPEdita) {
         this.txtCPEdita = txtCPEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtCiudadAlta() {
         return txtCiudadAlta;
     }
 
+    /**
+     *
+     * @param txtCiudadAlta
+     */
     public void setTxtCiudadAlta(JTextField txtCiudadAlta) {
         this.txtCiudadAlta = txtCiudadAlta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtCiudadEdita() {
         return txtCiudadEdita;
     }
 
+    /**
+     *
+     * @param txtCiudadEdita
+     */
     public void setTxtCiudadEdita(JTextField txtCiudadEdita) {
         this.txtCiudadEdita = txtCiudadEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtDireccionAlta() {
         return txtDireccionAlta;
     }
 
+    /**
+     *
+     * @param txtDireccionAlta
+     */
     public void setTxtDireccionAlta(JTextField txtDireccionAlta) {
         this.txtDireccionAlta = txtDireccionAlta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtDireccionEdita() {
         return txtDireccionEdita;
     }
 
+    /**
+     *
+     * @param txtDireccionEdita
+     */
     public void setTxtDireccionEdita(JTextField txtDireccionEdita) {
         this.txtDireccionEdita = txtDireccionEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtIdEdita() {
         return txtIdEdita;
     }
 
+    /**
+     *
+     * @param txtIdEdita
+     */
     public void setTxtIdEdita(JTextField txtIdEdita) {
         this.txtIdEdita = txtIdEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtNombreAlta() {
         return txtNombreAlta;
     }
 
+    /**
+     *
+     * @param txtNombreAlta
+     */
     public void setTxtNombreAlta(JTextField txtNombreAlta) {
         this.txtNombreAlta = txtNombreAlta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtNombreBaja() {
         return txtNombreBaja;
     }
 
+    /**
+     *
+     * @param txtNombreBaja
+     */
     public void setTxtNombreBaja(JTextField txtNombreBaja) {
         this.txtNombreBaja = txtNombreBaja;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtNombreEdita() {
         return txtNombreEdita;
     }
 
+    /**
+     *
+     * @param txtNombreEdita
+     */
     public void setTxtNombreEdita(JTextField txtNombreEdita) {
         this.txtNombreEdita = txtNombreEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtProvinciaAlta() {
         return txtProvinciaAlta;
     }
 
+    /**
+     *
+     * @param txtProvinciaAlta
+     */
     public void setTxtProvinciaAlta(JTextField txtProvinciaAlta) {
         this.txtProvinciaAlta = txtProvinciaAlta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtProvinciaEdita() {
         return txtProvinciaEdita;
     }
 
+    /**
+     *
+     * @param txtProvinciaEdita
+     */
     public void setTxtProvinciaEdita(JTextField txtProvinciaEdita) {
         this.txtProvinciaEdita = txtProvinciaEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtTelefonoAlta() {
         return txtTelefonoAlta;
     }
 
+    /**
+     *
+     * @param txtTelefonoAlta
+     */
     public void setTxtTelefonoAlta(JTextField txtTelefonoAlta) {
         this.txtTelefonoAlta = txtTelefonoAlta;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtTelefonoEdita() {
         return txtTelefonoEdita;
     }
 
+    /**
+     *
+     * @param txtTelefonoEdita
+     */
     public void setTxtTelefonoEdita(JTextField txtTelefonoEdita) {
         this.txtTelefonoEdita = txtTelefonoEdita;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTblCliente() {
         return tblCliente;
     }
 
+    /**
+     *
+     * @param tblCliente
+     */
     public void setTblCliente(JTable tblCliente) {
         this.tblCliente = tblCliente;
     }
 
+    /**
+     *
+     * @return
+     */
     public JScrollPane getPnlTblClientes() {
         return pnlTblClientes;
     }
 
+    /**
+     *
+     * @param pnlTblClientes
+     */
     public void setPnlTblClientes(JScrollPane pnlTblClientes) {
         this.pnlTblClientes = pnlTblClientes;
     }// </editor-fold>
@@ -648,7 +817,9 @@ public class PanelClientes extends javax.swing.JPanel {
         accionesClientes.readTblClientes();
         limpiaCampos();
     }//GEN-LAST:event_btnUpdateListaClienteActionPerformed
-
+    /**
+     * Método que limpa todos los campos de texto.
+     */
     private void limpiaCampos() {
         //Limpiar los Campos
         txtIdEdita.setText("");
@@ -682,8 +853,11 @@ public class PanelClientes extends javax.swing.JPanel {
     private void tblClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblClienteKeyReleased
        fillTextFiledsFromTable();
     }//GEN-LAST:event_tblClienteKeyReleased
-
-     private void fillTextFiledsFromTable() {
+    /**
+     * Método que rellena los campos de texto con los datos de las lineas 
+     * seleccionadas de la tabla.
+     */
+    private void fillTextFiledsFromTable() {
         DefaultTableModel model = (DefaultTableModel) tblCliente.getModel();
         if (tblCliente.getSelectedRow() != -1) {
             

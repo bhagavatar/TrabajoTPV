@@ -18,62 +18,120 @@ public class Productos {
     private double subtotal;
     private Categorias categoria;
     
-    
+    /**
+     * Constructor sin parametros.
+     */
     public Productos() {
     }
 
+    /**
+     * Getter de ID
+     * @return ID
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * Constructor parametrizado.
+     * @param ID
+     */
     public void setID(int ID) {
         this.ID = ID;
     }
     
+    /**
+     * Getter de precio.
+     * @return precio.
+     */
     public double getPrecio() {
         return precio;
     }
 
+    /**
+     * Setter de precio.
+     * @param precio
+     */
     public void setPrecio(double precio) {
         this.precio = precio;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescripcion() {
         return descripcion;
     }
 
+    /**
+     * Setter de descripción.
+     * @param descripcion
+     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
+    /**
+     * Getter de cantidadStock.
+     * @return cantidadStock.
+     */
     public int getCantidadStock() {
         return cantidadStock;
     }
 
+    /**
+     * Setter de cantidadStock
+     * @param cantidadStock
+     */
     public void setCantidadStock(int cantidadStock) {
         this.cantidadStock = cantidadStock;
     }
 
+    /**
+     * Getter de cantidadComprada
+     * @return
+     */
     public int getCantidadComprada() {
         return cantidadComprada;
     }
 
+    /**
+     * Setter de cantidadComprada
+     * @param cantidadComprada
+     */
     public void setCantidadComprada(int cantidadComprada) {
         this.cantidadComprada = cantidadComprada;
     }
     
+    /**
+     * Getter de subtotal.
+     * @return subtotal
+     */
     public double getSubtotal() {
         return subtotal;
     }
 
+    /**
+     * Setter de subtotal
+     * @param subtotal
+     */
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
 
+    /**
+     * Getter de categoria
+     * @return categoria
+     */
     public Categorias getCategoria() {
         return categoria;
     }
 
+    /**
+     * Setter de categoria.
+     * @param categoria
+     */
     public void setCategoria(Categorias categoria) {
         this.categoria = categoria;
     }

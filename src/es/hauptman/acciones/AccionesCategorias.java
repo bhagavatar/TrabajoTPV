@@ -19,6 +19,10 @@ import javax.swing.table.DefaultTableModel;
 public class AccionesCategorias {
     PanelProductos panel;
 
+    /**
+     * Constructor que recibe el PanelProductos como argumento.
+     * @param panel
+     */
     public AccionesCategorias(PanelProductos panel) {
         this.panel = panel;
     }

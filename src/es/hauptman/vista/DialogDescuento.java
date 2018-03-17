@@ -25,7 +25,15 @@ public class DialogDescuento extends javax.swing.JDialog {
     PanelVentas panelVentas;  
     AccionesClientes accionesClientes;
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+
+    /**
+     * variable de clase que guarda el precio con descuento.
+     */
     public static double valorPrecioDesc;
+
+    /**
+     * variable de clase que guarda el porcentaje.
+     */
     public static double porCiento;
 
     /**
@@ -59,18 +67,35 @@ public class DialogDescuento extends javax.swing.JDialog {
     
     
     // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
+
+    /**
+     * Getter de txtPrecio
+     * @return txtPrecio
+     */
     public JTextField getTxtPrecio() {
         return txtPrecio;
     }
 
+    /**
+     * Getter de cboCliente
+     * @return cboCliente
+     */
     public JComboBox<Object> getCboCliente() {
         return cboCliente;
     }
 
+    /**
+     * Getter de txtApellido
+     * @return txtApellido
+     */
     public JTextField getTxtApellido() {
         return txtApellido;
     }
 
+    /**
+     * Getter txtNombre
+     * @return txtNombre
+     */
     public JTextField getTxtNombre() {
         return txtNombre;
     } // </editor-fold>

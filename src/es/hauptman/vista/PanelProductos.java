@@ -45,42 +45,83 @@ public class PanelProductos extends javax.swing.JPanel {
     }
     
 // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
+
+    /**
+     *
+     * @return
+     */
     public JTable getTablaProductos() {
         return tablaProductos;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtCategoria() {
         return txtCategoria;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtCtd() {
         return txtCtd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtIdCat() {
         return txtIdCat;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtIdProd() {
         return txtIdProd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtPrecio() {
         return txtPrecio;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtProducto() {
         return txtProducto;
     }
 
+    /**
+     *
+     * @return
+     */
     public JComboBox<Object> getCboCatProd() {
         return cboCatProd;
     }
 
+    /**
+     *
+     * @return
+     */
     public JComboBox<Object> getCboSearchCat() {
         return cboSearchCat;
     }
 
+    /**
+     *
+     * @return
+     */
     public JComboBox<Object> getCboSearchProd() {
         return cboSearchProd;
     }//</editor-fold> 

@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * Clase de panel de gestión de Usuários.
  * @author mundaka
  */
 public class PanelUsuarios extends javax.swing.JPanel {
@@ -30,30 +30,54 @@ public class PanelUsuarios extends javax.swing.JPanel {
         this.frame = frame;
         accionesUsuarios = new AccionesUsuarios(this);
     }
-
+// <editor-fold defaultstate="collapsed" desc="Getters and Setters">
+    /**
+     * getter txtContrasena
+     * @return txtContrasena
+     */
     public JTextField getTxtContrasena() {
         return txtContrasena;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtLogin() {
         return txtLogin;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTblUsuarios() {
         return tblUsuarios;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtIDUsuario() {
         return txtIDUsuario;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtContrasenaEditar() {
         return txtContrasenaEditar;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtLoginEditar() {
         return txtLoginEditar;
-    }
+    }//</editor-fold>
     
     
 
@@ -217,14 +241,15 @@ public class PanelUsuarios extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
                         .addComponent(txtLoginEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)
-                        .addComponent(txtContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtContrasenaEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtIDUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnListar)
@@ -295,7 +320,9 @@ public class PanelUsuarios extends javax.swing.JPanel {
     private void tblUsuariosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuariosMousePressed
         rowToTxtField();
     }//GEN-LAST:event_tblUsuariosMousePressed
-
+    /**
+     * Método que muestra en los campo de texto los datos de la línea seleccionada de la tabla.
+     */
     private void rowToTxtField() {
         // TODO add your handling code here:
         if(tblUsuarios.getSelectedRow() != -1){
@@ -313,7 +340,9 @@ public class PanelUsuarios extends javax.swing.JPanel {
             resetTableAndForms();
         }       
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    /**
+     * Método que limpia la tabla y los campos de texto.
+     */
     private void resetTableAndForms() {
         model = (DefaultTableModel) tblUsuarios.getModel();
         model.setNumRows(0);

@@ -22,10 +22,18 @@ public class AccionesClientes {
     PanelClientes panel;
     DialogDescuento dialogDesc;
 
+    /**
+     * Constructor que recibe el PanelClientes.
+     * @param panel
+     */
     public AccionesClientes(PanelClientes panel) {
         this.panel = panel;
     }
 
+    /**
+     * Constructor que recibe el Diálogo de Descuento.
+     * @param dialogDesc
+     */
     public AccionesClientes(DialogDescuento dialogDesc) {
         this.dialogDesc = dialogDesc;
     }

@@ -13,23 +13,33 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
- *
+ * Clase que implementa la ventana de login.
  * @author Diego
  */
 public class DialogLogin extends javax.swing.JDialog {
      AccionesUsuarios accionesUsuarios;
 
-    /** Creates new form DialogLogin */
+    /** Creates new form DialogLogin
+     * @param parent
+     * @param modal */
     public DialogLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         accionesUsuarios = new AccionesUsuarios(this);
     }
 
+    /**
+     * Getter del JTextField txtContrasena
+     * @return txtContrasena
+     */
     public JPasswordField getTxtContrasena() {
         return txtContrasena;
     }
 
+    /**
+     * Getter del JTextField txtLogin
+     * @return txtLogin
+     */
     public JTextField getTxtLogin() {
         return txtLogin;
     }
@@ -241,13 +251,22 @@ public class DialogLogin extends javax.swing.JDialog {
         System.exit(0);
     }//GEN-LAST:event_btnCerrarActionPerformed
 
+    /**
+     * Método que limpia los campos de texto.
+     */
     public void limpiarCampos() {
         txtLogin.setText("");
         txtContrasena.setText("");
     }
 
+        
+    /**
+     * Método que hace la verificación del login. Si esta correcto, abre la 
+     * ventana principal de la aplicación. Si no, muestra un mensage de error 
+     * en pantalla.
+     */
     private void checkLoginDialog() {
-        if(accionesUsuarios.checkLoginteste()){
+        if(accionesUsuarios.checkLogin()){
             new FrameHome().setVisible(true);
             this.dispose();
         }else{

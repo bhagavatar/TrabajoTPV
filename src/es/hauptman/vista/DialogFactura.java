@@ -32,66 +32,130 @@ public class DialogFactura extends javax.swing.JDialog {
        
     }
 
+    /**
+     * Constructor sin parametros.
+     */
     public DialogFactura() {
     }
 
     // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
+
+    /**
+     * Getter del btnOK
+     * @return btnOK
+     */
     public JButton getBtnOK() {
         return btnOK;
     }
 
+    /**
+     *
+     * @param btnOK
+     */
     public void setBtnOK(JButton btnOK) {
         this.btnOK = btnOK;
     }
 
+    /**
+     * Getter de tblDisplayFactura.
+     * @return tblDisplayFactura.
+     */
     public JTable getTblDisplayFactura() {
         return tblDisplayFactura;
     }
 
+    /**
+     * Setter de tblDisplayFactura
+     * @param tblDisplayFactura
+     */
     public void setTblDisplayFactura(JTable tblDisplayFactura) {
         this.tblDisplayFactura = tblDisplayFactura;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getLblClienteNombre() {
         return lblClienteNombre;
     }
 
+    /**
+     *
+     * @param lblClienteNombre
+     */
     public void setLblClienteNombre(JLabel lblClienteNombre) {
         this.lblClienteNombre = lblClienteNombre;
     }
 
+    /**
+     * Getter de lblClienteApellido
+     * @return lblClienteApellido.
+     */
     public JLabel getLblClienteApellido() {
         return lblClienteApellido;
     }
 
+    /**
+     * Setter de lblClienteApellido.
+     * @param lblClienteApellido
+     */
     public void setLblClienteApellido(JLabel lblClienteApellido) {
         this.lblClienteApellido = lblClienteApellido;
     }
 
+    /**
+     * Getter de lblNumFactura.
+     * @return lblNumFactura
+     */
     public JLabel getLblNumFactura() {
         return lblNumFactura;
     }
 
+    /**
+     * Setter lblNumFactura
+     * @param lblNumFactura
+     */
     public void setLblNumFactura(JLabel lblNumFactura) {
         this.lblNumFactura = lblNumFactura;
     }
 
+    /**
+     * Getter txtTotal
+     * @return txtTotal
+     */
     public JTextField getTxtTotal() {
         return txtTotal;
     }
 
+    /**
+     * Setter txtTotal
+     * @param txtTotal
+     */
     public void setTxtTotal(JTextField txtTotal) {
         this.txtTotal = txtTotal;
     }
 
+    /**
+     * Getter txtSubtotal
+     * @return txtSubtotal
+     */
     public JTextField getTxtSubtotal() {
         return txtSubtotal;
     }
 
+    /**
+     * Setter txtSubtotal
+     * @param txtSubtotal
+     */
     public void setTxtSubtotal(JTextField txtSubtotal) {
         this.txtSubtotal = txtSubtotal;
     }
 
+    /**
+     * Getter txtDesc
+     * @return txtDesc
+     */
     public JTextField getTxtDesc() {
         return txtDesc;
     } //</editor-fold>

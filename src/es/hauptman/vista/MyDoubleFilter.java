@@ -20,6 +20,9 @@ import javax.swing.text.PlainDocument;
  */
 public class MyDoubleFilter extends DocumentFilter {
 
+    /**
+     * Constructor sin parametros.
+     */
     public MyDoubleFilter() {
     }
     

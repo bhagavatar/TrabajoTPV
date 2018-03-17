@@ -43,34 +43,67 @@ public class PanelGestFacturas extends javax.swing.JPanel {
     }
     
     // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
+
+    /**
+     *
+     * @return
+     */
     public JTable getTblFacturas() {
         return tblFacturas;
     }
 
+    /**
+     *
+     * @param tblFacturas
+     */
     public void setTblFacturas(JTable tblFacturas) {
         this.tblFacturas = tblFacturas;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTable getTblDetalleFactura() {
         return tblDetalleFactura;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtDetalleApellido() {
         return txtDetalleApellido;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtDetalleTotalCompra() {
         return txtDetalleTotalCompra;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtSubTotal() {
         return txtSubTotal;
     }
     
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtDetalleIDFactura() {
         return txtDetalleIDFactura;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtDetalleNombre() {
         return txtDetalleNombre;
     }//</editor-fold> 
@@ -602,7 +635,9 @@ public class PanelGestFacturas extends javax.swing.JPanel {
         limpiaCamposDetalles();
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
-    
+    /**
+     * Método que limpia los campos de texto.
+     */
     private void limpiaCamposDetalles() {
         
         txtDetalleNombre.setText("");

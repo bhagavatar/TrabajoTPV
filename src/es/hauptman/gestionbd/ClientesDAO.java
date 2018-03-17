@@ -32,6 +32,10 @@ public class ClientesDAO {
     
     Connection conn = null;     
 
+    /**
+     * Constructor sin parametros. Inicializa la conexión con el 
+     * servidor de la BBDD.
+     */
     public ClientesDAO() {
         conn = GestionSQL.getConnection();
     }
@@ -69,6 +73,10 @@ public class ClientesDAO {
         }
     }
     
+    /**
+     * Método que crea clientes nuevos en la BBDD.
+     * @return
+     */
     public List<Clientes> readCliente() {
         
         PreparedStatement query = null;
@@ -104,6 +112,11 @@ public class ClientesDAO {
         return clientes;
     }
     
+    /**
+     * Método que recupera los datos de clientes de la BBDD y las guarda en una ArrayList.
+     * @param cliente
+     * @return clientes
+     */
     public List<Clientes> readClienteById(Clientes cliente) {
         
         PreparedStatement query = null;

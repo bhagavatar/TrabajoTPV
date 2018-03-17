@@ -15,9 +15,15 @@ import static org.junit.Assert.*;
  */
 public class ServiceCategoriaTest {
     
+    /**
+     *
+     */
     public ServiceCategoriaTest() {
     }
 
+    /**
+     *
+     */
     @Test
     public void list() {
         

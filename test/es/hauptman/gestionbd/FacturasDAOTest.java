@@ -19,10 +19,15 @@ import org.junit.Ignore;
  */
 public class FacturasDAOTest {
     
+    /**
+     *
+     */
     public FacturasDAOTest() {
     }
 
-    
+    /**
+     *
+     */
     @Test
     @Ignore
     public void createFactura() {
@@ -56,6 +61,9 @@ public class FacturasDAOTest {
         }
     }
     
+    /**
+     *
+     */
     @Test
     public void readFactura() {
         FacturasDAO dao = new FacturasDAO();

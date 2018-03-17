@@ -8,41 +8,56 @@ package es.hauptman.acciones;
 import es.hauptman.entities.Usuarios;
 import es.hauptman.gestionbd.UsuariosDAO;
 import es.hauptman.principal.DialogLogin;
-import es.hauptman.principal.FrameHome;
 import es.hauptman.vista.PanelUsuarios;
 import javax.swing.table.DefaultTableModel;
 
 
 /**
- *
- * @author mundaka
+ * Clase que realiza las acciones de Usuários y Login..
+ * @author Diego
  */
 public class AccionesUsuarios {
     PanelUsuarios panelUsuarios;
     DialogLogin dialogLogin;
+
+    /**
+     * Variable estatica que guarda el nombre de usuário de la session.
+     */
     public static String nombreUsuario; 
 
+    /**
+     * Constructor que recibe PanelUsuarios.
+     * @param panelUsuarios
+     */
     public AccionesUsuarios(PanelUsuarios panelUsuarios) {
         this.panelUsuarios = panelUsuarios;
     }
     
+    /**
+     * Constructor que recibe el Dialogo de Login
+     * @param dialogLogin
+     */
     public AccionesUsuarios(DialogLogin dialogLogin){
         this.dialogLogin = dialogLogin;
      }
     
-    
+    /**
+     * Método que recupera informacion del Panel de Usuários y crea Usuários 
+     * en la BBDD.
+     */
     public void guardarUsuarios() {
         UsuariosDAO dao = new UsuariosDAO();
         Usuarios usuario = new Usuarios();
         usuario.setLogin(panelUsuarios.getTxtLogin().getText().trim());
         usuario.setContrasena(panelUsuarios.getTxtContrasena().getText().trim());
         dao.createUsuarios(usuario);
-        
-    
     }
     
+    /**
+     * Método que recupera los datos de Usuários de la BBDD y los muestra en 
+     * la tabla de usuários.
+     */
     public void readUsuarios(){
-        
         DefaultTableModel model = (DefaultTableModel) panelUsuarios.getTblUsuarios().getModel();
         model.setNumRows(0);
         
@@ -58,6 +73,10 @@ public class AccionesUsuarios {
         
     }
     
+    /**
+     * Método que lee información de los campos de texto del PanelUsuarios y
+     * permite modificar los usuários en la BBDD.
+     */
     public void updateUsuarios(){
         UsuariosDAO dao = new UsuariosDAO();
         Usuarios usuario = new Usuarios();
@@ -72,6 +91,10 @@ public class AccionesUsuarios {
         
     }
     
+    /**
+     * Método que lee información de los campos de texto del PanelUsuarios y
+     * permite eliminar los usuários de la BBDD.
+     */
     public void deleteUsuarios(){
         UsuariosDAO dao = new UsuariosDAO();
         Usuarios usuario = new Usuarios();
@@ -81,18 +104,13 @@ public class AccionesUsuarios {
         usuario.setId(id);
         dao.deleteUsuarios(usuario);
     }
-    //FIXME
+
+    /**
+     * Método que hace la autenticación de login de usuário y devuelve un 
+     * boolean true si los dados están correctos.
+     * @return check
+     */
     public boolean checkLogin(){
-        boolean check = false;
-        UsuariosDAO daoLogin = new UsuariosDAO();
-        String login = dialogLogin.getTxtLogin().getText();
-        char[] contrasena = dialogLogin.getTxtContrasena().getPassword();
-        if(daoLogin.checkLoginDAO(login, contrasena))
-            check = true;
-        return check;
-    }
-    
-    public boolean checkLoginteste(){
         boolean check = false;
         UsuariosDAO daoLogin = new UsuariosDAO();
         String login = dialogLogin.getTxtLogin().getText();
@@ -102,7 +120,6 @@ public class AccionesUsuarios {
         if(usuarioLogin != null){
             check = true;
             nombreUsuario = usuarioLogin.getLogin();
-            System.out.println(nombreUsuario);
         }    
         return check;
     }

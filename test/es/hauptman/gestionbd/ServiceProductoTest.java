@@ -20,10 +20,17 @@ public class ServiceProductoTest {
     
     PanelProductos panel;
     
+    /**
+     *
+     * @param panel
+     */
     public ServiceProductoTest(PanelProductos panel) {
         this.panel = panel;
     }
 
+    /**
+     *
+     */
     @Test
     @Ignore
     public void listar() {
@@ -36,7 +43,9 @@ public class ServiceProductoTest {
         }
     }
     
-    
+    /**
+     *
+     */
     @Test
     @Ignore
     public void inserir() {
@@ -60,6 +69,9 @@ public class ServiceProductoTest {
 
     }
     
+    /**
+     *
+     */
     @Test
     public void testComboBox() {
         

@@ -21,12 +21,14 @@ import javax.swing.text.PlainDocument;
  */
 public class MyIntFilter extends DocumentFilter{
 
+    /**
+     * Constructor sin parametros.
+     */
     public MyIntFilter() {
     }
     
     /**
      * Metodo de clase que recibe un JTextField como argumento para formatearlo.
-     * @param campoTexto
      * @param campoTexto
      */
     public static void formatInt (JTextField campoTexto){
