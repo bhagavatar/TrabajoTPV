@@ -67,8 +67,8 @@ public class UsuariosDAO {
     }
     
     /**
-     *
-     * @return
+     * Método que lee los datos de usuario en la BBDD.
+     * @return usuariosList
      */
     public List<Usuarios> readUsuarios() {
 
@@ -99,9 +99,9 @@ public class UsuariosDAO {
     }
     
     /**
-     *
+     * Método que modifica un usuário en la BBDD. Recibe un usuario.
      * @param usuario
-     * @return
+     * @return boolean
      */
     public boolean update(Usuarios usuario){
         
@@ -125,9 +125,9 @@ public class UsuariosDAO {
     }
     
     /**
-     *
+     * Método que elimina un usuario de la BBDD.
      * @param usuario
-     * @return
+     * @return boolean
      */
     public boolean deleteUsuarios(Usuarios usuario){
         String sql = "DELETE FROM usuarios WHERE id = ?";
@@ -149,44 +149,13 @@ public class UsuariosDAO {
     }
     
     /**
-     *
+     * Método que busca en la BBDD el nombre de usuario y contrasena para el 
+     * login. Devuelve el usuario encontrado o null.
      * @param login
      * @param contrasena
-     * @return
+     * @return usuario
      */
-    public boolean checkLoginDAO(String login, char[] contrasena){
-        String sql = "SELECT * FROM usuarios WHERE login = ? AND contrasena = ?";
-        PreparedStatement query = null;
-        ResultSet rs =null;
-        boolean check = false;
-        
-        
-        try {
-            query = conn.prepareStatement(sql);
-            query.setString(1, login);
-            query.setString(2, String.valueOf(contrasena));
-            rs = query.executeQuery();
-            
-            if(rs.next())
-                check = true;
-            
-        } catch (SQLException ex) {
-            System.err.println(IErrors.ERROR_SQL_STATEMENT + ex);
-        } finally {
-            GestionSQL.closedConnection(conn, query, rs);
-        }   
-        
-        return check;
-    
-    }
-    
-    /**
-     *
-     * @param login
-     * @param contrasena
-     * @return
-     */
-    public Usuarios checkLoginDAOteste(String login, char[] contrasena){
+    public Usuarios checkLoginDAO(String login, char[] contrasena){
         String sql = "SELECT * FROM usuarios WHERE login = ? AND contrasena = ?";
         PreparedStatement query = null;
         ResultSet rs =null;

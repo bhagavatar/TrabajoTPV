@@ -116,7 +116,7 @@ public class AccionesUsuarios {
         String login = dialogLogin.getTxtLogin().getText();
         char[] contrasena = dialogLogin.getTxtContrasena().getPassword();
         Usuarios usuarioLogin = new Usuarios();
-        usuarioLogin = daoLogin.checkLoginDAOteste(login, contrasena);
+        usuarioLogin = daoLogin.checkLoginDAO(login, contrasena);
         if(usuarioLogin != null){
             check = true;
             nombreUsuario = usuarioLogin.getLogin();
