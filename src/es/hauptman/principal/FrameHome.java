@@ -95,7 +95,7 @@ public class FrameHome extends javax.swing.JFrame {
         panelBtnHome.setLayout(new java.awt.GridLayout(2, 2));
 
         btnUsuarios.setFont(new java.awt.Font("Lucida Grande", 2, 18)); // NOI18N
-        btnUsuarios.setText("Usuários");
+        btnUsuarios.setText("Usuarios");
         btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuariosActionPerformed(evt);
@@ -295,7 +295,7 @@ public class FrameHome extends javax.swing.JFrame {
         });
         menu.add(itemProductos);
 
-        itemUsuarios.setText("Usuários");
+        itemUsuarios.setText("Usuarios");
         itemUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemUsuariosActionPerformed(evt);
@@ -332,7 +332,7 @@ public class FrameHome extends javax.swing.JFrame {
         barraMenu.add(menu);
 
         menuUsuario.setForeground(new java.awt.Color(255, 0, 0));
-        menuUsuario.setText("Usuário: Guest");
+        menuUsuario.setText("Usuario: Guest");
         menuUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         menuUsuario.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
 

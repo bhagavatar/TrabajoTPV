@@ -52,7 +52,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="itemUsuarios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+                <Property name="text" type="java.lang.String" value="Usuarios"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemUsuariosActionPerformed"/>
@@ -93,7 +93,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Usu&#xe1;rio: Guest"/>
+            <Property name="text" type="java.lang.String" value="Usuario: Guest"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
             </Property>
@@ -275,7 +275,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Lucida Grande" size="18" style="2"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+                        <Property name="text" type="java.lang.String" value="Usuarios"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUsuariosActionPerformed"/>

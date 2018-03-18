@@ -110,7 +110,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtContrasenaEditar = new javax.swing.JTextField();
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuários", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(51, 102, 255))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(51, 102, 255))); // NOI18N
 
         jLabel1.setText("Usuario (Login):");
 
@@ -167,7 +167,7 @@ public class PanelUsuarios extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Usuário", "Contraseña"
+                "ID", "Usuario", "Contraseña"
             }
         ));
         tblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
