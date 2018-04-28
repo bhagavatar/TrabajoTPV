@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `tpv` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `tpv`;
 -- MySQL dump 10.13  Distrib 5.7.19, for macos10.12 (x86_64)
 --
 -- Host: localhost    Database: tpv
@@ -56,7 +58,7 @@ CREATE TABLE `clientes` (
   `ciudad` varchar(45) NOT NULL,
   `provincia` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -88,7 +90,7 @@ CREATE TABLE `detalle_factura` (
   KEY `fk_productos_has_factura_productos1_idx` (`productos_id`),
   CONSTRAINT `fk_productos_has_factura_factura1` FOREIGN KEY (`factura_ticket_id`) REFERENCES `factura` (`ticket_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_productos_has_factura_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=370 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=381 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +99,7 @@ CREATE TABLE `detalle_factura` (
 
 LOCK TABLES `detalle_factura` WRITE;
 /*!40000 ALTER TABLE `detalle_factura` DISABLE KEYS */;
-INSERT INTO `detalle_factura` VALUES (8,2,6,2,1,331),(46,6,6,5,1,332),(19,4,6,1,1,333),(10,2,7,1,1,334),(24,5,7,1,1,335),(1,1,8,1,1,336),(4,1,8,3,2,337),(1,1,14,1,1,352),(4,1,14,3,2,353),(2,1,14,2.4000000000000004,3,354),(1,1,15,1,1,355),(4,1,15,3,2,356),(1,1,16,1,1,357),(4,1,16,3,2,358),(1,1,17,1,1,359),(2,1,17,1.6,2,360),(1,1,19,1,1,363),(2,1,19,1.6,2,364),(1,1,22,2,2,367),(1,1,23,1,1,368),(2,1,23,0.8,1,369);
+INSERT INTO `detalle_factura` VALUES (8,2,6,2,1,331),(46,6,6,5,1,332),(19,4,6,1,1,333),(10,2,7,1,1,334),(24,5,7,1,1,335),(1,1,8,1,1,336),(4,1,8,3,2,337),(1,1,14,1,1,352),(4,1,14,3,2,353),(2,1,14,2.4000000000000004,3,354),(1,1,15,1,1,355),(4,1,15,3,2,356),(1,1,16,1,1,357),(4,1,16,3,2,358),(1,1,17,1,1,359),(2,1,17,1.6,2,360),(1,1,19,1,1,363),(2,1,19,1.6,2,364),(1,1,22,2,2,367),(1,1,23,1,1,368),(2,1,23,0.8,1,369),(1,1,24,1,1,370),(1,1,26,1,1,373),(42,6,26,7,1,374),(1,1,27,1,1,375),(42,6,27,7,1,376),(9,2,28,1.5,1,377),(53,7,28,3,1,378),(42,6,29,7,1,379),(17,4,29,2,1,380);
 /*!40000 ALTER TABLE `detalle_factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +120,7 @@ CREATE TABLE `factura` (
   PRIMARY KEY (`ticket_id`),
   KEY `fk_ventas_clientes_idx` (`clientes_id`),
   CONSTRAINT `fk_ventas_clientes` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -127,7 +129,7 @@ CREATE TABLE `factura` (
 
 LOCK TABLES `factura` WRITE;
 /*!40000 ALTER TABLE `factura` DISABLE KEYS */;
-INSERT INTO `factura` VALUES (6,1,'2018-03-10 11:41:14',8,7.2,0.1),(7,1,'2018-03-10 19:33:12',2,1.8,0.1),(8,4,'2018-03-10 19:44:15',4,3.6,0.1),(14,4,'2018-03-11 16:03:51',6.4,5.760000000000001,0.1),(15,4,'2018-03-11 19:26:35',4,3.6,0.1),(16,1,'2018-03-11 19:34:07',4,4,NULL),(17,5,'2018-03-11 19:34:44',2.6,2.3400000000000003,0.1),(19,1,'2018-03-11 19:46:49',2.6,1.3,0.5),(22,NULL,'2018-03-11 19:49:51',2,2,NULL),(23,6,'2018-03-11 20:28:04',1.8,1.62,0.1);
+INSERT INTO `factura` VALUES (6,1,'2018-03-10 11:41:14',8,7.2,0.1),(7,1,'2018-03-10 19:33:12',2,1.8,0.1),(8,4,'2018-03-10 19:44:15',4,3.6,0.1),(14,4,'2018-03-11 16:03:51',6.4,5.760000000000001,0.1),(15,4,'2018-03-11 19:26:35',4,3.6,0.1),(16,1,'2018-03-11 19:34:07',4,4,NULL),(17,5,'2018-03-11 19:34:44',2.6,2.3400000000000003,0.1),(19,1,'2018-03-11 19:46:49',2.6,1.3,0.5),(22,NULL,'2018-03-11 19:49:51',2,2,NULL),(23,6,'2018-03-11 20:28:04',1.8,1.62,0.1),(24,NULL,'2018-03-15 23:29:56',1,1,NULL),(26,1,'2018-03-16 23:13:48',8,5.6,0.3),(27,11,'2018-03-17 18:46:20',8,5.6,0.3),(28,1,'2018-03-18 19:20:03',1.5,6.75,0.1),(29,1,'2018-03-18 19:59:42',9,8.1,0.1);
 /*!40000 ALTER TABLE `factura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,8 +157,33 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'cafe largo',1,1,531),(2,'cafe corto',1,0.8,591),(3,'cafe cortado',1,0.4,497),(4,'cafe con leche',1,1.5,454),(5,'capuccino',1,2,495),(6,'carajillo',1,2.5,18),(7,'mocaccino',1,1.5,20),(8,'chocolate suizo',2,2,19),(9,'chocolate taza grande',2,1.5,20),(10,'chocolate taza pequena',2,1,19),(12,'te negro',3,0.4,10),(13,'te con leche',3,0.5,9),(14,'chai latte',3,1.5,7),(15,'menta',3,0.4,10),(16,'manzanilla',3,0.4,9),(17,'naranja natural',4,2,26),(18,'pina',4,1,20),(19,'melocoton',4,1,19),(21,'croissant normal',5,1,10),(22,'croissant integral',5,1.5,9),(23,'croissant de chocolate',5,2,10),(24,'brownie',5,1,9),(25,'pastel de chocolate',5,2,10),(26,'tarta de fresa',5,2,10),(41,'bikini',7,2,10),(42,'menu del dia',6,7,29),(43,'cookie de chocolate negro',9,1,10),(44,'cookie de chocolate blanco',9,1,10),(45,'cookie de caramelo',9,1,10),(46,'menu desayuno',6,5,9),(47,'mini madalena',8,0.8,9),(48,'madalena integral',8,1,10),(49,'madalena de chocolate',8,1,8),(50,'madalena de arandano',8,2,10),(51,'bocadillo atun',7,2,10),(52,'bocadillo carne',7,3,8),(53,'bocadillo pollo',7,3,10),(54,'bocadillo jamon serrano',7,3,10),(67,'productoteste1',14,2,20),(68,'productoteste1',15,2,10),(69,'productoteste2',16,10,20),(71,'producto teste4',17,1,10),(72,'productoteste5',17,10,500),(73,'teste',17,10,500),(74,'producto teste1a',17,20,30),(75,'producto teste2a',17,1,10),(76,'producto teste3c',17,2,10);
+INSERT INTO `productos` VALUES (1,'cafe largo',1,1,527),(2,'cafe corto',1,0.8,591),(3,'cafe cortado',1,0.4,497),(4,'cafe con leche',1,1.5,454),(5,'capuccino',1,2,495),(6,'carajillo',1,2.5,18),(7,'mocaccino',1,1.5,20),(8,'chocolate suizo',2,2,19),(9,'chocolate taza grande',2,1.5,19),(10,'chocolate taza pequena',2,1,19),(12,'te negro',3,0.4,10),(13,'te con leche',3,0.5,9),(14,'chai latte',3,1.5,7),(15,'menta',3,0.4,10),(16,'manzanilla',3,0.4,9),(17,'naranja natural',4,2,25),(18,'pina',4,1,20),(19,'melocoton',4,1,19),(21,'croissant normal',5,1,10),(22,'croissant integral',5,1.5,9),(23,'croissant de chocolate',5,2,10),(24,'brownie',5,1,9),(25,'pastel de chocolate',5,2,10),(26,'tarta de fresa',5,2,10),(41,'bikini',7,2,10),(42,'menu del dia',6,7,25),(43,'cookie de chocolate negro',9,1,10),(44,'cookie de chocolate blanco',9,1,10),(45,'cookie de caramelo',9,1,10),(46,'menu desayuno',6,5,9),(47,'mini madalena',8,0.8,9),(48,'madalena integral',8,1,10),(49,'madalena de chocolate',8,1,8),(50,'madalena de arandano',8,2,10),(51,'bocadillo atun',7,2,10),(52,'bocadillo carne',7,3,8),(53,'bocadillo pollo',7,3,9),(54,'bocadillo jamon serrano',7,3,10),(67,'productoteste1',14,2,20),(68,'productoteste1',15,2,10),(69,'productoteste2',16,10,20),(71,'producto teste4',17,1,10),(72,'productoteste5',17,10,500),(73,'teste',17,10,500),(74,'producto teste1a',17,20,30),(75,'producto teste2a',17,1,10),(76,'producto teste3c',17,2,10);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(45) DEFAULT NULL,
+  `contrasena` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'Diego','1234'),(2,'Adriana','2222'),(3,'Admin','1234'),(4,'Admin',''),(13,'Diego Hauptman','1234');
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -326,4 +353,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-11 22:45:10
+-- Dump completed on 2018-03-20 19:24:18

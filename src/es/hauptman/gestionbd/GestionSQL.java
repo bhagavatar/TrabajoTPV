@@ -17,8 +17,8 @@ public class GestionSQL {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String SERVER = "jdbc:mysql://localhost:3306/";
     private static final String DATABASE = "tpv?useSSL=false";
-    private static final String USERNAME = "tpv_user";
-    private static final String PASSWORD = "tpvpwd";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
     /**
      * Constructor.
      */
