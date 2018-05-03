@@ -1,2 +1,2 @@
 # TrabajoTPV
-Developing basic POS system for Java course.
+Basic POS system for Java course. I'll rewrite it using Java 8 for studies purposes.
