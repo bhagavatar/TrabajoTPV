@@ -6,6 +6,6 @@ Useful info files:
 
 -[SQL script for the project](TPV_diego.sql) 
 
--[Username and pasword](TrabajoTPV/datos \de \login.txt) 
+-[Username and pasword](TrabajoTPV/datos_de_login.txt) 
 
 -[Project documentation](TrabajoTPV/Documentacion_Trabajo_TPV_Diego.pdf)
