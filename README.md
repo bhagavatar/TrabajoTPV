@@ -8,4 +8,4 @@ Useful info files:
 
 -Username and pasword: datos_de_login.txt 
 
--Project documentation: Documentacion_Trabajo_TPV_Diego.pdf 
+-Project documentation: Documentacion_Trabajo_TPV_Diego.pdf (TrabajoTPV/Documentacion_Trabajo_TPV_Diego.pdf)
