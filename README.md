@@ -4,6 +4,8 @@ I'll rewrite it using Java 8 and JavaFX for studies purposes.
 
 Useful info files: 
 
--SQL script: TPV_diego.sql
--Username and pasword: datos_de_login.txt
--Project documentation: Documentacion_Trabajo_TPV_Diego.pdf
+-SQL script: TPV_diego.sql 
+
+-Username and pasword: datos_de_login.txt 
+
+-Project documentation: Documentacion_Trabajo_TPV_Diego.pdf 
