@@ -1,13 +1,6 @@
 # TrabajoTPV
-Swing desktop application built using Netbeans. It's a very basic POS (point of sales) system for the Java course. 
-I'll rewrite it in the near future using Java 8 and JavaFX for studies purposes.
+Old stuff. Swing desktop application built using Netbeans and Java 7. It's a very basic POS (point of sales) system as homework for a Java course. 
 
-[Project documentation(PDF)](Documentacion_Trabajo_TPV_Diego.pdf)
 
-Usefuf files: 
-
--SQL script: TPV_diego.sql 
-
--Username and pasword: datos_de_login.txt
 
 
